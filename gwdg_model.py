@@ -12,7 +12,7 @@ from deepeval.models import DeepEvalBaseLLM
 from rate_limiter import RateLimiter
 
 MAX_RETRIES = 3
-RETRY_WAIT  = 45  # Sekunden warten bei 429
+RETRY_WAIT  = 45  
 
 
 class GWDGModel(DeepEvalBaseLLM):
@@ -62,14 +62,14 @@ class GWDGModel(DeepEvalBaseLLM):
             raw = resp.choices[0].message.content.strip()
             raw = raw.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
             return schema(**json.loads(raw))
-        else:
-            resp = self._client.chat.completions.create(
-                model=self.model_name,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.0,
-                max_tokens=1000
-            )
-            return resp.choices[0].message.content
+
+        resp = self._client.chat.completions.create(
+            model=self.model_name,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0,
+            max_tokens=1000
+        )
+        return resp.choices[0].message.content
 
     # ─────────────────────────────────────────────
     # SYNCHRON (für evaluate())
@@ -82,8 +82,8 @@ class GWDGModel(DeepEvalBaseLLM):
                     self.rate_limiter.acquire()
                 return self._call_api(prompt, schema)
             except Exception as e:
-                if "429" in str(e) or "rate limit" in str(e).lower():
-                    print(f"  [429] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
+                if "429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower():
+                    print(f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
                     time.sleep(RETRY_WAIT)
                 else:
                     raise
@@ -100,8 +100,8 @@ class GWDGModel(DeepEvalBaseLLM):
                     await self.rate_limiter.a_acquire()
                 return self._call_api(prompt, schema)
             except Exception as e:
-                if "429" in str(e) or "rate limit" in str(e).lower():
-                    print(f"  [429] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
+                if "429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower():
+                    print(f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
                     await asyncio.sleep(RETRY_WAIT)
                 else:
                     raise
