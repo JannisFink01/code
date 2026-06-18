@@ -1,4 +1,9 @@
+import asyncio
 from dotenv import load_dotenv
+load_dotenv()
+
+from typer import prompt
+from rate_limiter import RateLimiter
 import os
 import json
 from collections import defaultdict
@@ -26,6 +31,9 @@ except ImportError:
     from deepeval.metrics import TurnRelevancyMetric as RelevancyMetric
 
 
+rate_limiter = RateLimiter(calls_per_second=2, calls_per_minute=15)
+
+
 class GWDGModel(DeepEvalBaseLLM):
     def __init__(self, model_name: str):
         self.model_name = model_name
@@ -37,6 +45,7 @@ class GWDGModel(DeepEvalBaseLLM):
         return self._client
 
     def generate(self, prompt: str, schema: PydanticBaseModel = None):
+        rate_limiter.acquire()
         if schema:
             resp = self._client.chat.completions.create(
                 model=self.model_name,
@@ -63,14 +72,35 @@ class GWDGModel(DeepEvalBaseLLM):
         )
         return resp.choices[0].message.content
 
-    async def a_generate(self, prompt: str, schema: PydanticBaseModel = None):
-        return self.generate(prompt, schema)
+    async def a_generate(self, prompt: str, schema=None):
+        await rate_limiter.a_acquire()  # Lock hält während des ganzen Calls
+        
+        if schema:
+            resp = self._client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {"role": "system", "content": "Respond with valid JSON only."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.0,
+                max_tokens=1000
+            )
+            raw = resp.choices[0].message.content.strip()
+            raw = raw.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+            return schema(**json.loads(raw))
+        
+        resp = self._client.chat.completions.create(
+            model=self.model_name,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0,
+            max_tokens=1000
+        )
+        return resp.choices[0].message.content
 
-    def get_model_name(self):
-        return self.model_name
+def get_model_name(self):
+    return self.model_name
 
 
-load_dotenv()
 os.environ["GWDG_API_KEY"] = os.getenv("GWDG_API_KEY")
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")  # das ZU TESTENDE Modell
 SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "meta-llama-3.1-8b-instruct")  # Student
@@ -87,7 +117,7 @@ with open("system_prompt.txt", encoding="utf-8") as f:
     SYSTEM_PROMPT = f.read()
 
 client = OpenAI(api_key=os.getenv("GWDG_API_KEY"), base_url=os.getenv("GWDG_BASE_URL"))
-judge_llm     = GWDGModel(JUDGE_MODEL)
+judge_llm = GWDGModel(JUDGE_MODEL)
 simulator_llm = GWDGModel(SIMULATOR_MODEL)
 
 TOPICS = [
@@ -124,6 +154,7 @@ def build_scenarios():
 async def model_callback(
     input: str, turns: list[Turn] = None, thread_id: str = None
 ) -> Turn:
+    await rate_limiter.a_acquire()
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     for t in turns or []:
         messages.append({"role": t.role, "content": t.content})
@@ -133,7 +164,7 @@ async def model_callback(
     return Turn(
         role="assistant",
         content=resp.choices[0].message.content,
-        retrieval_context=CONTEXT,
+        retrieval_context=[CONTEXT],
     )
 
 
@@ -289,6 +320,45 @@ def main():
 
     print(f"\nFertig. Rohdaten -> {raw_path}\nAggregat  -> {agg_path}")
 
-
+def startup_check():
+    print("\n[Startup Check]")
+    
+    # 1. Umgebungsvariablen
+    api_key = os.getenv("GWDG_API_KEY")
+    base_url = os.getenv("GWDG_BASE_URL")
+    print(f"  GWDG_API_KEY:  {'✓ gesetzt' if api_key else '✗ FEHLT'}")
+    print(f"  GWDG_BASE_URL: {repr(base_url)}")
+    
+    # 2. URL-Format prüfen
+    if base_url and "/chat/completions" in base_url:
+        print("  ✗ FEHLER: GWDG_BASE_URL darf nicht '/chat/completions' enthalten!")
+        return False
+    
+    # 3. Verbindung testen
+    print("  Teste API-Verbindung...")
+    try:
+        test_client = OpenAI(api_key=api_key, base_url=base_url)
+        resp = test_client.chat.completions.create(
+            model=SIMULATOR_MODEL,
+            messages=[{"role": "user", "content": "Hallo"}],
+            max_tokens=10
+        )
+        print(f"  ✓ Verbindung OK – Modell antwortet")
+    except Exception as e:
+        print(f"  ✗ Verbindung FEHLER: {e}")
+        return False
+    
+    # 4. Dateien prüfen
+    for fname in ["system_prompt.txt", "kontext.txt"]:
+        exists = os.path.exists(fname)
+        print(f"  {'✓' if exists else '✗'} {fname}")
+        if not exists:
+            return False
+    
+    print("[Startup Check] Alles OK – starte Tests\n")
+    return True
 if __name__ == "__main__":
-    main()
+    if startup_check():
+        main()
+    else:
+        print("\n[Abbruch] Bitte Fehler beheben und erneut starten.")

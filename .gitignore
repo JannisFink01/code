@@ -2,3 +2,6 @@
 eval_rohdaten_v1.csv
 eval_aggregat_v1.csv
 __pychache__
+__pycache__/
+*.pyc
+.deepeval/
