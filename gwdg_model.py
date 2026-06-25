@@ -11,8 +11,8 @@ from pydantic import BaseModel as PydanticBaseModel
 from deepeval.models import DeepEvalBaseLLM
 from rate_limiter import RateLimiter
 
-MAX_RETRIES = 3
-RETRY_WAIT  = 45  
+MAX_RETRIES = 5
+RETRY_WAIT = 45
 
 
 class GWDGModel(DeepEvalBaseLLM):
@@ -33,8 +33,7 @@ class GWDGModel(DeepEvalBaseLLM):
         self.model_name = model_name
         self.rate_limiter = rate_limiter
         self._client = OpenAI(
-            api_key=os.getenv("GWDG_API_KEY"),
-            base_url=os.getenv("GWDG_BASE_URL")
+            api_key=os.getenv("GWDG_API_KxEY"), base_url=os.getenv("GWDG_BASE_URL")
         )
 
     def load_model(self):
@@ -53,26 +52,37 @@ class GWDGModel(DeepEvalBaseLLM):
             resp = self._client.chat.completions.create(
                 model=self.model_name,
                 messages=[
-                    {"role": "system", "content": "Respond with valid JSON only. No markdown, no explanation."},
-                    {"role": "user", "content": prompt}
+                    {
+                        "role": "system",
+                        "content": "Respond with valid JSON only. No markdown, no explanation.",
+                    },
+                    {"role": "user", "content": prompt},
                 ],
                 temperature=0.0,
-                max_tokens=1000
+                max_tokens=4000,
+                extra_body={"enable_thinking": False},
             )
             raw = resp.choices[0].message.content.strip()
-            raw = raw.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+            print(f"\n[DEBUG RAW]: {repr(raw[:200])}")
+            raw = (
+                raw.removeprefix("```json")
+                .removeprefix("```")
+                .removesuffix("```")
+                .strip()
+            )
             return schema(**json.loads(raw))
 
         resp = self._client.chat.completions.create(
             model=self.model_name,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.0,
-            max_tokens=1000
+            max_tokens=4000,
+            extra_body={"enable_thinking": False},
         )
         return resp.choices[0].message.content
 
     # ─────────────────────────────────────────────
-    # SYNCHRON (für evaluate())
+    # SYNCHRON
     # ─────────────────────────────────────────────
 
     def generate(self, prompt: str, schema: PydanticBaseModel = None):
@@ -83,11 +93,15 @@ class GWDGModel(DeepEvalBaseLLM):
                 return self._call_api(prompt, schema)
             except Exception as e:
                 if "429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower():
-                    print(f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
+                    print(
+                        f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})..."
+                    )
                     time.sleep(RETRY_WAIT)
                 else:
                     raise
-        raise RuntimeError(f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden.")
+        raise RuntimeError(
+            f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden."
+        )
 
     # ─────────────────────────────────────────────
     # ASYNCHRON (für Simulator)
@@ -100,9 +114,20 @@ class GWDGModel(DeepEvalBaseLLM):
                     await self.rate_limiter.a_acquire()
                 return self._call_api(prompt, schema)
             except Exception as e:
-                if "429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower():
-                    print(f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})...")
-                    await asyncio.sleep(RETRY_WAIT)
+                if (
+                    "429" in str(e)
+                    or "500" in str(e)
+                    or "rate limit" in str(e).lower()
+                    or "internal server" in str(e).lower()
+                    or isinstance(e, json.JSONDecodeError)
+                ):
+                    wait = min(45 * attempt, 180)
+                    print(
+                        f"  [{type(e).__name__}] Rate limit – warte {wait}s (Versuch {attempt}/{MAX_RETRIES})..."
+                    )
+                    await asyncio.sleep(wait)
                 else:
                     raise
-        raise RuntimeError(f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden.")   
+        raise RuntimeError(
+            f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden."
+        )

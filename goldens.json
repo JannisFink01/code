@@ -1,0 +1,53 @@
+[
+  {
+    "query": "Wohin mit alten Ausdrucken, Papierstapeln oder leeren Kartons aus dem Seminarraum?",
+    "answer": "Bitte benutzen Sie auf dem Campus die Papierpresse hinter Gebäude 2; dort dürfen ausschließlich Papier, Pappe und Kartons eingeworfen werden. Alternativ können die Ausdrucke, Papierstapel und leeren Kartons in Frankfurt über die Altpapiertonne, den Kofferraumservice, die Altpapiersortieranlage, eine Wertstoffinsel, den Self Service am Wertstoffhof Nord oder durch Containergestellung entsorgt werden.",
+    "expected_output": "Altpapier wie Ausdrucke, Pappe oder Kartons kannst du ganz einfach über die Papierpresse hinter Gebäude 2 entsorgen. Bitte achte darauf, dass keine beschichteten Materialien oder Plastikfolien dabei sind – nur reines Papier oder Karton gehören hinein.",
+    "chunk": {
+      "content": "Frankfurt - Abfall ABC - Altpapier",
+      "metadata": {
+        "AVV_Level1": 21,
+        "Entsorgungsweg_Frankfurt": "{\"name\": \"Altpapier\", \"address\": \"Altpapiertonne; Kofferraumservice; Altpapiersortieranlage; Wertstoffinsel; Self Service am Wertstoffhof Nord; Containergestellung\", \"opening_hours\": \"\", \"contact\": \"\", \"additional_info\": \"\"}",
+        "source_column": "AVV_Beschreibung",
+        "AVV_Level3": 210111,
+        "AVV_Level2": 2101,
+        "Entsorgungsweg_FRA_UAS": "{'name': 'Papierpresse', 'address': 'Hinter Gebäude 2', 'opening_hours': '', 'contact': '', 'additional_info': 'Bitte ausschließlich Papier, Pappe oder Kartons in die Papierpresse'}"
+      },
+      "similarity_score": 0.2982360062117845
+    }
+  },
+  {
+    "query": "Wie entsorge ich sensible Dokumente oder alte Aktenordner aus dem Büro?",
+    "answer": "Melden Sie sensible Dokumente oder alte Aktenordner an der FRA-UAS beim Facility Management (Gebäude 8, Raum 21); zuständiger Ansprechpartner ist Herr Schwende, Tel. +49 69 1533-3126, E‑Mail michael.schwende@fm.fra-uas.de, der die hochschulinterne Entsorgung organisiert. Alternativ können Akten kommunal über FES-Aktenvernichtung bzw. das FES Servicecenter, durch Containergestellung oder per Kofferraumservice an den Wertstoffhöfen Nord oder West entsorgt werden.",
+    "expected_output": "Vertrauliche Unterlagen wie Prüfungsunterlagen, Personalakten oder Dokumente mit personenbezogenen Daten dürfen nicht einfach ins Altpapier. Bitte melde die Entsorgung beim Facility Management – die sichere Aktenvernichtung wird dort organisiert. Ansprechpartner ist Herr Schwende (Gebäude 8, Raum 21). 📞 +49 69 1533-3126 📧 michael.schwende@fm.fra-uas.de",
+    "chunk": {
+      "content": "Frankfurt - Abfall ABC - Akten/Datenvernichtung",
+      "metadata": {
+        "AVV_Level2": 2101,
+        "Entsorgungsweg_FRA_UAS": "{'name': 'Facility Management melden', 'address': 'Gebäude 8, Raum 21', 'opening_hours': '', 'contact': 'Herr Schwende Tel.: +49 69 1533-3126 Email: michael.schwende@fm.fra-uas.de', 'additional_info': 'Bitte Herrn Schwende kontaktieren!'}",
+        "AVV_Level3": 210103,
+        "AVV_Level1": 21,
+        "Entsorgungsweg_Frankfurt": "{\"name\": \"Akten/Datenvernichtung\", \"address\": \"Wertstoffhof Nord (Kofferraumservice); Wertstoffhof West (Kofferraumservice); FES-Aktenvernichtung; FES Servicecenter; Containergestellung\", \"opening_hours\": \"\", \"contact\": \"\", \"additional_info\": \"\"}",
+        "source_column": "AVV_Beschreibung"
+      },
+      "similarity_score": 0.4205990970321287
+    }
+  },
+  {
+    "query": "Wohin mit benutzter Alufolie aus der Teeküche oder vom Pausenbrot?",
+    "answer": "An der FRA‑UAS entsorgen Sie benutzte Alufolie in der Gelben Tonne hinter Gebäude 2; bitte ausschließlich Verpackungsmüll in diese Tonne werfen. Bei der kommunalen Entsorgung in Frankfurt gehört Alufolie in die Verpackungstonne (Gelbe Tonne).",
+    "expected_output": "Saubere oder leicht verschmutzte Alufolie zählt als Verpackungsmüll und gehört in die Gelbe Tonne. An der FRA-UAS findest du sie hinter Gebäude 2. Bitte wirf nur Verpackungsmüll hinein – also kein Essen oder Restabfall.",
+    "chunk": {
+      "content": "Frankfurt - Abfall ABC - Alufolie",
+      "metadata": {
+        "AVV_Level1": 21,
+        "AVV_Level2": 2101,
+        "AVV_Level3": 210113,
+        "Entsorgungsweg_FRA_UAS": "{'name': 'Gelbe Tonne', 'address': 'Hinter Gebäude 2', 'opening_hours': '', 'contact': '', 'additional_info': 'Bitte ausschließlich Verpackungsmüll in die Tonne werfen.'}",
+        "Entsorgungsweg_Frankfurt": "{\"name\": \"Alufolie\", \"address\": \"Verpackungstonne (Gelbe Tonne)\", \"opening_hours\": \"\", \"contact\": \"\", \"additional_info\": \"\"}",
+        "source_column": "AVV_Beschreibung"
+      },
+      "similarity_score": 0.43673712532694997
+    }
+  }
+]
