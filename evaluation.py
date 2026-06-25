@@ -11,15 +11,15 @@ from config import (
     TUTOR_MODEL,
     REPEATS,
     MAX_USER_SIMULATIONS,
+    CHATBOT_ROLE,
 )
-from clients import rate_limiter, judge_llm, simulator_llm, tutor_client, CONTEXT
+from clients import rate_limiter, judge_llm, simulator_llm, tutor_llm, CONTEXT
 from scenarios import build_scenarios
 from metrics import build_metrics
 from persistence import save_conversations, load_conversations
 
-CHATBOT_ROLE = "Sokrat: ein sokratischer Tutor, der mit Rückfragen führt und die Lösung nie direkt verrät."
-EVAL_MAX_RETRIES = 3
-EVAL_RETRY_WAIT  = 45
+EVAL_MAX_RETRIES = 5
+EVAL_RETRY_WAIT = 45
 
 
 def run_evaluation(prompt_file: str, version: str):
@@ -33,10 +33,19 @@ def run_evaluation(prompt_file: str, version: str):
     print(f"{'='*60}")
 
     conv_path = f"konversationen_{version}.json"
-    raw_path  = f"eval_rohdaten_{version}.csv"
-    agg_path  = f"eval_aggregat_{version}.csv"
-    fieldnames = ["prompt_version", "topic", "level", "behavior",
-                  "repeat", "metric", "score", "success", "reason"]
+    raw_path = f"eval_rohdaten_{version}.csv"
+    agg_path = f"eval_aggregat_{version}.csv"
+    fieldnames = [
+        "prompt_version",
+        "topic",
+        "level",
+        "behavior",
+        "repeat",
+        "metric",
+        "score",
+        "success",
+        "reason",
+    ]
 
     # --- Simulation (oder aus Cache laden) ---
     if os.path.exists(conv_path):
@@ -67,8 +76,10 @@ def run_evaluation(prompt_file: str, version: str):
             for t in turns or []:
                 messages.append({"role": t.role, "content": t.content})
             messages.append({"role": "user", "content": input})
-            resp = tutor_client.chat.completions.create(
-                model=TUTOR_MODEL, messages=messages, extra_body={"enable_thinking": False}
+            resp = tutor_llm._client.chat.completions.create(
+                model=TUTOR_MODEL,
+                messages=messages,
+                extra_body={"enable_thinking": False},
             )
             return Turn(
                 role="assistant",
@@ -97,10 +108,12 @@ def run_evaluation(prompt_file: str, version: str):
     rows = []
     for i, tc in enumerate(test_cases):
         meta = metadata[i] if i < len(metadata) else {}
-        print(f"  [{i+1}/{len(test_cases)}] {meta.get('topic','?')[:35]} | {meta.get('behavior','?')[:25]}")
+        print(
+            f"  [{i+1}/{len(test_cases)}] {meta.get('topic','?')[:35]} | {meta.get('behavior','?')[:25]}"
+        )
 
         for metric in metrics:
-            metric_name = getattr(metric, '__name__', '?')
+            metric_name = getattr(metric, "__name__", "?")
             success = False
 
             for attempt in range(1, EVAL_MAX_RETRIES + 1):
@@ -110,27 +123,35 @@ def run_evaluation(prompt_file: str, version: str):
                         for m in getattr(tr, "metrics_data", None) or []:
                             row = {
                                 "prompt_version": version,
-                                "topic":    meta.get("topic", ""),
-                                "level":    meta.get("level", ""),
+                                "topic": meta.get("topic", ""),
+                                "level": meta.get("level", ""),
                                 "behavior": meta.get("behavior", ""),
-                                "repeat":   meta.get("repeat", ""),
-                                "metric":   getattr(m, "name", ""),
-                                "score":    getattr(m, "score", None),
-                                "success":  getattr(m, "success", None),
-                                "reason":   (getattr(m, "reason", "") or "").replace("\n", " "),
+                                "repeat": meta.get("repeat", ""),
+                                "metric": getattr(m, "name", ""),
+                                "score": getattr(m, "score", None),
+                                "success": getattr(m, "success", None),
+                                "reason": (getattr(m, "reason", "") or "").replace(
+                                    "\n", " "
+                                ),
                             }
                             rows.append(row)
-                            with open(raw_path, "a", newline="", encoding="utf-8-sig") as f:
+                            with open(
+                                raw_path, "a", newline="", encoding="utf-8-sig"
+                            ) as f:
                                 csv.DictWriter(f, fieldnames=fieldnames).writerow(row)
                     success = True
                     break
                 except Exception as e:
                     if attempt < EVAL_MAX_RETRIES:
                         wait = min(EVAL_RETRY_WAIT * attempt, 180)
-                        print(f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s")
+                        print(
+                            f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s"
+                        )
                         time.sleep(wait)
                     else:
-                        print(f"    ⚠ {metric_name} übersprungen nach {EVAL_MAX_RETRIES} Versuchen")
+                        print(
+                            f"    ⚠ {metric_name} übersprungen nach {EVAL_MAX_RETRIES} Versuchen"
+                        )
 
         print(f"    ✓ fertig")
 
@@ -143,7 +164,9 @@ def run_evaluation(prompt_file: str, version: str):
     for r in all_rows:
         score = r.get("score")
         if score is not None and score != "":
-            agg[(r["behavior"], r["metric"])].append((float(score), r.get("success") == "True"))
+            agg[(r["behavior"], r["metric"])].append(
+                (float(score), r.get("success") == "True")
+            )
 
     with open(agg_path, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
@@ -151,12 +174,15 @@ def run_evaluation(prompt_file: str, version: str):
         for (behavior, metric), vals in sorted(agg.items()):
             scores = [v[0] for v in vals]
             passes = [1 for v in vals if v[1]]
-            w.writerow([
-                behavior, metric,
-                round(sum(scores) / len(scores), 3),
-                round(len(passes) / len(vals), 3),
-                len(vals)
-            ])
+            w.writerow(
+                [
+                    behavior,
+                    metric,
+                    round(sum(scores) / len(scores), 3),
+                    round(len(passes) / len(vals), 3),
+                    len(vals),
+                ]
+            )
 
     print(f"\n  Rohdaten → {raw_path}")
     print(f"  Aggregat → {agg_path}")

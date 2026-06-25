@@ -1,6 +1,7 @@
 #persistence.py
 import json
-from deepeval.test_case import Turn, ConversationalTestCase, CHATBOT_ROLE
+from deepeval.test_case import Turn, ConversationalTestCase
+from config import CHATBOT_ROLE
 # =============================================================
 # KONVERSATIONEN SPEICHERN / LADEN
 # =============================================================

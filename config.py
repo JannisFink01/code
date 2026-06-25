@@ -3,9 +3,10 @@
 # Wird von test_neu.py, gwdg_model.py und rate_limiter.py importiert
 
 from dotenv import load_dotenv
+load_dotenv()
 import os
 
-load_dotenv()
+
 
 # =============================================================
 # API
@@ -31,11 +32,18 @@ MAX_RETRIES = int(os.getenv("MAX_RETRIES", "5"))
 # =============================================================
 # EVALUATION
 # =============================================================
+CHATBOT_ROLE = "Sokrat: ein sokratischer Tutor, der mit Rückfragen führt und die Lösung nie direkt verrät."
 REPEATS = int(os.getenv("REPEATS", "3"))
 MAX_USER_SIMULATIONS = int(os.getenv("MAX_USER_SIMULATIONS", "2"))
 THRESHOLD = float(os.getenv("THRESHOLD", "0.7"))
 PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v1")
-
+PROMPT_RUNS = [
+        ("prompts/system_prompt.txt", "system_prompt"),
+        ("prompts/minimaler_sokrat.txt", "minimaler_sokrat"),
+        ("prompts/system_prompt_context.txt", "system_prompt_context"),
+        ("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
+        ("prompts/no_Prompt.txt", "no_Prompt"),
+    ]
 # =============================================================
 # DATEIPFADE
 # =============================================================

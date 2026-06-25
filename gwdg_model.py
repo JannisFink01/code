@@ -2,7 +2,6 @@
 # GWDGModel – OpenAI-kompatibler Client für den GWDG KI-Server
 # Mit Rate Limiter und automatischem Retry bei 429-Fehlern
 
-import os
 import json
 import time
 import asyncio
@@ -10,7 +9,7 @@ from openai import OpenAI
 from pydantic import BaseModel as PydanticBaseModel
 from deepeval.models import DeepEvalBaseLLM
 from rate_limiter import RateLimiter
-
+from config import GWDG_API_KEY, GWDG_BASE_URL
 MAX_RETRIES = 5
 RETRY_WAIT = 45
 
@@ -33,7 +32,7 @@ class GWDGModel(DeepEvalBaseLLM):
         self.model_name = model_name
         self.rate_limiter = rate_limiter
         self._client = OpenAI(
-            api_key=os.getenv("GWDG_API_KxEY"), base_url=os.getenv("GWDG_BASE_URL")
+            api_key=GWDG_API_KEY, base_url=GWDG_BASE_URL
         )
 
     def load_model(self):

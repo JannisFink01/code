@@ -7,7 +7,6 @@ from config import (
     KONTEXT_FILE,
     RATE_CALLS_PER_SECOND,
     RATE_CALLS_PER_MINUTE,
-    THRESHOLD,
 )
 from rate_limiter import RateLimiter
 from gwdg_model import GWDGModel
