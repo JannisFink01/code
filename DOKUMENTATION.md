@@ -50,7 +50,7 @@ API-Key und Modell gehören in eine `.env` (nicht in den Code):
 ```
 OPENAI_API_KEY=dein-key
 # Optional fuer OpenAI-kompatible Endpunkte (z.B. GWDG/gemma):
-# OPENAI_BASE_URL=https://chat-ai.academiccloud.de/v1
+# OPENAI_BASE_URL=https:deine URL
 ```
 
 Laden im Skript:
