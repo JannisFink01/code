@@ -9,7 +9,7 @@ from clients import judge_llm
 # METRIKEN
 # =============================================================
 
-def build_metrics():
+def build_metrics(judge_llm):
     params = [MultiTurnParams.CONTENT]
 
     keine_loesung = ConversationalGEval(
