@@ -3,10 +3,9 @@
 # Wird von test_neu.py, gwdg_model.py und rate_limiter.py importiert
 
 from dotenv import load_dotenv
+
 load_dotenv()
 import os
-
-
 
 # =============================================================
 # API
@@ -38,12 +37,12 @@ MAX_USER_SIMULATIONS = int(os.getenv("MAX_USER_SIMULATIONS", "2"))
 THRESHOLD = float(os.getenv("THRESHOLD", "0.7"))
 PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v1")
 PROMPT_RUNS = [
-        ("prompts/system_prompt.txt", "system_prompt"),
-        ("prompts/minimaler_sokrat.txt", "minimaler_sokrat"),
-        ("prompts/system_prompt_context.txt", "system_prompt_context"),
-        ("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
-        ("prompts/no_Prompt.txt", "no_Prompt"),
-    ]
+    ("prompts/system_prompt.txt", "system_prompt"),
+    ("prompts/minimaler_sokrat.txt", "minimaler_sokrat"),
+    ("prompts/system_prompt_context.txt", "system_prompt_context"),
+    ("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
+    ("prompts/no_Prompt.txt", "no_Prompt"),
+]
 # =============================================================
 # DATEIPFADE
 # =============================================================
@@ -51,6 +50,39 @@ SYSTEM_PROMPT_FILE = os.getenv("SYSTEM_PROMPT_FILE", "system_prompt.txt")
 KONTEXT_FILE = os.getenv("KONTEXT_FILE", "kontext.txt")
 OUTPUT_RAW = f"eval_rohdaten_{PROMPT_VERSION}.csv"
 OUTPUT_AGG = f"eval_aggregat_{PROMPT_VERSION}.csv"
+FIELDNAMES = [
+    "prompt_version",
+    "topic",
+    "level",
+    "behavior",
+    "repeat",
+    "metric",
+    "score",
+    "success",
+    "reason",
+]
+COMBINED_PATH = "eval_rohdaten_alle.csv"
+
+# =============================================================
+# PERSISTENCE_PATHS
+# =============================================================
+
+PERSISTENCE_DIR = "persistence"
+CSV_DIR = f"{PERSISTENCE_DIR}/csv"
+CONV_DIR = f"{PERSISTENCE_DIR}/konversationen"
+COMBINED_PATH = f"{CSV_DIR}/eval_rohdaten_alle.csv"
+
+
+def raw_path(version):
+    return f"{CSV_DIR}/eval_rohdaten_{version}.csv"
+
+
+def agg_path(version):
+    return f"{CSV_DIR}/eval_aggregat_{version}.csv"
+
+
+def conv_path(version):
+    return f"{CONV_DIR}/konversationen_{version}.json"
 
 
 # =============================================================

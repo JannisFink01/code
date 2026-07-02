@@ -7,11 +7,15 @@ from openai import OpenAI
 from deepeval import evaluate
 from evaluation import run_evaluation
 from config import (
+    COMBINED_PATH,
+    FIELDNAMES,
     GWDG_BASE_URL,
     TUTOR_MODEL,
     SIMULATOR_MODEL,
     JUDGE_MODEL,
     KONTEXT_FILE,
+    raw_path,
+    agg_path,
 )
 
 try:
@@ -97,31 +101,20 @@ def main():
     print(f"  Alle {len(PROMPT_RUNS)} Durchgänge abgeschlossen!")
     print(f"{'='*60}")
 
-    combined_path = "eval_rohdaten_alle.csv"
-    fieldnames = [
-        "prompt_version",
-        "topic",
-        "level",
-        "behavior",
-        "repeat",
-        "metric",
-        "score",
-        "success",
-        "reason",
-    ]
 
-    with open(combined_path, "w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
+
+    with open(COMBINED_PATH, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDNAMES)
         w.writeheader()
         for _, version in PROMPT_RUNS:
-            raw_file = f"eval_rohdaten_{version}.csv"
+            raw_file = raw_path(version)
             if os.path.exists(raw_file):
                 with open(raw_file, "r", encoding="utf-8-sig") as rf:
                     reader = csv.DictReader(rf)
                     for row in reader:
                         w.writerow(row)
 
-    print(f"  Kombiniert → {combined_path}")
+    print(f"  Kombiniert → {COMBINED_PATH}")
 
 
 if __name__ == "__main__":

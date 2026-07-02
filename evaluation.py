@@ -9,10 +9,17 @@ from deepeval.test_case import Turn
 from deepeval.dataset import ConversationalGolden
 from deepeval.simulator import ConversationSimulator
 from config import (
+    FIELDNAMES,
     TUTOR_MODEL,
     REPEATS,
     MAX_USER_SIMULATIONS,
     CHATBOT_ROLE,
+    #OUTPUT_RAW,
+    #OUTPUT_AGG,
+    #CONV_PATH,
+    conv_path,
+    agg_path,
+    raw_path,
 )
 from clients import rate_limiter, judge_llm, simulator_llm, tutor_llm, CONTEXT
 from scenarios import build_scenarios
@@ -22,7 +29,6 @@ from persistence import save_conversations, load_conversations
 EVAL_MAX_RETRIES = 5
 EVAL_RETRY_WAIT = 45
 
-
 def run_evaluation(prompt_file: str, version: str):
 
     with open(prompt_file, encoding="utf-8") as f:
@@ -31,19 +37,16 @@ def run_evaluation(prompt_file: str, version: str):
     print(f"\n{'='*60}")
     print(f"  Starte Evaluation: {version} ({prompt_file})")
     print(f"{'='*60}")
-
-    conv_path = f"konversationen_{version}.json"
-    raw_path = f"eval_rohdaten_{version}.csv"
-    agg_path = f"eval_aggregat_{version}.csv"
-    fieldnames = ["prompt_version", "topic", "level", "behavior",
-                  "repeat", "metric", "score", "success", "reason"]
-
+    r_path = raw_path(version)
+    a_path = agg_path(version)
+    c_path = conv_path(version)
     # =========================================================
     # SIMULATION (oder aus Cache laden)
     # =========================================================
-    if os.path.exists(conv_path):
+    print(f"  Prüfe, ob Konversationen bereits existieren: {c_path}")
+    if os.path.exists(c_path):
         print(f"  Konversationen existieren → überspringe Simulation")
-        test_cases, metadata = load_conversations(conv_path)
+        test_cases, metadata = load_conversations(c_path)
 
     else:
         scenarios = build_scenarios()
@@ -88,22 +91,22 @@ def run_evaluation(prompt_file: str, version: str):
         test_cases = simulator.simulate(conversational_goldens=goldens, max_user_simulations=MAX_USER_SIMULATIONS)
         for tc in test_cases:
             tc.chatbot_role = CHATBOT_ROLE
-        save_conversations(test_cases, metadata, conv_path)
+        save_conversations(test_cases, metadata, c_path)
 
     # =========================================================
     # RESUME-CHECK: bereits evaluierte Testfälle ermitteln
     # =========================================================
     already_done = set()
-    if os.path.exists(raw_path):
-        with open(raw_path, "r", encoding="utf-8-sig") as f:
+    if os.path.exists(r_path):
+        with open(r_path, "r", encoding="utf-8-sig") as f:
             for row in csv.DictReader(f):
                 key = (row.get("topic", ""), row.get("behavior", ""), row.get("repeat", ""))
                 already_done.add(key)
         # Anzahl unique Testfälle (jeder hat mehrere Metrik-Zeilen)
         print(f"  {len(already_done)} Testfälle bereits evaluiert – setze fort.")
     else:
-        with open(raw_path, "w", newline="", encoding="utf-8-sig") as f:
-            csv.DictWriter(f, fieldnames=fieldnames).writeheader()
+        with open(r_path, "w", newline="", encoding="utf-8-sig") as f:
+            csv.DictWriter(f, fieldnames=FIELDNAMES).writeheader()
 
     # =========================================================
     # EVALUATION (sequenziell, mit Resume + Retry)
@@ -138,8 +141,8 @@ def run_evaluation(prompt_file: str, version: str):
                         "reason": (metric.reason or "").replace("\n", " "),
                     }
                     rows.append(row)
-                    with open(raw_path, "a", newline="", encoding="utf-8-sig") as f:
-                        csv.DictWriter(f, fieldnames=fieldnames).writerow(row)
+                    with open(r_path, "a", newline="", encoding="utf-8-sig") as f:
+                        csv.DictWriter(f, fieldnames=FIELDNAMES).writerow(row)
                     break
                 except Exception as e:
                     if attempt < EVAL_MAX_RETRIES:
@@ -158,7 +161,7 @@ def run_evaluation(prompt_file: str, version: str):
     # AGGREGAT
     # =========================================================
     all_rows = []
-    with open(raw_path, "r", encoding="utf-8-sig") as f:
+    with open(r_path, "r", encoding="utf-8-sig") as f:
         all_rows = list(csv.DictReader(f))
 
     agg = defaultdict(list)
@@ -167,7 +170,7 @@ def run_evaluation(prompt_file: str, version: str):
         if score is not None and score != "":
             agg[(r["behavior"], r["metric"])].append((float(score), r.get("success") == "True"))
 
-    with open(agg_path, "w", newline="", encoding="utf-8-sig") as f:
+    with open(a_path, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["behavior", "metric", "avg_score", "pass_rate", "n"])
         for (behavior, metric), vals in sorted(agg.items()):
@@ -176,5 +179,5 @@ def run_evaluation(prompt_file: str, version: str):
             w.writerow([behavior, metric, round(sum(scores)/len(scores), 3),
                         round(len(passes)/len(vals), 3), len(vals)])
 
-    print(f"\n  Rohdaten → {raw_path}")
-    print(f"  Aggregat → {agg_path}")
+    print(f"\n  Rohdaten → {r_path}")
+    print(f"  Aggregat → {a_path}")

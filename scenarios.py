@@ -8,7 +8,7 @@ TOPICS = [
     "Spannungsstabilisierung mit Vorwiderstand und Z-Diode",
     "Ohmsches Gesetz und Maschenregel",
 ]
-
+#Zielgruppe 
 BEHAVIORS = [
     "kooperativ und denkt mit",
     "gibt schnell auf und sagt 'ich weiß es nicht'",
