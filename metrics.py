@@ -62,7 +62,7 @@ def build_metrics(judge_llm):
     )
 
     faithfulness = ConversationalGEval(
-        name="ConversationalGeval Faithfulness",
+        name="ConversationalGeval Judgefulness",
         evaluation_steps=[
             "Pruefe, ob der Tutor nur Fakten verwendet, die im fachlichen Kontext (Z-Diode, Spannungsstabilisierung) korrekt sind.",
             "Bestrafe erfundene Formeln, falsche Zahlenwerte oder fachlich falsche Aussagen.",
@@ -74,7 +74,7 @@ def build_metrics(judge_llm):
         async_mode=False,
     )
     hallucination = ConversationalGEval(
-        name="ConversationalGeval Hallucination",
+        name="ConversationalGeval No Hallucination",
         evaluation_steps=[
             "Pruefe, ob der Tutor Informationen erfindet, die nicht im fachlichen Kontext stehen.",
             "Bestrafe das Erfinden von Bauteilen, Grenzwerten oder Schaltungen die nicht existieren.",

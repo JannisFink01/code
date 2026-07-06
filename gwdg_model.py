@@ -10,8 +10,8 @@ from pydantic import BaseModel as PydanticBaseModel
 from deepeval.models import DeepEvalBaseLLM
 from rate_limiter import RateLimiter
 from config import GWDG_API_KEY, GWDG_BASE_URL
-MAX_RETRIES = 5
-RETRY_WAIT = 45
+MAX_RETRIES = 10
+RETRY_WAIT = 60
 
 
 class GWDGModel(DeepEvalBaseLLM):

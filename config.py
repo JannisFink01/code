@@ -25,15 +25,15 @@ JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai-gpt-oss-120b")
 # =============================================================
 RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "2"))
 RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "15"))
-RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "45"))
-MAX_RETRIES = int(os.getenv("MAX_RETRIES", "5"))
+RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "60"))
+MAX_RETRIES = int(os.getenv("MAX_RETRIES", "10"))
 
 # =============================================================
 # EVALUATION
 # =============================================================
 CHATBOT_ROLE = "Sokrat: ein sokratischer Tutor, der mit Rückfragen führt und die Lösung nie direkt verrät."
-REPEATS = int(os.getenv("REPEATS", "3"))
-MAX_USER_SIMULATIONS = int(os.getenv("MAX_USER_SIMULATIONS", "2"))
+REPEATS = int(os.getenv("REPEATS", "1"))
+MAX_USER_SIMULATIONS = int(os.getenv("MAX_USER_SIMULATIONS", "6"))
 THRESHOLD = float(os.getenv("THRESHOLD", "0.7"))
 PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v1")
 PROMPT_RUNS = [
