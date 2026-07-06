@@ -4,7 +4,6 @@ import time
 import csv
 import asyncio
 from collections import defaultdict
-from deepeval import evaluate
 from deepeval.test_case import Turn
 from deepeval.dataset import ConversationalGolden
 from deepeval.simulator import ConversationSimulator
@@ -14,9 +13,9 @@ from config import (
     REPEATS,
     MAX_USER_SIMULATIONS,
     CHATBOT_ROLE,
-    #OUTPUT_RAW,
-    #OUTPUT_AGG,
-    #CONV_PATH,
+    # OUTPUT_RAW,
+    # OUTPUT_AGG,
+    # CONV_PATH,
     conv_path,
     agg_path,
     raw_path,
@@ -26,8 +25,46 @@ from scenarios import build_scenarios
 from metrics import build_metrics
 from persistence import save_conversations, load_conversations
 
-EVAL_MAX_RETRIES = 5
-EVAL_RETRY_WAIT = 45
+EVAL_MAX_RETRIES = 10
+EVAL_RETRY_WAIT = 60
+
+
+def _evaluate_single(tc, metrics, meta, version):
+    results = []
+    for metric in metrics:
+        metric_name = getattr(metric, "__name__", "?")
+        for attempt in range(1, EVAL_MAX_RETRIES + 1):
+            try:
+                metric.measure(tc)
+                results.append(
+                    {
+                        "prompt_version": version,
+                        "topic": meta.get("topic", ""),
+                        "level": meta.get("level", ""),
+                        "behavior": meta.get("behavior", ""),
+                        "repeat": meta.get("repeat", ""),
+                        "metric": metric_name,
+                        "score": metric.score,
+                        "success": (
+                            metric.score >= metric.threshold
+                            if metric.score is not None
+                            else None
+                        ),
+                        "reason": (metric.reason or "").replace("\n", " "),
+                    }
+                )
+                break
+            except Exception as e:
+                if attempt < EVAL_MAX_RETRIES:
+                    wait = min(EVAL_RETRY_WAIT * attempt, 180)
+                    print(
+                        f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} – warte {wait}s"
+                    )
+                    time.sleep(wait)
+                else:
+                    print(f"    ⚠ {metric_name} übersprungen")
+    return results
+
 
 def run_evaluation(prompt_file: str, version: str):
 
@@ -54,17 +91,25 @@ def run_evaluation(prompt_file: str, version: str):
 
         for s in scenarios:
             for rep in range(REPEATS):
-                goldens.append(ConversationalGolden(
-                    scenario=f"Thema: {s['topic']}. Studierende:r ({s['level']}), Verhalten: {s['behavior']}.",
-                    expected_outcome="Die studierende Person kommt durch sokratische Rückfragen selbst auf die Erklärung; die Lösung wird nie direkt verraten.",
-                    user_description=f"{s['level']}-Studierende:r der Elektrotechnik. Verhalten: {s['behavior']}.",
-                ))
+                goldens.append(
+                    ConversationalGolden(
+                        scenario=(
+                            f"Thema: {s['topic']}. "
+                            f"Studierende:r ({s['level']}), Verhalten: {s['behavior']}. "
+                            f"Die erste Frage des Studierenden lautet exakt: \"{s['initial_question']}\""
+                        ),
+                        expected_outcome="Die studierende Person kommt durch sokratische Rückfragen selbst auf die Erklärung; die Lösung wird nie direkt verraten.",
+                        user_description=f"{s['level']}-Studierende:r der Elektrotechnik. Verhalten: {s['behavior']}. Antworte auf Deutsch.",
+                    )
+                )
                 metadata.append({**s, "repeat": rep + 1})
 
         print(f"  {len(goldens)} Konversationen simulieren...")
 
         # --- Tutor Callback (innerhalb else) ---
-        async def prompt_callback(input: str, turns: list[Turn] = None, thread_id: str = None) -> Turn:
+        async def prompt_callback(
+            input: str, turns: list[Turn] = None, thread_id: str = None
+        ) -> Turn:
             messages = [{"role": "system", "content": system_prompt}]
             for t in turns or []:
                 messages.append({"role": t.role, "content": t.content})
@@ -73,22 +118,32 @@ def run_evaluation(prompt_file: str, version: str):
                 try:
                     await rate_limiter.a_acquire()
                     resp = tutor_llm._client.chat.completions.create(
-                        model=TUTOR_MODEL, messages=messages,
+                        model=TUTOR_MODEL,
+                        messages=messages,
                         extra_body={"enable_thinking": False},
                     )
-                    return Turn(role="assistant", content=resp.choices[0].message.content,
-                                retrieval_context=[system_prompt, CONTEXT])
+                    return Turn(
+                        role="assistant",
+                        content=resp.choices[0].message.content,
+                        retrieval_context=[system_prompt, CONTEXT],
+                    )
                 except Exception as e:
                     if attempt < EVAL_MAX_RETRIES:
                         wait = min(45 * attempt, 180)
-                        print(f"    ⟳ Tutor Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s")
+                        print(
+                            f"    ⟳ Tutor Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s"
+                        )
                         await asyncio.sleep(wait)
                     else:
                         raise
 
         # --- Simulator (innerhalb else) ---
-        simulator = ConversationSimulator(model_callback=prompt_callback, simulator_model=simulator_llm)
-        test_cases = simulator.simulate(conversational_goldens=goldens, max_user_simulations=MAX_USER_SIMULATIONS)
+        simulator = ConversationSimulator(
+            model_callback=prompt_callback, simulator_model=simulator_llm
+        )
+        test_cases = simulator.simulate(
+            conversational_goldens=goldens, max_user_simulations=MAX_USER_SIMULATIONS
+        )
         for tc in test_cases:
             tc.chatbot_role = CHATBOT_ROLE
         save_conversations(test_cases, metadata, c_path)
@@ -100,7 +155,11 @@ def run_evaluation(prompt_file: str, version: str):
     if os.path.exists(r_path):
         with open(r_path, "r", encoding="utf-8-sig") as f:
             for row in csv.DictReader(f):
-                key = (row.get("topic", ""), row.get("behavior", ""), row.get("repeat", ""))
+                key = (
+                    row.get("topic", ""),
+                    row.get("behavior", ""),
+                    row.get("repeat", ""),
+                )
                 already_done.add(key)
         # Anzahl unique Testfälle (jeder hat mehrere Metrik-Zeilen)
         print(f"  {len(already_done)} Testfälle bereits evaluiert – setze fort.")
@@ -113,45 +172,26 @@ def run_evaluation(prompt_file: str, version: str):
     # =========================================================
     print(f"\n  {len(test_cases)} Testfälle evaluieren...")
     metrics = build_metrics(judge_llm)
-
     rows = []
     skipped = 0
     for i, tc in enumerate(test_cases):
         meta = metadata[i] if i < len(metadata) else {}
-        key = (meta.get("topic", ""), meta.get("behavior", ""), str(meta.get("repeat", "")))
-
-        # Bereits evaluiert → überspringen
+        key = (
+            meta.get("topic", ""),
+            meta.get("behavior", ""),
+            str(meta.get("repeat", "")),
+        )
         if key in already_done:
             skipped += 1
             continue
-
-        print(f"  [{i+1}/{len(test_cases)}] {meta.get('topic','?')[:35]} | {meta.get('behavior','?')[:25]}")
-
-        for metric in metrics:
-            metric_name = getattr(metric, "__name__", "?")
-            for attempt in range(1, EVAL_MAX_RETRIES + 1):
-                try:
-                    metric.measure(tc)
-                    row = {
-                        "prompt_version": version,
-                        "topic": meta.get("topic", ""), "level": meta.get("level", ""),
-                        "behavior": meta.get("behavior", ""), "repeat": meta.get("repeat", ""),
-                        "metric": metric_name, "score": metric.score,
-                        "success": metric.score >= metric.threshold if metric.score is not None else None,
-                        "reason": (metric.reason or "").replace("\n", " "),
-                    }
-                    rows.append(row)
-                    with open(r_path, "a", newline="", encoding="utf-8-sig") as f:
-                        csv.DictWriter(f, fieldnames=FIELDNAMES).writerow(row)
-                    break
-                except Exception as e:
-                    if attempt < EVAL_MAX_RETRIES:
-                        wait = min(EVAL_RETRY_WAIT * attempt, 180)
-                        print(f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} – warte {wait}s")
-                        time.sleep(wait)
-                    else:
-                        print(f"    ⚠ {metric_name} übersprungen")
-
+        print(
+            f"  [{i+1}/{len(test_cases)}] {meta.get('topic','?')[:35]} | {meta.get('behavior','?')[:25]}"
+        )
+        new_rows = _evaluate_single(tc, metrics, meta, version)
+        for row in new_rows:
+            rows.append(row)
+            with open(r_path, "a", newline="", encoding="utf-8-sig") as f:
+                csv.DictWriter(f, fieldnames=FIELDNAMES).writerow(row)
         print(f"    ✓ fertig")
 
     evaluated = len(test_cases) - skipped
@@ -168,7 +208,9 @@ def run_evaluation(prompt_file: str, version: str):
     for r in all_rows:
         score = r.get("score")
         if score is not None and score != "":
-            agg[(r["behavior"], r["metric"])].append((float(score), r.get("success") == "True"))
+            agg[(r["behavior"], r["metric"])].append(
+                (float(score), r.get("success") == "True")
+            )
 
     with open(a_path, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
@@ -176,8 +218,15 @@ def run_evaluation(prompt_file: str, version: str):
         for (behavior, metric), vals in sorted(agg.items()):
             scores = [v[0] for v in vals]
             passes = [1 for v in vals if v[1]]
-            w.writerow([behavior, metric, round(sum(scores)/len(scores), 3),
-                        round(len(passes)/len(vals), 3), len(vals)])
+            w.writerow(
+                [
+                    behavior,
+                    metric,
+                    round(sum(scores) / len(scores), 3),
+                    round(len(passes) / len(vals), 3),
+                    len(vals),
+                ]
+            )
 
     print(f"\n  Rohdaten → {r_path}")
     print(f"  Aggregat → {a_path}")
