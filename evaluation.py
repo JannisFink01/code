@@ -8,6 +8,8 @@ from deepeval.test_case import Turn
 from deepeval.dataset import ConversationalGolden
 from deepeval.simulator import ConversationSimulator
 from config import (
+    BASE_WAIT,
+    CAP,
     FIELDNAMES,
     TUTOR_MODEL,
     REPEATS,
@@ -19,23 +21,30 @@ from config import (
     conv_path,
     agg_path,
     raw_path,
+    MAX_RETRIES,
+    RETRY_WAIT,
 )
 from clients import rate_limiter, judge_llm, simulator_llm, tutor_llm, CONTEXT
+from retry_utils import retry_async
 from scenarios import build_scenarios
 from metrics import build_metrics
 from persistence import save_conversations, load_conversations
-
-EVAL_MAX_RETRIES = 10
-EVAL_RETRY_WAIT = 60
 
 
 def _evaluate_single(tc, metrics, meta, version):
     results = []
     for metric in metrics:
         metric_name = getattr(metric, "__name__", "?")
-        for attempt in range(1, EVAL_MAX_RETRIES + 1):
+        for attempt in range(1, MAX_RETRIES + 1):
             try:
-                metric.measure(tc)
+                retry_sync(
+                    metric.measure,
+                    tc,
+                    max_retries=EVAL_MAX_RETRIES,
+                    base_wait=EVAL_RETRY_WAIT,
+                    retryable=lambda e: True,
+                    label=metric_name,
+                )
                 results.append(
                     {
                         "prompt_version": version,
@@ -53,16 +62,21 @@ def _evaluate_single(tc, metrics, meta, version):
                         "reason": (metric.reason or "").replace("\n", " "),
                     }
                 )
-                break
             except Exception as e:
-                if attempt < EVAL_MAX_RETRIES:
-                    wait = min(EVAL_RETRY_WAIT * attempt, 180)
-                    print(
-                        f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} – warte {wait}s"
-                    )
-                    time.sleep(wait)
-                else:
-                    print(f"    ⚠ {metric_name} übersprungen")
+                print(f"    ⚠ {metric_name} übersprungen – {type(e).__name__}: {e}")
+                results.append(
+                    {
+                        "prompt_version": version,
+                        "topic": meta.get("topic", ""),
+                        "level": meta.get("level", ""),
+                        "behavior": meta.get("behavior", ""),
+                        "repeat": meta.get("repeat", ""),
+                        "metric": metric_name,
+                        "score": None,
+                        "success": None,
+                        "reason": f"ERROR: {type(e).__name__}: {e}",
+                    }
+                )
     return results
 
 
@@ -114,28 +128,27 @@ def run_evaluation(prompt_file: str, version: str):
             for t in turns or []:
                 messages.append({"role": t.role, "content": t.content})
             messages.append({"role": "user", "content": input})
-            for attempt in range(1, EVAL_MAX_RETRIES + 1):
-                try:
-                    await rate_limiter.a_acquire()
-                    resp = tutor_llm._client.chat.completions.create(
-                        model=TUTOR_MODEL,
-                        messages=messages,
-                        extra_body={"enable_thinking": False},
-                    )
-                    return Turn(
-                        role="assistant",
-                        content=resp.choices[0].message.content,
-                        retrieval_context=[system_prompt, CONTEXT],
-                    )
-                except Exception as e:
-                    if attempt < EVAL_MAX_RETRIES:
-                        wait = min(45 * attempt, 180)
-                        print(
-                            f"    ⟳ Tutor Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s"
-                        )
-                        await asyncio.sleep(wait)
-                    else:
-                        raise
+
+            async def _do():
+                await rate_limiter.a_acquire()
+                resp = tutor_llm._client.chat.completions.create(
+                    model=TUTOR_MODEL,
+                    messages=messages,
+                    extra_body={"enable_thinking": False},
+                )
+                return Turn(
+                    role="assistant",
+                    content=resp.choices[0].message.content,
+                    retrieval_context=[system_prompt, CONTEXT],
+                )
+
+            return await retry_async(
+                _do,
+                max_retries=MAX_RETRIES,
+                base_wait=BASE_WAIT,
+                cap=CAP,
+                label="Tutor",
+            )
 
         # --- Simulator (innerhalb else) ---
         simulator = ConversationSimulator(

@@ -1,3 +1,4 @@
+import os
 # config.py
 # Zentrale Konfiguration – alle Einstellungen an einem Ort
 # Wird von test_neu.py, gwdg_model.py und rate_limiter.py importiert
@@ -5,7 +6,6 @@
 from dotenv import load_dotenv
 
 load_dotenv()
-import os
 
 # =============================================================
 # API
@@ -27,6 +27,8 @@ RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "2"))
 RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "15"))
 RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "60"))
 MAX_RETRIES = int(os.getenv("MAX_RETRIES", "10"))
+BASE_WAIT = int(os.getenv("BASE_WAIT", "45"))
+CAP = int(os.getenv("CAP", "180"))
 
 # =============================================================
 # EVALUATION
@@ -61,8 +63,6 @@ FIELDNAMES = [
     "success",
     "reason",
 ]
-COMBINED_PATH = "eval_rohdaten_alle.csv"
-
 # =============================================================
 # PERSISTENCE_PATHS
 # =============================================================

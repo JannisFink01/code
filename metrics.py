@@ -2,8 +2,6 @@
 from deepeval.test_case import MultiTurnParams 
 from deepeval.metrics import ConversationalGEval,ConversationCompletenessMetric, KnowledgeRetentionMetric, RoleAdherenceMetric, GoalAccuracyMetric, TurnFaithfulnessMetric, TurnRelevancyMetric
 from config import THRESHOLD
-from config import THRESHOLD
-from clients import judge_llm
 
 # =============================================================
 # METRIKEN
