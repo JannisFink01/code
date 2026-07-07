@@ -1,8 +1,9 @@
 # evaluation.py
+from datetime import timezone, datetime
 import os
-import time
+import hashlib
 import csv
-import asyncio
+from retry_utils import retry_sync
 from collections import defaultdict
 from deepeval.test_case import Turn
 from deepeval.dataset import ConversationalGolden
@@ -15,68 +16,70 @@ from config import (
     REPEATS,
     MAX_USER_SIMULATIONS,
     CHATBOT_ROLE,
-    # OUTPUT_RAW,
-    # OUTPUT_AGG,
-    # CONV_PATH,
     conv_path,
     agg_path,
     raw_path,
     MAX_RETRIES,
-    RETRY_WAIT,
 )
 from clients import rate_limiter, judge_llm, simulator_llm, tutor_llm, CONTEXT
 from retry_utils import retry_async
 from scenarios import build_scenarios
 from metrics import build_metrics
-from persistence import save_conversations, load_conversations
+from persistence import attach_results, save_conversations, load_conversations
+
+
+def make_conversation_id(version, topic, level, behavior, repeat):
+    raw = f"{version}|{topic}|{level}|{behavior}|{repeat}"
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
 
 
 def _evaluate_single(tc, metrics, meta, version):
     results = []
     for metric in metrics:
         metric_name = getattr(metric, "__name__", "?")
-        for attempt in range(1, MAX_RETRIES + 1):
-            try:
-                retry_sync(
-                    metric.measure,
-                    tc,
-                    max_retries=EVAL_MAX_RETRIES,
-                    base_wait=EVAL_RETRY_WAIT,
-                    retryable=lambda e: True,
-                    label=metric_name,
-                )
-                results.append(
-                    {
-                        "prompt_version": version,
-                        "topic": meta.get("topic", ""),
-                        "level": meta.get("level", ""),
-                        "behavior": meta.get("behavior", ""),
-                        "repeat": meta.get("repeat", ""),
-                        "metric": metric_name,
-                        "score": metric.score,
-                        "success": (
-                            metric.score >= metric.threshold
-                            if metric.score is not None
-                            else None
-                        ),
-                        "reason": (metric.reason or "").replace("\n", " "),
-                    }
-                )
-            except Exception as e:
-                print(f"    ⚠ {metric_name} übersprungen – {type(e).__name__}: {e}")
-                results.append(
-                    {
-                        "prompt_version": version,
-                        "topic": meta.get("topic", ""),
-                        "level": meta.get("level", ""),
-                        "behavior": meta.get("behavior", ""),
-                        "repeat": meta.get("repeat", ""),
-                        "metric": metric_name,
-                        "score": None,
-                        "success": None,
-                        "reason": f"ERROR: {type(e).__name__}: {e}",
-                    }
-                )
+        try:
+            retry_sync(
+                metric.measure,
+                tc,
+                max_retries=MAX_RETRIES,
+                base_wait=BASE_WAIT,
+                retryable=lambda e: True,
+                label=metric_name,
+            )
+            results.append(
+                {
+                    "prompt_version": version,
+                    "topic": meta.get("topic", ""),
+                    "level": meta.get("level", ""),
+                    "behavior": meta.get("behavior", ""),
+                    "repeat": meta.get("repeat", ""),
+                    "metric": metric_name,
+                    "score": metric.score,
+                    "success": (
+                        metric.score >= metric.threshold
+                        if metric.score is not None
+                        else None
+                    ),
+                    "reason": (metric.reason or "").replace("\n", " "),
+                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                }
+            )
+        except Exception as e:
+            print(f"    ⚠ {metric_name} übersprungen – {type(e).__name__}: {e}")
+            results.append(
+                {
+                    "prompt_version": version,
+                    "topic": meta.get("topic", ""),
+                    "level": meta.get("level", ""),
+                    "behavior": meta.get("behavior", ""),
+                    "repeat": meta.get("repeat", ""),
+                    "metric": metric_name,
+                    "score": None,
+                    "success": None,
+                    "reason": f"ERROR: {type(e).__name__}: {e}",
+                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                }
+            )
     return results
 
 
@@ -102,9 +105,13 @@ def run_evaluation(prompt_file: str, version: str):
     else:
         scenarios = build_scenarios()
         goldens, metadata = [], []
-
+        prompt_hash = hashlib.sha1(system_prompt.encode("utf-8")).hexdigest()[:10]
+        run_started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
         for s in scenarios:
             for rep in range(REPEATS):
+                cid = make_conversation_id(
+                    version, s["topic"], s["level"], s["behavior"], rep + 1
+                )
                 goldens.append(
                     ConversationalGolden(
                         scenario=(
@@ -116,7 +123,16 @@ def run_evaluation(prompt_file: str, version: str):
                         user_description=f"{s['level']}-Studierende:r der Elektrotechnik. Verhalten: {s['behavior']}. Antworte auf Deutsch.",
                     )
                 )
-                metadata.append({**s, "repeat": rep + 1})
+                metadata.append(
+                    {
+                        **s,
+                        "repeat": rep + 1,
+                        "conversation_id": cid,
+                        "prompt_version": version,
+                        "prompt_hash": prompt_hash,
+                        "run_started_at": run_started_at,
+                    }
+                )
 
         print(f"  {len(goldens)} Konversationen simulieren...")
 
@@ -243,3 +259,8 @@ def run_evaluation(prompt_file: str, version: str):
 
     print(f"\n  Rohdaten → {r_path}")
     print(f"  Aggregat → {a_path}")
+    by_id = defaultdict(list)
+    for r in all_rows:
+        if r.get("conversation_id"):
+            by_id[r["conversation_id"]].append(r)
+    attach_results(c_path, by_id)

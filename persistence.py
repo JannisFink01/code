@@ -45,4 +45,14 @@ def load_conversations(filepath):
  
     print(f"  Konversationen geladen ← {filepath} ({len(test_cases)} Testfälle)")
     return test_cases, metadata
- 
+
+def attach_results(filepath, results_by_id):
+    """Reichert eine bereits gespeicherte Konversationsdatei um die Metrik-Ergebnisse an."""
+    with open(filepath, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    for item in data:
+        cid = item["meta"].get("conversation_id")
+        item["results"] = results_by_id.get(cid, [])
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"  Scores in Konversationsdatei geschrieben → {filepath}")

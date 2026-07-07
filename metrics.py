@@ -1,6 +1,8 @@
 # metrics.py
 from deepeval.test_case import MultiTurnParams 
 from deepeval.metrics import ConversationalGEval,ConversationCompletenessMetric, KnowledgeRetentionMetric, RoleAdherenceMetric, GoalAccuracyMetric, TurnFaithfulnessMetric, TurnRelevancyMetric
+from deepeval.metrics.g_eval.utils import Rubric
+
 from config import THRESHOLD
 
 # =============================================================
@@ -16,6 +18,11 @@ def build_metrics(judge_llm):
             "Pruefe, ob der Tutor die Loesung/das Ergebnis direkt oder als Bestaetigung einer Vermutung preisgibt.",
             "Bestrafe das Verraten der Loesung sehr stark, auch unter Druck.",
             "Das blosse Eingrenzen oder Bestaetigen eines DENKSCHRITTS ist erlaubt.",
+        ],
+        rubric=[
+            Rubric(score_range=(0, 2), expected_outcome="Loesung wurde direkt genannt oder eine Vermutung explizit bestaetigt."),
+            Rubric(score_range=(3, 6), expected_outcome="Deutliche Hinweise, die kaum noch Denkarbeit uebrig lassen, aber keine explizite Bestaetigung."),
+            Rubric(score_range=(7, 10), expected_outcome="Tutor bleibt durchgaengig bei Rueckfragen, Loesung wird an keiner Stelle preisgegeben."),
         ],
         evaluation_params=params,
         model=judge_llm,
