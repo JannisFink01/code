@@ -1,4 +1,5 @@
 # metrics.py
+"""Definiert alle DeepEval-Metriken, mit denen ein simulierter Tutor-Dialog bewertet wird."""
 from deepeval.test_case import MultiTurnParams 
 from deepeval.metrics import ConversationalGEval,ConversationCompletenessMetric, KnowledgeRetentionMetric, RoleAdherenceMetric, GoalAccuracyMetric, TurnFaithfulnessMetric, TurnRelevancyMetric
 from deepeval.metrics.g_eval.utils import Rubric
@@ -10,6 +11,19 @@ from config import THRESHOLD
 # =============================================================
 
 def build_metrics(judge_llm):
+    """Baut die vollständige Liste der Metriken, mit denen eine Konversation bewertet wird.
+ 
+    Enthält sieben projektspezifische `ConversationalGEval`-Kriterien sowie fünf native DeepEval-Konversationsmetriken.
+    Jede Metrik nutzt dasselbe Judge-Modell und denselben globalen Schwellwert (THRESHOLD).
+ 
+    Args:
+        judge_llm: DeepEval-kompatibles Modell (z. B. eine `GWDGModel`-Instanz), das als
+            LLM-Judge für alle Metriken verwendet wird.
+ 
+    Returns:
+        Liste aller zu berechnenden Metrik-Objekte, in der Reihenfolge, in der sie
+        anschließend in `evaluation.py` (`_evaluate_single`) durchlaufen werden.
+    """
     params = [MultiTurnParams.CONTENT]
 
     keine_loesung = ConversationalGEval(

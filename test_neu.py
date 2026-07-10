@@ -1,6 +1,9 @@
 # test_neu.py
 # Evaluation des sokratischen Tutors (Z-Diode)
 # Ausführung: python test_neu.py
+"""Einstiegspunkt: prüft die Konfiguration und führt anschließend für jede in
+PROMPT_RUNS gelistete Prompt-Variante einen vollständigen Evaluierungslauf durch;
+kombiniert am Ende alle Rohdaten-CSVs zu einer Gesamt-CSV."""
 import csv
 import os
 from openai import OpenAI
@@ -42,6 +45,16 @@ with open("prompts/system_prompt.txt", encoding="utf-8") as f:
 
 
 def startup_check() -> bool:
+    """Prüft vor dem eigentlichen Lauf, ob API-Zugang und alle Prompt-Dateien vorhanden sind.
+ 
+    Gibt Diagnosemeldungen auf der Konsole aus, testet die Verbindung zum
+    GWDG-Endpunkt mit bis zu drei Versuchen und prüft, ob alle in `PROMPT_RUNS`
+    gelisteten Prompt-Dateien existieren.
+ 
+    Returns:
+        True, wenn alle Prüfungen erfolgreich waren und `main()` gestartet werden kann,
+        sonst False.
+    """
     print("\n[Startup Check]")
     print(f"  GWDG_API_KEY:  {'✓ gesetzt' if GWDG_API_KEY else '✗ FEHLT'}")
     print(f"  GWDG_BASE_URL: {repr(GWDG_BASE_URL)}")
@@ -90,7 +103,10 @@ def startup_check() -> bool:
 
 
 def main():
-
+    """Führt nacheinander für jede Prompt-Variante in PROMPT_RUNS einen Evaluierungslauf
+    durch (`run_evaluation`) und kombiniert anschließend alle Rohdaten-CSVs der einzelnen
+    Läufe zu einer gemeinsamen Gesamt-CSV (`COMBINED_PATH`), die von `visualize.ipynb`
+    gelesen wird."""    
     for prompt_file, version in PROMPT_RUNS:
         if not os.path.exists(prompt_file):
             print(f"  ✗ {prompt_file} nicht gefunden – überspringe")

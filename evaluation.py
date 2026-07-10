@@ -1,4 +1,7 @@
 # evaluation.py
+"""Orchestriert einen kompletten Evaluierungslauf für eine Prompt-Version: simulieren
+(oder aus Cache laden), pro Konversation alle Metriken berechnen (mit Resume + Retry)
+und die Ergebnisse als Rohdaten- sowie Aggregat-CSV ablegen."""
 from datetime import timezone, datetime
 import os
 import hashlib
@@ -34,6 +37,24 @@ def make_conversation_id(version, topic, level, behavior, repeat):
 
 
 def _evaluate_single(tc, metrics, meta, version):
+    """Berechnet alle übergebenen Metriken für genau eine Konversation.
+ 
+    Ruft für jede Metrik `metric.measure(tc)` auf und wiederholt den Aufruf bei
+    Fehlern (z. B. Rate-Limits, kaputte Judge-Antworten) bis zu `EVAL_MAX_RETRIES`
+    mal mit steigender Wartezeit. Scheitert eine Metrik auch nach allen Versuchen,
+    wird sie übersprungen (keine Zeile für diese Metrik im Ergebnis).
+ 
+    Args:
+        tc: Die zu bewertende `ConversationalTestCase`.
+        metrics: Liste der Metrik-Objekte (siehe `metrics.build_metrics`).
+        meta: Dict mit Szenario-Infos (topic/level/behavior/repeat) für diese Konversation,
+            wird unverändert in jede Ergebniszeile übernommen.
+        version: Kurzname der aktuell laufenden Prompt-Version (für die Ergebniszeilen).
+ 
+    Returns:
+        Liste von Dicts (eines pro erfolgreich berechneter Metrik), passend zu
+        `config.FIELDNAMES` – bereit zum Schreiben in die Rohdaten-CSV.
+    """
     results = []
     for metric in metrics:
         metric_name = getattr(metric, "__name__", "?")
@@ -84,6 +105,23 @@ def _evaluate_single(tc, metrics, meta, version):
 
 
 def run_evaluation(prompt_file: str, version: str):
+    """Führt einen kompletten Evaluierungslauf für eine einzelne Prompt-Version durch.
+ 
+    Ablauf:
+    1. System-Prompt aus `prompt_file` laden.
+    2. Konversationen simulieren (`ConversationSimulator`) oder, falls schon vorhanden,
+       aus `persistence/konversationen/konversationen_{version}.json` laden.
+    3. Für jede noch nicht evaluierte Konversation alle Metriken berechnen
+       (`_evaluate_single`) und die Ergebniszeilen fortlaufend in die Rohdaten-CSV
+       schreiben (Resume-fähig: bereits vorhandene Zeilen werden übersprungen).
+    4. Aus der vollständigen Rohdaten-CSV ein Aggregat (Mittelwert/Pass-Rate je
+       Behavior+Metrik) berechnen und als eigene CSV schreiben.
+ 
+    Args:
+        prompt_file: Pfad zur Prompt-Textdatei (z. B. "prompts/system_prompt.txt").
+        version: Kurzname dieser Prompt-Version, bestimmt die Ausgabedateipfade
+            (siehe `config.raw_path`/`agg_path`/`conv_path`).
+    """
 
     with open(prompt_file, encoding="utf-8") as f:
         system_prompt = f.read()
@@ -140,6 +178,20 @@ def run_evaluation(prompt_file: str, version: str):
         async def prompt_callback(
             input: str, turns: list[Turn] = None, thread_id: str = None
         ) -> Turn:
+            """Callback für den ConversationSimulator: erzeugt die nächste Tutor-Antwort.
+ 
+            Baut aus System-Prompt und bisherigem Verlauf (`turns`) die Chat-Nachrichten,
+            ruft das Tutor-Modell auf (mit Rate Limiting und Retry) und gibt die Antwort
+            als `Turn` samt Retrieval-Kontext (System-Prompt + Fachkontext) zurück.
+ 
+            Args:
+                input: Die aktuelle Nachricht des simulierten Studierenden.
+                turns: Bisheriger Gesprächsverlauf (ohne System-Nachricht).
+                thread_id: Von DeepEval übergebene Konversations-ID (hier ungenutzt).
+ 
+            Returns:
+                Der neue `Turn` mit der Tutor-Antwort.
+            """            
             messages = [{"role": "system", "content": system_prompt}]
             for t in turns or []:
                 messages.append({"role": t.role, "content": t.content})
