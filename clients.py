@@ -1,4 +1,10 @@
-# clients.py
+"""clients.py
+ 
+Baut die drei DeepEval-LLM-Wrapper (Judge, Simulator, Tutor) sowie den
+gemeinsamen RateLimiter zentral einmal auf und lädt den fachlichen Kontext
+(KONTEXT_FILE), damit alle anderen Module
+dieselben Instanzen wiederverwenden können, statt sie mehrfach zu erzeugen.
+"""
 from openai import OpenAI
 from config import (
     TUTOR_MODEL,

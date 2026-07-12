@@ -28,7 +28,7 @@ class RateLimiter:
         if(wait > 0):
             print(f"  [RateLimiter] Warte {wait:.1f}s...")
             time.sleep(wait)
-            self._call_times.append(time.time())
+        self._call_times.append(time.time())
 
     async def a_acquire(self):
         """Asynchron – für generate_async()"""

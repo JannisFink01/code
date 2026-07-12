@@ -1,4 +1,6 @@
 #persistence.py
+"""Speichert und lädt simulierte Konversationen (ConversationalTestCase + Metadaten) als JSON,
+damit eine einmal simulierte Konversation nicht bei jedem Skript-Neustart neu erzeugt werden muss."""
 import json
 from deepeval.test_case import Turn, ConversationalTestCase
 from config import CHATBOT_ROLE
@@ -7,7 +9,15 @@ from config import CHATBOT_ROLE
 # =============================================================
  
 def save_conversations(test_cases, metadata, filepath):
-    """Speichert simulierte Konversationen als JSON."""
+    """Speichert simulierte Konversationen als JSON-Datei.
+ 
+    Args:
+        test_cases: Liste von `ConversationalTestCase`-Objekten (z. B. Rückgabe von
+            `ConversationSimulator.simulate(...)`).
+        metadata: Liste von Dicts mit Szenario-Infos (topic/level/behavior/repeat/...),
+            an derselben Position wie das zugehörige Element in `test_cases`.
+        filepath: Zielpfad der JSON-Datei (siehe `config.conv_path`).
+    """
     data = []
     for i, tc in enumerate(test_cases):
         meta = metadata[i] if i < len(metadata) else {}
@@ -26,7 +36,16 @@ def save_conversations(test_cases, metadata, filepath):
  
  
 def load_conversations(filepath):
-    """Lädt gespeicherte Konversationen aus JSON."""
+    """Lädt zuvor gespeicherte Konversationen aus einer JSON-Datei.
+ 
+    Args:
+        filepath: Pfad der JSON-Datei, wie sie von `save_conversations` geschrieben wurde.
+ 
+    Returns:
+        Tupel `(test_cases, metadata)`:
+            test_cases: Liste rekonstruierter `ConversationalTestCase`-Objekte.
+            metadata: Liste der zugehörigen Szenario-Infos, gleiche Reihenfolge wie test_cases.
+    """    
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
  
@@ -45,4 +64,14 @@ def load_conversations(filepath):
  
     print(f"  Konversationen geladen ← {filepath} ({len(test_cases)} Testfälle)")
     return test_cases, metadata
- 
+
+def attach_results(filepath, results_by_id):
+    """Reichert eine bereits gespeicherte Konversationsdatei um die Metrik-Ergebnisse an."""
+    with open(filepath, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    for item in data:
+        cid = item["meta"].get("conversation_id")
+        item["results"] = results_by_id.get(cid, [])
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"  Scores in Konversationsdatei geschrieben → {filepath}")

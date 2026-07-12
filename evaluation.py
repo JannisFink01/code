@@ -1,72 +1,127 @@
 # evaluation.py
+"""Orchestriert einen kompletten Evaluierungslauf für eine Prompt-Version: simulieren
+(oder aus Cache laden), pro Konversation alle Metriken berechnen (mit Resume + Retry)
+und die Ergebnisse als Rohdaten- sowie Aggregat-CSV ablegen."""
+from datetime import timezone, datetime
 import os
-import time
+import hashlib
 import csv
-import asyncio
+from retry_utils import retry_sync
 from collections import defaultdict
 from deepeval.test_case import Turn
 from deepeval.dataset import ConversationalGolden
 from deepeval.simulator import ConversationSimulator
 from config import (
+    BASE_WAIT,
+    CAP,
     FIELDNAMES,
     TUTOR_MODEL,
     REPEATS,
     MAX_USER_SIMULATIONS,
     CHATBOT_ROLE,
-    # OUTPUT_RAW,
-    # OUTPUT_AGG,
-    # CONV_PATH,
     conv_path,
     agg_path,
     raw_path,
+    MAX_RETRIES,
 )
 from clients import rate_limiter, judge_llm, simulator_llm, tutor_llm, CONTEXT
+from retry_utils import retry_async
 from scenarios import build_scenarios
 from metrics import build_metrics
-from persistence import save_conversations, load_conversations
+from persistence import attach_results, save_conversations, load_conversations
 
-EVAL_MAX_RETRIES = 10
-EVAL_RETRY_WAIT = 60
+
+def make_conversation_id(version, topic, level, behavior, repeat):
+    raw = f"{version}|{topic}|{level}|{behavior}|{repeat}"
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
 
 
 def _evaluate_single(tc, metrics, meta, version):
+    """Berechnet alle übergebenen Metriken für genau eine Konversation.
+ 
+    Ruft für jede Metrik `metric.measure(tc)` auf und wiederholt den Aufruf bei
+    Fehlern (z. B. Rate-Limits, kaputte Judge-Antworten) bis zu `EVAL_MAX_RETRIES`
+    mal mit steigender Wartezeit. Scheitert eine Metrik auch nach allen Versuchen,
+    wird sie übersprungen (keine Zeile für diese Metrik im Ergebnis).
+ 
+    Args:
+        tc: Die zu bewertende `ConversationalTestCase`.
+        metrics: Liste der Metrik-Objekte (siehe `metrics.build_metrics`).
+        meta: Dict mit Szenario-Infos (topic/level/behavior/repeat) für diese Konversation,
+            wird unverändert in jede Ergebniszeile übernommen.
+        version: Kurzname der aktuell laufenden Prompt-Version (für die Ergebniszeilen).
+ 
+    Returns:
+        Liste von Dicts (eines pro erfolgreich berechneter Metrik), passend zu
+        `config.FIELDNAMES` – bereit zum Schreiben in die Rohdaten-CSV.
+    """
     results = []
     for metric in metrics:
         metric_name = getattr(metric, "__name__", "?")
-        for attempt in range(1, EVAL_MAX_RETRIES + 1):
-            try:
-                metric.measure(tc)
-                results.append(
-                    {
-                        "prompt_version": version,
-                        "topic": meta.get("topic", ""),
-                        "level": meta.get("level", ""),
-                        "behavior": meta.get("behavior", ""),
-                        "repeat": meta.get("repeat", ""),
-                        "metric": metric_name,
-                        "score": metric.score,
-                        "success": (
-                            metric.score >= metric.threshold
-                            if metric.score is not None
-                            else None
-                        ),
-                        "reason": (metric.reason or "").replace("\n", " "),
-                    }
-                )
-                break
-            except Exception as e:
-                if attempt < EVAL_MAX_RETRIES:
-                    wait = min(EVAL_RETRY_WAIT * attempt, 180)
-                    print(
-                        f"    ⟳ {metric_name} Retry {attempt}/{EVAL_MAX_RETRIES} – warte {wait}s"
-                    )
-                    time.sleep(wait)
-                else:
-                    print(f"    ⚠ {metric_name} übersprungen")
+        try:
+            retry_sync(
+                metric.measure,
+                tc,
+                max_retries=MAX_RETRIES,
+                base_wait=BASE_WAIT,
+                retryable=lambda e: True,
+                label=metric_name,
+            )
+            results.append(
+                {
+                    "prompt_version": version,
+                    "topic": meta.get("topic", ""),
+                    "level": meta.get("level", ""),
+                    "behavior": meta.get("behavior", ""),
+                    "repeat": meta.get("repeat", ""),
+                    "metric": metric_name,
+                    "score": metric.score,
+                    "success": (
+                        metric.score >= metric.threshold
+                        if metric.score is not None
+                        else None
+                    ),
+                    "reason": (metric.reason or "").replace("\n", " "),
+                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                }
+            )
+        except Exception as e:
+            print(f"    ⚠ {metric_name} übersprungen – {type(e).__name__}: {e}")
+            results.append(
+                {
+                    "prompt_version": version,
+                    "topic": meta.get("topic", ""),
+                    "level": meta.get("level", ""),
+                    "behavior": meta.get("behavior", ""),
+                    "repeat": meta.get("repeat", ""),
+                    "metric": metric_name,
+                    "score": None,
+                    "success": None,
+                    "reason": f"ERROR: {type(e).__name__}: {e}",
+                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                }
+            )
     return results
 
 
 def run_evaluation(prompt_file: str, version: str):
+    """Führt einen kompletten Evaluierungslauf für eine einzelne Prompt-Version durch.
+ 
+    Ablauf:
+    1. System-Prompt aus `prompt_file` laden.
+    2. Konversationen simulieren (`ConversationSimulator`) oder, falls schon vorhanden,
+       aus `persistence/konversationen/konversationen_{version}.json` laden.
+    3. Für jede noch nicht evaluierte Konversation alle Metriken berechnen
+       (`_evaluate_single`) und die Ergebniszeilen fortlaufend in die Rohdaten-CSV
+       schreiben (Resume-fähig: bereits vorhandene Zeilen werden übersprungen).
+    4. Aus der vollständigen Rohdaten-CSV ein Aggregat (Mittelwert/Pass-Rate je
+       Behavior+Metrik) berechnen und als eigene CSV schreiben.
+ 
+    Args:
+        prompt_file: Pfad zur Prompt-Textdatei (z. B. "prompts/system_prompt.txt").
+        version: Kurzname dieser Prompt-Version, bestimmt die Ausgabedateipfade
+            (siehe `config.raw_path`/`agg_path`/`conv_path`).
+    """
 
     with open(prompt_file, encoding="utf-8") as f:
         system_prompt = f.read()
@@ -88,9 +143,13 @@ def run_evaluation(prompt_file: str, version: str):
     else:
         scenarios = build_scenarios()
         goldens, metadata = [], []
-
+        prompt_hash = hashlib.sha1(system_prompt.encode("utf-8")).hexdigest()[:10]
+        run_started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
         for s in scenarios:
             for rep in range(REPEATS):
+                cid = make_conversation_id(
+                    version, s["topic"], s["level"], s["behavior"], rep + 1
+                )
                 goldens.append(
                     ConversationalGolden(
                         scenario=(
@@ -102,7 +161,16 @@ def run_evaluation(prompt_file: str, version: str):
                         user_description=f"{s['level']}-Studierende:r der Elektrotechnik. Verhalten: {s['behavior']}. Antworte auf Deutsch.",
                     )
                 )
-                metadata.append({**s, "repeat": rep + 1})
+                metadata.append(
+                    {
+                        **s,
+                        "repeat": rep + 1,
+                        "conversation_id": cid,
+                        "prompt_version": version,
+                        "prompt_hash": prompt_hash,
+                        "run_started_at": run_started_at,
+                    }
+                )
 
         print(f"  {len(goldens)} Konversationen simulieren...")
 
@@ -110,32 +178,45 @@ def run_evaluation(prompt_file: str, version: str):
         async def prompt_callback(
             input: str, turns: list[Turn] = None, thread_id: str = None
         ) -> Turn:
+            """Callback für den ConversationSimulator: erzeugt die nächste Tutor-Antwort.
+ 
+            Baut aus System-Prompt und bisherigem Verlauf (`turns`) die Chat-Nachrichten,
+            ruft das Tutor-Modell auf (mit Rate Limiting und Retry) und gibt die Antwort
+            als `Turn` samt Retrieval-Kontext (System-Prompt + Fachkontext) zurück.
+ 
+            Args:
+                input: Die aktuelle Nachricht des simulierten Studierenden.
+                turns: Bisheriger Gesprächsverlauf (ohne System-Nachricht).
+                thread_id: Von DeepEval übergebene Konversations-ID (hier ungenutzt).
+ 
+            Returns:
+                Der neue `Turn` mit der Tutor-Antwort.
+            """            
             messages = [{"role": "system", "content": system_prompt}]
             for t in turns or []:
                 messages.append({"role": t.role, "content": t.content})
             messages.append({"role": "user", "content": input})
-            for attempt in range(1, EVAL_MAX_RETRIES + 1):
-                try:
-                    await rate_limiter.a_acquire()
-                    resp = tutor_llm._client.chat.completions.create(
-                        model=TUTOR_MODEL,
-                        messages=messages,
-                        extra_body={"enable_thinking": False},
-                    )
-                    return Turn(
-                        role="assistant",
-                        content=resp.choices[0].message.content,
-                        retrieval_context=[system_prompt, CONTEXT],
-                    )
-                except Exception as e:
-                    if attempt < EVAL_MAX_RETRIES:
-                        wait = min(45 * attempt, 180)
-                        print(
-                            f"    ⟳ Tutor Retry {attempt}/{EVAL_MAX_RETRIES} ({type(e).__name__}) – warte {wait}s"
-                        )
-                        await asyncio.sleep(wait)
-                    else:
-                        raise
+
+            async def _do():
+                await rate_limiter.a_acquire()
+                resp = tutor_llm._client.chat.completions.create(
+                    model=TUTOR_MODEL,
+                    messages=messages,
+                    extra_body={"enable_thinking": False},
+                )
+                return Turn(
+                    role="assistant",
+                    content=resp.choices[0].message.content,
+                    retrieval_context=[system_prompt, CONTEXT],
+                )
+
+            return await retry_async(
+                _do,
+                max_retries=MAX_RETRIES,
+                base_wait=BASE_WAIT,
+                cap=CAP,
+                label="Tutor",
+            )
 
         # --- Simulator (innerhalb else) ---
         simulator = ConversationSimulator(
@@ -230,3 +311,8 @@ def run_evaluation(prompt_file: str, version: str):
 
     print(f"\n  Rohdaten → {r_path}")
     print(f"  Aggregat → {a_path}")
+    by_id = defaultdict(list)
+    for r in all_rows:
+        if r.get("conversation_id"):
+            by_id[r["conversation_id"]].append(r)
+    attach_results(c_path, by_id)

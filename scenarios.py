@@ -1,4 +1,5 @@
-
+"""Definiert die Testszenarien (Thema x Niveau x Studierenden-Verhalten), aus denen die
+ConversationalGoldens für den Simulator gebaut werden."""
 # =============================================================
 # SZENARIEN
 # =============================================================

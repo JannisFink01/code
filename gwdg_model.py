@@ -9,9 +9,13 @@ from openai import OpenAI
 from pydantic import BaseModel as PydanticBaseModel
 from deepeval.models import DeepEvalBaseLLM
 from rate_limiter import RateLimiter
-from config import GWDG_API_KEY, GWDG_BASE_URL
-MAX_RETRIES = 10
-RETRY_WAIT = 60
+from config import (
+    GWDG_API_KEY,
+    GWDG_BASE_URL,
+    MAX_RETRIES,
+    RETRY_WAIT_SECONDS as RETRY_WAIT,
+)
+from retry_utils import retry_async, retry_sync
 
 
 class GWDGModel(DeepEvalBaseLLM):
@@ -31,9 +35,7 @@ class GWDGModel(DeepEvalBaseLLM):
     ):
         self.model_name = model_name
         self.rate_limiter = rate_limiter
-        self._client = OpenAI(
-            api_key=GWDG_API_KEY, base_url=GWDG_BASE_URL
-        )
+        self._client = OpenAI(api_key=GWDG_API_KEY, base_url=GWDG_BASE_URL)
 
     def load_model(self):
         return self._client
@@ -80,53 +82,28 @@ class GWDGModel(DeepEvalBaseLLM):
         )
         return resp.choices[0].message.content
 
-    # ─────────────────────────────────────────────
-    # SYNCHRON
-    # ─────────────────────────────────────────────
 
-    def generate(self, prompt: str, schema: PydanticBaseModel = None):
-        for attempt in range(1, MAX_RETRIES + 1):
-            try:
-                if self.rate_limiter:
-                    self.rate_limiter.acquire()
-                return self._call_api(prompt, schema)
-            except Exception as e:
-                if "429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower():
-                    print(
-                        f"  [{type(e).__name__}] Rate limit – warte {RETRY_WAIT}s (Versuch {attempt}/{MAX_RETRIES})..."
-                    )
-                    time.sleep(RETRY_WAIT)
-                else:
-                    raise
-        raise RuntimeError(
-            f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden."
-        )
+def generate(self, prompt, schema=None):
+    def _do():
+        if self.rate_limiter:
+            self.rate_limiter.acquire()
+        return self._call_api(prompt, schema)
 
-    # ─────────────────────────────────────────────
-    # ASYNCHRON (für Simulator)
-    # ─────────────────────────────────────────────
+    return retry_sync(
+        _do, max_retries=MAX_RETRIES, base_wait=45, cap=180, label="GWDGModel.generate"
+    )
 
-    async def a_generate(self, prompt: str, schema: PydanticBaseModel = None):
-        for attempt in range(1, MAX_RETRIES + 1):
-            try:
-                if self.rate_limiter:
-                    await self.rate_limiter.a_acquire()
-                return self._call_api(prompt, schema)
-            except Exception as e:
-                if (
-                    "429" in str(e)
-                    or "500" in str(e)
-                    or "rate limit" in str(e).lower()
-                    or "internal server" in str(e).lower()
-                    or isinstance(e, json.JSONDecodeError)
-                ):
-                    wait = min(45 * attempt, 180)
-                    print(
-                        f"  [{type(e).__name__}] Rate limit – warte {wait}s (Versuch {attempt}/{MAX_RETRIES})..."
-                    )
-                    await asyncio.sleep(wait)
-                else:
-                    raise
-        raise RuntimeError(
-            f"[GWDGModel] Rate limit nach {MAX_RETRIES} Versuchen nicht überwunden."
-        )
+
+async def a_generate(self, prompt, schema=None):
+    async def _do():
+        if self.rate_limiter:
+            await self.rate_limiter.a_acquire()
+        return self._call_api(prompt, schema)
+
+    return await retry_async(
+        _do,
+        max_retries=MAX_RETRIES,
+        base_wait=45,
+        cap=180,
+        label="GWDGModel.a_generate",
+    )
