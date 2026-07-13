@@ -39,7 +39,7 @@ pilot_szenarien = [
     {
         "scenario_id": "spannung_strom_1",
         "turns": [
-            {"query": "Was ist elektrische Spannung?"},
+            {"query": "Was ist die Einheit Farrad?"},
             {"query": "Und wie unterscheidet sich das von Strom?"},
             {"query": "Kannst du mir ein Alltagsbeispiel dafür geben?"},
         ],
@@ -72,7 +72,7 @@ print("\n=== MULTI-TURN-AUSWERTUNG (Dense, beide Collections, Rerank) ===")
 test_cases = [
     build_conversation(
         s,
-        collections="collection_labor, collection_vorlesung",
+        collections="collection_labor",
         retrieval="dense",
         is_cross_encoder_rerank=True,
     )

@@ -83,27 +83,27 @@ class GWDGModel(DeepEvalBaseLLM):
         return resp.choices[0].message.content
 
 
-def generate(self, prompt, schema=None):
-    def _do():
-        if self.rate_limiter:
-            self.rate_limiter.acquire()
-        return self._call_api(prompt, schema)
+    def generate(self, prompt, schema=None):
+        def _do():
+            if self.rate_limiter:
+                self.rate_limiter.acquire()
+            return self._call_api(prompt, schema)
 
-    return retry_sync(
-        _do, max_retries=MAX_RETRIES, base_wait=45, cap=180, label="GWDGModel.generate"
-    )
+        return retry_sync(
+            _do, max_retries=MAX_RETRIES, base_wait=45, cap=180, label="GWDGModel.generate"
+        )
 
 
-async def a_generate(self, prompt, schema=None):
-    async def _do():
-        if self.rate_limiter:
-            await self.rate_limiter.a_acquire()
-        return self._call_api(prompt, schema)
+    async def a_generate(self, prompt, schema=None):
+        async def _do():
+            if self.rate_limiter:
+                await self.rate_limiter.a_acquire()
+            return self._call_api(prompt, schema)
 
-    return await retry_async(
-        _do,
-        max_retries=MAX_RETRIES,
-        base_wait=45,
-        cap=180,
-        label="GWDGModel.a_generate",
-    )
+        return await retry_async(
+            _do,
+            max_retries=MAX_RETRIES,
+            base_wait=45,
+            cap=180,
+            label="GWDGModel.a_generate",
+        )

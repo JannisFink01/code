@@ -204,7 +204,7 @@ class RAGPipelineClient:
         payload.update({k: v for k, v in (moodle_meta or {}).items() if v is not None})
 
         resp = requests.post(
-            f"{self.base_url}/api/chat/completions",
+            f"{self.base_url}",
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
             json=payload,
             timeout=self.timeout,

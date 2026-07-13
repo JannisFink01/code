@@ -14,7 +14,7 @@ GWDG_API_KEY = os.getenv("GWDG_API_KEY")
 GWDG_BASE_URL = os.getenv("GWDG_BASE_URL", "https://chat-ai.academiccloud.de/v1")
 OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
-RAG_VERIFY_SSL =None
+RAG_VERIFY_SSL =False
 # =============================================================
 # MODELLE
 # =============================================================
@@ -103,4 +103,6 @@ def validate():
         errors.append(f"Datei nicht gefunden: {SYSTEM_PROMPT_FILE}")
     if not os.path.exists(KONTEXT_FILE):
         errors.append(f"Datei nicht gefunden: {KONTEXT_FILE}")
+    if "/api/chat/completions" in (OPENWEBUI_BASE_URL or ""):
+        errors.append("OPENWEBUI_BASE_URL darf nicht '/api/chat/completions' enthalten")
     return errors
