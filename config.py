@@ -12,14 +12,16 @@ load_dotenv()
 # =============================================================
 GWDG_API_KEY = os.getenv("GWDG_API_KEY")
 GWDG_BASE_URL = os.getenv("GWDG_BASE_URL", "https://chat-ai.academiccloud.de/v1")
-
+OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
+OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
+RAG_VERIFY_SSL =None
 # =============================================================
 # MODELLE
 # =============================================================
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")
 SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "meta-llama-3.1-8b-instruct")
 JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai-gpt-oss-120b")
-
+RAG_MODEL = os.getenv("RAG_MODEL", "qdrant_openwebui_rag_pipeline_rerank_moodle")
 # =============================================================
 # RATE LIMITER
 # =============================================================
