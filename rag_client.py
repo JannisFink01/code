@@ -119,7 +119,7 @@ class RAGPipelineClient:
     """Client für den 'Qdrant Labor RAG with Reranking Moodle'-Endpunkt (v1.4.1)."""
 
     def __init__(self, base_url=OPENWEBUI_BASE_URL, api_key=OPENWEBUI_API_KEY,
-                 model=RAG_MODEL, verify_ssl=RAG_VERIFY_SSL, timeout=60):
+                 model=RAG_MODEL, verify_ssl=RAG_VERIFY_SSL, timeout=60, rate_limiter = None):
         """Initialisiert den Client.
 
         Args:
@@ -137,7 +137,7 @@ class RAGPipelineClient:
         self.model = model
         self.verify_ssl = verify_ssl
         self.timeout = timeout
-
+        self.rate_limiter = rate_limiter
     def ask(
         self,
         question: str,
@@ -202,7 +202,8 @@ class RAGPipelineClient:
             },
         }
         payload.update({k: v for k, v in (moodle_meta or {}).items() if v is not None})
-
+        if (self.rate_limiter is not None):
+            self.rate_limiter.acquire()
         resp = requests.post(
             f"{self.base_url}",
             headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},

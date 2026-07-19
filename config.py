@@ -64,6 +64,7 @@ FIELDNAMES = [
     "score",
     "success",
     "reason",
+    "verbose_logs",
 ]
 # =============================================================
 # PERSISTENCE_PATHS
@@ -106,3 +107,14 @@ def validate():
     if "/api/chat/completions" in (OPENWEBUI_BASE_URL or ""):
         errors.append("OPENWEBUI_BASE_URL darf nicht '/api/chat/completions' enthalten")
     return errors
+
+# =============================================================
+# MODELLKONFIGURATION
+# =============================================================
+RAG_CONFIG = {
+    "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+    "retrieval": "dense, sparse",
+    "is_cross_encoder_rerank": False,
+}
+
+RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").lower() == "true"

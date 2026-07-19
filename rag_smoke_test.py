@@ -9,10 +9,10 @@ from rag_client import RAGPipelineClient
 client = RAGPipelineClient()
 
 answer = client.ask(
-    "Wie ist der Aufbau einer Stabilisierungsschaltung.",
+    "Erklären Sie den Unterschied zwischen Spannung und Strom.",
     collections="hollstein_collection_labor, hollstein_collection_vorlesung",
     retrieval="dense",
-    is_cross_encoder_rerank=True,
+    is_cross_encoder_rerank=False,
 )
 
 print("=== ANTWORT ===")
