@@ -41,11 +41,11 @@ MAX_USER_SIMULATIONS = int(os.getenv("MAX_USER_SIMULATIONS", "6"))
 THRESHOLD = float(os.getenv("THRESHOLD", "0.7"))
 PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v1")
 PROMPT_RUNS = [
-    ("prompts/system_prompt.txt", "system_prompt"),
+    #("prompts/system_prompt.txt", "system_prompt"),
     ("prompts/minimaler_sokrat.txt", "minimaler_sokrat"),
-    ("prompts/system_prompt_context.txt", "system_prompt_context"),
-    ("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
-    ("prompts/no_Prompt.txt", "no_Prompt"),
+    #("prompts/system_prompt_context.txt", "system_prompt_context"),
+    #("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
+    #("prompts/no_Prompt.txt", "no_Prompt"),
 ]
 # =============================================================
 # DATEIPFADE

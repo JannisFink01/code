@@ -14,6 +14,7 @@ dokumentierten Response-Format ist retrieval_context daher NICHT direkt aus der 
 rekonstruierbar – siehe split_answer_and_sources() und die Hinweise am Ende der Datei.
 """
 import re
+import json          # <-- NEU
 import requests
 import urllib3
 from dataclasses import dataclass, field
@@ -138,6 +139,29 @@ class RAGPipelineClient:
         self.verify_ssl = verify_ssl
         self.timeout = timeout
         self.rate_limiter = rate_limiter
+    def _parse_verbose(self, raw_content: str) -> RAGAnswer:
+        """Parst die Verbose-JSON-Antwort (Pipeline v1.7.0) in ein RAGAnswer."""
+        try:
+            v = json.loads(raw_content)
+        except (json.JSONDecodeError, TypeError) as e:
+            raise ValueError(
+                "Antwort ist kein Verbose-JSON. Ist verbose=true angekommen und stream=false?"
+            ) from e
+
+        final_answer = v.get("final_answer", "") or ""
+        text, citations = split_answer_and_sources(final_answer)
+
+        final_chunks = ((v.get("retrieval") or {}).get("final_chunks")) or []
+        retrieval_context = [
+            c["text"] for c in final_chunks if (c.get("text") or "").strip()
+        ] or None
+
+        return RAGAnswer(
+            text=text,
+            citations=citations,
+            retrieval_context=retrieval_context,
+            raw_response=v,
+        )
     def ask(
         self,
         question: str,
@@ -151,6 +175,7 @@ class RAGPipelineClient:
         history: Optional[list] = None,
         moodle_meta: Optional[dict] = None,
         user: Optional[dict] = None,
+        verbose: bool = False,
     ) -> RAGAnswer:
         """Stellt eine Frage an den RAG-Tutor und gibt aufbereitete Antwort zurück.
 
@@ -172,7 +197,7 @@ class RAGPipelineClient:
             moodle_meta: Optionales Dict mit Moodle-Feldern (section_id, module_id,
                 question_id, question_type, ...). Nur gesetzte Felder werden mitgeschickt.
             user: Optionales User-Dict; Default: generischer Nutzer für automatisierte Läufe.
-
+            verbose: Ob detaillierte Informationen über den RAG-Prozess zurückgegeben werden sollen.
         Returns:
             RAGAnswer mit bereinigtem Antworttext, geparsten Quellen-Metadaten und der
             rohen JSON-Antwort. `retrieval_context` bleibt None (siehe Modul-Docstring).
@@ -202,6 +227,8 @@ class RAGPipelineClient:
             },
         }
         payload.update({k: v for k, v in (moodle_meta or {}).items() if v is not None})
+        if(verbose):
+            payload["verbose"] = True
         if (self.rate_limiter is not None):
             self.rate_limiter.acquire()
         resp = requests.post(
@@ -215,5 +242,7 @@ class RAGPipelineClient:
         data = resp.json()
 
         raw_content = data["choices"][0]["message"]["content"]
+        if verbose:
+            return self._parse_verbose(raw_content)
         text, citations = split_answer_and_sources(raw_content)
         return RAGAnswer(text=text, citations=citations, retrieval_context=None, raw_response=data)

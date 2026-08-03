@@ -32,7 +32,7 @@ from retry_utils import retry_async
 from scenarios import build_scenarios, build_pilot_scenarios
 from persistence import save_conversations, load_conversations
 
-MAX_CONVERSATIONS = 5
+MAX_CONVERSATIONS = None
 
 rag_config = RAG_CONFIG
 # =========================================================
@@ -72,7 +72,7 @@ def simulate_conversations(prompt_file: str, version: str):
     # =========================================================
     # SZENARIEN / GOLDENS AUFBAUEN
     # =========================================================
-    scenarios = build_pilot_scenarios()
+    scenarios = build_scenarios()
     goldens, metadata = [], []
     prompt_hash = hashlib.sha1(system_prompt.encode("utf-8")).hexdigest()[:10]
     run_started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -87,10 +87,10 @@ def simulate_conversations(prompt_file: str, version: str):
                     scenario=(
                         f"Thema: {s['topic']}. "
                         f"Studierende:r ({s['level']}), Verhalten: {s['behavior']}. "
-                        f"Die erste Frage des Studierenden lautet exakt: \"{s['initial_question']}\""
                     ),
                     expected_outcome="Die studierende Person kommt durch sokratische Rückfragen selbst auf die Erklärung; die Lösung wird nie direkt verraten.",
                     user_description=f"{s['level']}-Studierende:r der Elektrotechnik. Verhalten: {s['behavior']}. Antworte auf Deutsch.",
+                    turns=[Turn(role="user", content=s["initial_question"])],
                 )
             )
             metadata.append(
@@ -107,9 +107,9 @@ def simulate_conversations(prompt_file: str, version: str):
         goldens = goldens[:MAX_CONVERSATIONS]
         metadata = metadata[:MAX_CONVERSATIONS]
 
-        print(f"  {len(goldens)} Konversationen simulieren...")
-    rag_metadaten_log = []
-
+    print(f"  {len(goldens)} Konversationen simulieren...")
+    kontext_je_antwort = {}
+    meta_je_antwort = {}
     # =========================================================
     # RAG-CALLBACK (ersetzt das fruehere Tutor-LLM)
     # =========================================================
@@ -138,6 +138,7 @@ def simulate_conversations(prompt_file: str, version: str):
                 input,
                 system_prompt=system_prompt,
                 history=history,
+                verbose=True,
                 **RAG_CONFIG,
             )
             rag_metadaten_log.append(
@@ -151,10 +152,16 @@ def simulate_conversations(prompt_file: str, version: str):
                     "rag_config": RAG_CONFIG,
                 }
             )
+            kontext_je_antwort[resp.text] = resp.retrieval_context
+            meta_je_antwort[resp.text] = {
+                "studenten_frage": input,
+                "quellen": [c.__dict__ for c in resp.citations],
+                "rohe_json_antwort": resp.raw_response,
+                "rag_config": RAG_CONFIG,
+            }
             return Turn(
                 role="assistant",
-                content=resp.text,
-                retrieval_context=[c.raw for c in resp.retrieval_context] or None,
+                content=resp.text
             )
 
         return await retry_async(
@@ -176,6 +183,10 @@ def simulate_conversations(prompt_file: str, version: str):
     )
     for tc in test_cases:
         tc.chatbot_role = CHATBOT_ROLE
+        for turn in tc.turns:
+            if turn.role == "assistant":
+                turn.retrieval_context = kontext_je_antwort.get(turn.content)
+                turn.metadata = {"rag_metadata": meta_je_antwort.get(turn.content)}
 
     save_conversations(test_cases, metadata, c_path)
     print(f"  Konversationen gespeichert -> {c_path}")
