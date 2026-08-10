@@ -6,6 +6,7 @@ PROMPT_RUNS gelistete Prompt-Variante einen vollständigen Evaluierungslauf durc
 kombiniert am Ende alle Rohdaten-CSVs zu einer Gesamt-CSV."""
 import csv
 import os
+
 from openai import OpenAI
 from deepeval import evaluate
 from evaluation import run_evaluation
@@ -26,13 +27,12 @@ try:
 except ImportError:
     from deepeval.metrics import TurnRelevancyMetric as _RelevancyMetric
 
-
 from rate_limiter import RateLimiter
 from config import PROMPT_RUNS, CHATBOT_ROLE, GWDG_API_KEY, GWDG_BASE_URL
 
 # =============================================================
 # KONFIGURATION
-# ==========================================================
+# =============================================================
 
 with open(KONTEXT_FILE, encoding="utf-8") as f:
     CONTEXT = f.read()
@@ -46,14 +46,10 @@ with open("prompts/system_prompt.txt", encoding="utf-8") as f:
 
 def startup_check() -> bool:
     """Prüft vor dem eigentlichen Lauf, ob API-Zugang und alle Prompt-Dateien vorhanden sind.
- 
+
     Gibt Diagnosemeldungen auf der Konsole aus, testet die Verbindung zum
     GWDG-Endpunkt mit bis zu drei Versuchen und prüft, ob alle in `PROMPT_RUNS`
     gelisteten Prompt-Dateien existieren.
- 
-    Returns:
-        True, wenn alle Prüfungen erfolgreich waren und `main()` gestartet werden kann,
-        sonst False.
     """
     print("\n[Startup Check]")
     print(f"  GWDG_API_KEY:  {'✓ gesetzt' if GWDG_API_KEY else '✗ FEHLT'}")
@@ -106,7 +102,7 @@ def main():
     """Führt nacheinander für jede Prompt-Variante in PROMPT_RUNS einen Evaluierungslauf
     durch (`run_evaluation`) und kombiniert anschließend alle Rohdaten-CSVs der einzelnen
     Läufe zu einer gemeinsamen Gesamt-CSV (`COMBINED_PATH`), die von `visualize.ipynb`
-    gelesen wird."""    
+    gelesen wird."""
     for prompt_file, version in PROMPT_RUNS:
         if not os.path.exists(prompt_file):
             print(f"  ✗ {prompt_file} nicht gefunden – überspringe")
@@ -116,8 +112,6 @@ def main():
     print(f"\n{'='*60}")
     print(f"  Alle {len(PROMPT_RUNS)} Durchgänge abgeschlossen!")
     print(f"{'='*60}")
-
-
 
     with open(COMBINED_PATH, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=FIELDNAMES)

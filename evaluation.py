@@ -21,7 +21,7 @@ from clients import judge_llm
 from metrics import build_metrics
 from persistence import attach_results
 from simulation import simulate_conversations
-
+csv.field_size_limit(10_000_000) 
 def _evaluate_single(tc, metrics, meta, version):
     """Berechnet alle uebergebenen Metriken fuer genau eine Konversation.
  
