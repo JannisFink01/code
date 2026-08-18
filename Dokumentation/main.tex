@@ -1,0 +1,155 @@
+\documentclass[
+    12pt,
+    a4paper
+]{article}
+
+% --------------------------------------------------
+% Sprache und Zeichenkodierung
+% --------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta}
+\usepackage{xcolor}
+\definecolor{scTitle}{RGB}{200,200,200} % Example gray color, adjust as needed
+\usepackage{colortbl}
+% --------------------------------------------------
+% Seitenlayout
+% --------------------------------------------------
+\usepackage[
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+]{geometry}
+
+\usepackage{setspace}
+\onehalfspacing
+
+% --------------------------------------------------
+% Grafiken und Tabellen
+% --------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{ragged2e}
+\newcommand{\pscardblank}[1]{}
+\usepackage[table]{xcolor}
+\definecolor{scHead}{HTML}{DCE6F1}
+\definecolor{scLine}{HTML}{9DB8D6}
+\PassOptionsToPackage{table}{xcolor}
+% --- Pakete für die Scorecard ---
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\newcommand{\rowstrut}{\rule[-0.95cm]{0pt}{2cm}}
+% --- Farben ---
+\definecolor{titleblue}{RGB}{79,129,189}
+\definecolor{headerblue}{RGB}{197,217,241}
+\definecolor{bordergray}{RGB}{128,128,128}
+%---------grafik einfügen--------
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,backgrounds}
+\usepackage[utf8]{inputenc}
+ 
+\definecolor{scNavy}{HTML}{003A74}
+\definecolor{bFin}{HTML}{E4EFE2}
+\definecolor{bKun}{HTML}{E2ECF7}
+\definecolor{bPro}{HTML}{FBEEDC}
+\definecolor{bLer}{HTML}{EFE6F5}
+% --- Hilfsdefinitionen ---
+% oben ausgerichtete, umbrechende Spalte
+\newcolumntype{Z}[1]{>{\RaggedRight\arraybackslash}m{#1}}
+% Kopfzelle
+\newcommand{\colhead}[1]{\cellcolor{headerblue}\textbf{#1}}
+% unsichtbarer Strut für Mindest-Zeilenhöhe
+
+
+% --------------------------------------------------
+% Aufzählungen
+% --------------------------------------------------
+\usepackage{enumitem}
+
+% --------------------------------------------------
+% Literaturverzeichnis
+% --------------------------------------------------
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=nyt
+]{biblatex}
+
+\addbibresource{references.bib}
+
+% --------------------------------------------------
+% Hyperlinks
+% --------------------------------------------------
+\usepackage[
+    hidelinks
+]{hyperref}
+
+% --------------------------------------------------
+% Dokumentinformationen
+% --------------------------------------------------
+\title{
+    \textbf{Ausarbeitung Projekt}\\[0.5cm]
+    \large{ Data Science Virtueller Tutor Elektronik-Labor}
+}
+
+\author{
+    Joannis Kopp \\
+    Philip Lesche \\
+    Jannis Fink
+}
+
+\date{16. August 2026}
+
+
+% ==================================================
+% DOKUMENT
+% ==================================================
+
+\begin{document}
+
+% --------------------------------------------------
+% Titelseite
+% --------------------------------------------------
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+% --------------------------------------------------
+% Inhaltsverzeichnis
+% --------------------------------------------------
+\tableofcontents
+
+\newpage
+
+% --------------------------------------------------
+% Kapitel
+% --------------------------------------------------
+
+
+
+
+
+% --------------------------------------------------
+% Literaturverzeichnis
+% --------------------------------------------------
+\newpage
+\printbibliography[
+    heading=bibintoc,
+    title={References}
+]
+
+\end{document}

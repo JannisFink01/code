@@ -12,14 +12,16 @@ load_dotenv()
 # =============================================================
 GWDG_API_KEY = os.getenv("GWDG_API_KEY")
 GWDG_BASE_URL = os.getenv("GWDG_BASE_URL", "https://chat-ai.academiccloud.de/v1")
-
+OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
+OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
+RAG_VERIFY_SSL =False
 # =============================================================
 # MODELLE
 # =============================================================
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")
 SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "meta-llama-3.1-8b-instruct")
 JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai-gpt-oss-120b")
-
+RAG_MODEL = os.getenv("RAG_MODEL", "qdrant_openwebui_rag_pipeline_rerank_moodle")
 # =============================================================
 # RATE LIMITER
 # =============================================================
@@ -41,8 +43,8 @@ PROMPT_VERSION = os.getenv("PROMPT_VERSION", "v1")
 PROMPT_RUNS = [
     ("prompts/system_prompt.txt", "system_prompt"),
     ("prompts/minimaler_sokrat.txt", "minimaler_sokrat"),
-    ("prompts/system_prompt_context.txt", "system_prompt_context"),
-    ("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
+    #("prompts/system_prompt_context.txt", "system_prompt_context"),
+    #("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
     ("prompts/no_Prompt.txt", "no_Prompt"),
 ]
 # =============================================================
@@ -54,6 +56,7 @@ OUTPUT_RAW = f"eval_rohdaten_{PROMPT_VERSION}.csv"
 OUTPUT_AGG = f"eval_aggregat_{PROMPT_VERSION}.csv"
 FIELDNAMES = [
     "prompt_version",
+    "conversation_id",
     "topic",
     "level",
     "behavior",
@@ -101,4 +104,17 @@ def validate():
         errors.append(f"Datei nicht gefunden: {SYSTEM_PROMPT_FILE}")
     if not os.path.exists(KONTEXT_FILE):
         errors.append(f"Datei nicht gefunden: {KONTEXT_FILE}")
+    if "/api/chat/completions" in (OPENWEBUI_BASE_URL or ""):
+        errors.append("OPENWEBUI_BASE_URL darf nicht '/api/chat/completions' enthalten")
     return errors
+
+# =============================================================
+# MODELLKONFIGURATION
+# =============================================================
+RAG_CONFIG = {
+    "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+    "retrieval": "dense, sparse",
+    "is_cross_encoder_rerank": False,
+}
+
+RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").lower() == "true"

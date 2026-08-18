@@ -1,7 +1,7 @@
 # metrics.py
 """Definiert alle DeepEval-Metriken, mit denen ein simulierter Tutor-Dialog bewertet wird."""
 from deepeval.test_case import MultiTurnParams 
-from deepeval.metrics import ConversationalGEval,ConversationCompletenessMetric, KnowledgeRetentionMetric, RoleAdherenceMetric, GoalAccuracyMetric, TurnFaithfulnessMetric, TurnRelevancyMetric
+from deepeval.metrics import ConversationalGEval,ConversationCompletenessMetric, KnowledgeRetentionMetric, RoleAdherenceMetric, GoalAccuracyMetric, TurnContextualRelevancyMetric, TurnFaithfulnessMetric, TurnRelevancyMetric
 from deepeval.metrics.g_eval.utils import Rubric
 
 from config import THRESHOLD
@@ -117,17 +117,13 @@ def build_metrics(judge_llm):
         async_mode=False,
     )
     native = [
-        ConversationCompletenessMetric(
-            threshold=THRESHOLD, model=judge_llm, async_mode=False
-        ),
+        ConversationCompletenessMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
         RoleAdherenceMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
         GoalAccuracyMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
         TurnRelevancyMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
         KnowledgeRetentionMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
-        # TurnFaithfulnessMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),
-        # TurnContextualRelevancyMetric(
-        #    threshold=THRESHOLD, model=judge_llm, async_mode=False
-        # ),
+        TurnFaithfulnessMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),          # <-- an
+        TurnContextualRelevancyMetric(threshold=THRESHOLD, model=judge_llm, async_mode=False),   # <-- an
     ]
     return [
         keine_loesung,

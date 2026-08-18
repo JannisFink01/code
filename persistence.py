@@ -27,6 +27,7 @@ def save_conversations(test_cases, metadata, filepath):
                 "role": t.role,
                 "content": t.content,
                 "retrieval_context": getattr(t, "retrieval_context", None),
+                "metadata": getattr(t, "metadata", None),
             })
         data.append({"meta": meta, "turns": turns, "chatbot_role": tc.chatbot_role})
  
@@ -57,6 +58,7 @@ def load_conversations(filepath):
                 role=t["role"],
                 content=t["content"],
                 retrieval_context=t.get("retrieval_context"),
+                metadata=t.get("metadata"),
             ))
         tc = ConversationalTestCase(turns=turns, chatbot_role=item.get("chatbot_role", CHATBOT_ROLE))
         test_cases.append(tc)

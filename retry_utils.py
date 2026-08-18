@@ -17,7 +17,7 @@ def is_transistent_api_error(e: Exception) -> bool:
 
 
 def retry_sync(fn, *args, max_retries=MAX_RETRIES, base_wait=BASE_WAIT,
-                cap=180, retryable=is_transient_api_error, label="", **kwargs):
+                cap=180, retryable=is_transistent_api_error, label="", **kwargs):
     for attempt in range(1, max_retries + 1):
         try:
             return fn(*args, **kwargs)
@@ -33,7 +33,7 @@ def retry_sync(fn, *args, max_retries=MAX_RETRIES, base_wait=BASE_WAIT,
 
 
 async def retry_async(fn, *args, max_retries=MAX_RETRIES, base_wait=BASE_WAIT,
-                       cap=180, retryable=is_transient_api_error, label="", **kwargs):
+                       cap=180, retryable=is_transistent_api_error, label="", **kwargs):
     for attempt in range(1, max_retries + 1):
         try:
             return await fn(*args, **kwargs)

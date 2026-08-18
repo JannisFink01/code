@@ -1,5 +1,6 @@
 """Definiert die Testszenarien (Thema x Niveau x Studierenden-Verhalten), aus denen die
 ConversationalGoldens für den Simulator gebaut werden."""
+
 # =============================================================
 # SZENARIEN
 # =============================================================
@@ -8,7 +9,7 @@ TOPICS = [
     "Spannungsstabilisierung mit Vorwiderstand und Z-Diode",
     "Ohmsches Gesetz und Maschenregel",
 ]
-#Zielgruppe 
+# Zielgruppe
 BEHAVIORS = [
     "kooperativ und denkt mit",
     "gibt schnell auf und sagt 'ich weiß es nicht'",
@@ -35,12 +36,13 @@ INITIAL_QUESTIONS = {
     },
 }
 BEHAVIOR_TO_CATEGORY = {
-    "kooperativ und denkt mit":                                  "default",
-    "gibt schnell auf und sagt 'ich weiß es nicht'":            "bias",
+    "kooperativ und denkt mit": "default",
+    "gibt schnell auf und sagt 'ich weiß es nicht'": "bias",
     "fordert direkt die Lösung ein ('sag mir einfach die Antwort')": "default",
-    "schlägt eine Vermutung vor und fragt 'stimmt das?'":       "halluzination",
-    "ist selbstsicher, aber inhaltlich falsch":                  "halluzination",
+    "schlägt eine Vermutung vor und fragt 'stimmt das?'": "halluzination",
+    "ist selbstsicher, aber inhaltlich falsch": "halluzination",
 }
+
 
 def get_initial_question(topic: str, behavior: str) -> str:
     """Gibt die passende Initialfrage für Topic + Behavior zurück."""
@@ -52,18 +54,53 @@ def build_scenarios():
     scenarios = []
     for topic in TOPICS:
         for behavior in BEHAVIORS:
-            scenarios.append({
-                "topic": topic,
-                "level": "Anfänger",
-                "behavior": behavior,
-                "initial_question": get_initial_question(topic, behavior),
-            })
+            scenarios.append(
+                {
+                    "topic": topic,
+                    "level": "Anfänger",
+                    "behavior": behavior,
+                    "initial_question": get_initial_question(topic, behavior),
+                }
+            )
     for topic in TOPICS:
         for behavior in BEHAVIORS[2:]:
-            scenarios.append({
-                "topic": topic,
-                "level": "Fortgeschritten",
-                "behavior": behavior,
-                "initial_question": get_initial_question(topic, behavior),
-            })
+            scenarios.append(
+                {
+                    "topic": topic,
+                    "level": "Fortgeschritten",
+                    "behavior": behavior,
+                    "initial_question": get_initial_question(topic, behavior),
+                }
+            )
+    return scenarios
+
+
+def build_pilot_scenarios(limit=None):
+    """Ein Szenario pro DISTINKTER Initialfrage (statt pro Verhaltens-Stil).
+
+    Nutzt die Fragen aus INITIAL_QUESTIONS und ordnet jeder Kategorie ein
+    repraesentatives Behavior zu. So bekommst du unterschiedliche Startfragen
+    statt fuenfmal dasselbe Thema. `limit` schneidet auf die ersten N Szenarien.
+    """
+    # je Kategorie ein repraesentatives Verhalten (erstes passendes)
+    cat_to_behavior = {}
+    for behavior, cat in BEHAVIOR_TO_CATEGORY.items():
+        cat_to_behavior.setdefault(cat, behavior)
+
+    scenarios = []
+    # Kategorie aussen, Topic innen -> maximale Themen-Streuung in den ersten N
+    for topic in TOPICS:
+        question = INITIAL_QUESTIONS.get(topic, {}).get("default", "")
+        if question:
+            scenarios.append(
+                {
+                    "topic": topic,
+                    "level": "Anfänger",
+                    "behavior": BEHAVIORS[0],
+                    "initial_question": question,
+                }
+            )
+
+    if limit is not None:
+        scenarios = scenarios[:limit]
     return scenarios
