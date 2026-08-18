@@ -133,7 +133,6 @@ def simulate_conversations(prompt_file: str, version: str):
 
     print(f"  {len(pending)} von {len(goldens)} Gespraechen simulieren...")
 
-    # Weg 2: Kontext/Metadaten separat sammeln (nach Antworttext), spaeter an Turns haengen.
     kontext_je_antwort = {}
     meta_je_antwort = {}
 
@@ -151,7 +150,7 @@ def simulate_conversations(prompt_file: str, version: str):
                 input,
                 system_prompt=system_prompt,
                 history=history,
-                verbose=True,               # echter retrieval_context aus Verbose
+                verbose=True,              
                 **RAG_CONFIG,
             )
             kontext_je_antwort[resp.text] = resp.retrieval_context

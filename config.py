@@ -65,7 +65,6 @@ FIELDNAMES = [
     "score",
     "success",
     "reason",
-    "verbose_logs",
 ]
 # =============================================================
 # PERSISTENCE_PATHS

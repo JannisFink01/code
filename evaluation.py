@@ -69,9 +69,7 @@ def _evaluate_single(tc, metrics, meta, version):
                         if metric.score is not None
                         else None
                     ),
-                    "reason": (metric.reason or "").replace("\n", " "),
-                    "verbose_logs": getattr(metric, "verbose_logs", None),
-                }
+                    "reason": (metric.reason or "").replace("\n", " ")}
             )
         except Exception as e:
             print(f"    ⚠ {metric_name} übersprungen – {type(e).__name__}: {e}")
