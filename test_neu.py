@@ -10,10 +10,13 @@ import os
 from openai import OpenAI
 from deepeval import evaluate
 from evaluation import run_evaluation
+from clients import simulator_llm, judge_llm
 from config import (
     COMBINED_PATH,
     FIELDNAMES,
     GWDG_BASE_URL,
+    JUDGE_BASE_URL,
+    JUDGE_API_KEY,
     TUTOR_MODEL,
     SIMULATOR_MODEL,
     JUDGE_MODEL,
@@ -51,38 +54,21 @@ def startup_check() -> bool:
     GWDG-Endpunkt mit bis zu drei Versuchen und prüft, ob alle in `PROMPT_RUNS`
     gelisteten Prompt-Dateien existieren.
     """
-    print("\n[Startup Check]")
-    print(f"  GWDG_API_KEY:  {'✓ gesetzt' if GWDG_API_KEY else '✗ FEHLT'}")
-    print(f"  GWDG_BASE_URL: {repr(GWDG_BASE_URL)}")
-
-    if not GWDG_API_KEY:
-        print("  ✗ FEHLER: GWDG_API_KEY fehlt in .env")
+    print("  Teste Verbindung (lokaler Endpunkt)...")
+    try:
+        simulator_llm.generate("Antworte nur mit OK.")
+        judge_llm.generate("Antworte nur mit OK.")
+        print("  ✓ Simulator + Judge erreichbar")
+    except Exception as e:
+        print(f"  ✗ Verbindung fehlgeschlagen: {type(e).__name__}: {e}")
         return False
-    if "/chat/completions" in (GWDG_BASE_URL or ""):
-        print("  ✗ FEHLER: GWDG_BASE_URL falsch")
+    print(f"  LOCAL_URL: {repr(JUDGE_BASE_URL)}")
+    if not JUDGE_API_KEY:
+        print("  ✗ LOCAL_API_KEY fehlt in .env")
         return False
-
-    print("  Teste API-Verbindung...")
-    for attempt in range(1, 4):
-        try:
-            test_client = OpenAI(api_key=GWDG_API_KEY, base_url=GWDG_BASE_URL)
-            test_client.chat.completions.create(
-                model=SIMULATOR_MODEL,
-                messages=[{"role": "user", "content": "Hallo"}],
-                max_tokens=10,
-            )
-            print("  ✓ Verbindung OK")
-            break
-        except Exception as e:
-            if attempt < 3:
-                print(f"  ⟳ Versuch {attempt}/3 fehlgeschlagen ({e}) – warte 30s...")
-                import time
-
-                time.sleep(30)
-            else:
-                print(f"  ✗ Verbindung nach 3 Versuchen fehlgeschlagen: {e}")
-                return False
-
+    if not JUDGE_BASE_URL:
+        print("  ✗ LOCAL_URL fehlt in .env")
+        return False
     for prompt_file, _ in PROMPT_RUNS:
         if not os.path.exists(prompt_file):
             print(f"  ✗ {prompt_file} nicht gefunden")

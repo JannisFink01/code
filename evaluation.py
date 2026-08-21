@@ -79,7 +79,7 @@ def _evaluate_single(tc, metrics, meta, version):
                     "score": None,
                     "success": None,
                     "reason": f"ERROR: {type(e).__name__}: {e}",
-                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                   # "verbose_logs": getattr(metric, "verbose_logs", None),
                 }
             )
     return results

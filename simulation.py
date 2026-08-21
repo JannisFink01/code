@@ -57,12 +57,13 @@ def _speichern_atomar(test_cases, metadata, c_path):
     os.replace(tmp, c_path)
 
 
-def simulate_conversations(prompt_file: str, version: str):
+def simulate_conversations(prompt_file: str, version: str, rag_config = RAG_CONFIG):
     """Simuliert alle Konversationen fuer eine Prompt-Version, resume-faehig.
 
     Args:
         prompt_file: Pfad zur System-Prompt-Datei.
         version: Kurzname der Prompt-Version (bestimmt den Cache-Pfad).
+        rag_config: Die RAG-Konfiguration.
 
     Returns:
         Tupel (test_cases, metadata) – alle (auch zuvor schon gespeicherten)
@@ -151,14 +152,14 @@ def simulate_conversations(prompt_file: str, version: str):
                 system_prompt=system_prompt,
                 history=history,
                 verbose=True,              
-                **RAG_CONFIG,
+                **rag_config,
             )
             kontext_je_antwort[resp.text] = resp.retrieval_context
             meta_je_antwort[resp.text] = {
                 "studenten_frage": input,
                 "quellen": [c.__dict__ for c in resp.citations],
                 "rohe_json_antwort": resp.raw_response,
-                "rag_config": RAG_CONFIG,
+                "rag_config": rag_config,
             }
             return Turn(role="assistant", content=resp.text)
 
@@ -195,7 +196,8 @@ def simulate_conversations(prompt_file: str, version: str):
         tc.chatbot_role = CHATBOT_ROLE
         for turn in tc.turns:
             if turn.role == "assistant":
-                turn.retrieval_context = kontext_je_antwort.get(turn.content)
+                ctx = kontext_je_antwort.get(turn.content)
+                turn.retrieval_context = ctx if ctx else []
                 turn.metadata = {"rag_metadata": meta_je_antwort.get(turn.content)}
 
         all_test_cases.append(tc)

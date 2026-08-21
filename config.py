@@ -14,13 +14,18 @@ GWDG_API_KEY = os.getenv("GWDG_API_KEY")
 GWDG_BASE_URL = os.getenv("GWDG_BASE_URL", "https://chat-ai.academiccloud.de/v1")
 OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
+JUDGE_API_KEY = os.getenv("JUDGE_API_KEY")
+JUDGE_BASE_URL = os.getenv("JUDGE_BASE_URL")
+JUDGE_VERIFY_SSL = False
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "muse-glimmer")
+REASONING_EFFORT = os.getenv("REASONING_EFFORT", "low")   # low/medium/high/xhigh
 RAG_VERIFY_SSL =False
 # =============================================================
 # MODELLE
 # =============================================================
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")
-SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "meta-llama-3.1-8b-instruct")
-JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai-gpt-oss-120b")
+SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "gpt-4o-mini")
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "muse-glimmer")
 RAG_MODEL = os.getenv("RAG_MODEL", "qdrant_openwebui_rag_pipeline_rerank_moodle")
 # =============================================================
 # RATE LIMITER
@@ -46,6 +51,9 @@ PROMPT_RUNS = [
     #("prompts/system_prompt_context.txt", "system_prompt_context"),
     #("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
     ("prompts/no_Prompt.txt", "no_Prompt"),
+    ("prompts/stock_prompt.txt", "stock_prompt"),
+
+
 ]
 # =============================================================
 # DATEIPFADE
