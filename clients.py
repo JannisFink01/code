@@ -12,6 +12,9 @@ from config import (
     JUDGE_API_KEY,
     JUDGE_BASE_URL,
     JUDGE_VERIFY_SSL,
+    SIMULATOR_BASE_URL,
+    SIMULATOR_VERIFY_SSL,
+    SIMULATOR_API_KEY,
     TUTOR_MODEL,
     SIMULATOR_MODEL,
     JUDGE_MODEL,
@@ -38,9 +41,9 @@ judge_llm = GWDGModel(
 simulator_llm = GWDGModel(
     SIMULATOR_MODEL, 
     rate_limiter=rate_limiter, 
-    base_url=JUDGE_BASE_URL, 
-    api_key=JUDGE_API_KEY,
-    verify_ssl=JUDGE_VERIFY_SSL,
+    base_url=SIMULATOR_BASE_URL, 
+    api_key=SIMULATOR_API_KEY,
+    verify_ssl=SIMULATOR_VERIFY_SSL,
     extra_body={"enable_thinking": False}
 )
 tutor_llm = GWDGModel(TUTOR_MODEL, rate_limiter=rate_limiter)

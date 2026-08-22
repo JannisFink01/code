@@ -16,25 +16,27 @@ OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
 JUDGE_API_KEY = os.getenv("JUDGE_API_KEY")
 JUDGE_BASE_URL = os.getenv("JUDGE_BASE_URL")
-JUDGE_VERIFY_SSL = False
-JUDGE_MODEL = os.getenv("JUDGE_MODEL", "muse-glimmer")
+JUDGE_VERIFY_SSL = True
 REASONING_EFFORT = os.getenv("REASONING_EFFORT", "low")   # low/medium/high/xhigh
 RAG_VERIFY_SSL =False
+SIMULATOR_BASE_URL = os.getenv("SIMULATOR_BASE_URL")
+SIMULATOR_API_KEY = os.getenv("SIMULATOR_API_KEY")
+SIMULATOR_VERIFY_SSL = False
 # =============================================================
 # MODELLE
 # =============================================================
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")
 SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "gpt-4o-mini")
-JUDGE_MODEL = os.getenv("JUDGE_MODEL", "muse-glimmer")
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "gpt-4.1")
 RAG_MODEL = os.getenv("RAG_MODEL", "qdrant_openwebui_rag_pipeline_rerank_moodle")
 # =============================================================
 # RATE LIMITER
 # =============================================================
-RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "2"))
-RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "15"))
-RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "60"))
+RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "3"))
+RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "60"))
+RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "20"))
 MAX_RETRIES = int(os.getenv("MAX_RETRIES", "10"))
-BASE_WAIT = int(os.getenv("BASE_WAIT", "45"))
+BASE_WAIT = int(os.getenv("BASE_WAIT", "20"))
 CAP = int(os.getenv("CAP", "180"))
 
 # =============================================================
@@ -124,5 +126,13 @@ RAG_CONFIG = {
     "retrieval": "dense, sparse",
     "is_cross_encoder_rerank": False,
 }
+RAG_CONFIGS = {
+    "dense_rerank":   {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": True},
+    "dense_norerank": {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": False},
+    "hybrid_rerank":  {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense, sparse", "is_cross_encoder_rerank": True},
+    "labor_only":     {"collections": "hollstein_collection_labor", "retrieval": "dense", "is_cross_encoder_rerank": True},
+    "vorlesung_only": {"collections": "hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": True},
+    "llm_only":       {"collections": "", "retrieval": "dense", "is_cross_encoder_rerank": False},
+}
 
-RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").lower() == "true"
+RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").strip().lower() == "true"
