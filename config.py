@@ -127,12 +127,59 @@ RAG_CONFIG = {
     "is_cross_encoder_rerank": False,
 }
 RAG_CONFIGS = {
-    "dense_rerank":   {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": True},
-    "dense_norerank": {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": False},
-    "hybrid_rerank":  {"collections": "hollstein_collection_labor, hollstein_collection_vorlesung", "retrieval": "dense, sparse", "is_cross_encoder_rerank": True},
-    "labor_only":     {"collections": "hollstein_collection_labor", "retrieval": "dense", "is_cross_encoder_rerank": True},
-    "vorlesung_only": {"collections": "hollstein_collection_vorlesung", "retrieval": "dense", "is_cross_encoder_rerank": True},
-    "llm_only":       {"collections": "", "retrieval": "dense", "is_cross_encoder_rerank": False},
+    # 1 · LLM-only (keine Collections, kein Retrieval)
+    "llm_only": {
+        "collections": "",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 2 · nur Labor, dense
+    "labor_dense": {
+        "collections": "hollstein_collection_labor",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 3 · nur Vorlesung, dense
+    "vorlesung_dense": {
+        "collections": "hollstein_collection_vorlesung",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 4 · beide, dense
+    "beide_dense": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 5 · beide, sparse
+    "beide_sparse": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "sparse",
+        "is_cross_encoder_rerank": False,
+    },
+    # 6 · beide, hybrid (dense, sparse) ohne Rerank
+    "beide_hybrid": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": False,
+    },
+    # 7 · beide, hybrid + Cross-Encoder-Rerank
+    "beide_hybrid_rerank": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
+    # 8 · nur Labor, hybrid + Rerank
+    "labor_hybrid_rerank": {
+        "collections": "hollstein_collection_labor",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
+    # 9 · nur Vorlesung, hybrid + Rerank
+    "vorlesung_hybrid_rerank": {
+        "collections": "hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
 }
-
 RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").strip().lower() == "true"

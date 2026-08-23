@@ -35,9 +35,9 @@ from auswertung import auswerten
 from config import PROMPT_RUNS, RAG_CONFIGS, JUDGE_BASE_URL, JUDGE_API_KEY
 
 # feste RAG-Konfiguration fuer RQ1 (Prompt-Vergleich)
-RQ1_CONFIG = RAG_CONFIGS["dense_rerank"]
+RQ1_CONFIG = RAG_CONFIGS["beide_hybrid_rerank"]
 # fester (sokratischer) Prompt fuer RQ2 (Konfig-Vergleich)
-RQ2_PROMPT = ("prompts/minimaler_sokrat.txt", "minimaler_sokrat")
+RQ2_PROMPT = ("prompts/system_prompt.txt", "system_prompt")
 
 
 # =============================================================
