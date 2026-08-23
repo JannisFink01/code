@@ -6,3 +6,6 @@ __pycache__/
 *.pyc
 .deepeval/
 persistence/
+persistence/konversationen/
+scripts/*.json
+logs/
