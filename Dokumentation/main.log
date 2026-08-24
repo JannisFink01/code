@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  18 AUG 2026 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  23 AUG 2026 20:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Jannis/master/UAS/Sem1/PDS/Doku/main.tex
-(c:/Users/Jannis/master/UAS/Sem1/PDS/Doku/main.tex
+**c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex
+(c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
 (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -754,7 +754,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count464
 \@quotereset=\count465
-(main.aux)
+(main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
@@ -851,37 +851,126 @@ Package hyperref Info: Link coloring OFF on input line 121.
 Package babel Info: Main language set to 'english'.
  [1
 
-{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc)
+{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 3.
+)
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
  [2]
+\openout2 = `01-Einleitung.aux'.
 
-LaTeX Warning: Empty bibliography on input line 150.
+ (01-Einleitung.tex)
+\openout2 = `02-Grundlagen.aux'.
 
-(main.aux)
+ (02-Grundlagen.tex)
+\openout2 = `03-Untersuchungsgegenstand.aux'.
+
+ (03-Untersuchungsgegenstand.tex)
+\openout2 = `04-Methodik.aux'.
+
+ (04-Methodik.tex
+
+LaTeX Warning: Citation 'QUELLE_SOKRATIK' on page 3 undefined on input line 24.
+
+
+Overfull \hbox (8.09535pt too wide) in paragraph at lines 37--43
+\T1/cmtt/m/n/12 gemma-4-26B\T1/cmr/m/n/12 . Der fach-liche Wis-sensko-r-pus liegt in zwei Qdrant-Collections vor, die Vorlesungs-
+ []
+
+
+Overfull \hbox (6.21484pt too wide) in paragraph at lines 37--43
+\T1/cmr/m/n/12 bzw. Labor-ma-te-rial des Fachge-bi-ets [PLATZHAL-TER: Fachge-biet/Themen konkretisieren]
+ []
+
+[3
+
+
+
+
+
+
+
+
+
+
+]
+
+LaTeX Warning: Citation 'QUELLE_LLM_JUDGE' on page 4 undefined on input line 72.
+
+
+LaTeX Warning: Citation 'QUELLE_DEEPEVAL' on page 4 undefined on input line 80.
+
+
+Overfull \hbox (3.52997pt too wide) in paragraph at lines 79--87
+\T1/cmr/m/n/12 Die tech-nis-che Um-set-zung er-folgt in Python unter Ver-wen-dung des Evaluations-Frameworks
+ []
+
+
+Overfull \hbox (83.82935pt too wide) in paragraph at lines 79--87
+\T1/cmr/m/n/12 Deep-E-val []. Die Multi-Turn-Gespräche wer-den mit dem \T1/cmtt/m/n/12 ConversationSimulator
+ []
+
+[4]
+
+LaTeX Warning: Citation 'QUELLE_GEVAL' on page 5 undefined on input line 108.
+
+[5])
+Overfull \hbox (5.77892pt too wide) in paragraph at lines 177--150
+\T1/cmr/m/n/12 nisse ver-schiedener Judge-Modelle sind nicht un-mit-tel-bar ver-gle-ich-bar. Die selbst definierten
+ []
+
+[6] [7]
+\openout2 = `05-Ergebnisse.aux'.
+
+ (05-Ergebnisse.tex)
+\openout2 = `06-Diskussion.aux'.
+
+ (06-Diskussion.tex)
+\openout2 = `07-Fazit.aux'.
+
+
+No file 07-Fazit.tex.
+
+LaTeX Warning: Empty bibliography on input line 161.
+
+(main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit.aux))
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: D9424B1035C406C128B9545FD3B5812F;2081.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29736 strings out of 467510
- 578397 string characters out of 5408308
- 1421038 words of memory out of 5000000
- 58545 multiletter control sequences out of 15000+600000
- 632646 words of font info for 47 fonts, out of 8000000 for 9000
+ 30161 strings out of 467510
+ 589446 string characters out of 5408308
+ 1444728 words of memory out of 5000000
+ 58896 multiletter control sequences out of 15000+600000
+ 637632 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,6n,107p,1238b,1799s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk>
-Output written on main.pdf (2 pages, 25067 bytes).
+ 102i,6n,107p,1261b,1864s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk>
+Output written on main.pdf (7 pages, 128326 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 4 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 20 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

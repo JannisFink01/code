@@ -1,1 +1,12 @@
 \babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Methodik}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Untersuchungsdesign}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Untersuchungsgegenstand und Datengrundlage}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Evaluationsarchitektur}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Verwendete Methoden und Werkzeuge}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Bewertungskriterien}{5}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Sokratische Qualität (RQ1)}{5}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Retrieval\-Qualität (RQ2)}{5}{subsubsection.1.5.2}%
+\contentsline {subsubsection}{\numberline {1.5.3}Aggregation und Gate\-Logik}{5}{subsubsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.6}Durchführung}{6}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Gütekriterien und methodische Einschränkungen}{6}{subsection.1.7}%

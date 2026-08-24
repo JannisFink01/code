@@ -85,7 +85,7 @@ def run_rq2():
     print("\n### RQ2: RAG-Konfigurations-Vergleich ###")
     prompt_file, base = RQ2_PROMPT
     for cfg_name, cfg in RAG_CONFIGS.items():
-        run_evaluation(prompt_file, f"{base}__{cfg_name}", cfg)
+        run_evaluation(prompt_file, f"{base}__{cfg_name}", cfg, mode="rq2")
     auswerten()   # -> rq2_rag_auswertung.csv (Versionen mit '__')
 
 

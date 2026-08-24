@@ -1,9 +1,20 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
-[1] Config.pm:331> INFO - Logfile is 'main.blg'
-[480] biber-MSWIN64:342> INFO - === 
-[636] Biber.pm:421> INFO - Reading 'main.bcf'
-[1072] Biber.pm:1002> INFO - Found 0 citekeys in bib section 0
-[1118] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1119] bbl.pm:779> INFO - Output to main.bbl
-[1120] Biber.pm:132> WARN - The file 'main.bcf' does not contain any citations!
-[1121] Biber.pm:134> INFO - WARNINGS: 1
+[0] Config.pm:331> INFO - Logfile is 'main.blg'
+[158] biber-MSWIN64:342> INFO - === 
+[222] Biber.pm:421> INFO - Reading 'main.bcf'
+[335] Biber.pm:1002> INFO - Found 4 citekeys in bib section 0
+[348] Biber.pm:4487> INFO - Processing section 0
+[361] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[713] bibtex.pm:1713> INFO - LaTeX decoding ...
+[723] bibtex.pm:1519> INFO - Found BibTeX data source 'C:/Users/Jannis/AppData/Local/Programs/MiKTeX/bibtex/bib/feupphdteses/references.bib'
+[730] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[730] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[731] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[731] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[731] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[731] bbl.pm:779> INFO - Output to main.bbl
+[732] Biber.pm:132> WARN - I didn't find a database entry for 'QUELLE_SOKRATIK' (section 0)
+[732] Biber.pm:132> WARN - I didn't find a database entry for 'QUELLE_LLM_JUDGE' (section 0)
+[732] Biber.pm:132> WARN - I didn't find a database entry for 'QUELLE_DEEPEVAL' (section 0)
+[732] Biber.pm:132> WARN - I didn't find a database entry for 'QUELLE_GEVAL' (section 0)
+[732] Biber.pm:134> INFO - WARNINGS: 4
