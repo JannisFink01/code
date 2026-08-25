@@ -78,7 +78,7 @@ class GWDGModel(DeepEvalBaseLLM):
                     {"role": "user", "content": self._prefix(prompt)},
                 ],
                 temperature=0.0,
-                max_tokens=4000,
+                max_tokens=16000,
                 **self._extra(),
             )
             raw = resp.choices[0].message.content.strip()
@@ -89,7 +89,7 @@ class GWDGModel(DeepEvalBaseLLM):
             model=self.model_name,
             messages=[{"role": "user", "content": self._prefix(prompt)}],
             temperature=0.0,
-            max_tokens=4000,
+            max_tokens=16000,
             **self._extra(),
         )
         return resp.choices[0].message.content
@@ -122,7 +122,7 @@ class GWDGModel(DeepEvalBaseLLM):
                 return self._call_api(prompt, schema)
             except Exception as e:
                 if ("429" in str(e) or "500" in str(e) or "rate limit" in str(e).lower()
-                        or "internal server" in str(e).lower() or isinstance(e, json.JSONDecodeError)):
+                        or "internal server" in str(e).lower()):
                     wait = min(45 * attempt, 180)
                     print(f"  [{type(e).__name__}] Retry {attempt}/{MAX_RETRIES} – warte {wait}s...")
                     await asyncio.sleep(wait)

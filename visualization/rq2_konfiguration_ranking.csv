@@ -1,0 +1,3 @@
+config,Turn Contextual Relevancy,Turn Faithfulness,abdeckung_%
+llm_only,1.0,0.991,0
+labor_dense,0.992,0.985,2

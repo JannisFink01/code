@@ -87,7 +87,7 @@ def _evaluate_single(tc, metrics, meta, version):
     return results
 
 
-def run_evaluation(prompt_file: str, version: str, rag_config = RAG_CONFIG, mode="rq2"):
+def run_evaluation(prompt_file: str, version: str, rag_config = RAG_CONFIG, mode="rq1"):
     """Fuehrt einen kompletten Evaluierungslauf fuer eine Prompt-Version durch.
  
     Ablauf:
@@ -146,7 +146,7 @@ def run_evaluation(prompt_file: str, version: str, rag_config = RAG_CONFIG, mode
     # =========================================================
     print(f"\n  {len(test_cases)} Testfälle evaluieren...")
     metrics = build_metrics(judge_llm, mode=mode)
-        print("  MODE:", mode, "| Metriken:", [getattr(m, "__name__", "?") for m in metrics])
+    print("  MODE:", mode, "| Metriken:", [getattr(m, "__name__", "?") for m in metrics])
     rows = []
     skipped = 0
     for i, tc in enumerate(test_cases):

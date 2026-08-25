@@ -1,7 +1,18 @@
 # metrics.py
-"""Metriken je Forschungsfrage:
-  mode="rq1" (sokratische Qualitaet): 7 GEval-Kriterien + RoleAdherence (nativer Gegencheck).
-  mode="rq2" (RAG-/Retrieval-Qualitaet): TurnContextualRelevancy + TurnFaithfulness.
+"""Metriken je Forschungsfrage.
+
+RQ1 (sokratische Qualitaet): 7 ConversationalGEval-Kriterien + RoleAdherence.
+Die Kriterien sind bewusst an etablierte didaktische Prinzipien angelehnt, sodass
+jede Metrik im Text mit Literatur belegt werden kann:
+  - Sokratisches Fragen / zur eigenen Erkenntnis fuehren, statt die Loesung zu nennen;
+    Fragen nicht "um der Frage willen"        -> Kost & Chen (2015)
+  - Zum Niveau der Lernenden unterrichten, neues Wissen in kleinen Schritten auf
+    Vorwissen aufbauen (Scaffolding / ZPD)     -> Wood, Bruner & Ross (1976); Vygotsky (1978)
+  - Ziel ist Lehren, nicht Bloszstellen; keine Beschaemung  -> Kost & Chen (2015)
+  - Wichtige Lernpunkte betonen (need-to-know)              -> Kost & Chen (2015)
+
+RQ2 (Retrieval-Qualitaet): TurnContextualRelevancy + TurnFaithfulness (native),
+angelehnt an etablierte RAG-Evaluationsmetriken (RAGAS: Es et al. 2024).
 
 RoleAdherence liest test_case.chatbot_role (= config.CHATBOT_ROLE) – die sokratische
 Rollendefinition wird also ueber den TestCase gesetzt, nicht als Metrik-Parameter.
@@ -28,7 +39,7 @@ def build_metrics(judge_llm, mode="rq1", async_mode=True):
         )
 
     # =========================================================
-    # RQ2 · RAG-/Retrieval-Qualitaet (native)
+    # RQ2 · RAG-/Retrieval-Qualitaet (native, RAGAS-nah)
     # =========================================================
     if mode == "rq2":
         return [
@@ -39,102 +50,118 @@ def build_metrics(judge_llm, mode="rq1", async_mode=True):
     # =========================================================
     # RQ1 · Sokratische Qualitaet (GEval + RoleAdherence)
     # =========================================================
-    keine_loesung = geval(
+
+    # Prinzip: sokratisches Fragen fuehrt zur eigenen Erkenntnis; die Loesung wird
+    # nicht vorweggenommen. (Kost & Chen 2015)
+    loesung_nicht_verraten = geval(
         "[GEval] Lösung nicht verraten",
         [
-            "Pruefe, ob der Tutor die Loesung/das Endergebnis direkt nennt oder eine Vermutung des Studenten explizit als richtig bestaetigt.",
-            "Bewerte, wie viel eigenstaendige Denkarbeit dem Studenten noch bleibt: Auch ohne die Loesung zu nennen, kann der Tutor sie durch stark fuehrende/suggestive Fragen faktisch vorgeben.",
-            "Erlaubt ist das Eingrenzen/Bestaetigen EINES Denkschritts. Nicht erlaubt ist das Vorwegnehmen des Endergebnisses oder der entscheidenden Schlussfolgerung.",
+            "Pruefe, ob der Tutor die studierende Person durch Fragen zur EIGENEN Erkenntnis fuehrt, statt die Loesung oder das Endergebnis zu nennen.",
+            "Bewerte, wie viel eigenstaendige Denkarbeit bleibt: Auch ohne die Loesung zu nennen, kann der Tutor sie durch stark fuehrende oder suggestive Fragen faktisch vorgeben.",
+            "Erlaubt ist das Eingrenzen/Bestaetigen EINES Denkschritts; nicht erlaubt ist das Vorwegnehmen des Endergebnisses oder der entscheidenden Schlussfolgerung.",
         ],
         [
             Rubric(score_range=(0, 2), expected_outcome="Loesung/Endergebnis genannt oder die zentrale Schlussfolgerung faktisch vorgegeben."),
             Rubric(score_range=(3, 6), expected_outcome="Loesung nicht explizit, aber durch stark fuehrende/suggestive Fragen bleibt kaum eigene Denkarbeit."),
-            Rubric(score_range=(7, 10), expected_outcome="Loesung an keiner Stelle vorweggenommen; dem Studenten bleibt substanzielle eigene Denkarbeit."),
+            Rubric(score_range=(7, 10), expected_outcome="Loesung an keiner Stelle vorweggenommen; substanzielle eigene Denkarbeit bleibt."),
         ],
     )
-    gegenfragen = geval(
+
+    # Prinzip: keine Fragen "um der Frage willen"; Fragen dienen dem Verstaendnis. (Kost & Chen 2015)
+    sokratische_rueckfragen = geval(
         "[GEval] Sokratische Rückfragen",
         [
-            "Pruefe, ob der Tutor mit echten, offenen Fragen fuehrt statt zu dozieren.",
-            "Bestrafe Suggestivfragen, die die Antwort bereits enthalten (z. B. '..., oder?'), und rein binaere Ja/Nein-Fragen.",
-            "Belohne Fragen, die aus der letzten Aussage des Studenten entstehen und den naechsten Denkschritt eroeffnen, ohne die Antwort vorzugeben.",
+            "Pruefe, ob die Fragen des Tutors zielgerichtet dem Verstaendnis dienen und nicht 'um der Frage willen' gestellt werden.",
+            "Bestrafe Suggestivfragen, die die Antwort bereits enthalten, sowie rein binaere Ja/Nein-Fragen.",
+            "Belohne offene Fragen, die aus der letzten Aussage der studierenden Person entstehen und den naechsten Denkschritt eroeffnen.",
         ],
         [
-            Rubric(score_range=(0, 2), expected_outcome="Doziert oder nutzt ueberwiegend suggestive/geschlossene Fragen, die die Antwort vorgeben."),
-            Rubric(score_range=(3, 6), expected_outcome="Stellt Fragen, aber teils suggestiv/binaer oder ohne Bezug zur letzten Aussage."),
-            Rubric(score_range=(7, 10), expected_outcome="Durchgehend offene, anschlussfaehige Fragen, die den naechsten Denkschritt eroeffnen ohne die Antwort zu enthalten."),
+            Rubric(score_range=(0, 2), expected_outcome="Doziert oder stellt ueberwiegend suggestive/geschlossene bzw. beliebige Fragen ohne Lernbezug."),
+            Rubric(score_range=(3, 6), expected_outcome="Stellt Fragen, aber teils suggestiv/binaer oder ohne klaren Bezug zum Verstaendnis."),
+            Rubric(score_range=(7, 10), expected_outcome="Durchgehend offene, zielgerichtete Fragen, die den naechsten Denkschritt eroeffnen."),
         ],
     )
-    schrittweise = geval(
-        "[GEval] Schrittweises Vorgehen",
+
+    # Prinzip: neues Wissen in kleinen Schritten auf Vorwissen aufbauen (Scaffolding / ZPD).
+    # (Wood, Bruner & Ross 1976; Vygotsky 1978; Kost & Chen 2015)
+    schrittweise_progression = geval(
+        "[GEval] Schrittweise Lernprogression",
         [
-            "Pruefe, ob jeder neue Schritt logisch aus dem vorherigen entsteht und die Komplexitaet nur moderat steigt.",
-            "Bewerte die kognitive Progression, nicht bloss die Gespraechsstruktur oder staendiges 'Genau, richtig!'.",
+            "Pruefe, ob neues Wissen in kleinen Schritten auf dem Vorwissen der studierenden Person aufbaut.",
+            "Bewerte die kognitive Progression: Jeder Schritt sollte logisch aus dem vorherigen entstehen und die Komplexitaet nur moderat steigern.",
             "Bestrafe Spruenge ueber mehrere Konzepte ohne tragfaehige Zwischenschritte.",
         ],
         [
-            Rubric(score_range=(0, 2), expected_outcome="Spruenge ueber mehrere Konzepte, keine tragfaehige Progression."),
+            Rubric(score_range=(0, 2), expected_outcome="Spruenge ueber mehrere Konzepte, kein Aufbau auf Vorwissen."),
             Rubric(score_range=(3, 6), expected_outcome="Teils schrittweise, aber mit Luecken oder unmotivierten Spruengen."),
-            Rubric(score_range=(7, 10), expected_outcome="Klare, aufeinander aufbauende kognitive Progression mit moderater Komplexitaetssteigerung."),
+            Rubric(score_range=(7, 10), expected_outcome="Kleine, auf Vorwissen aufbauende Schritte mit nachvollziehbarer Progression."),
         ],
     )
-    niveau = geval(
+
+    # Prinzip: die Lernenden diagnostizieren und auf ihrem Niveau unterrichten. (Kost & Chen 2015)
+    niveau_anpassung = geval(
         "[GEval] Niveau-Anpassung",
         [
-            "Pruefe, ob Sprache UND kognitives Niveau zur (Anfaenger-)Person passen.",
+            "Pruefe, ob der Tutor das Niveau der studierenden Person erkennt und Sprache sowie Komplexitaet daran anpasst.",
             "Belohne einfachere, anschauliche Erklaerungen als Reaktion auf Verwirrung; bestrafe unangepasste Fachsprache trotz klarer Signale.",
-            "Bestrafe auch inhaltlich unterkomplexe Antworten, die den Studenten nicht weiterfuehren.",
+            "Bestrafe auch inhaltlich unterkomplexe Antworten, die nicht weiterfuehren.",
         ],
         [
-            Rubric(score_range=(0, 2), expected_outcome="Durchgehend unpassend: zu viel Fachsprache trotz Signalen oder nicht weiterfuehrend simpel."),
+            Rubric(score_range=(0, 2), expected_outcome="Durchgehend unpassend: zu viel Fachsprache oder nicht weiterfuehrend simpel."),
             Rubric(score_range=(3, 6), expected_outcome="Teilweise passend, aber inkonsistent im sprachlichen/kognitiven Niveau."),
-            Rubric(score_range=(7, 10), expected_outcome="Durchgehend passend; reagiert auf Verwirrung mit anschaulichen, weiterfuehrenden Erklaerungen."),
+            Rubric(score_range=(7, 10), expected_outcome="Durchgehend an das Niveau angepasst; reagiert auf Verwirrung weiterfuehrend."),
         ],
     )
-    korrektheit = geval(
+
+    # Korrektheit (inkl. keine Halluzination); Faithfulness/Correctness.
+    fachliche_korrektheit = geval(
         "[GEval] Fachliche Korrektheit",
         [
-            "Pruefe, ob die fachlichen Aussagen (z. B. Z-Diode, Spannungsstabilisierung, Ohmsches Gesetz) real korrekt sind.",
-            "Bestrafe falsche Formeln/Zahlenwerte, nicht existierende Bauteile/Grenzwerte sowie erfundene konkrete Spezifikationen (Halluzination).",
-            "Erlaubt sind didaktisch sinnvolle Vereinfachungen fuer Anfaenger, solange sie nicht inhaltlich falsch sind.",
+            "Pruefe, ob die fachlichen Aussagen real korrekt sind (Elektronik/Elektrotechnik).",
+            "Bestrafe falsche Formeln/Zahlenwerte, nicht existierende Bauteile/Grenzwerte sowie erfundene Spezifikationen (Halluzination).",
+            "Erlaubt sind didaktisch sinnvolle Vereinfachungen, solange sie nicht inhaltlich falsch sind.",
         ],
         [
             Rubric(score_range=(0, 2), expected_outcome="Fachlich falsche Aussagen oder erfundene Bauteile/Werte."),
             Rubric(score_range=(3, 6), expected_outcome="Ueberwiegend korrekt, aber einzelne Ungenauigkeiten oder unbelegte Zusaetze."),
-            Rubric(score_range=(7, 10), expected_outcome="Durchgehend korrekt und ohne Erfindungen; zulaessige didaktische Vereinfachungen."),
+            Rubric(score_range=(7, 10), expected_outcome="Durchgehend korrekt und ohne Erfindungen; zulaessige Vereinfachungen."),
         ],
     )
-    transfer = geval(
+
+    # Prinzip: wichtige Lernpunkte (need-to-know) betonen; Verstaendnis statt Reproduktion. (Kost & Chen 2015)
+    verstaendnis_transfer = geval(
         "[GEval] Verständnisförderung / Transfer",
         [
-            "Pruefe, ob der Tutor echtes Verstaendnis foerdert und nicht nur das Reproduzieren von Formeln/Begriffen.",
-            "Belohne Impulse, die Transfer verlangen: Begruendung des 'Warum', Anwendung auf veraenderte Bedingungen (andere Eingangsspannung/Last).",
+            "Pruefe, ob der Tutor die wichtigen Lernpunkte (need-to-know) betont und echtes Verstaendnis foerdert, statt blosse Reproduktion abzufragen.",
+            "Belohne Impulse, die Transfer verlangen: Begruendung des 'Warum', Anwendung auf veraenderte Bedingungen.",
             "Bestrafe reines Abfragen auswendig gelernter Antworten ohne Konzeptbezug.",
         ],
         [
-            Rubric(score_range=(0, 2), expected_outcome="Nur Reproduktion von Fakten/Formeln, kein Konzept- oder Transferbezug."),
+            Rubric(score_range=(0, 2), expected_outcome="Nur Reproduktion; keine Betonung der wichtigen Lernpunkte, kein Transferbezug."),
             Rubric(score_range=(3, 6), expected_outcome="Teils verstaendnisorientiert, aber ueberwiegend Reproduktion."),
-            Rubric(score_range=(7, 10), expected_outcome="Foerdert durchgehend Verstaendnis und Transfer (Begruendungen, Anwendung auf neue Situationen)."),
+            Rubric(score_range=(7, 10), expected_outcome="Betont Kernpunkte und foerdert Verstaendnis/Transfer (Begruendung, Anwendung)."),
         ],
     )
-    respekt = geval(
+
+    # Prinzip: Ziel ist Lehren, nicht Bloszstellen; keine Beschaemung/Herabwuerdigung. (Kost & Chen 2015)
+    respektvolle_kommunikation = geval(
         "[GEval] Respektvolle Kommunikation",
         [
-            "Pruefe auf respektvollen, geduldigen und ermutigenden Ton.",
+            "Pruefe, ob der Umgang respektvoll, geduldig und ermutigend ist -- das Ziel ist Lehren, nicht Bloszstellen.",
             "Bestrafe Herabwuerdigung, Beschaemung, Ungeduld und paternalistische Formulierungen.",
-            "Belohne, wenn Fehler des Studenten konstruktiv und wertschaetzend behandelt werden.",
+            "Belohne, wenn Fehler der studierenden Person konstruktiv und wertschaetzend behandelt werden.",
         ],
         [
             Rubric(score_range=(0, 2), expected_outcome="Herabwuerdigend, beschaemend, ungeduldig oder paternalistisch."),
             Rubric(score_range=(3, 6), expected_outcome="Ueberwiegend respektvoll, aber gelegentlich belehrend oder unausgewogen."),
-            Rubric(score_range=(7, 10), expected_outcome="Durchgehend respektvoll, geduldig, ermutigend; Fehler werden konstruktiv behandelt."),
+            Rubric(score_range=(7, 10), expected_outcome="Durchgehend respektvoll, geduldig, ermutigend; Fehler konstruktiv behandelt."),
         ],
     )
 
     role_adherence = RoleAdherenceMetric(threshold=THRESHOLD, model=judge_llm, async_mode=async_mode)
 
     return [
-        keine_loesung, gegenfragen, schrittweise, niveau,
-        korrektheit, transfer, respekt,
-        role_adherence,   # nativer Sokratik-Gegencheck (nutzt chatbot_role)
+        loesung_nicht_verraten, sokratische_rueckfragen, schrittweise_progression,
+        niveau_anpassung, fachliche_korrektheit, verstaendnis_transfer,
+        respektvolle_kommunikation, role_adherence,
     ]

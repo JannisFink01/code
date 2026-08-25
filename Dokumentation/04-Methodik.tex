@@ -25,9 +25,9 @@ angemessen beurteilen \cite{QUELLE_SOKRATIK}.
 
 Zur klaren Trennung der Forschungsfragen wurden zwei separate Evaluationslinien
 umgesetzt. In der ersten Linie (RQ1) wird bei konstant gehaltener RAG\-Konfiguration
-der System\-Prompt variiert; bewertet wird die \emph{sokratische Qualität} des
+der System\-Prompt variiert. Bewertet wird die \emph{sokratische Qualität} des
 Gesprächsverlaufs. In der zweiten Linie (RQ2) wird bei konstant gehaltenem Prompt die
-RAG\-Konfiguration variiert; bewertet wird die \emph{Retrieval\-Qualität}. Durch die
+RAG\-Konfiguration variiert und die \emph{Retrieval\-Qualität} bewertet. Durch die
 Beschränkung auf jeweils einen variierten Faktor je Linie können die beobachteten
 Effekte den Prompts bzw. den Konfigurationen zugeordnet werden.
 
@@ -39,51 +39,103 @@ RAG\-Pipeline, die einen Qdrant\-Vektorspeicher, ein Cross\-Encoder\-Reranking s
 Moodle\-Metadaten anbindet. Als generierendes Sprachmodell nutzt die Pipeline intern
 das Modell \texttt{gemma\-4\-26B}. Der fachliche Wissenskorpus liegt in zwei
 Qdrant\-Collections vor, die Vorlesungs\- bzw. Labormaterial des Fachgebiets
-[PLATZHALTER: Fachgebiet/Themen konkretisieren] enthalten.
+Elektronik der Hochschule enthalten.
 
 Die Datengrundlage der Evaluation bilden nicht vorab gesammelte Dialoge, sondern
-\emph{synthetisch erzeugte} Gespräche. Grundlage jedes Gesprächs ist ein Testszenario,
+synthetisch erzeugte Gespräche. Grundlage jedes Gesprächs ist ein Testszenario,
 das sich aus der Kombination von Themengebiet, Kompetenzniveau der studierenden Person
 (Anfänger bzw. Fortgeschritten) und einem charakteristischen Studierenden\-Verhalten
 (etwa kooperativ, die Lösung einfordernd oder inhaltlich selbstsicher\-fehlerhaft)
-zusammensetzt. Insgesamt ergeben sich daraus [PLATZHALTER: Anzahl] Szenarien je
-Auswertungslinie. Jedes Szenario wird als \emph{Golden} modelliert, das die
+zusammensetzt. Insgesamt ergeben sich daraus 24 Szenarien je Auswertungslinie. Jedes Szenario wird als \emph{Golden} modelliert, das die
 Ausgangssituation, eine Beschreibung der zu simulierenden Persona sowie eine feste
 Initialfrage enthält. Die Initialfrage wird bewusst wortgleich vorgegeben und nicht
 generiert, um über alle Prompts und Konfigurationen hinweg denselben Gesprächseinstieg
 und damit die Vergleichbarkeit der Läufe sicherzustellen; die daran anschließenden
 Folgefragen werden hingegen dynamisch simuliert.
 
+% =========================================================
+% TABELLE 1 · Szenario-Dimensionen
+% =========================================================
+\begin{table}[htbp]
+  \centering
+  \caption{Dimensionen der Testszenarien. Die Kombination aus Themengebiet,
+  Kompetenzniveau und Studierenden-Verhalten ergibt die simulierten Gespr\"ache.}
+  \label{tab:szenario-dimensionen}
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Dimension} & \textbf{Auspr\"agungen} \\
+    \midrule
+    Themengebiet & Sperrspannung/Durchbruch der Z-Diode; \\
+                 & Spannungsstabilisierung mit Z-Diode; \\
+                 & Ohmsches Gesetz und Maschenregel \\
+    \addlinespace
+    Kompetenzniveau & Anf\"anger, Fortgeschritten \\
+    \addlinespace
+    Studierenden-Verhalten & kooperativ; gibt schnell auf; \\
+                           & fordert die L\"osung ein; \\
+                           & \"au{\ss}ert eine Vermutung; \\
+                           & selbstsicher, aber inhaltlich falsch \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+ 
 \subsection{Evaluationsarchitektur}
 \label{subsec:architektur}
 
 Da der Untersuchungsgegenstand ein Dialog ist, sind neben dem zu bewertenden System zwei
 weitere Rollen erforderlich. Die Architektur umfasst somit drei klar getrennte Modelle.
-Der \emph{Tutor} ist die RAG\-Pipeline (\texttt{gemma\-4\-26B}) und beantwortet jeden
-Gesprächszug. Der \emph{Studenten\-Simulator} übernimmt die Rolle der studierenden
+Der Tutor ist die RAG\-Pipeline {gemma\-4\-26B} und beantwortet jeden
+Gesprächszug. Der Studenten\-Simulator übernimmt die Rolle der studierenden
 Person und erzeugt auf Basis von Szenario, Persona und der jeweils vorangegangenen
-Tutor\-Antwort die Folgefragen; ohne diese Rolle entstünde kein Dialog, sondern
+Tutor\-Antwort die Folgefragen. Ohne diese Rolle entstünde kein Dialog, sondern
 lediglich ein einzelnes Frage\-Antwort\-Paar. Als Simulator wird das Modell
 \texttt{gpt\-4o\-mini} eingesetzt, das auf dem verwendeten Endpunkt einen Alias für
 \texttt{gemma\-4\-26B} darstellt und somit auf demselben Basismodell wie die
-RAG\-Pipeline beruht. Der \emph{Judge} bewertet den fertigen Dialog; hierfür wird mit
-\texttt{gpt\-4.1} bewusst ein vom System under Test verschiedenes Modell gewählt, um
+RAG\-Pipeline beruht. Der Judge bewertet den fertigen Dialog. Hierfür wird mit
+gpt\-4.1 bewusst ein vom System under Test verschiedenes Modell gewählt, um
 einen Selbstbewertungs\-Bias zu vermeiden, bei dem ein Modell anteilig seine eigenen
-Ausgaben bewertet \cite{QUELLE_LLM_JUDGE}. Simulator und Judge laufen auf getrennten
-Endpunkten, was zugleich die kostengünstige lokale Simulation von der
-kostenpflichtigen Judge\-Bewertung entkoppelt.
-
+Ausgaben bewertet \cite{QUELLE_LLM_JUDGE}. Simulator und Judge laufen auf getrennten Endpunkten.
+% =========================================================
+% ABBILDUNG · Ablauf der Dialog-Simulation
+% =========================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=10mm and 14mm,
+    box/.style={draw, rounded corners, align=center, minimum height=10mm,
+                inner sep=4pt, font=\small},
+    lbl/.style={font=\scriptsize},
+    >={Stealth[]}
+  ]
+    \node[box] (golden) {Golden\\(Szenario + feste\\Initialfrage)};
+    \node[box, right=of golden] (sim) {ConversationSimulator\\\emph{Studenten-Simulator}};
+    \node[box, right=of sim] (rag) {RAG-Tutor\\(System under Test)};
+    \node[box, below=14mm of sim] (tc) {ConversationalTestCase\\(Multi-Turn-Dialog)};
+    \node[box, right=of tc] (judge) {Judge\\(Bewertung)};
+ 
+    \draw[->] (golden) -- (sim);
+    \draw[->] ([yshift=2mm]sim.east) -- node[lbl, above]{Frage} ([yshift=2mm]rag.west);
+    \draw[->] ([yshift=-2mm]rag.west) -- node[lbl, below]{Antwort} ([yshift=-2mm]sim.east);
+    \draw[->] (sim) -- (tc);
+    \draw[->] (tc) -- (judge);
+  \end{tikzpicture}
+  \caption{Ablauf der Dialog-Simulation: Aus einem Golden erzeugt der
+  ConversationSimulator (in der Rolle der studierenden Person) fortlaufend
+  Fragen an den RAG-Tutor; der resultierende Multi-Turn-Dialog wird anschlie{\ss}end
+  vom Judge bewertet.}
+  \label{fig:simulationsablauf}
+\end{figure}
 \subsection{Verwendete Methoden und Werkzeuge}
 \label{subsec:methoden}
 
 Die technische Umsetzung erfolgt in Python unter Verwendung des
-Evaluations\-Frameworks DeepEval \cite{QUELLE_DEEPEVAL}. Die Multi\-Turn\-Gespräche
-werden mit dem \texttt{ConversationSimulator} des Frameworks erzeugt: Ausgehend von der
+Evaluations\-Frameworks DeepEval. Die Multi\-Turn\-Gespräche
+werden mit dem ConversationSimulator des Frameworks erzeugt. Ausgehend von der
 festen Initialfrage generiert der Simulator über eine festgelegte Anzahl von Runden
 fortlaufend Studierenden\-Nachrichten, die über eine Callback\-Schnittstelle an die
-RAG\-Pipeline gesendet werden; deren Antwort bildet jeweils den nächsten
+RAG\-Pipeline gesendet werden. Die Antwort bildet jeweils den nächsten
 Assistant\-Turn. Die Zuordnung von Antworten zu Metriken erfolgt anschließend über
-\texttt{ConversationalTestCase}\-Objekte des Frameworks.
+ConversationalTestCase\-Objekte des Frameworks.
 
 Für die kontextbezogenen Metriken wird der tatsächlich abgerufene Retrieval\-Kontext
 benötigt. Dieser wird über den Verbose\-Modus der RAG\-Pipeline gewonnen, der bei
@@ -105,7 +157,7 @@ Die Bewertung ist entlang der beiden Forschungsfragen unterschiedlich ausgestalt
 
 Sokratisches Tutoring ist ein didaktik\-spezifisches Konstrukt, für das im verwendeten
 Framework keine vorgefertigten Metriken existieren. Es wird daher über eigene, mittels
-G\-Eval \cite{QUELLE_GEVAL} operationalisierte Kriterien bewertet, die jeweils über
+G\-Eval operationalisierte Kriterien bewertet, die jeweils über
 explizite Bewertungsschritte und eine dreistufige Bewertungsskala (Rubric) verankert
 sind. Verwendet werden die Kriterien \emph{Lösung nicht verraten}, \emph{Sokratische
 Rückfragen}, \emph{Schrittweise Lernprogression}, \emph{Niveau\-Anpassung},
@@ -120,7 +172,101 @@ verfehlen. Dies betrifft insbesondere eine Metrik zur direkten Zielerreichung, d
 unmittelbare Beantwortung der Fachfrage bewertet und damit dem Prinzip, die Lösung
 gerade nicht vorwegzunehmen, entgegensteht, sowie eine generische Turn\-Relevanz\-Metrik,
 die legitimes sokratisches Umlenken als weniger relevant einstufen kann.
+% Benötigte Pakete (Praeambel):
+% \usepackage{booktabs}
+% \usepackage{longtable}
+% \usepackage{multirow}
+% \usepackage{array}
 
+% =========================================================
+% TABELLE 1 · Uebersicht der RQ1-Bewertungskriterien
+% =========================================================
+\begin{table}[htbp]
+  \centering
+  \caption{Bewertungskriterien der sokratischen Qualit\"at (RQ1). Sechs Kriterien werden
+  als eigene ConversationalGEval-Metriken operationalisiert; die Rollentreue
+  (RoleAdherence) wird als native Metrik erg\"anzend als Gegenpr\"ufung herangezogen.}
+  \label{tab:rq1-kriterien}
+  \small
+  \begin{tabular}{p{4.2cm}p{8.5cm}}
+    \toprule
+    \textbf{Kriterium} & \textbf{Gemessenes Konstrukt} \\
+    \midrule
+    L\"osung nicht verraten          & Gibt weder Endergebnis noch Best\"atigung einer Vermutung preis; l\"asst dem Studierenden eigene Denkarbeit. \\
+    \addlinespace
+    Sokratische R\"uckfragen         & F\"uhrt mit offenen Fragen statt zu dozieren; keine suggestiven oder rein bin\"aren Fragen. \\
+    \addlinespace
+    Schrittweise Lernprogression     & Zerlegt in kleine, aufeinander aufbauende Schritte mit nachvollziehbarer kognitiver Progression. \\
+    \addlinespace
+    Niveau-Anpassung                 & Passt sprachliches und kognitives Niveau an die studierende Person an. \\
+    \addlinespace
+    Fachliche Korrektheit            & Verwendet real korrekte Fachinhalte; keine erfundenen Formeln, Werte oder Bauteile. \\
+    \addlinespace
+    Verst\"andnisf\"orderung / Transfer & F\"ordert Verst\"andnis statt Reproduktion; verlangt Begr\"undung und Anwendung auf neue Situationen. \\
+    \addlinespace
+    Respektvolle Kommunikation       & Respektvoller, geduldiger, ermutigender Umgang; keine Herabw\"urdigung. \\
+    \midrule
+    RoleAdherence (nativ)            & Gegenpr\"ufung der Treue zur sokratischen Rollendefinition. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% =========================================================
+% TABELLE 2 · Rubrics (Score-Baender) je Kriterium
+% =========================================================
+\begin{longtable}{p{3.6cm}p{1.4cm}p{7.6cm}}
+  \caption{Verankerung der Bewertung (Rubrics) je Kriterium. Die Skala 0--10 wird vom
+  Judge-Modell angewendet und auf den Bereich 0--1 normiert; die Schwelle f\"ur ein
+  bestandenes Kriterium liegt bei 0{,}7.}
+  \label{tab:rq1-rubrics}\\
+  \toprule
+  \textbf{Kriterium} & \textbf{Band} & \textbf{Auspr\"agung} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Kriterium} & \textbf{Band} & \textbf{Auspr\"agung} \\
+  \midrule
+  \endhead
+  \midrule \multicolumn{3}{r}{\emph{Fortsetzung n\"achste Seite}} \\
+  \endfoot
+  \bottomrule
+  \endlastfoot
+
+  \multirow{3}{3.6cm}{L\"osung nicht verraten}
+    & 0--2  & L\"osung/Endergebnis genannt oder zentrale Schlussfolgerung faktisch vorgegeben. \\
+    & 3--6  & Nicht explizit, aber durch stark f\"uhrende/suggestive Fragen bleibt kaum Denkarbeit. \\
+    & 7--10 & An keiner Stelle vorweggenommen; substanzielle eigene Denkarbeit bleibt. \\
+  \midrule
+  \multirow{3}{3.6cm}{Sokratische R\"uckfragen}
+    & 0--2  & Doziert oder \"uberwiegend suggestive/geschlossene Fragen, die die Antwort vorgeben. \\
+    & 3--6  & Stellt Fragen, aber teils suggestiv/bin\"ar oder ohne Bezug zur letzten Aussage. \\
+    & 7--10 & Durchgehend offene, anschlussf\"ahige Fragen, die den n\"achsten Denkschritt er\"offnen. \\
+  \midrule
+  \multirow{3}{3.6cm}{Schrittweise Lernprogression}
+    & 0--2  & Spr\"unge \"uber mehrere Konzepte, keine tragf\"ahige Progression. \\
+    & 3--6  & Teils schrittweise, aber mit L\"ucken oder unmotivierten Spr\"ungen. \\
+    & 7--10 & Klare, aufeinander aufbauende kognitive Progression mit moderater Steigerung. \\
+  \midrule
+  \multirow{3}{3.6cm}{Niveau-Anpassung}
+    & 0--2  & Durchgehend unpassend: zu viel Fachsprache oder nicht weiterf\"uhrend simpel. \\
+    & 3--6  & Teilweise passend, aber inkonsistent im sprachlichen/kognitiven Niveau. \\
+    & 7--10 & Durchgehend passend; reagiert auf Verwirrung mit weiterf\"uhrenden Erkl\"arungen. \\
+  \midrule
+  \multirow{3}{3.6cm}{Fachliche Korrektheit}
+    & 0--2  & Fachlich falsche Aussagen oder erfundene Bauteile/Werte. \\
+    & 3--6  & \"Uberwiegend korrekt, aber einzelne Ungenauigkeiten oder unbelegte Zus\"atze. \\
+    & 7--10 & Durchgehend korrekt und ohne Erfindungen; zul\"assige didaktische Vereinfachungen. \\
+  \midrule
+  \multirow{3}{3.6cm}{Verst\"andnis\-f\"orderung / Transfer}
+    & 0--2  & Nur Reproduktion von Fakten/Formeln, kein Konzept- oder Transferbezug. \\
+    & 3--6  & Teils verst\"andnisorientiert, aber \"uberwiegend Reproduktion. \\
+    & 7--10 & F\"ordert durchgehend Verst\"andnis und Transfer (Begr\"undung, Anwendung). \\
+  \midrule
+  \multirow{3}{3.6cm}{Respektvolle Kommunikation}
+    & 0--2  & Herabw\"urdigend, besch\"amend, ungeduldig oder paternalistisch. \\
+    & 3--6  & \"Uberwiegend respektvoll, aber gelegentlich belehrend oder unausgewogen. \\
+    & 7--10 & Durchgehend respektvoll, geduldig, ermutigend; Fehler konstruktiv behandelt. \\
+\end{longtable}
 \subsubsection{Retrieval\-Qualität (RQ2)}
 
 Für den Vergleich der RAG\-Konfigurationen werden die nativen Metriken
@@ -128,7 +274,62 @@ Für den Vergleich der RAG\-Konfigurationen werden die nativen Metriken
 \emph{TurnFaithfulness} (Deckung der Antwort durch den abgerufenen Kontext) verwendet.
 Beide beziehen den zuvor extrahierten Retrieval\-Kontext ein und eignen sich damit zur
 Unterscheidung von Retrieval\-Konfigurationen.
+% Benötigte Pakete (Praeambel):
+% \usepackage{booktabs}
+% \usepackage{array}
 
+% =========================================================
+% TABELLE 1 · RQ2-Bewertungskriterien (Retrieval-Qualitaet)
+% =========================================================
+\begin{table}[htbp]
+  \centering
+  \caption{Bewertungskriterien der Retrieval-Qualit\"at (RQ2). Die beiden Metriken sind
+  native DeepEval-Metriken und beziehen den tats\"achlich abgerufenen
+  \texttt{retrieval\_context} ein; die Abdeckung und die effektive Retrieval-G\"ute
+  werden daraus abgeleitet.}
+  \label{tab:rq2-kriterien}
+  \small
+  \begin{tabular}{p{4.0cm}p{2.0cm}p{7.0cm}}
+    \toprule
+    \textbf{Kennzahl} & \textbf{Herkunft} & \textbf{Gemessenes Konstrukt} \\
+    \midrule
+    TurnContextualRelevancy & nativ & Passung des abgerufenen Kontexts zur jeweiligen Frage. \\
+    \addlinespace
+    TurnFaithfulness        & nativ & Deckung der Antwort durch den abgerufenen Kontext (Grounding). \\
+    \addlinespace
+    Retrieval-Abdeckung     & abgeleitet & Anteil der Antworten mit tats\"achlich abgerufenem Kontext (aus den Konversationsdaten). \\
+    \addlinespace
+    Effektive Retrieval-G\"ute & abgeleitet & Produkt aus Abdeckung und Kontext-Relevanz; ber\"ucksichtigt, wie oft \emph{und} wie gut Kontext abgerufen wird. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% =========================================================
+% TABELLE 2 · Untersuchte RAG-Konfigurationen (Testmatrix RQ2)
+% =========================================================
+\begin{table}[htbp]
+  \centering
+  \caption{Untersuchte RAG-Konfigurationen (RQ2). Variiert werden die einbezogenen
+  Collections, der Retrieval-Modus und der Einsatz des Cross-Encoder-Rerankings; eine
+  reine LLM-Konfiguration ohne Retrieval dient als Referenz.}
+  \label{tab:rq2-konfigurationen}
+  \small
+  \begin{tabular}{lp{4.2cm}p{2.6cm}c}
+    \toprule
+    \textbf{Konfiguration} & \textbf{Collections} & \textbf{Retrieval} & \textbf{Rerank} \\
+    \midrule
+    llm\_only                 & --                       & --            & Nein \\
+    labor\_dense              & Labor                    & dense         & Nein \\
+    vorlesung\_dense          & Vorlesung                & dense         & Nein \\
+    beide\_dense              & Labor, Vorlesung         & dense         & Nein \\
+    beide\_sparse             & Labor, Vorlesung         & sparse        & Nein \\
+    beide\_hybrid             & Labor, Vorlesung         & dense, sparse & Nein \\
+    beide\_hybrid\_rerank     & Labor, Vorlesung         & dense, sparse & Ja \\
+    labor\_hybrid\_rerank     & Labor                    & dense, sparse & Ja \\
+    vorlesung\_hybrid\_rerank & Vorlesung                & dense, sparse & Ja \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 \subsubsection{Aggregation und Gate\-Logik}
 
 Zur Beantwortung von RQ1 wird aus den G\-Eval\-Kriterien je Gespräch ein gewichteter
