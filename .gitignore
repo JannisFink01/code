@@ -9,3 +9,5 @@ persistence/
 persistence/konversationen/
 scripts/*.json
 logs/
+visualization/eval*.csv
+visualization/rq2*.csv
