@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {1.4}Verwendete Methoden und Werkzeuge}{4}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Bewertungskriterien}{5}{subsection.1.5}%
 \contentsline {subsubsection}{\numberline {1.5.1}Sokratische Qualität (RQ1)}{5}{subsubsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {1.5.2}Retrieval\-Qualität (RQ2)}{8}{subsubsection.1.5.2}%
-\contentsline {subsubsection}{\numberline {1.5.3}Aggregation und Gate\-Logik}{8}{subsubsection.1.5.3}%
-\contentsline {subsection}{\numberline {1.6}Durchführung}{8}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Gütekriterien und methodische Einschränkungen}{10}{subsection.1.7}%
+\contentsline {subsubsection}{\numberline {1.5.2}Retrieval\-Qualität (RQ2)}{5}{subsubsection.1.5.2}%
+\contentsline {subsubsection}{\numberline {1.5.3}Aggregation und Gate\-Logik}{6}{subsubsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.6}Durchführung}{7}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Gütekriterien und methodische Einschränkungen}{7}{subsection.1.7}%

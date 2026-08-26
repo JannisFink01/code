@@ -172,12 +172,8 @@ verfehlen. Dies betrifft insbesondere eine Metrik zur direkten Zielerreichung, d
 unmittelbare Beantwortung der Fachfrage bewertet und damit dem Prinzip, die Lösung
 gerade nicht vorwegzunehmen, entgegensteht, sowie eine generische Turn\-Relevanz\-Metrik,
 die legitimes sokratisches Umlenken als weniger relevant einstufen kann.
-% Benötigte Pakete (Praeambel):
-% \usepackage{booktabs}
-% \usepackage{longtable}
-% \usepackage{multirow}
-% \usepackage{array}
 
+Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Grad der didaktischen Steuerung unterscheiden. Der ausführliche sokratische System-Prompt (\texttt{system_prompt}) spezifiziert die Gesprächsregeln explizit nach dem Framework der univer. Der minimalistisch-sokratische Prompt (\texttt{minimaler_sokrat}) enthält nur die Kernanweisung, ohne die Regeln auszuformulieren. eine Variante ohne steuernden Prompt (\texttt{no_Prompt}) dient als Referenz ohne sokratische Vorgabe. die Standard-Variante (\texttt{stock_prompt}) [PLATZHALTER: kurz charakterisieren -- z.,B. generischer Tutor-Prompt ohne sokratische Ausrichtung]. Die Varianten spannen damit ein Kontinuum von detaillierter "uber minimale bis hin zu keiner sokratischen Instruktion auf, wodurch sich der Einfluss des Prompting auf die sokratische Qualit"at isolieren l"asst. Der vollst"andige Wortlaut findet sich in Anhang~\ref{app:prompts}.
 % =========================================================
 % TABELLE 1 · Uebersicht der RQ1-Bewertungskriterien
 % =========================================================
@@ -211,62 +207,6 @@ die legitimes sokratisches Umlenken als weniger relevant einstufen kann.
   \end{tabular}
 \end{table}
 
-% =========================================================
-% TABELLE 2 · Rubrics (Score-Baender) je Kriterium
-% =========================================================
-\begin{longtable}{p{3.6cm}p{1.4cm}p{7.6cm}}
-  \caption{Verankerung der Bewertung (Rubrics) je Kriterium. Die Skala 0--10 wird vom
-  Judge-Modell angewendet und auf den Bereich 0--1 normiert; die Schwelle f\"ur ein
-  bestandenes Kriterium liegt bei 0{,}7.}
-  \label{tab:rq1-rubrics}\\
-  \toprule
-  \textbf{Kriterium} & \textbf{Band} & \textbf{Auspr\"agung} \\
-  \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Kriterium} & \textbf{Band} & \textbf{Auspr\"agung} \\
-  \midrule
-  \endhead
-  \midrule \multicolumn{3}{r}{\emph{Fortsetzung n\"achste Seite}} \\
-  \endfoot
-  \bottomrule
-  \endlastfoot
-
-  \multirow{3}{3.6cm}{L\"osung nicht verraten}
-    & 0--2  & L\"osung/Endergebnis genannt oder zentrale Schlussfolgerung faktisch vorgegeben. \\
-    & 3--6  & Nicht explizit, aber durch stark f\"uhrende/suggestive Fragen bleibt kaum Denkarbeit. \\
-    & 7--10 & An keiner Stelle vorweggenommen; substanzielle eigene Denkarbeit bleibt. \\
-  \midrule
-  \multirow{3}{3.6cm}{Sokratische R\"uckfragen}
-    & 0--2  & Doziert oder \"uberwiegend suggestive/geschlossene Fragen, die die Antwort vorgeben. \\
-    & 3--6  & Stellt Fragen, aber teils suggestiv/bin\"ar oder ohne Bezug zur letzten Aussage. \\
-    & 7--10 & Durchgehend offene, anschlussf\"ahige Fragen, die den n\"achsten Denkschritt er\"offnen. \\
-  \midrule
-  \multirow{3}{3.6cm}{Schrittweise Lernprogression}
-    & 0--2  & Spr\"unge \"uber mehrere Konzepte, keine tragf\"ahige Progression. \\
-    & 3--6  & Teils schrittweise, aber mit L\"ucken oder unmotivierten Spr\"ungen. \\
-    & 7--10 & Klare, aufeinander aufbauende kognitive Progression mit moderater Steigerung. \\
-  \midrule
-  \multirow{3}{3.6cm}{Niveau-Anpassung}
-    & 0--2  & Durchgehend unpassend: zu viel Fachsprache oder nicht weiterf\"uhrend simpel. \\
-    & 3--6  & Teilweise passend, aber inkonsistent im sprachlichen/kognitiven Niveau. \\
-    & 7--10 & Durchgehend passend; reagiert auf Verwirrung mit weiterf\"uhrenden Erkl\"arungen. \\
-  \midrule
-  \multirow{3}{3.6cm}{Fachliche Korrektheit}
-    & 0--2  & Fachlich falsche Aussagen oder erfundene Bauteile/Werte. \\
-    & 3--6  & \"Uberwiegend korrekt, aber einzelne Ungenauigkeiten oder unbelegte Zus\"atze. \\
-    & 7--10 & Durchgehend korrekt und ohne Erfindungen; zul\"assige didaktische Vereinfachungen. \\
-  \midrule
-  \multirow{3}{3.6cm}{Verst\"andnis\-f\"orderung / Transfer}
-    & 0--2  & Nur Reproduktion von Fakten/Formeln, kein Konzept- oder Transferbezug. \\
-    & 3--6  & Teils verst\"andnisorientiert, aber \"uberwiegend Reproduktion. \\
-    & 7--10 & F\"ordert durchgehend Verst\"andnis und Transfer (Begr\"undung, Anwendung). \\
-  \midrule
-  \multirow{3}{3.6cm}{Respektvolle Kommunikation}
-    & 0--2  & Herabw\"urdigend, besch\"amend, ungeduldig oder paternalistisch. \\
-    & 3--6  & \"Uberwiegend respektvoll, aber gelegentlich belehrend oder unausgewogen. \\
-    & 7--10 & Durchgehend respektvoll, geduldig, ermutigend; Fehler konstruktiv behandelt. \\
-\end{longtable}
 \subsubsection{Retrieval\-Qualität (RQ2)}
 
 Für den Vergleich der RAG\-Konfigurationen werden die nativen Metriken

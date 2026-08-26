@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  24 AUG 2026 20:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  25 AUG 2026 11:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -754,7 +754,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count464
 \@quotereset=\count465
-(main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit.aux))
+(main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
@@ -844,25 +844,18 @@ Package biblatex Info: ... file 'main.bbl' found.
 Package biblatex Info: Reference section=0 on input line 125.
 Package biblatex Info: Reference segment=0 on input line 125.
 Package hyperref Info: Link coloring OFF on input line 125.
- (main.out) (main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
 Package babel Info: Main language set to 'english'.
  [1
 
-{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
-)
+{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+No file main.toc.
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- [2]
+[2]
 \openout2 = `01-Einleitung.aux'.
 
  (01-Einleitung.tex)
@@ -895,6 +888,13 @@ Overfull \hbox (8.09535pt too wide) in paragraph at lines 37--43
 
 
 ]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 64.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 64.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 64.
+
 
 LaTeX Warning: Citation 'QUELLE_LLM_JUDGE' on page 4 undefined on input line 97.
 
@@ -908,80 +908,400 @@ Overfull \hbox (10.87823pt too wide) in paragraph at lines 131--139
 \T1/cmr/m/n/12 fest-gelegte An-zahl von Run-den fort-laufend Studierenden-Nachrichten, die über eine Callback-
  []
 
-[4] [5]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 191.
+[4]
+04-Methodik.tex:157: Missing $ inserted.
+<inserted text> 
+                $
+l.157 ...che System-Prompt (\texttt{system_prompt}
+                                                  ) spezifiziert die GesprÃ¤...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
+04-Methodik.tex:157: Extra }, or forgotten $.
+<recently read> \egroup 
+                        
+l.157 ...che System-Prompt (\texttt{system_prompt}
+                                                  ) spezifiziert die GesprÃ¤...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 157.
+
+04-Methodik.tex:157: Missing $ inserted.
+<inserted text> 
+                $
+l.157 ...atische Prompt (\texttt{minimaler_sokrat}
+                                                  ) enthÃ¤lt nur die Kernanw...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\mbox  #1->\leavevmode \hbox {#1}
+                                 
+l.157 ...atische Prompt (\texttt{minimaler_sokrat}
+                                                  ) enthÃ¤lt nur die Kernanw...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\nfss@text #1->{\mbox {#1}}
+                           
+l.157 ...atische Prompt (\texttt{minimaler_sokrat}
+                                                  ) enthÃ¤lt nur die Kernanw...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 157.
+
+04-Methodik.tex:157: Missing $ inserted.
+<inserted text> 
+                $
+l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
+                                                  ) dient als Referenz ohne ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\mbox  #1->\leavevmode \hbox {#1}
+                                 
+l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
+                                                  ) dient als Referenz ohne ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\nfss@text #1->{\mbox {#1}}
+                           
+l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
+                                                  ) dient als Referenz ohne ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+04-Methodik.tex:157: Missing $ inserted.
+<inserted text> 
+                $
+l.157 ... Standard-Variante (\texttt{stock_prompt}
+                                                  ) [PLATZHALTER: kurz chara...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\mbox  #1->\leavevmode \hbox {#1}
+                                 
+l.157 ... Standard-Variante (\texttt{stock_prompt}
+                                                  ) [PLATZHALTER: kurz chara...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+04-Methodik.tex:157: Extra }, or forgotten $.
+\nfss@text #1->{\mbox {#1}}
+                           
+l.157 ... Standard-Variante (\texttt{stock_prompt}
+                                                  ) [PLATZHALTER: kurz chara...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+LaTeX Warning: Reference `app:prompts' on page 5 undefined on input line 157.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 158.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 159.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 160.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 165.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 166.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 168.
+
+04-Methodik.tex:169: Missing $ inserted.
+<inserted text> 
+                $
+l.169 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ä in font cmr12!
+Missing character: There is no ü in font cmr12!
+Missing character: There is no ü in font cmr12!
+
+04-Methodik.tex:179: LaTeX Error: Not in outer par mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.179 \begin{table}[htbp]
+                         
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+04-Methodik.tex:179: Undefined control sequence.
+\latex@xfloat ...vf \fi \global \setbox \@currbox 
+                                                  \color@vbox \normalcolor \...
+l.179 \begin{table}[htbp]
+                         
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+04-Methodik.tex:179: Missing number, treated as zero.
+<to be read again> 
+                   \vbox 
+l.179 \begin{table}[htbp]
+                         
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 186.
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--200
 []|\T1/cmr/m/n/10.95 Verständnisförderung /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\T1/cmr/m/n/10.95 Respektvolle Kom-mu-
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 236--237
-[]|\T1/cmr/m/n/12 Lösung/Endergebnis genannt oder zen-
+04-Methodik.tex:209: LaTeX Error: Not allowed in LR mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+You've lost some text.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+04-Methodik.tex:209: Improper \prevdepth.
+\addpenalty ...ance \@tempskipb \ifdim \prevdepth 
+                                                  >\maxdepth \maxdepth \else...
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+You can refer to \spacefactor only in horizontal mode;
+you can refer to \prevdepth only in vertical mode; and
+neither of these is meaningful inside \write. So
+I'm forgetting what you said and using zero instead.
+
+04-Methodik.tex:209: Improper \prevdepth.
+\addpenalty ... \maxdepth \else \ifdim \prevdepth 
+                                                  = -\@m \p@ \z@ \else \prev...
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+You can refer to \spacefactor only in horizontal mode;
+you can refer to \prevdepth only in vertical mode; and
+neither of these is meaningful inside \write. So
+I'm forgetting what you said and using zero instead.
+
+04-Methodik.tex:209: Improper \prevdepth.
+<recently read> \prevdepth 
+                           
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+You can refer to \spacefactor only in horizontal mode;
+you can refer to \prevdepth only in vertical mode; and
+neither of these is meaningful inside \write. So
+I'm forgetting what you said and using zero instead.
+
+04-Methodik.tex:209: Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+04-Methodik.tex:209: Missing $ inserted.
+<inserted text> 
+                $
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+04-Methodik.tex:209: Missing $ inserted.
+<inserted text> 
+                $
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no ä in font cmr12!
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+04-Methodik.tex:209: Missing $ inserted.
+<inserted text> 
+                $
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no ä in font cmr12!
+
+Overfull \hbox (9831.86382pt too wide) in paragraph at lines 157--209
+\T1/cmr/m/n/12 (\T1/cmtt/m/n/12 system$[]\OML/cmm/m/it/12 rompt\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 spezifiziertdieGesprchsregelnexplizit\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 derminimalesokratischePrompt\OT1/cmr/m/n/12 ([]$ 
  []
 
+04-Methodik.tex:209: Missing } inserted.
+<inserted text> 
+                }
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
-[]|\T1/cmr/m/n/12 Nicht ex-plizit, aber durch stark
- []
+04-Methodik.tex:209: Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.209 \subsubsection
+                    {Retrieval\-QualitÃ¤t (RQ2)}
+Things are pretty mixed up, but I think the worst is over.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
-[]|\T1/cmr/m/n/12 Doziert oder über-wiegend sug-ges-
- []
-
-
-Underfull \hbox (badness 4254) in paragraph at lines 262--263
-[]|\T1/cmr/m/n/12 Teils ver-ständ-nisori-en-tiert, aber über-
- []
-
-
-Underfull \hbox (badness 4441) in paragraph at lines 263--264
-[]|\T1/cmr/m/n/12 Fördert durchge-hend Ver-ständ-nis und
- []
-
-
-Underfull \hbox (badness 1888) in paragraph at lines 268--269
-[]|\T1/cmr/m/n/12 Durchgehend re-spek-tvoll, geduldig, er-
- []
-
-[6] [7]
-Overfull \hbox (10.03793pt too wide) in paragraph at lines 296--296
+[5]
+Overfull \hbox (10.03793pt too wide) in paragraph at lines 235--235
 []|\T1/cmr/m/n/10.95 TurnContextualRelevancy| 
  []
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 296--297
+Underfull \hbox (badness 1028) in paragraph at lines 235--236
 []|\T1/cmr/m/n/10.95 Passung des abgerufe-nen Kon-texts zur
  []
 
 
-Underfull \hbox (badness 3219) in paragraph at lines 300--301
+Underfull \hbox (badness 3219) in paragraph at lines 239--240
 []|\T1/cmr/m/n/10.95 Anteil der Antworten mit tat-säch-lich
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 302--302
+Underfull \hbox (badness 10000) in paragraph at lines 241--241
 []|\T1/cmr/m/n/10.95 Effektive Retrieval-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 302--303
+Underfull \hbox (badness 1067) in paragraph at lines 241--242
 []|\T1/cmr/m/n/10.95 Produkt aus Ab-deck-ung und Kontext-
  []
 
-[8] [9])
-Overfull \hbox (5.77892pt too wide) in paragraph at lines 378--154
+[6])
+Overfull \hbox (5.77892pt too wide) in paragraph at lines 317--154
 \T1/cmr/m/n/12 nisse ver-schiedener Judge-Modelle sind nicht un-mit-tel-bar ver-gle-ich-bar. Die selbst definierten
  []
 
-[10]
+[7] [8]
 \openout2 = `05-Ergebnisse.aux'.
 
  (05-Ergebnisse.tex)
@@ -1004,8 +1324,17 @@ L3 programming layer <2026-06-18>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D9424B1035C406C128B9545FD3B5812F;2081.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D9424B1035C406C128B9545FD3B5812F;2081.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -1016,17 +1345,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30295 strings out of 467510
- 592068 string characters out of 5408308
- 1463106 words of memory out of 5000000
- 59017 multiletter control sequences out of 15000+600000
- 641553 words of font info for 66 fonts, out of 8000000 for 9000
+ 30252 strings out of 467510
+ 590734 string characters out of 5408308
+ 1437969 words of memory out of 5000000
+ 58998 multiletter control sequences out of 15000+600000
+ 641868 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,10n,107p,1261b,1864s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk>
-Output written on main.pdf (10 pages, 175441 bytes).
+ 102i,20n,107p,1261b,1834s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (8 pages, 223807 bytes).
 PDF statistics:
- 556 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 560 PDF objects out of 1000 (max. 8388607)
+ 25 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
