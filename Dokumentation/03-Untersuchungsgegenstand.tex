@@ -1,0 +1,265 @@
+\section{Untersuchungsgegenstand}
+\label{sec:untersuchungsgegenstand}
+
+\subsection{Die RAG-Pipeline}
+\label{subsec:rag_pipeline}
+
+Als Untersuchungsgegenstand dient eine Open-WebUI-kompatible RAG-Pipeline, die OpenAI-kompatible Chat-Completion-Anfragen verarbeitet und Qdrant als Vektordatenbank für das Retrieval verwendet. Die Pipeline unterstützt Dense, Sparse und Hybrid Retrieval sowie Reciprocal Rank Fusion (RRF) und optionales Cross-Encoder-Reranking. Darüber hinaus können Kontextinformationen aus Moodle in die Verarbeitung einbezogen werden.
+
+Der grundsätzliche Ablauf ist in Abbildung~\ref{fig:system_pipeline} dargestellt. Nach Eingang einer Nutzeranfrage werden zunächst die Request-Parameter und die aktuelle Frage bestimmt. Abhängig von der gewählten Retrieval-Konfiguration wird die Anfrage anschließend über Dense Retrieval, Sparse Retrieval oder eine Kombination beider Verfahren verarbeitet. Im hybriden Modus werden Dense- und Sparse-Repräsentationen parallel erzeugt. Die resultierenden Rankings werden mittels RRF zusammengeführt. Dabei wird, sofern verfügbar, die serverseitige Fusion durch Qdrant verwendet; andernfalls erfolgt die Fusion lokal innerhalb der Pipeline.
+
+Die resultierenden Kandidaten werden zusammengeführt und gegebenenfalls dedupliziert. Optional kann anschließend ein Cross-Encoder die Kandidaten erneut bewerten und neu sortieren. Nach dem Retrieval beziehungsweise Reranking werden ein Score-Threshold sowie ein finales Trefferlimit angewendet. Die verbleibenden Chunks bilden die Grundlage für den RAG-Kontext. Dabei begrenzt ein Kontextbudget die Menge der tatsächlich an das Sprachmodell übergebenen Inhalte, sodass nicht zwingend jeder finale Retrieval-Treffer Bestandteil des LLM-Kontexts ist.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0.7cm and 1.0cm,
+        box/.style={
+            draw,
+            rounded corners,
+            align=center,
+            minimum width=3.2cm,
+            minimum height=0.75cm
+        },
+        smallbox/.style={
+            draw,
+            rounded corners,
+            align=center,
+            minimum width=2.7cm,
+            minimum height=0.7cm
+        },
+        arrow/.style={
+            -{Latex[length=2mm]},
+            thick
+        },
+        optional/.style={
+            -{Latex[length=2mm]},
+            dashed
+        }
+    ]
+
+    % Eingang
+    \node[box] (client)
+        {Moodle / Open WebUI / API};
+
+    \node[box, below=of client] (pipeline)
+        {RAG-Pipeline\\Request-Verarbeitung};
+
+    % Retrieval
+    \node[smallbox, below left=of pipeline] (dense)
+        {Dense Embedding};
+
+    \node[smallbox, below right=of pipeline] (sparse)
+        {Sparse Embedding};
+
+    \node[box, below=1.3cm of pipeline] (qdrant)
+        {Qdrant\\Dense / Sparse / Hybrid Retrieval};
+
+    \node[box, below=of qdrant] (rrf)
+        {Reciprocal Rank Fusion\\bei Hybrid Retrieval};
+
+    \node[box, below=of rrf] (rerank)
+        {optionales Cross-Encoder-Reranking\\
+        \texttt{qwen3-reranker-8b}};
+
+    \node[box, below=of rerank] (context)
+        {Auswahl der Retrieval-Chunks\\und Aufbau des RAG-Kontexts};
+
+    % Promptbestandteile
+    \node[smallbox, below left=1.0cm and 1.5cm of context] (system)
+        {Systemprompt};
+
+    \node[smallbox, below=1.0cm of context] (moodle)
+        {Moodle-Kontext};
+
+    \node[smallbox, below right=1.0cm and 1.5cm of context] (rag)
+        {RAG-Kontext};
+
+    \node[box, below=1.5cm of moodle] (history)
+        {bereinigte Conversation History\\+ aktuelle Nutzerfrage};
+
+    \node[box, below=of history] (llm)
+        {Large Language Model\\\texttt{gemma-4-moe}};
+
+    \node[box, below=of llm] (answer)
+        {Tutorantwort};
+
+    % Verbose
+    \node[smallbox, right=1.4cm of answer] (verbose)
+        {optionales Verbose-JSON\\für Evaluation};
+
+    % Pfeile
+    \draw[arrow] (client) -- (pipeline);
+
+    \draw[arrow] (pipeline) -- (dense);
+    \draw[arrow] (pipeline) -- (sparse);
+
+    \draw[arrow] (dense) -- (qdrant);
+    \draw[arrow] (sparse) -- (qdrant);
+
+    \draw[arrow] (qdrant) -- (rrf);
+    \draw[arrow] (rrf) -- (rerank);
+    \draw[arrow] (rerank) -- (context);
+
+    \draw[arrow] (context) -- (system);
+    \draw[arrow] (context) -- (moodle);
+    \draw[arrow] (context) -- (rag);
+
+    \draw[arrow] (system) -- (history);
+    \draw[arrow] (moodle) -- (history);
+    \draw[arrow] (rag) -- (history);
+
+    \draw[arrow] (history) -- (llm);
+    \draw[arrow] (llm) -- (answer);
+
+    \draw[optional] (answer) -- (verbose);
+
+    \end{tikzpicture}
+
+    \caption{Architektur und Verarbeitungsschritte der untersuchten RAG-Pipeline in Version 1.7.0.}
+    \label{fig:system_pipeline}
+\end{figure}
+
+Für die Generierung wird der Prompt aus mehreren Bestandteilen zusammengesetzt. Im RAG-Pfad werden zunächst der aktive Systemprompt, anschließend ein optionaler Moodle-Kontext und der aus dem Retrieval erzeugte RAG-Kontext eingefügt. Darauf folgen die bereinigte bisherige Gesprächshistorie und die aktuelle Nutzerfrage. Die Pipeline ermöglicht damit, sowohl retrieved Informationen als auch den bisherigen Gesprächsverlauf bei der Generierung einer Tutorantwort zu berücksichtigen.
+
+Version 1.7.0 stellt zusätzlich einen Verbose-Modus für Non-Streaming-Anfragen bereit. Dieser gibt unter anderem Informationen über die Vektorisierung, die Retrieval- und Fusionsergebnisse, das Reranking, die tatsächlich an das LLM übergebenen Nachrichten sowie die rohe und finale Modellantwort strukturiert aus. Der Verbose-Modus greift dabei auf bereits während der regulären Verarbeitung erzeugte Daten zurück und führt keine zusätzlichen Retrieval-, Embedding-, Reranking- oder LLM-Aufrufe aus. Dadurch können die einzelnen Verarbeitungsschritte für die spätere Evaluation nachvollzogen werden. Die für die Untersuchung variierten Retrieval- und Reranking-Konfigurationen werden in Abschnitt~\ref{subsec:rag_konfigurationen} beschrieben.
+
+
+\subsection{Die Prompt-Varianten}
+\label{subsec:prompt_varianten}
+
+Zur Beantwortung von RQ1 werden vier Varianten des Systemprompts miteinander verglichen. Sie unterscheiden sich hinsichtlich des Umfangs der Instruktionen, der Strukturierung des sokratischen Dialogs und der Anpassung an den konkreten Einsatz im Elektrotechniklabor. Dadurch soll untersucht werden, welchen Einfluss die Ausgestaltung des Systemprompts auf das resultierende Tutorverhalten hat. Die vollständigen Wortlaute der verwendeten Prompts sind in Anhang~\ref{app:prompts} dokumentiert.
+
+Die \textit{Baseline ohne Systemprompt} enthält keine zusätzliche Instruktion zur Rolle oder zum Verhalten des Modells. Sie dient als Referenz, um zu untersuchen, welches Tutorverhalten das Sprachmodell ohne explizite Vorgaben zum sokratischen Vorgehen zeigt.
+
+Der \textit{Minimale sokratische Prompt} definiert das Modell als sokratischen Tutor für Elektrotechnik. Vorgegeben wird lediglich, Gegenfragen anstelle direkter Antworten zu stellen und Studierende durch Fragen zur eigenständigen Erkenntnis zu führen. Weitere Regeln zum Ablauf des Gesprächs oder zum Umgang mit bestimmten Situationen werden nicht festgelegt.
+
+Der \textit{Strukturierte sokratische Prompt} konkretisiert den Ablauf des sokratischen Dialogs. Ausgangspunkt soll eine konkrete Erfahrung der studierenden Person sein, aus der schrittweise Begriffe, Urteile sowie zugrunde liegende Überzeugungen und Prinzipien herausgearbeitet werden. Der Tutor soll sich dabei weitgehend aus der direkten fachlichen Problemlösung heraushalten, Gegenperspektiven einbringen und die studierende Person durch Fragen zum eigenständigen Weiterdenken anregen. Zusätzlich enthält der Prompt die Vorgabe, die Lösung einer Quizfrage nicht direkt oder indirekt preiszugeben.
+
+Der \textit{Domänenspezifische In-Lab-Tutorprompt} überträgt das sokratische Tutorverhalten auf Situationen während eines Elektrotechniklabors. Neben der Förderung eigenständigen Denkens enthält er Vorgaben zur Berücksichtigung des Vorwissens, zur Entwicklung und Prüfung eigener Fehlerhypothesen sowie zur Begrenzung der Informationsmenge und der Anzahl der Impulse pro Antwort. Darüber hinaus definiert der Prompt Eskalationsregeln für sicherheitsrelevante oder durch die Laborbetreuung zu klärende Situationen.
+
+Tabelle~\ref{tab:prompt_varianten} fasst die wesentlichen Unterschiede der vier Varianten zusammen.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Für RQ1 untersuchte Prompt-Varianten.}
+    \label{tab:prompt_varianten}
+
+    \renewcommand{\arraystretch}{1.25}
+
+    \begin{tabularx}{\linewidth}{
+        @{}
+        >{\raggedright\arraybackslash}p{4.0cm}
+        >{\centering\arraybackslash}p{1.8cm}
+        >{\raggedright\arraybackslash}X
+        @{}
+    }
+        \toprule
+        \textbf{Variante} &
+        \textbf{Umfang} &
+        \textbf{Schwerpunkt} \\
+        \midrule
+
+        Baseline ohne Systemprompt &
+        keiner &
+        Keine explizite Vorgabe eines sokratischen Tutorverhaltens. \\[0.3em]
+
+        Minimaler sokratischer Prompt &
+        gering &
+        Definition der Tutorrolle sowie Vorgabe von Gegenfragen und Förderung eigenständiger Erkenntnis. \\[0.3em]
+
+        Strukturierter sokratischer Prompt &
+        hoch &
+        Vorgegebener sokratischer Gesprächsablauf und Vermeidung direkter Lösungsweitergabe. \\[0.3em]
+
+        Domänenspezifischer In-Lab-Tutorprompt &
+        hoch &
+        Anpassung des Tutorverhaltens an das Elektrotechniklabor mit Hypothesenbildung, begrenzten Impulsen und Eskalationsregeln. \\
+
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Die vier Varianten bilden damit unterschiedliche Grade der Steuerung durch den Systemprompt ab. Während die Baseline vollständig auf eine sokratische Instruktion verzichtet und der minimale Prompt lediglich das Grundprinzip vorgibt, operationalisieren die beiden umfangreicheren Varianten das gewünschte Tutorverhalten stärker. Der strukturierte sokratische Prompt fokussiert dabei den Ablauf des sokratischen Dialogs, während der domänenspezifische In-Lab-Tutorprompt zusätzlich Anforderungen des konkreten Laborkontexts berücksichtigt. Die methodische Durchführung des Vergleichs wird in Kapitel~\ref{sec:methodik} beschrieben.
+
+\subsection{RAG-Konfigurationen für RQ2}
+\label{subsec:Die RAG-Konfigurationen}
+
+Zur Beantwortung von RQ2 werden unterschiedliche Konfigurationen der in Abschnitt~\ref{subsec:rag_pipeline} beschriebenen RAG-Pipeline untersucht. Die Varianten unterscheiden sich hinsichtlich der verwendeten Wissensbasis, des Retrieval-Verfahrens und des Einsatzes eines Cross-Encoder-Rerankings. Dadurch kann untersucht werden, welchen Einfluss diese Komponenten auf die Qualität des bereitgestellten Retrieval-Kontexts und der darauf basierenden Antworten haben.
+
+Als Wissensbasis werden eine Collection mit Vorlesungsinhalten, eine Collection mit Laborinhalten sowie die Kombination beider Collections betrachtet. Für das Retrieval kommen Dense, Sparse und Hybrid Retrieval zum Einsatz. Beim hybriden Verfahren werden Dense und Sparse Retrieval kombiniert und die resultierenden Ranglisten mittels Reciprocal Rank Fusion zusammengeführt. In ausgewählten Konfigurationen wird anschließend zusätzlich das in Abschnitt~\ref{subsec:rag_pipeline} beschriebene Cross-Encoder-Reranking angewendet.
+
+Neben den RAG-Konfigurationen wird eine \textit{LLM-only}-Variante untersucht. Bei dieser wird keine Collection ausgewählt, sodass Retrieval und Reranking vollständig übersprungen werden. Sie dient als Referenz für die Antwortgenerierung ohne zusätzlich bereitgestellten Retrieval-Kontext.
+
+Tabelle~\ref{tab:rag_konfigurationen} zeigt die für RQ2 untersuchten Konfigurationen.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Für RQ2 untersuchte RAG-Konfigurationen.}
+    \label{tab:rag_konfigurationen}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabularx}{\linewidth}{
+        @{}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{3.0cm}
+        >{\raggedright\arraybackslash}p{2.6cm}
+        >{\centering\arraybackslash}p{1.8cm}
+        @{}
+    }
+        \toprule
+        \textbf{Variante} &
+        \textbf{Wissensbasis} &
+        \textbf{Retrieval} &
+        \textbf{Reranking} \\
+        \midrule
+
+        Beide -- Hybrid &
+        Vorlesung + Labor &
+        Hybrid &
+        Nein \\
+
+        Beide -- Sparse &
+        Vorlesung + Labor &
+        Sparse &
+        Nein \\
+
+        Beide -- Hybrid + Reranking &
+        Vorlesung + Labor &
+        Hybrid &
+        Ja \\
+
+        Vorlesung -- Hybrid + Reranking &
+        Vorlesung &
+        Hybrid &
+        Ja \\
+
+        Labor -- Hybrid + Reranking &
+        Labor &
+        Hybrid &
+        Ja \\
+
+        Beide -- Dense &
+        Vorlesung + Labor &
+        Dense &
+        Nein \\
+
+        Labor -- Dense &
+        Labor &
+        Dense &
+        Nein \\
+
+        Vorlesung -- Dense &
+        Vorlesung &
+        Dense &
+        Nein \\
+
+        LLM-only &
+        keine &
+        kein Retrieval &
+        Nein \\
+
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+Die Auswahl der Varianten ermöglicht mehrere Vergleichsperspektiven. Durch die Dense-, Sparse- und Hybrid-Konfigurationen werden unterschiedliche Retrieval-Ansätze gegenübergestellt. Die Varianten mit beiden Collections und mit getrennten Vorlesungs- beziehungsweise Laborinhalten erlauben zusätzlich eine Untersuchung des Einflusses der zugrunde liegenden Wissensbasis. Der Vergleich der hybriden Varianten mit und ohne Reranking dient schließlich dazu, den zusätzlichen Einfluss des Cross-Encoder-Rerankings zu betrachten. Die konkrete Durchführung der Evaluation und die hierfür verwendeten Metriken werden in Kapitel~\ref{sec:methodik} beschrieben.
