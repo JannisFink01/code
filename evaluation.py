@@ -6,11 +6,13 @@ holt die Gespraeche nur ueber simulate_conversations() (Cache-aware) und wertet 
 """
 import os
 import csv
+import re
 from retry_utils import retry_sync
 from collections import defaultdict
 from config import (
     BASE_WAIT,
     FIELDNAMES,
+    RAG_CONFIG,
     RUN_EVALUATION,
     conv_path,
     agg_path,
@@ -79,13 +81,13 @@ def _evaluate_single(tc, metrics, meta, version):
                     "score": None,
                     "success": None,
                     "reason": f"ERROR: {type(e).__name__}: {e}",
-                    "verbose_logs": getattr(metric, "verbose_logs", None),
+                   # "verbose_logs": getattr(metric, "verbose_logs", None),
                 }
             )
     return results
 
 
-def run_evaluation(prompt_file: str, version: str):
+def run_evaluation(prompt_file: str, version: str, rag_config = RAG_CONFIG, mode="rq1"):
     """Fuehrt einen kompletten Evaluierungslauf fuer eine Prompt-Version durch.
  
     Ablauf:
@@ -99,6 +101,7 @@ def run_evaluation(prompt_file: str, version: str):
     Args:
         prompt_file: Pfad zur Prompt-Textdatei.
         version: Kurzname der Prompt-Version (bestimmt die Ausgabedateipfade).
+        mode: Modus für die Evaluation (z.B. "rq2").
     """
     print(f"\n{'='*60}")
     print(f"  Starte Evaluation: {version} ({prompt_file})")
@@ -110,10 +113,16 @@ def run_evaluation(prompt_file: str, version: str):
     # =========================================================
     # KONVERSATIONEN HOLEN (Simulation oder Cache – in simulation.py)
     # =========================================================
-    test_cases, metadata = simulate_conversations(prompt_file, version)
+    test_cases, metadata = simulate_conversations(prompt_file, version,rag_config)
     if not RUN_EVALUATION:
         print("  RUN_EVALUATION=false → nur Konversationen erzeugt, keine Bewertung.")
         return
+    for tc in test_cases:
+        for turn in tc.turns:
+            if getattr(turn, "content", None):
+                turn.content = _delatexe(turn.content)
+            if getattr(turn, "retrieval_context", None):
+                turn.retrieval_context = [_delatexe(x) for x in turn.retrieval_context]
     # =========================================================
     # RESUME-CHECK: bereits evaluierte Testfälle ermitteln
     # =========================================================
@@ -136,7 +145,8 @@ def run_evaluation(prompt_file: str, version: str):
     # EVALUATION (sequenziell, mit Resume + Retry)
     # =========================================================
     print(f"\n  {len(test_cases)} Testfälle evaluieren...")
-    metrics = build_metrics(judge_llm)
+    metrics = build_metrics(judge_llm, mode=mode)
+    print("  MODE:", mode, "| Metriken:", [getattr(m, "__name__", "?") for m in metrics])
     rows = []
     skipped = 0
     for i, tc in enumerate(test_cases):
@@ -203,3 +213,12 @@ def run_evaluation(prompt_file: str, version: str):
         if r.get("conversation_id"):
             by_id[r["conversation_id"]].append(r)
     attach_results(c_path, by_id)
+    
+def _delatexe(text: str) -> str:
+    """Entfernt LaTeX-Backslashes, damit die Judge-JSON nicht an 'invalid \\escape' scheitert."""
+    if not text:
+        return text
+    text = text.replace("\\(", "").replace("\\)", "").replace("\\[", "").replace("\\]", "")
+    text = re.sub(r"\\[a-zA-Z]+\{([^}]*)\}", r"\1", text)   # \text{V} -> V
+    text = text.replace("\\", "")                            # restliche Backslashes raus
+    return text

@@ -14,22 +14,29 @@ GWDG_API_KEY = os.getenv("GWDG_API_KEY")
 GWDG_BASE_URL = os.getenv("GWDG_BASE_URL", "https://chat-ai.academiccloud.de/v1")
 OPENWEBUI_API_KEY = os.getenv("OPENWEBUI_API_KEY")
 OPENWEBUI_BASE_URL = os.getenv("OPENWEBUI_BASE_URL")
+JUDGE_API_KEY = os.getenv("JUDGE_API_KEY")
+JUDGE_BASE_URL = os.getenv("JUDGE_BASE_URL")
+JUDGE_VERIFY_SSL = True
+REASONING_EFFORT = os.getenv("REASONING_EFFORT", "low")   # low/medium/high/xhigh
 RAG_VERIFY_SSL =False
+SIMULATOR_BASE_URL = os.getenv("SIMULATOR_BASE_URL")
+SIMULATOR_API_KEY = os.getenv("SIMULATOR_API_KEY")
+SIMULATOR_VERIFY_SSL = False
 # =============================================================
 # MODELLE
 # =============================================================
 TUTOR_MODEL = os.getenv("TUTOR_MODEL", "gemma-4-31b-it")
-SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "meta-llama-3.1-8b-instruct")
-JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai-gpt-oss-120b")
+SIMULATOR_MODEL = os.getenv("SIMULATOR_MODEL", "gpt-4o-mini")
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "gpt-4.1")
 RAG_MODEL = os.getenv("RAG_MODEL", "qdrant_openwebui_rag_pipeline_rerank_moodle")
 # =============================================================
 # RATE LIMITER
 # =============================================================
-RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "2"))
-RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "15"))
-RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "60"))
+RATE_CALLS_PER_SECOND = int(os.getenv("RATE_CALLS_PER_SECOND", "3"))
+RATE_CALLS_PER_MINUTE = int(os.getenv("RATE_CALLS_PER_MINUTE", "60"))
+RETRY_WAIT_SECONDS = int(os.getenv("RETRY_WAIT_SECONDS", "20"))
 MAX_RETRIES = int(os.getenv("MAX_RETRIES", "10"))
-BASE_WAIT = int(os.getenv("BASE_WAIT", "45"))
+BASE_WAIT = int(os.getenv("BASE_WAIT", "20"))
 CAP = int(os.getenv("CAP", "180"))
 
 # =============================================================
@@ -46,6 +53,9 @@ PROMPT_RUNS = [
     #("prompts/system_prompt_context.txt", "system_prompt_context"),
     #("prompts/minimaler_sokrat_context.txt", "minimaler_sokrat_context"),
     ("prompts/no_Prompt.txt", "no_Prompt"),
+    ("prompts/stock_prompt.txt", "stock_prompt"),
+
+
 ]
 # =============================================================
 # DATEIPFADE
@@ -116,5 +126,60 @@ RAG_CONFIG = {
     "retrieval": "dense, sparse",
     "is_cross_encoder_rerank": False,
 }
-
-RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").lower() == "true"
+RAG_CONFIGS = {
+    # 1 · LLM-only (keine Collections, kein Retrieval)
+    "llm_only": {
+        "collections": "",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 2 · nur Labor, dense
+    "labor_dense": {
+        "collections": "hollstein_collection_labor",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 3 · nur Vorlesung, dense
+    "vorlesung_dense": {
+        "collections": "hollstein_collection_vorlesung",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 4 · beide, dense
+    "beide_dense": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense",
+        "is_cross_encoder_rerank": False,
+    },
+    # 5 · beide, sparse
+    "beide_sparse": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "sparse",
+        "is_cross_encoder_rerank": False,
+    },
+    # 6 · beide, hybrid (dense, sparse) ohne Rerank
+    "beide_hybrid": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": False,
+    },
+    # 7 · beide, hybrid + Cross-Encoder-Rerank
+    "beide_hybrid_rerank": {
+        "collections": "hollstein_collection_labor, hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
+    # 8 · nur Labor, hybrid + Rerank
+    "labor_hybrid_rerank": {
+        "collections": "hollstein_collection_labor",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
+    # 9 · nur Vorlesung, hybrid + Rerank
+    "vorlesung_hybrid_rerank": {
+        "collections": "hollstein_collection_vorlesung",
+        "retrieval": "dense, sparse",
+        "is_cross_encoder_rerank": True,
+    },
+}
+RUN_EVALUATION = os.getenv("RUN_EVALUATION", "true").strip().lower() == "true"

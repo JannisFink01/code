@@ -1,0 +1,160 @@
+\section{Grundlagen}
+\label{sec:grundlagen}
+
+\subsection{Sokratische Didaktik und Tutoring}
+\label{subsec:sokratische didaktik}
+
+Die sokratische Methode bezeichnet einen Lehransatz, bei dem Erkenntnis nicht primär durch die Vermittlung fertiger Antworten, sondern durch die eigenständige Auseinandersetzung des Lernenden mit Fragen, Annahmen und Begründungen entwickelt werden soll. Eine für die moderne didaktische Rezeption maßgebliche Ausarbeitung geht auf Leonard Nelson zurück. In seinem 1922 gehaltenen und 1929 veröffentlichten Vortrag \textit{Die sokratische Methode} grenzt Nelson sokratischen Unterricht von einer auf Wissensvermittlung ausgerichteten Lehrform ab. Sein Ziel besteht nicht darin, den Lernenden philosophische Ergebnisse zu übermitteln, sondern sie zum eigenständigen Philosophieren anzuleiten \cite{Nelson1929}. Erkenntnis soll demnach aus Urteilen hervorgehen, die der Lernende selbst fällt und anschließend auf ihre Voraussetzungen zurückführt. Sokratischer Unterricht wird damit als Unterricht im Selbstdenken verstanden \cite{Nelson1929}.
+
+Diese Zielsetzung bestimmt zugleich die Rolle des Lehrenden. Nelson unterscheidet zwischen einer äußeren Anregung des Denkens und der Übernahme eines fremden Urteils. Während die Anregung des Erkenntnisprozesses erforderlich sein kann, soll der Lehrende vermeiden, das Urteil des Lernenden durch die Vorgabe eigener Lösungen zu ersetzen \cite{Nelson1929}. Die sokratische Methode zielt somit nicht auf das Stellen möglichst vieler Fragen, sondern auf einen Dialog, der die eigenständige Prüfung des eigenen Denkens ermöglicht.
+
+Eine frühe Übertragung der sokratischen Methode auf computergestütztes Tutoring
+findet sich bei Stevens und Collins \cite{StevensCollins1977}. Mit dem
+\textit{Why System} beschreiben sie einen sokratischen Tutor, dessen
+Dialogverhalten durch regelbasierte Tutorstrategien gesteuert wird. Das System
+fordert Lernende unter anderem zu Vorhersagen und Begründungen auf, greift ihre
+Antworten in Folgefragen auf und setzt Gegenbeispiele ein, um Annahmen zu
+überprüfen \cite{StevensCollins1977}. Dabei soll die Auswahl der
+Tutorinterventionen nicht unabhängig voneinander erfolgen, sondern sich an
+übergeordneten Lernzielen und am erkennbaren Wissensstand des Lernenden
+orientieren \cite{StevensCollins1977}. Die Arbeit zeigt damit, wie sich die
+sokratische Grundidee des angeleiteten eigenständigen Denkens in ein
+dialogorientiertes Tutorsystem übertragen lässt.
+
+Eine für die weitere Ausgestaltung eines sokratischen Tutors relevante Konkretisierung liefert Gentry \cite{Gentry2015}. Er grenzt sokratisches Fragen von der bloßen Abfrage faktischen Wissens ab und verbindet es mit dem Ziel, Lernende zum Nachdenken und zur Entwicklung kritischen Denkens anzuregen \cite{Gentry2015}. Für lernförderliches Fragen formuliert er fünf Leitlinien: Der Tutor soll erstens den Kenntnisstand des Lernenden berücksichtigen und neues Wissen schrittweise auf vorhandenem Wissen aufbauen. Zweitens sollen Fragen einem Lernzweck dienen und nicht um ihrer selbst willen gestellt werden. Drittens soll das Ziel der Fragen für den Lernenden erkennbar sein. Viertens sollen die für das Lernziel maßgeblichen Inhalte in den Mittelpunkt gestellt werden. Fünftens soll die Gesprächsführung darauf verzichten, Lernende durch Fragen bloßzustellen oder zu demütigen \cite{Gentry2015}.
+
+Für die vorliegende Arbeit wird sokratisches Tutoring entsprechend als dialogische Lehrform verstanden, bei der Fragen nicht der reinen Wissensabfrage dienen, sondern den Lernenden bei der eigenständigen Auseinandersetzung mit einer Problemstellung unterstützen. Der Tutor orientiert seine Fragen am bisherigen Gesprächsverlauf und am erkennbaren Kenntnisstand und führt den Lernenden schrittweise durch den Erkenntnisprozess. Die von Gentry formulierten Leitlinien bilden damit konkrete Anforderungen an das Verhalten des in dieser Arbeit entwickelten LLM-basierten Tutors und werden im weiteren Verlauf bei dessen Evaluation berücksichtigt.
+
+\subsection{Retrieval-Augmented Generation}
+\label{subsec:rag}
+
+Large Language Models (LLMs) greifen bei der Textgenerierung zunächst auf Wissen zurück, das während des Trainings in ihren Parametern abgebildet wurde. Dieses parametrische Wissen lässt sich jedoch nicht ohne Weiteres aktualisieren oder um anwendungsspezifische Informationen ergänzen. Lewis et al. verbinden deshalb bei der \textit{Retrieval-Augmented Generation} (RAG) ein parametrisches Sprachmodell mit einem externen, nichtparametrischen Wissensspeicher \cite{Lewis2020RAG}. Vor der Generierung werden für eine Eingabe relevante Inhalte aus diesem Wissensspeicher abgerufen und dem Sprachmodell als zusätzlicher Kontext bereitgestellt. Die erzeugte Antwort kann dadurch neben dem parametrischen Wissen des Modells auf zur Laufzeit abgerufene Informationen zurückgreifen \cite{Lewis2020RAG}. Ein RAG-System lässt sich damit grundsätzlich in die beiden Schritte Retrieval und anschließende kontextgestützte Generierung unterteilen.
+
+\subsubsection{Sparse und Dense Retrieval}
+\label{subsubsec:sparse_dense}
+
+Eine zentrale Komponente eines RAG-Systems ist das Retrieval, das aus einer Dokumentensammlung die für eine Anfrage relevanten Inhalte bestimmen soll. Hierfür können unterschiedliche Repräsentationen von Anfrage und Dokument verwendet werden. Klassische Information-Retrieval-Verfahren arbeiten mit \textit{sparse representations}, bei denen Texte über hochdimensionale, überwiegend nicht belegte Merkmalsvektoren repräsentiert werden. Ein etabliertes Verfahren ist BM25, das die Relevanz eines Dokuments unter anderem anhand der Häufigkeit von Suchbegriffen, ihrer Verteilung innerhalb der Dokumentensammlung und der Dokumentlänge bewertet \cite{RobertsonZaragoza2009}. Sparse Retrieval ist dadurch insbesondere auf lexikalische Übereinstimmungen zwischen Anfrage und Dokument ausgerichtet.
+
+Dense Retrieval überführt Anfragen und Dokumente dagegen in niedrigdimensionale, dichte Vektorrepräsentationen. Karpukhin et al. zeigen mit \textit{Dense Passage Retrieval} (DPR), dass Anfragen und Passagen durch getrennte Encoder in einen gemeinsamen Vektorraum abgebildet und anhand der Ähnlichkeit ihrer Repräsentationen verglichen werden können \cite{Karpukhin2020DPR}. Das Retrieval ist damit nicht ausschließlich von identischen Begriffen abhängig, sondern kann über gelernte Repräsentationen auch semantische Beziehungen zwischen unterschiedlich formulierten Anfragen und Passagen berücksichtigen.
+
+Sparse und Dense Retrieval weisen damit unterschiedliche Eigenschaften auf. Luan et al. stellen heraus, dass sparse Repräsentationen insbesondere bei der präzisen Erkennung von Begriffen Vorteile besitzen, während Dense-Retrieval-Verfahren semantische Ähnlichkeiten zwischen verwandten Konzepten abbilden können \cite{Luan2021SparseDense}. Die Autoren untersuchen daher auch hybride Ansätze, in denen beide Repräsentationsformen miteinander kombiniert werden.
+
+\subsubsection{Hybrid Retrieval und Reciprocal Rank Fusion}
+\label{subsubsec:hybrid_rrf}
+
+Beim Hybrid Retrieval werden Ergebnisse verschiedener Retrieval-Verfahren zusammengeführt. In einem Sparse-Dense-Hybrid können für dieselbe Anfrage beispielsweise ein lexikalisches und ein semantisches Ranking erzeugt werden. Ziel ist es, die unterschiedlichen Eigenschaften beider Retrievalformen gemeinsam zu nutzen \cite{Luan2021SparseDense}. Da beide Verfahren zunächst eigenständige Ranglisten erzeugen, wird ein Verfahren zur Fusion der Rankings benötigt.
+
+Eine Möglichkeit hierfür stellt die von Cormack et al. vorgestellte \textit{Reciprocal Rank Fusion} (RRF) dar \cite{Cormack2009RRF}. RRF kombiniert die Rangpositionen eines Dokuments über mehrere Ergebnislisten hinweg, ohne dass die von den einzelnen Retrieval-Verfahren erzeugten Scores auf einer gemeinsamen Skala liegen müssen. Der RRF-Score eines Dokuments $d$ ergibt sich aus
+
+\begin{equation}
+    \operatorname{RRF}(d)
+    =
+    \sum_{r \in R}
+    \frac{1}{k + r(d)},
+    \label{eq:rrf}
+\end{equation}
+
+wobei $R$ die Menge der einbezogenen Rankings, $r(d)$ die Position des Dokuments $d$ im jeweiligen Ranking und $k$ eine Konstante zur Begrenzung des Einflusses hoher Rangpositionen bezeichnet \cite{Cormack2009RRF}. Dokumente, die in einem oder mehreren Retrieval-Verfahren weit oben eingeordnet werden, erhalten dadurch einen entsprechend höheren kombinierten Score. Auf Basis dieses Scores entsteht eine gemeinsame Rangfolge der Kandidaten.
+
+\subsubsection{Cross-Encoder-Reranking}
+\label{subsubsec:reranking}
+
+Das erste Retrieval reduziert eine große Dokumentensammlung auf eine begrenzte Menge potenziell relevanter Kandidaten. Diese Kandidaten können anschließend durch ein rechenintensiveres Modell erneut bewertet werden. Nogueira und Cho zeigen am Beispiel von BERT, dass ein Sprachmodell für das Query-basierte Reranking bereits abgerufener Passagen eingesetzt werden kann \cite{NogueiraCho2019}. Dabei werden Anfrage und jeweilige Passage gemeinsam verarbeitet, sodass deren Beziehung unmittelbar in die Relevanzbewertung einfließen kann. Ein solches Vorgehen wird als Cross-Encoder-Reranking bezeichnet.
+
+Im Unterschied zu Retrieval-Verfahren, bei denen Dokumentrepräsentationen vorab berechnet und effizient über große Dokumentbestände durchsucht werden können, muss ein Cross-Encoder jedes Query-Dokument-Paar separat verarbeiten. Der höhere Berechnungsaufwand begrenzt seinen Einsatz auf eine zuvor bestimmte Kandidatenmenge. Reranking bildet deshalb typischerweise eine nachgelagerte Stufe der Retrieval-Pipeline.
+
+Abbildung~\ref{fig:rag_pipeline_grundlagen} fasst die beschriebenen Komponenten zusammen. Eine Anfrage wird zunächst parallel durch Sparse und Dense Retrieval verarbeitet. Die resultierenden Rankings können mittels RRF fusioniert und die verbleibenden Kandidaten anschließend durch einen Cross-Encoder neu bewertet werden. Die ausgewählten Inhalte bilden schließlich den zusätzlichen Kontext für die Generierung durch das LLM. Die konkrete technische Umsetzung und Konfiguration dieser Komponenten im untersuchten System wird in Kapitel~\ref{sec:untersuchungsgegenstand} beschrieben.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0.8cm and 1.2cm,
+        box/.style={
+            draw,
+            rounded corners,
+            align=center,
+            minimum width=3.1cm,
+            minimum height=0.8cm
+        },
+        arrow/.style={
+            -{Latex[length=2mm]},
+            thick
+        }
+    ]
+
+    \node[box] (query) {Anfrage};
+
+    \node[box, below left=of query] (sparse)
+        {Sparse Retrieval\\(lexikalisch)};
+    \node[box, below right=of query] (dense)
+        {Dense Retrieval\\(semantisch)};
+
+    \node[box, below=1.2cm of query] (rrf)
+        {Reciprocal Rank Fusion};
+
+    \node[box, below=of rrf] (rerank)
+        {Cross-Encoder-Reranking};
+
+    \node[box, below=of rerank] (context)
+        {Ausgewählte Inhalte\\als Kontext};
+
+    \node[box, below=of context] (llm)
+        {Large Language Model};
+
+    \node[box, below=of llm] (answer)
+        {Generierte Antwort};
+
+    \draw[arrow] (query) -- (sparse);
+    \draw[arrow] (query) -- (dense);
+    \draw[arrow] (sparse) -- (rrf);
+    \draw[arrow] (dense) -- (rrf);
+    \draw[arrow] (rrf) -- (rerank);
+    \draw[arrow] (rerank) -- (context);
+    \draw[arrow] (context) -- (llm);
+    \draw[arrow] (llm) -- (answer);
+
+    \end{tikzpicture}
+    \caption{Schematischer Ablauf einer hybriden RAG-Pipeline mit Reranking.}
+    \label{fig:rag_pipeline_grundlagen}
+\end{figure}
+
+\subsection{Evaluation LLM-basierter Dialogsysteme}
+\label{subsec:llm_evaluation}
+
+Die Bewertung von LLM-basierten Dialogsystemen unterscheidet sich von Aufgaben, für die eine eindeutig definierte Zielausgabe vorliegt. Insbesondere bei offenen Dialogen können mehrere inhaltlich und sprachlich unterschiedliche Antworten eine gestellte Anforderung erfüllen. Für solche Ausgaben kann ein Large Language Model selbst als Evaluator eingesetzt werden. Dieses Verfahren wird als \textit{LLM-as-a-Judge} bezeichnet.
+
+\subsubsection{LLM-as-a-Judge}
+\label{subsubsec:llm_judge}
+
+Beim LLM-as-a-Judge wird ein Large Language Model eingesetzt, um die Ausgabe eines zu untersuchenden LLM-Systems anhand vorgegebener Bewertungskriterien zu beurteilen. Zheng et al. untersuchen diesen Ansatz für die Evaluation von Chat-Assistenten und verwenden leistungsfähige LLMs sowohl zur Bewertung einzelner Antworten als auch zum Vergleich verschiedener Antworten \cite{Zheng2023LLMJudge}. Damit übernimmt das bewertende Modell eine Funktion, die andernfalls beispielsweise durch menschliche Evaluatoren ausgeführt werden müsste.
+
+Der Ansatz ermöglicht insbesondere die Bewertung von Eigenschaften, die sich nicht ausschließlich durch einen Vergleich mit einer festgelegten Referenzantwort bestimmen lassen. Die Bewertung bleibt jedoch vom eingesetzten Judge-Modell und vom Bewertungsverfahren abhängig. Zheng et al. identifizieren unter anderem einen \textit{Position Bias}, bei dem die Position einer Antwort das Urteil beeinflussen kann, einen \textit{Verbosity Bias}, der ausführlichere Antworten begünstigen kann, sowie einen \textit{Self-Enhancement Bias} zugunsten von Antworten verwandter Modelle \cite{Zheng2023LLMJudge}. LLM-as-a-Judge ist daher nicht als objektive Messung zu verstehen, sondern als modellbasierte Evaluationsmethode, deren Ausgestaltung bei der Interpretation der Ergebnisse berücksichtigt werden muss.
+
+\subsubsection{Multi-Turn-Evaluation und ConversationalTestCase}
+\label{subsubsec:conversational_testcase}
+
+Bei einem Dialogsystem hängt die Qualität einer Antwort nicht ausschließlich von der unmittelbar vorhergehenden Eingabe ab. Aussagen, Anforderungen oder Informationen aus früheren Gesprächsschritten können für spätere Antworten weiterhin maßgeblich sein. Eine isolierte Bewertung einzelner Input-Output-Paare kann deshalb Eigenschaften wie die Berücksichtigung des Gesprächskontexts oder ein konsistentes Verhalten über den gesamten Dialog nur eingeschränkt erfassen. DeepEval unterscheidet hierzu zwischen Single-Turn- und Multi-Turn-Evaluation und verwendet für letztere den \texttt{ConversationalTestCase} \cite{DeepEvalConversationalTestCase}.
+
+Ein \texttt{ConversationalTestCase} repräsentiert eine vollständige Konversation als Folge von \texttt{Turn}-Objekten. Ein Turn enthält insbesondere die jeweilige Rolle, beispielsweise \texttt{user} oder \texttt{assistant}, sowie den Inhalt der Nachricht. Zusätzlich kann ein Conversational Test Case Angaben zum Szenario, zum erwarteten Ergebnis, zum verfügbaren Kontext oder zur vorgesehenen Rolle des Chatbots enthalten \cite{DeepEvalConversationalTestCase}. Die Konversation bildet damit die gemeinsame Evaluationsgrundlage für Metriken, deren Bewertung sich über mehrere Interaktionen erstreckt.
+
+Diese Betrachtung ist insbesondere für Tutor-Chatbots erforderlich. Ein einzelner Turn kann für sich betrachtet einer vorgesehenen Tutorstrategie entsprechen, während das System diese Strategie in späteren Gesprächsschritten nicht fortführt. Die Multi-Turn-Evaluation ermöglicht deshalb die Untersuchung, ob gewünschte Eigenschaften über den Gesprächsverlauf hinweg erhalten bleiben.
+
+\subsubsection{Conversational G-Eval}
+\label{subsubsec:conversational_geval}
+
+Für Anforderungen, für die keine vorgegebene Metrik existiert, stellt DeepEval mit \texttt{ConversationalGEval} eine anpassbare LLM-as-a-Judge-Metrik für Multi-Turn-Konversationen bereit \cite{DeepEvalConversationalGEval}. Hierzu wird ein natürlichsprachliches Bewertungskriterium definiert, anhand dessen ein Judge-Modell die im \texttt{ConversationalTestCase} enthaltene Konversation beurteilt. Im Gegensatz zu einer auf einzelne Antworten beschränkten Bewertung kann damit das Verhalten über den gesamten Gesprächsverlauf Gegenstand des Bewertungskriteriums sein.
+
+Dadurch können anwendungsspezifische Qualitätsanforderungen operationalisiert werden, für die keine allgemeingültige Metrik vorhanden ist. Im Kontext eines Tutors können solche Kriterien beispielsweise das didaktische Verhalten oder die Einhaltung bestimmter Gesprächsstrategien betreffen. Die konkrete Formulierung dieser Kriterien sowie ihre Verwendung für die Evaluation des in dieser Arbeit untersuchten Tutors werden im Methodikkapitel beschrieben.
+
+\subsubsection{Vordefinierte Multi-Turn-Metriken}
+\label{subsubsec:multiturn_metrics}
+
+Neben frei definierbaren Kriterien stellt DeepEval vordefinierte Metriken für wiederkehrende Qualitätsdimensionen von Multi-Turn-Systemen bereit. Diese arbeiten auf einem \texttt{ConversationalTestCase} und berücksichtigen den Gesprächskontext bei der Bewertung \cite{DeepEvalMultiTurnMetrics}.
+
+Die \textit{Turn Relevancy} bewertet, ob die Antworten des Assistenten im jeweiligen Gesprächskontext relevant sind. Hierfür werden Assistant-Turns gemeinsam mit vorausgehenden Gesprächsschritten betrachtet und danach beurteilt, ob die jeweilige Antwort zum bisherigen Dialog passt \cite{DeepEvalTurnRelevancy}. Die \textit{Role Adherence} untersucht dagegen, ob der Assistent über den Dialog hinweg der in \texttt{chatbot\_role} festgelegten Rolle entspricht \cite{DeepEvalRoleAdherence}. Mit \textit{Knowledge Retention} wird bewertet, ob im Gespräch eingeführte Informationen in späteren Turns berücksichtigt und nicht widersprüchlich wiedergegeben werden. Die \textit{Conversation Completeness} untersucht, ob die im Gespräch auftretenden Nutzerbedürfnisse über den gesamten Verlauf adressiert werden \cite{DeepEvalKnowledgeRetention,DeepEvalConversationCompleteness}.
+
+Eine weitere vordefinierte Multi-Turn-Metrik ist die \textit{Goal Accuracy}. Sie bewertet, in welchem Maß das System die aus den Nutzeräußerungen abgeleiteten Ziele erreicht. Hierzu werden die vom System gewählten Schritte sowie deren Eignung zur Erreichung des jeweiligen Ziels betrachtet \cite{DeepEvalGoalAccuracy}. Die Metrik berücksichtigt damit sowohl die Zielerreichung als auch die Qualität und Einhaltung des dafür verfolgten Vorgehens.
+
+Für dialogbasierte RAG-Systeme stellt DeepEval darüber hinaus Multi-Turn-Metriken bereit, welche die Verwendung des abgerufenen Kontexts bewerten. \textit{Turn Faithfulness} untersucht, ob die Aussagen des Assistenten durch den für den jeweiligen Turn bereitgestellten Retrieval-Kontext gestützt werden \cite{DeepEvalTurnFaithfulness}. \textit{Turn Contextual Relevancy} bewertet dagegen, in welchem Umfang der abgerufene Kontext für die jeweilige Nutzereingabe relevant ist \cite{DeepEvalTurnContextualRelevancy}. Während \textit{Turn Faithfulness} damit die Verwendung des bereitgestellten Wissens bei der Antwortgenerierung betrachtet, richtet sich \textit{Turn Contextual Relevancy} auf die Qualität der zuvor abgerufenen Inhalte.
+
+Die vordefinierten Metriken und Conversational G-Eval erfüllen damit unterschiedliche Funktionen. Während die vordefinierten Metriken festgelegte Qualitätsdimensionen wie Relevanz, Rollentreue oder Retrieval-Qualität abbilden, ermöglicht Conversational G-Eval die Definition anwendungsspezifischer Bewertungskriterien. Welche dieser Metriken für die Untersuchung des Systemprompts und der RAG-Pipeline eingesetzt werden, wird im weiteren Verlauf der Arbeit methodisch begründet.

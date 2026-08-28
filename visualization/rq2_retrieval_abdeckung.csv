@@ -1,0 +1,10 @@
+config,antworten,mit_kontext,abdeckung_%
+beide_sparse,167,167,100
+beide_hybrid_rerank,167,139,83
+labor_hybrid_rerank,165,132,80
+vorlesung_hybrid_rerank,165,123,75
+beide_hybrid,164,41,25
+labor_dense,166,3,2
+beide_dense,168,0,0
+llm_only,167,0,0
+vorlesung_dense,165,0,0

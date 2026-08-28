@@ -1,0 +1,5 @@
+config,metrik,n,mean,std
+labor_dense,Turn Contextual Relevancy,24,0.992,0.035
+labor_dense,Turn Faithfulness,24,0.985,0.021
+llm_only,Turn Contextual Relevancy,24,1.0,0.0
+llm_only,Turn Faithfulness,24,0.991,0.011
