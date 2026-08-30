@@ -22,21 +22,22 @@ Tabelle \ref{tab:rq1-mittelwerte} stellt den Mittelwert ($\emptyset$) und die Pa
 \small
 \caption{Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante.}
 \label{tab:rq1-mittelwerte}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
-\midrule
-Lösung nicht verraten           & 0,94 (94\,\%)  & 0,95 (97\,\%)  & 0,83 (77\,\%)  & 0,34 (13\,\%)  \\
-Sokratische Rückfragen          & 0,97 (100\,\%) & 0,95 (97\,\%)  & 0,92 (93\,\%)  & 0,39 (30\,\%)  \\
-Schrittweise Lernprogression    & 0,91 (94\,\%)  & 0,91 (90\,\%)  & 0,90 (83\,\%)  & 0,98 (100\,\%) \\
-Niveau-Anpassung                & 0,84 (78\,\%)  & 0,89 (80\,\%)  & 0,89 (80\,\%)  & 0,97 (100\,\%) \\
-Fachliche Korrektheit           & 0,97 (100\,\%) & 0,98 (100\,\%) & 0,99 (100\,\%) & 1,00 (100\,\%) \\
-Verständnisförderung / Transfer & 0,98 (100\,\%) & 0,96 (100\,\%) & 0,96 (100\,\%) & 0,96 (97\,\%)  \\
-Respektvolle Kommunikation      & 0,94 (94\,\%)  & 0,95 (93\,\%)  & 0,94 (97\,\%)  & 1,00 (100\,\%) \\
-Role Adherence (nativ)          & 0,94 (89\,\%)  & 0,92 (90\,\%)  & 0,93 (100\,\%) & 0,16 (7\,\%)   \\
-\bottomrule
-\end{tabular}
-\end{table}
+\resizebox{\textwidth}{!}{
+	\begin{tabular}{lcccc}
+		\toprule
+		\textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
+		\midrule
+		Lösung nicht verraten           & 0,94 (94\,\%)  & 0,95 (97\,\%)  & 0,83 (77\,\%)  & 0,34 (13\,\%)  \\
+		Sokratische Rückfragen          & 0,97 (100\,\%) & 0,95 (97\,\%)  & 0,92 (93\,\%)  & 0,39 (30\,\%)  \\
+		Schrittweise Lernprogression    & 0,91 (94\,\%)  & 0,91 (90\,\%)  & 0,90 (83\,\%)  & 0,98 (100\,\%) \\
+		Niveau-Anpassung                & 0,84 (78\,\%)  & 0,89 (80\,\%)  & 0,89 (80\,\%)  & 0,97 (100\,\%) \\
+		Fachliche Korrektheit           & 0,97 (100\,\%) & 0,98 (100\,\%) & 0,99 (100\,\%) & 1,00 (100\,\%) \\
+		Verständnisförderung / Transfer & 0,98 (100\,\%) & 0,96 (100\,\%) & 0,96 (100\,\%) & 0,96 (97\,\%)  \\
+		Respektvolle Kommunikation      & 0,94 (94\,\%)  & 0,95 (93\,\%)  & 0,94 (97\,\%)  & 1,00 (100\,\%) \\
+		Role Adherence (nativ)          & 0,94 (89\,\%)  & 0,92 (90\,\%)  & 0,93 (100\,\%) & 0,16 (7\,\%)   \\
+		\bottomrule
+		\end{tabular}}
+	\end{table}
 
 \begin{figure}[htbp]
   \centering
@@ -67,6 +68,7 @@ Der Vergleich der Mittelwerte verdeckt einen zweiten systematischen Effekt. Mit 
 \small
 \caption{Standardabweichung je Kriterium und Prompt-Variante. Niedrigere Werte bedeuten konsistentere Ergebnisse.}
 \label{tab:rq1-streuung}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
@@ -80,7 +82,7 @@ Verständnisförderung / Transfer & 0,04 & 0,06 & 0,06 & 0,09 \\
 Respektvolle Kommunikation      & 0,12 & 0,13 & 0,13 & 0,00 \\
 Role Adherence (nativ)          & 0,16 & 0,16 & 0,11 & 0,23 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 Besonders ausgeprägt ist dieser Effekt bei den kritischen Kriterien. Der \emph{minimaler\_sokrat} weist bei \glqq Lösung nicht verraten\grqq{} (0,29) und \glqq Sokratische Rückfragen\grqq{} (0,14) eine hohe Streuung auf. Dies deutet auf das Phänomen des \glqq Attention Decay\grqq{} hin: Ein sehr kurzer Prompt verliert im Verlauf einer längeren Konversation, besonders wenn die studierende Person Frustration äußert oder Druck aufbaut, seine bindende Wirkung. Das Modell oszilliert dann stark zwischen sokratischem Verhalten und dem Verraten der Lösung. Die ausführlichen Prompts (\emph{system\_prompt} und \emph{stock\_prompt}) sorgen hingegen für ein signifikant konsistenteres Antwortverhalten in den didaktischen Metriken.
@@ -254,6 +256,7 @@ Tabelle \ref{tab:beh-variante} zeigt die über alle acht Kriterien gemittelte Ge
   \small
   \caption{Über alle acht Kriterien gemittelte Gesamtstärke je Studierenden-Verhalten und Prompt-Variante.}
   \label{tab:beh-variante}
+  \resizebox{\textwidth}{!}{
   \begin{tabular}{lcccc}
     \toprule
     \textbf{Verhalten} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt}\\
@@ -264,7 +267,7 @@ Tabelle \ref{tab:beh-variante} zeigt die über alle acht Kriterien gemittelte Ge
     selbstsicher, falsch  & 0,99 & 0,99 & 0,99 & 0,79\\
     äußert eine Vermutung & 1,00 & 0,98 & 0,98 & 0,68\\
     \bottomrule
-  \end{tabular}
+  \end{tabular}}
 \end{table}
 
 Über alle Varianten hinweg ist das Verhalten \glqq fordert die Lösung\grqq{} das mit Abstand schwierigste. Alle übrigen Verhaltenstypen liegen für die instruierten Varianten nahe dem Maximum. Für \emph{no\_Prompt} ist die Gesamtstärke dagegen über alle Verhaltensweisen hinweg niedrig, da der antrainierte Helfer-Instinkt des Modells unabhängig vom konkreten Studierendenverhalten auslöst und zur direkten Lösungspräsentation führt.
