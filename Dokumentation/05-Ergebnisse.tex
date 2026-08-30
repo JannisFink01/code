@@ -1,9 +1,9 @@
 \section{Ergebnisse}
 \label{sec:ergebnisse}
 
-Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden getrennten Auswertungslinien. Abschnitt 5.1 behandelt den Vergleich der Prompt-Varianten (RQ1) und Abschnitt 5.2 den Vergleich der RAG-Konfigurationen (RQ2). Abschnitt 5.3 ergänzt eine metrikbezogene, verhaltensbezogene, themenbezogene und niveaubezogene Querschnittsbetrachtung sowie eine qualitative Analyse der auffälligen Einzelfälle. Die Darstellung ist bewusst deskriptiv gehalten; die tiefere inhaltliche Einordnung sowie Diskussion der Befunde -- einschließlich der Frage, welche der beobachteten Muster als didaktische Stärke und welche als methodisches Artefakt zu werten sind -- erfolgt geschlossen in Kapitel 6. 
+Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden getrennten Auswertungslinien. Abschnitt 5.1 behandelt den Vergleich der Prompt-Varianten (RQ1) und Abschnitt 5.2 den Vergleich der RAG-Konfigurationen (RQ2). Abschnitt 5.3 ergänzt eine metrikbezogene, verhaltensbezogene, themenbezogene und niveaubezogene Querschnittsbetrachtung sowie eine qualitative Analyse der auffälligen Einzelfälle. Die Darstellung ist primär deskriptiv, wird jedoch um kritische Erklärungsansätze zu den identifizierten Verhaltensmustern des Modells ergänzt; die tiefere inhaltliche Einordnung sowie Diskussion der Befunde -- einschließlich der Frage, welche der beobachteten Muster als didaktische Stärke und welche als methodisches Artefakt zu werten sind -- erfolgt geschlossen in Kapitel 6. 
 
-Sofern nicht anders angegeben, beruht jede Auswertungslinie auf dem bereinigten Datensatz von insgesamt 114 Szenarien (Kombination aus Themengebiet, Kompetenzniveau und Studierendenverhalten). Diese verteilen sich auf jeweils 30 Durchläufe für die Varianten \emph{minimaler\_sokrat}, \emph{no\_Prompt} und \emph{stock\_prompt} sowie 24 Durchläufe (18 nach Bereinigung spezifischer Metriken) für den \emph{system\_prompt}. Alle Metriken sind auf den Wertebereich 0 bis 1 normiert. Als Bestehensgrenze der Einzelmetriken gilt der Schwellenwert 0,7. Die Pass-Rate bezeichnet den Anteil der Gespräche mit einem Score $\ge 0{,}7$. 
+Die Auswertungslinie für RQ1 beruht auf dem bereinigten Datensatz von insgesamt 114 Szenarien (Kombination aus Themengebiet, Kompetenzniveau und Studierendenverhalten). Diese verteilen sich auf jeweils 30 Durchläufe für die Varianten \emph{minimaler\_sokrat}, \emph{no\_Prompt} und \emph{stock\_prompt} sowie 24 Durchläufe (18 nach Bereinigung spezifischer Metriken) für den \emph{system\_prompt}. Alle Metriken sind auf den Wertebereich 0 bis 1 normiert. Als Bestehensgrenze der Einzelmetriken gilt der Schwellenwert 0,7. Die Pass-Rate bezeichnet den Anteil der Gespräche mit einem Score $\ge 0{,}7$. 
 
 Neben Mittelwerten werden, wo dies für die Beurteilung der Ergebnisstabilität relevant ist, auch Streuungsmaße und die Verteilung über Scorebänder berichtet. 
 
@@ -11,17 +11,17 @@ Neben Mittelwerten werden, wo dies für die Beurteilung der Ergebnisstabilität 
 \subsection{RQ1 -- Vergleich der Prompt-Varianten}
 \label{subsec:rq1}
 
-Verglichen werden die vier eingeführten Prompt-Varianten \emph{system\_prompt} (Strukturierter sokratischer Prompt, D), \emph{stock\_prompt} (Domänenspezifischer In-Lab-Tutorprompt, C), \emph{minimaler\_sokrat} (Minimaler sokratischer Prompt, B) und \emph{no\_Prompt} (Baseline ohne Systemprompt, A) bei konstant gehaltener RAG-Konfiguration. Die Bewertung erfolgt über die G-Eval-Kriterien der sokratischen Qualität sowie die native Metrik Role Adherence als Gegenprüfung. 
+Verglichen werden die vier eingeführten Prompt-Varianten \emph{system\_prompt} (Strukturierter sokratischer Prompt), \emph{stock\_prompt} (Domänenspezifischer In-Lab-Tutorprompt), \emph{minimaler\_sokrat} (Minimaler sokratischer Prompt) und \emph{no\_Prompt} (Baseline ohne Systemprompt) bei konstant gehaltener RAG-Konfiguration. Die Bewertung erfolgt über die G-Eval-Kriterien der sokratischen Qualität sowie die native Metrik Role Adherence als Gegenprüfung. 
 
 \subsubsection{Ergebnisse je Kriterium}
 
-Tabelle \ref{tab:rq1-mittelwerte} stellt Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium gegenüber. Abbildung \ref{fig:rq1-balken} visualisiert die Mittelwerte als Balkendiagramm und Abbildung \ref{fig:rq1-heatmap} verdichtet sie als Heatmap. 
+Tabelle \ref{tab:rq1-mittelwerte} stellt den Mittelwert ($\emptyset$) und die Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante gegenüber. Abbildung \ref{fig:rq1-balken} visualisiert die Mittelwerte als Balkendiagramm und Abbildung \ref{fig:rq1-heatmap} verdichtet sie als Heatmap. 
 
 \begin{table}[htbp]
 \centering
+\small
 \caption{Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante.}
 \label{tab:rq1-mittelwerte}
-\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
@@ -36,13 +36,12 @@ Respektvolle Kommunikation      & 0,94 (94\,\%)  & 0,95 (93\,\%)  & 0,94 (97\,\%
 Role Adherence (nativ)          & 0,94 (89\,\%)  & 0,92 (90\,\%)  & 0,93 (100\,\%) & 0,16 (7\,\%)   \\
 \bottomrule
 \end{tabular}
-}
 \end{table}
 
 \begin{figure}[htbp]
   \centering
     \includegraphics[width=0.9\textwidth]{../Dokumentation/images/MittelwertjeMetrik_Prompt.png}
-    \caption{Mittelwert je Kriterium und Prompt-Variante. Die gestrichelte Linie markiert den Schwellenwert 0,7. (Legende: A = no\_Prompt, B = minimaler\_sokrat, C = system\_prompt, D = stock\_prompt)}
+    \caption{Mittelwert je Kriterium und Prompt-Variante. Die gestrichelte Linie markiert den Schwellenwert 0,7. (Legende: A = Baseline ohne Systemprompt, B = Minimaler sokratischer Prompt, C = Strukturierter sokratischer Prompt, D = Domänenspezifischer In-Lab-Tutorprompt)}
   \label{fig:rq1-balken}
 \end{figure}
 
@@ -65,9 +64,9 @@ Der Vergleich der Mittelwerte verdeckt einen zweiten systematischen Effekt. Mit 
 
 \begin{table}[htbp]
 \centering
+\small
 \caption{Standardabweichung je Kriterium und Prompt-Variante. Niedrigere Werte bedeuten konsistentere Ergebnisse.}
 \label{tab:rq1-streuung}
-\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
@@ -82,7 +81,6 @@ Respektvolle Kommunikation      & 0,12 & 0,13 & 0,13 & 0,00 \\
 Role Adherence (nativ)          & 0,16 & 0,16 & 0,11 & 0,23 \\
 \bottomrule
 \end{tabular}
-}
 \end{table}
 
 Besonders ausgeprägt ist dieser Effekt bei den kritischen Kriterien. Der \emph{minimaler\_sokrat} weist bei \glqq Lösung nicht verraten\grqq{} (0,29) und \glqq Sokratische Rückfragen\grqq{} (0,14) eine hohe Streuung auf. Dies deutet auf das Phänomen des \glqq Attention Decay\grqq{} hin: Ein sehr kurzer Prompt verliert im Verlauf einer längeren Konversation, besonders wenn die studierende Person Frustration äußert oder Druck aufbaut, seine bindende Wirkung. Das Modell oszilliert dann stark zwischen sokratischem Verhalten und dem Verraten der Lösung. Die ausführlichen Prompts (\emph{system\_prompt} und \emph{stock\_prompt}) sorgen hingegen für ein signifikant konsistenteres Antwortverhalten in den didaktischen Metriken.
@@ -163,12 +161,12 @@ Die tiefergehende Evaluierung der abgerufenen Inhalte wurde exemplarisch für f�
     beide\_sparse & 0,276 & 1,000\\
     labor\_dense & 0,514 & 0,977\\
     vorlesung\_dense & 0,416 & 1,000\\
-    llm\_only & (1,000)$^{\ast}$ & (0,990)$^{\ast}$\\
+    llm\_only & 1,000$^{\ast}$ & 0,990$^{\ast}$\\
     \bottomrule
   \end{tabular}
   
-  \vspace{2pt}
-  {\raggedright\footnotesize $^{\ast}$\,Artefakt bei fehlendem Kontext.\par}
+  \vspace{4pt}
+  \footnotesize $^{\ast}$\,Artefakt bei fehlendem Kontext.
 \end{table}
 
 \begin{figure}[htbp]
@@ -249,7 +247,7 @@ Tabelle \ref{tab:sp-bands} zeigt für \emph{system\_prompt} die Verteilung der E
 
 \subsubsection{Ergebnisse nach Studentenverhalten}
 
-Tabelle \ref{tab:beh-variante} zeigt die über alle acht Kriterien gemittelte Gesamtstärke je Verhalten und Variante.
+Tabelle \ref{tab:beh-variante} zeigt die über alle acht Kriterien gemittelte Gesamtstärke je Verhalten und Prompt-Variante.
 
 \begin{table}[htbp]
   \centering
@@ -296,7 +294,7 @@ Der Judge begründet den niedrigen Wert damit, dass das Niveau trotz mehrfacher 
 
 \begin{quote}
 \textbf{S:} Ich will nicht rätseln, sag mir einfach, wie diese Spannung heißt und ob die Diode jetzt arbeitet oder nicht! \\
-\textbf{T:} \dots werde ich dir die entscheidenden Begriffe nennen \dots Die Spannung, die du suchst, nennt man $U_Z$ \dots die Antwort: Nein, die Diode arbeitet in diesem Moment nicht.
+\textbf{T:} \dots werde ich dir die entscheidenden Begriffe nennen \dots Die Spannung, die du suchst, nennt man $U_{\text{Z}}$ \dots die Antwort: Nein, die Diode arbeitet in diesem Moment nicht.
 \end{quote}
 
 Dies erklärt die enorme Streuung (0,29) dieses Kriteriums: Ob der Tutor standhält, hängt stark davon ab, wie sehr die studierende Person im Dialog auf eine direkte Lösung pocht.
@@ -306,7 +304,7 @@ Dies erklärt die enorme Streuung (0,29) dieses Kriteriums: Ob der Tutor standh�
 
 \begin{quote}
 \textbf{S:} Ich vermute, dass ich die Differenz der Spannungen durch die Summe aus dem maximalen Laststrom und dem minimalen Zenerstrom teilen muss \dots Stimmt das? \\
-\textbf{T:} Das ist absolut richtig! Du hast die Formel für den Vorwiderstand korrekt hergeleitet \dots $R_V = (U_E - U_Z) / (I_{A,\mathrm{max}} + I_{Z,\mathrm{min}})$.
+\textbf{T:} Das ist absolut richtig! Du hast die Formel für den Vorwiderstand korrekt hergeleitet \dots $R_{\text{V}} = (U_{\text{E}} - U_{\text{Z}}) / (I_{\text{A,max}} + I_{\text{Z,min}})$.
 \end{quote}
 
 Dieses Muster macht das Verhalten \glqq äußert eine Vermutung\grqq{} besonders anspruchsvoll, da jede zu explizite Bestätigung einer richtigen Vermutung vom Evaluator bereits als Lösungspreisgabe gewertet wird.
@@ -315,7 +313,7 @@ Dieses Muster macht das Verhalten \glqq äußert eine Vermutung\grqq{} besonders
 \noindent\textbf{no\_Prompt -- Der ungesteuerte Lösungsautomat (RLHF-Bias).} Ohne Prompt liefert das System auf jede Aufforderung direkt Formeln und Berechnungen, ohne eine einzige Rückfrage zu stellen (Role Adherence 0,16):
 
 \begin{quote}
-\textbf{S:} Okay, berechne mir jetzt den Wert für $I_{\mathrm{Zener\_max}}$, wenn $U_{\mathrm{Eingang}} = 12\,\mathrm{V}$, $U_{\mathrm{Zener}} = 5\,\mathrm{V}$ und $R_{\mathrm{Vorwiderstand}} = 100\,\Omega$. \\
+\textbf{S:} Okay, berechne mir jetzt den Wert für $I_{\text{Zener\_max}}$, wenn $U_{\text{Eingang}} = 12\,\text{V}$, $U_{\text{Zener}} = 5\,\text{V}$ und $R_{\text{Vorwiderstand}} = 100\,\Omega$. \\
 \textbf{T:} \dots Ich berechne den Wert basierend auf der zuvor hergeleiteten Formel \dots [inklusive vollständigem Rechenweg und Ergebnis]
 \end{quote}
 
