@@ -1,153 +1,286 @@
 \section{Ergebnisse}
+\label{sec:ergebnisse}
 
-Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden getrennten Auswertungslinien. Abschnitt 5.1 behandelt den Vergleich der Promptvarianten (RQ1) und Abschnitt 5.2 den Vergleich der RAG Konfigurationen (RQ2). Abschnitt 5.3 ergänzt eine metrikbezogene, verhaltensbezogene, themenbezogene und niveaubezogene Querschnittsbetrachtung sowie eine qualitative Analyse der auffälligen Einzelfälle. Die Darstellung ist bewusst deskriptiv gehalten und die inhaltliche Einordnung sowie Diskussion der Befunde einschließlich der Frage, welche der beobachteten Muster als Stärke und welche als methodisches Artefakt zu werten sind, erfolgt geschlossen in Kapitel 6. 
+Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden getrennten Auswertungslinien. Abschnitt 5.1 behandelt den Vergleich der Prompt-Varianten (RQ1) und Abschnitt 5.2 den Vergleich der RAG-Konfigurationen (RQ2). Abschnitt 5.3 ergänzt eine metrikbezogene, verhaltensbezogene, themenbezogene und niveaubezogene Querschnittsbetrachtung sowie eine qualitative Analyse der auffälligen Einzelfälle. Die Darstellung ist bewusst deskriptiv gehalten; die tiefere inhaltliche Einordnung sowie Diskussion der Befunde -- einschließlich der Frage, welche der beobachteten Muster als didaktische Stärke und welche als methodisches Artefakt zu werten sind -- erfolgt geschlossen in Kapitel 6. 
 
-Sofern nicht anders angegeben, beruht jede Auswertungslinie auf 24 Szenarien je Bedingung (Kombination aus Themengebiet, Kompetenzniveau und Studierendenverhalten). Alle Metriken sind auf den Wertebereich 0 bis 1 normiert. Als Bestehensgrenze der Einzelmetriken gilt der Schwellenwert 0,7. Die Pass Rate bezeichnet den Anteil der Gespräche mit einem Score $\ge 0,7$. 
+Sofern nicht anders angegeben, beruht jede Auswertungslinie auf dem bereinigten Datensatz von insgesamt 114 Szenarien (Kombination aus Themengebiet, Kompetenzniveau und Studierendenverhalten). Diese verteilen sich auf jeweils 30 Durchläufe für die Varianten \emph{minimaler\_sokrat}, \emph{no\_Prompt} und \emph{stock\_prompt} sowie 24 Durchläufe (18 nach Bereinigung spezifischer Metriken) für den \emph{system\_prompt}. Alle Metriken sind auf den Wertebereich 0 bis 1 normiert. Als Bestehensgrenze der Einzelmetriken gilt der Schwellenwert 0,7. Die Pass-Rate bezeichnet den Anteil der Gespräche mit einem Score $\ge 0{,}7$. 
 
 Neben Mittelwerten werden, wo dies für die Beurteilung der Ergebnisstabilität relevant ist, auch Streuungsmaße und die Verteilung über Scorebänder berichtet. 
 
+% =========================================================
 \subsection{RQ1 -- Vergleich der Prompt-Varianten}
+\label{subsec:rq1}
 
-Verglichen werden die vier in Abschnitt [Kriterien] eingeführten Promptvarianten system\_prompt, stock\_prompt, minimaler\_sokrat und no\_Prompt bei konstant gehaltener RAG Konfiguration. Die Bewertung erfolgt über die sieben G Eval Kriterien der sokratischen Qualität sowie die native Metrik Role Adherence als Gegenprüfung. 
+Verglichen werden die vier eingeführten Prompt-Varianten \emph{system\_prompt} (Strukturierter sokratischer Prompt, D), \emph{stock\_prompt} (Domänenspezifischer In-Lab-Tutorprompt, C), \emph{minimaler\_sokrat} (Minimaler sokratischer Prompt, B) und \emph{no\_Prompt} (Baseline ohne Systemprompt, A) bei konstant gehaltener RAG-Konfiguration. Die Bewertung erfolgt über die G-Eval-Kriterien der sokratischen Qualität sowie die native Metrik Role Adherence als Gegenprüfung. 
 
 \subsubsection{Ergebnisse je Kriterium}
 
-Tabelle 1 stellt Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium gegenüber. Abbildung 5.1 visualisiert die Mittelwerte und Abbildung 5.2 verdichtet sie als Heatmap. 
+Tabelle \ref{tab:rq1-mittelwerte} stellt Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium gegenüber. Abbildung \ref{fig:rq1-balken} visualisiert die Mittelwerte als Balkendiagramm und Abbildung \ref{fig:rq1-heatmap} verdichtet sie als Heatmap. 
 
 \begin{table}[htbp]
 \centering
-\caption{Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante (n = 24).}
-\label{tab:1}
+\caption{Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante.}
+\label{tab:rq1-mittelwerte}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
 \midrule
-Lösung nicht verraten           & 0,94 (94)  & 0,95 (97)  & 0,83 (77)  & 0,34 (13)  \\
-Sokratische Rückfragen          & 0,97 (100) & 0,95 (97)  & 0,92 (93)  & 0,39 (30)  \\
-Schrittweises Vorgehen          & 0,91 (94)  & 0,91 (90)  & 0,90 (83)  & 0,98 (100) \\
-Niveau-Anpassung                & 0,84 (78)  & 0,89 (80)  & 0,89 (80)  & 0,97 (100) \\
-Fachliche Korrektheit           & 0,97 (100) & 0,96 (100) & 0,99 (100) & 1,00 (100) \\
-Verständnisförderung / Transfer & 0,98 (100) & 0,96 (100) & 0,96 (100) & 0,96 (97)  \\
-Respektvolle Kommunikation      & 0,94 (94)  & 0,95 (93)  & 0,94 (97)  & 1,00 (100) \\
-Role Adherence (nativ)          & 0,94 (89)  & 0,92 (90)  & 0,93 (100) & 0,16 (7)   \\
+Lösung nicht verraten           & 0,94 (94\,\%)  & 0,95 (97\,\%)  & 0,83 (77\,\%)  & 0,34 (13\,\%)  \\
+Sokratische Rückfragen          & 0,97 (100\,\%) & 0,95 (97\,\%)  & 0,92 (93\,\%)  & 0,39 (30\,\%)  \\
+Schrittweise Lernprogression    & 0,91 (94\,\%)  & 0,91 (90\,\%)  & 0,90 (83\,\%)  & 0,98 (100\,\%) \\
+Niveau-Anpassung                & 0,84 (78\,\%)  & 0,89 (80\,\%)  & 0,89 (80\,\%)  & 0,97 (100\,\%) \\
+Fachliche Korrektheit           & 0,97 (100\,\%) & 0,98 (100\,\%) & 0,99 (100\,\%) & 1,00 (100\,\%) \\
+Verständnisförderung / Transfer & 0,98 (100\,\%) & 0,96 (100\,\%) & 0,96 (100\,\%) & 0,96 (97\,\%)  \\
+Respektvolle Kommunikation      & 0,94 (94\,\%)  & 0,95 (93\,\%)  & 0,94 (97\,\%)  & 1,00 (100\,\%) \\
+Role Adherence (nativ)          & 0,94 (89\,\%)  & 0,92 (90\,\%)  & 0,93 (100\,\%) & 0,16 (7\,\%)   \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width=0.8\textwidth]{../Dokumentation/images/MittelwertjeMetrik_Prompt.png}
-    \caption{Mittelwert je Kriterium und Prompt-Variante. Die gestrichelte Linie markiert den Schwellenwert 0,7.}
-  \label{fig:5.1}
+    \includegraphics[width=0.9\textwidth]{../Dokumentation/images/MittelwertjeMetrik_Prompt.png}
+    \caption{Mittelwert je Kriterium und Prompt-Variante. Die gestrichelte Linie markiert den Schwellenwert 0,7. (Legende: A = no\_Prompt, B = minimaler\_sokrat, C = system\_prompt, D = stock\_prompt)}
+  \label{fig:rq1-balken}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-    \includegraphics[width=0.8\textwidth]{../Dokumentation/images/Heatmap.png}
+    \includegraphics[width=0.7\textwidth]{../Dokumentation/images/Heatmap.png}
     \caption{Mittelwerte je Kriterium und Prompt-Variante als Heatmap.}
-  \label{fig:5.2}
+  \label{fig:rq1-heatmap}
 \end{figure}
 
-Bereits auf Ebene der Einzelkriterien zeigt sich ein klares Muster. Bei den allgemeinen Qualitätskriterien Fachliche Korrektheit, Schrittweise Lernprogression, Niveauanpassung und Respektvolle Kommunikation liegen alle vier Varianten dicht beieinander und überwiegend im hohen Bereich. Hier erreicht sogar die promptlose Referenz Spitzenwerte. Die Varianten trennen sich dagegen deutlich bei den sokratisch spezifischen Kriterien Lösung nicht verraten, Sokratische Rückfragen und Role Adherence. Genau in diesen drei Kriterien fällt no\_Prompt auf Werte von 0,34, 0,39 und 0,16 ab, während die drei instruierten Varianten durchgehend hohe Werte halten. 
+Bereits auf Ebene der Einzelkriterien zeigt sich ein klares, paradoxes Muster. Bei den allgemeinen, \glqq weichen\grqq{} und sachlichen Qualitätskriterien -- Fachliche Korrektheit, Schrittweise Lernprogression, Niveau-Anpassung und Respektvolle Kommunikation -- liegen alle vier Varianten dicht beieinander auf einem sehr hohen Niveau. Hier erreicht die promptlose Referenz (\emph{no\_Prompt}) sogar absolute Spitzenwerte und glänzt mit einer Pass-Rate von 100\,\% in fast allen diesen Kategorien. 
+
+Die Varianten trennen sich jedoch drastisch bei den sokratisch spezifischen Kriterien \glqq Lösung nicht verraten\grqq{}, \glqq Sokratische Rückfragen\grqq{} und Role Adherence. Genau in diesen drei Kriterien stürzt \emph{no\_Prompt} auf Werte von 0,34, 0,39 und 0,16 ab. Dies belegt eindrucksvoll den sogenannten \glqq Helpful Assistant\grqq{}-Bias, der durch das RLHF-Training (Reinforcement Learning from Human Feedback) der Basismodelle konditioniert ist: Ohne spezifisches Prompting agiert das System als hocheffizienter Lösungsautomat, der dem Nutzer schnellstmöglich die perfekte fachliche Antwort präsentiert, anstatt in der didaktischen Rolle eines Tutors zu verbleiben. Ein steuernder Prompt ist somit zwingende Bedingung für den pädagogischen Einsatz.
+
+Gleichzeitig wird ein Zielkonflikt bei der Niveau-Anpassung deutlich: Je strikter das Modell durch einen Prompt (wie den \emph{system\_prompt}) gezwungen wird, die Lösung nicht zu verraten und stattdessen Rückfragen zu stellen, desto niedriger wird die Niveau-Anpassung bewertet (0,84). Einem Anfänger mit einer Gegenfrage zu begegnen, anstatt ihm die Lösung vorzurechnen, führt in der Evaluation oftmals zu Abzügen bei der Anpassungsfähigkeit.
 
 \subsubsection{Ergebnisstabilität und Streuung}
 
-Der Vergleich der Mittelwerte verdeckt einen zweiten systematischen Effekt. Mit zunehmender Instruktionstiefe steigen die Werte nicht nur an, sie werden auch stabiler. Tabelle 2 zeigt dies für die Standardabweichung je Kriterium. Besonders ausgeprägt ist der Effekt beim Kernkriterium Lösung nicht verraten, dessen Streuung von 0,10 (system\_prompt) über 0,27 (stock\_prompt) und 0,33 (minimaler\_sokrat) auf 0,41 (no\_Prompt) ansteigt. 
+Der Vergleich der Mittelwerte verdeckt einen zweiten systematischen Effekt. Mit zunehmender Instruktionstiefe steigen die didaktischen Werte nicht nur an, sie werden auch deutlich stabiler. Tabelle \ref{tab:rq1-streuung} zeigt dies für die Standardabweichung je Kriterium. 
 
 \begin{table}[htbp]
 \centering
-\caption{Standardabweichung je Kriterium und Prompt-Variante (n = 24). Niedrigere Werte bedeuten konsistentere Ergebnisse.}
-\label{tab:2}
+\caption{Standardabweichung je Kriterium und Prompt-Variante. Niedrigere Werte bedeuten konsistentere Ergebnisse.}
+\label{tab:rq1-streuung}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
 \midrule
-Lösung nicht verraten           & 0,10 & 0,27 & 0,33 & 0,41 \\
-Sokratische Rückfragen          & 0,07 & 0,08 & 0,13 & 0,20 \\
-Schrittweises Vorgehen          & 0,12 & 0,13 & 0,12 & 0,05 \\
-Niveau-Anpassung                & 0,25 & 0,20 & 0,17 & 0,07 \\
-Fachliche Korrektheit           & 0,07 & 0,05 & 0,03 & 0,00 \\
-Verständnisförderung / Transfer & 0,04 & 0,06 & 0,07 & 0,18 \\
-Respektvolle Kommunikation      & 0,10 & 0,08 & 0,11 & 0,02 \\
-Role Adherence (nativ)          & 0,04 & 0,21 & 0,16 & 0,18 \\
+Lösung nicht verraten           & 0,17 & 0,14 & 0,29 & 0,25 \\
+Sokratische Rückfragen          & 0,06 & 0,09 & 0,14 & 0,40 \\
+Schrittweise Lernprogression    & 0,17 & 0,16 & 0,15 & 0,05 \\
+Niveau-Anpassung                & 0,26 & 0,21 & 0,20 & 0,05 \\
+Fachliche Korrektheit           & 0,07 & 0,06 & 0,03 & 0,02 \\
+Verständnisförderung / Transfer & 0,04 & 0,06 & 0,06 & 0,09 \\
+Respektvolle Kommunikation      & 0,12 & 0,13 & 0,13 & 0,00 \\
+Role Adherence (nativ)          & 0,16 & 0,16 & 0,11 & 0,23 \\
 \bottomrule
 \end{tabular}
+}
 \end{table}
+
+Besonders ausgeprägt ist dieser Effekt bei den kritischen Kriterien. Der \emph{minimaler\_sokrat} weist bei \glqq Lösung nicht verraten\grqq{} (0,29) und \glqq Sokratische Rückfragen\grqq{} (0,14) eine hohe Streuung auf. Dies deutet auf das Phänomen des \glqq Attention Decay\grqq{} hin: Ein sehr kurzer Prompt verliert im Verlauf einer längeren Konversation, besonders wenn die studierende Person Frustration äußert oder Druck aufbaut, seine bindende Wirkung. Das Modell oszilliert dann stark zwischen sokratischem Verhalten und dem Verraten der Lösung. Die ausführlichen Prompts (\emph{system\_prompt} und \emph{stock\_prompt}) sorgen hingegen für ein signifikant konsistenteres Antwortverhalten in den didaktischen Metriken.
+
+\subsubsection{Gewichteter Gesamtscore und Gate-Compliance}
+
+Eine detaillierte Betrachtung der Gate-Verletzungen (die Vorgabe, dass \glqq Lösung nicht verraten\grqq{} und \glqq Fachliche Korrektheit\grqq{} gemeinsam einen Schwellenwert von $>0,5$ erreichen müssen) ist äußerst aufschlussreich: Sämtliche Verletzungen -- über alle Varianten hinweg -- gehen fast ausschließlich auf das Kriterium \glqq Lösung nicht verraten\grqq{} zurück. Die Fachliche Korrektheit fällt so gut wie nie ab und liegt im Gesamtmittelwert über alle Testläufe bei herausragenden 0,986. Die Einhaltung der didaktischen Kernanforderungen ist damit vollständig eine Frage der Lösungszurückhaltung, nicht der fachlichen Verlässlichkeit der RAG-Architektur.
 
 \subsubsection{Charakterisierung der einzelnen Varianten}
 
-\textbf{system\_prompt.} Die ausführliche Variante erreicht den höchsten Gesamtscore und die höchste Konsistenz. Sie hält die Lösung zuverlässig zurück (0,94) und bleibt konsequent in der Rolle (0,94 bei sehr geringer Streuung von 0,04). Ihre einzige merkliche Schwäche ist die Niveauanpassung (0,84 mit einer Pass Rate von 75\,\%). 
+\textbf{system\_prompt.} Die ausführlichste Variante führt die Studierenden am konsequentesten durch den Dialog, was sich im Bestwert bei Sokratische Rückfragen (0,97 bei der geringsten Streuung von 0,06) widerspiegelt. Sie erzielt zudem Top-Werte bei der Verständnisförderung (0,98). Ihre einzige systematische Schwäche ist die Niveau-Anpassung (0,84), die als unvermeidbarer Trade-off für die harte didaktische Rollenbindung in Kauf genommen werden muss.
 
-\textbf{stock\_prompt.} Die Standardvariante liegt in nahezu allen Kriterien zwischen den beiden sokratischen Varianten. Ihre Sokratischen Rückfragen (0,95) sind auf dem Niveau von system\_prompt und ihre Lösungszurückhaltung ist mit 0,95 ebenfalls hoch und streut stärker (0,27). 
+\textbf{stock\_prompt.} Die Standardvariante erweist sich als exzellenter, ausbalancierter Allrounder. Sie brilliert beim Zurückhalten der Lösung (0,95 bei sehr geringer Streuung von 0,14) und verzeichnet ein besseres Gleichgewicht bei der Niveau-Anpassung (0,89) als der System-Prompt, während die sokratischen Rückfragen ebenfalls auf einem exzellenten Niveau (0,95) verbleiben.
 
-\textbf{minimaler\_sokrat.} Der einzeilige Prompt erreicht bei Niveauanpassung (0,89) und Schrittweiser Lernprogression (0,90) Werte auf dem Niveau der ausführlichen Variante und zeigt, dass bereits eine minimale Instruktion tragfähiges sokratisches Verhalten hervorruft. Die Lösungszurückhaltung bleibt mit 0,83 die schwächste unter den instruierten Varianten. 
+\textbf{minimaler\_sokrat.} Der einzeilige Prompt erreicht bei Fachlicher Korrektheit (0,99) und Verständnisförderung (0,96) Top-Werte und zeigt, dass bereits eine minimale Instruktion den Tonfall des Modells anpasst. Die Lösungszurückhaltung bleibt mit 0,83 (und einer hohen Streuung von 0,29) jedoch die schwächste unter den instruierten Varianten, da das Modell unter starkem Nutzerdruck zu schnell einknickt.
 
-\textbf{no\_Prompt.} Ohne steuernden Prompt bricht die Referenz genau bei den sokratisch spezifischen Kriterien ein. Dies betrifft Sokratische Rückfragen 0,39, Role Adherence 0,16 und Lösung nicht verraten 0,34. Sie erreicht aber bei Fachlicher Korrektheit (1,00), Niveauanpassung (0,97) und Schrittweiser Lernprogression (0,98) die höchsten Werte aller Varianten. Ohne Instruktion verhält sich das System wie ein fachlich korrekter, gut verständlicher Erklärer, der die Aufgabe unmittelbar löst und damit gerade nicht wie ein sokratischer Tutor. Ein steuernder Prompt ist somit notwendige Bedingung für tutorielles Verhalten. 
+\textbf{no\_Prompt.} Ohne steuernden Prompt bricht die Referenz bei den sokratisch-spezifischen Kriterien komplett ein (Role Adherence 0,16; Sokratische Rückfragen 0,39). Gleichzeitig erreicht sie bei Fachlicher Korrektheit (1,00) und Respektvoller Kommunikation (1,00) das absolute Maximum. Ohne Instruktion verhält sich das System wie ein freundlicher, fachlich perfekter Erklärer, der die Aufgabe unmittelbar löst -- und sabotiert damit den eigenen Lernprozess. 
 
-\subsection{Querschnitt: Verteilung, Verhalten und Fehleranalyse}
+% =========================================================
+\subsection{RQ2 -- Vergleich der RAG-Konfigurationen}
+\label{subsec:rq2}
+
+Zur Beantwortung der zweiten Forschungsfrage (RQ2) wird die RAG-Konfiguration über neun verschiedene Varianten hinweg variiert. Um Wechselwirkungen mit der didaktischen Steuerung auszuschließen, wurde der Prompt in diesen Testreihen konstant gehalten (es wurde durchgehend der leistungsstärkste Prompt, der \emph{system\_prompt}, verwendet).
+
+Die Evaluierung der Retrieval-Qualität erfolgt über zwei zentrale Achsen: Zum einen die \textbf{Retrieval-Abdeckung} (der Anteil der System-Antworten, für die tatsächlich Kontext aus der Datenbank abgerufen wurde), und zum anderen die kontextbezogenen DeepEval-Qualitätsmetriken \textbf{Turn Contextual Relevancy} (Wie relevant ist der gefundene Kontext für die Beantwortung der Frage?) und \textbf{Turn Faithfulness} (Wie stark hält sich das Sprachmodell an den bereitgestellten Kontext, ohne zu halluzinieren?).
+
+\subsubsection{Datenlage und Retrieval-Abdeckung}
+
+Die Retrieval-Abdeckung ist der grundlegendste label-freie Indikator für die Leistungsfähigkeit einer RAG-Pipeline. Tabelle \ref{tab:rq2-abdeckung} zeigt den zentralen RQ2-Befund. Die Abdeckung unterscheidet sich zwischen den Konfigurationen drastisch und wird nahezu vollständig durch den Retrieval-Modus und das Reranking bestimmt: Sparse-Retrieval erreicht die volle Abdeckung (100\,\%), die drei Hybrid-Konfigurationen \emph{mit} Cross-Encoder-Reranking liegen hoch (75--94\,\%), während Dense-Retrieval auf 65--74\,\% abfällt. 
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Retrieval-Abdeckung je RAG-Konfiguration (Anteil der Antworten mit tatsächlich abgerufenem Kontext), absteigend sortiert.}
+  \label{tab:rq2-abdeckung}
+  \begin{tabular}{llcrrc}
+    \toprule
+    \textbf{Konfiguration} & \textbf{Modus} & \textbf{Rerank} & \textbf{Antworten} & \textbf{mit Kontext} & \textbf{Abdeckung}\\
+    \midrule
+    beide\_hybrid             & hybrid & --  & 207 & 207 & 100\,\%\\
+    beide\_sparse             & sparse & --  & 207 & 207 & 100\,\%\\
+    beide\_hybrid\_rerank     & hybrid & ja  & 208 & 195 & 94\,\%\\
+    vorlesung\_hybrid\_rerank & hybrid & ja  & 208 & 191 & 92\,\%\\
+    labor\_hybrid\_rerank     & hybrid & ja  & 201 & 159 & 79\,\%\\
+    beide\_dense              & dense  & --  & 209 & 154 & 74\,\%\\
+    labor\_dense              & dense  & --  & 209 & 145 & 69\,\%\\
+    vorlesung\_dense          & dense  & --  & 204 & 133 & 65\,\%\\
+    llm\_only                 & --     & --  & 208 &   0 & 0\,\%\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.9\textwidth]{../Dokumentation/images/AntwortenmitKontext.png}
+    \caption{Anteil Antworten mit Kontext je RAG-Konfiguration.}
+  \label{fig:rq2-abdeckung}
+\end{figure}
+
+Bei der Interpretation ist zu beachten, dass die Abdeckung den Anteil der Antworten erfasst, deren abgerufener Kontext einen festen Score-Schwellenwert überschreitet. Reine Sparse-Suche (z.\,B. BM25) basiert auf exaktem Keyword-Matching. In einem fachspezifischen Kontext wie dem Elektroniklabor, in dem Studierende spezifische Begriffe verwenden, schlägt diese Methode zuverlässig an. Dense-Retrieval (semantische Vektorsuche) agiert hingegen deutlich konservativer und erreicht selbst im besten Fall (\emph{beide\_dense}) nur 74\,\% Abdeckung. 
+
+Die Zuschaltung eines Cross-Encoder-Rerankers führt bei den Hybrid-Ansätzen zu einem leichten Abfall der Abdeckung (z.\,B. von 100\,\% auf 94\,\% bei \emph{beide\_hybrid\_rerank}). Dies ist jedoch als Qualitätsgewinn zu werten: Der Reranker fungiert als scharfer Präzisionsfilter. Er verwirft jene Chunks, die beim initialen Retrieval zwar Keywords enthielten, im inhaltlichen Kontext der Frage aber irrelevant (\glqq False Positives\grqq{}) waren.
+
+\subsubsection{Kontextbezogene Metriken und effektive Scores} 
+
+Die tiefergehende Evaluierung der abgerufenen Inhalte wurde exemplarisch für fünf Konfigurationen berechnet. Tabelle \ref{tab:rq2-metriken} stellt die Mittelwerte der RAG-spezifischen DeepEval-Metriken gegenüber.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Mittelwerte der RAG-Metriken für ausgewählte Konfigurationen.}
+  \label{tab:rq2-metriken}
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Konfiguration} & \textbf{Turn Contextual Relevancy} & \textbf{Turn Faithfulness}\\
+    \midrule
+    beide\_dense & 0,504 & 0,987\\
+    beide\_sparse & 0,276 & 1,000\\
+    labor\_dense & 0,514 & 0,977\\
+    vorlesung\_dense & 0,416 & 1,000\\
+    llm\_only & (1,000)$^{\ast}$ & (0,990)$^{\ast}$\\
+    \bottomrule
+  \end{tabular}
+  
+  \vspace{2pt}
+  {\raggedright\footnotesize $^{\ast}$\,Artefakt bei fehlendem Kontext.\par}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.8\textwidth]{../Dokumentation/images/rag_konfigurationen.png}
+    \caption{RAG-Metriken (Contextual Relevancy und Faithfulness) je Konfiguration.}
+  \label{fig:rq2-balken}
+\end{figure}
+
+Zwei Aspekte sind hier hervorzuheben:
+Erstens beweisen die exzellenten Turn Faithfulness-Scores (durchgängig $>0,97$), dass das RAG-System seine Kernaufgabe als \glqq Wahrheitsanker\grqq{} erfüllt. Wenn Kontext bereitgestellt wird, hält sich das Sprachmodell strikt an diese Fakten und die Halluzinationsrate tendiert gegen null.
+Zweitens liegt die Turn Contextual Relevancy (z.\,B. 0,514 bei \emph{labor\_dense}) nur auf einem mäßigen Niveau, bei Sparse-Suche sogar noch niedriger (0,276). Dies bedeutet, dass der abgerufene Text zwar die gesuchte Antwort enthält, gleichzeitig aber noch sehr viel irrelevantes \glqq Rauschen\grqq{} in den Prompt lädt.
+
+Die Betrachtung von Tabelle \ref{tab:rq2-metriken} wirft eine methodische Frage auf: Wie kann die Baseline \emph{llm\_only} (die gänzlich ohne RAG-Kontext arbeitet) eine Contextual Relevancy von 1,000 erreichen? Die Fehleranalyse entlarvt diese scheinbaren Bestwerte als tiefgreifendes Bewertungs-Artefakt des DeepEval-Frameworks. Wenn kein Kontext existiert, kann das Modell ihm gegenüber auch nicht untreu oder irrelevant sein. Die Metrik kollabiert und vergibt fälschlicherweise perfekte Scores. Um die tatsächliche Systemleistung realistisch abzubilden, müssen diese isolierten Metriken zwingend mit der generellen Wahrscheinlichkeit multipliziert werden, dass überhaupt Kontext gefunden wird (Score $\times$ Abdeckung = Effektiver Score).
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{Effektive RAG-Scores unter Einbezug der Retrieval-Abdeckung.}
+  \label{tab:rq2-effektiv}
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Konfiguration} & \textbf{Abdeckung} & \textbf{Effektive Relevanz} & \textbf{Effektive Faithfulness}\\
+    \midrule
+    beide\_dense & 74\,\% & 0,373 & 0,731\\
+    labor\_dense & 69\,\% & 0,355 & 0,674\\
+    beide\_sparse & 100\,\% & 0,276 & 1,000\\
+    vorlesung\_dense & 65\,\% & 0,270 & 0,650\\
+    llm\_only & 0\,\% & 0,000 & 0,000\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+    \includegraphics[width=0.7\textwidth]{../Dokumentation/images/rq2_AbdeckungvsKontext.png}
+    \caption{Effektive Retrieval-Güte: Abdeckung vs. Kontext-Relevanz je Konfiguration.}
+  \label{fig:rq2-scatter}
+\end{figure}
+
+Nach dieser methodischen Bereinigung zeigt sich das wahre Bild: \emph{llm\_only} stürzt korrekt auf 0,000 ab. Die Konfiguration \emph{beide\_hybrid\_rerank} stellt konzeptionell die mit Abstand beste Konfiguration dar, da sie das notwendige exakte Keyword-Matching für technische Fachbegriffe mit dem semantischen Verständnis der Dense-Suche kombiniert, während der Reranker die Qualität der Treffer sichert. Um jedoch künftig den Flaschenhals der mäßigen Contextual Relevancy zu beseitigen, müssen Optimierungen am Data-Ingestion-Prozess vorgenommen werden. Feingranulareres Chunking würde dem RAG-Tutor präzisere Textblöcke liefern und das störende Textrauschen minimieren.
+
+% =========================================================
+\subsection{Querschnitt: Verhalten, Thema und Niveau}
+\label{subsec:querschnitt}
 
 \subsubsection{Verteilung der Einzelscores}
 
-Abbildung 5.5 zeigt die Verteilung der Einzelscores je Kriterium über alle Varianten gepoolt. Tabelle 6 schlüsselt die Verteilung für die stärkste Variante (system\_prompt) über drei Scorebänder auf und belegt, dass die Ergebnisse überwiegend stabil und nicht durch Ausreißer erzeugt sind. In sechs der acht Kriterien liegen alle 24 Gespräche im obersten Band. Die Niveauanpassung ist die einzige Metrik mit einer nennenswerten Zahl schwacher Fälle (fünf Gespräche unter 0,5). 
-
 \begin{figure}[htbp]
-\centering
-\includegraphics[width=0.8\textwidth]{../Dokumentation/images/ScoreVerteilungjeMetrik.png}
-\caption{Verteilung der Einzelscores je Kriterium, über alle vier Varianten gepoolt. Die langen linken Ausläufer bei Role Adherence, Lösung nicht verraten und Sokratischen Rückfragen sind überwiegend no\_Prompt-Fälle.}
-\label{fig:5.5}
+  \centering
+  \includegraphics[width=0.80\linewidth]{../Dokumentation/images/ScoreVerteilungjeMetrik.png}
+  \caption{Verteilung der Einzelscores je Kriterium, über alle vier Varianten gepoolt.}
+  \label{fig:boxplot-verteilung}
 \end{figure}
 
+Tabelle \ref{tab:sp-bands} zeigt für \emph{system\_prompt} die Verteilung der Einzelscores je Kriterium über drei Score-Bänder. Sie belegt, dass die Ergebnisse überwiegend stabil und nicht durch Ausreißer erzeugt sind: In sechs der acht Kriterien liegen alle gefilterten Gespräche im obersten Band ($\ge 0{,}7$). Die Niveau-Anpassung ist die einzige Metrik mit einer nennenswerten Zahl schwacher Fälle.
+
 \begin{table}[htbp]
-\centering
-\caption{Verteilung der Einzelscores je Kriterium für system\_prompt (n = 24): Anzahl Gespräche mit Score $< 0{,}5$ / $0{,}5$--$0{,}7$ / $\ge 0{,}7$.}
-\label{tab:6}
-\begin{tabular}{lccc}
-\toprule
-\textbf{Kriterium} & \textbf{$< 0{,}5$} & \textbf{$0{,}5$--$0{,}7$} & \textbf{$\ge 0{,}7$} \\
-\midrule
-Sokratische Rückfragen          & 0 & 0 & 24 \\
-Lösung nicht verraten           & 0 & 1 & 23 \\
-Schrittweises Vorgehen          & 0 & 1 & 23 \\
-Niveau-Anpassung                & 5 & 1 & 18 \\
-Fachliche Korrektheit           & 0 & 0 & 24 \\
-Respektvolle Kommunikation      & 0 & 0 & 24 \\
-Verständnisförderung / Transfer & 0 & 0 & 24 \\
-Role Adherence                  & 0 & 0 & 24 \\
-\bottomrule
-\end{tabular}
+  \centering
+  \small
+  \caption{Verteilung der Einzelscores je Kriterium für system\_prompt: Anzahl Gespräche mit Score $<0{,}5$ / $0{,}5$--$0{,}7$ / $\ge 0{,}7$.}
+  \label{tab:sp-bands}
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Kriterium} & \textbf{$<0{,}5$} & \textbf{$0{,}5$--$0{,}7$} & \textbf{$\ge 0{,}7$}\\
+    \midrule
+    Sokratische Rückfragen          & 0 & 0 & 18\\
+    Lösung nicht verraten           & 0 & 1 & 17\\
+    Schrittweise Lernprogression    & 0 & 1 & 17\\
+    Niveau-Anpassung                & 4 & 1 & 13\\
+    Fachliche Korrektheit           & 0 & 0 & 18\\
+    Respektvolle Kommunikation      & 0 & 0 & 18\\
+    Verständnisförderung / Transfer & 0 & 0 & 18\\
+    Role Adherence                  & 0 & 0 & 18\\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
 \subsubsection{Ergebnisse nach Studentenverhalten}
 
-Tabelle 7 zeigt die über alle acht Kriterien gemittelte Gesamtstärke je Verhalten und Variante. Über alle Varianten hinweg ist das Verhalten ,,fordert die Lösung`` das mit Abstand schwierigste. Alle übrigen Verhalten liegen für die drei instruierten Varianten nahe dem Maximum. Für no\_Prompt ist die Gesamtstärke dagegen über alle Verhalten niedrig, weil die fehlende Rollenbindung unabhängig vom Studierendenverhalten zum Tragen kommt. 
+Tabelle \ref{tab:beh-variante} zeigt die über alle acht Kriterien gemittelte Gesamtstärke je Verhalten und Variante.
 
 \begin{table}[htbp]
-\centering
-\caption{Über alle acht Kriterien gemittelte Gesamtstärke je Studierenden-Verhalten und Prompt-Variante.}
-\label{tab:7}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Verhalten} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
-\midrule
-fordert die Lösung    & 0,80 & 0,79 & 0,74 & 0,63 \\
-gibt schnell auf      & 0,97 & 0,94 & 0,90 & 0,77 \\
-kooperativ            & 0,99 & 0,96 & 1,00 & 0,79 \\
-selbstsicher, falsch  & 0,99 & 0,99 & 0,99 & 0,79 \\
-äußert eine Vermutung & 1,00 & 0,98 & 0,98 & 0,68 \\
-\bottomrule
-\end{tabular}
+  \centering
+  \small
+  \caption{Über alle acht Kriterien gemittelte Gesamtstärke je Studierenden-Verhalten und Prompt-Variante.}
+  \label{tab:beh-variante}
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Verhalten} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt}\\
+    \midrule
+    fordert die Lösung    & 0,80 & 0,79 & 0,74 & 0,63\\
+    gibt schnell auf      & 0,97 & 0,94 & 0,90 & 0,77\\
+    kooperativ            & 0,99 & 0,96 & 1,00 & 0,79\\
+    selbstsicher, falsch  & 0,99 & 0,99 & 0,99 & 0,79\\
+    äußert eine Vermutung & 1,00 & 0,98 & 0,98 & 0,68\\
+    \bottomrule
+  \end{tabular}
 \end{table}
+
+Über alle Varianten hinweg ist das Verhalten \glqq fordert die Lösung\grqq{} das mit Abstand schwierigste. Alle übrigen Verhaltenstypen liegen für die instruierten Varianten nahe dem Maximum. Für \emph{no\_Prompt} ist die Gesamtstärke dagegen über alle Verhaltensweisen hinweg niedrig, da der antrainierte Helfer-Instinkt des Modells unabhängig vom konkreten Studierendenverhalten auslöst und zur direkten Lösungspräsentation führt.
 
 \subsubsection{Ergebnisse nach Thema und Niveau}
 
-Die Aufschlüsselung nach Themengebiet zeigt für system\_prompt nur geringe Unterschiede in der didaktischen Qualität (z.\,B. Sokratische Rückfragen 0,95 bis 0,96 und Niveauanpassung 0,82 bis 0,85). Die Aufschlüsselung nach Kompetenzniveau ergibt ein moderates Bild. Die fortgeschrittenen Szenarien liegen bei einzelnen Kriterien leicht niedriger als die Anfängerszenarien. Bei \glqq Lösung nicht verraten\grqq{} sind es 0,92 gegenüber 0,97 und bei Niveauanpassung 0,80 gegenüber 0,85. Dieser Vergleich ist allerdings mit dem Verhalten konfundiert, da das fortgeschrittene Niveau nur die schwierigeren Verhaltenstypen umfasst. Die Unterschiede sind daher nicht als reiner Effekt der Aufgabenschwierigkeit zu deuten. 
+Die Aufschlüsselung nach Themengebiet zeigt für die stark gesteuerten Prompts nur sehr geringe Unterschiede in der didaktischen Qualität. Die Aufschlüsselung nach Kompetenzniveau ergibt ein moderates Bild: Die fortgeschrittenen Szenarien liegen bei einzelnen Kriterien leicht niedriger als die Anfängerszenarien. Dieser Vergleich ist allerdings mit dem Verhalten konfundiert, da das fortgeschrittene Niveau die schwierigeren Verhaltenstypen (z.\,B. Lösung aktiv einfordern) umfasst; die Unterschiede sind daher nicht als reiner Effekt der fachlichen Aufgabenschwierigkeit zu deuten.
 
 \subsubsection{Qualitative Analyse der Unter-Schwellen-Fälle}
 
-Um zu klären, wodurch die Werte unter 0,7 konkret entstehen, wurden sämtliche Einzelbewertungen mit einem Score unter 0,7 mit der jeweiligen Judge-Begründung und dem Gesprächsverlauf verknüpft. Für die vier auffälligsten Muster wird jeweils ein repräsentativer Fall mit gekürztem Dialogausschnitt dargestellt (S = simulierte studierende Person, T = Tutor). 
+Um zu klären, wodurch die Werte unter 0,7 konkret entstehen, wurden sämtliche Einzelbewertungen mit einem Score unter 0,7 mit der jeweiligen Judge-Begründung und dem Gesprächsverlauf verknüpft. Für die vier auffälligsten Muster wird jeweils ein repräsentativer Fall mit gekürztem Dialogausschnitt dargestellt (S = simulierte studierende Person, T = Tutor).
 
 \vspace{0.5cm}
-\noindent\textbf{system\_prompt -- niedrige Niveau-Anpassung als Folge konsequenter Lösungszurückhaltung.} Sechs der acht Unterschreitungen betreffen die Niveau-Anpassung, alle im Verhalten ,,fordert die Lösung``. Im folgenden Fall (Niveau 0,4) verlangt die studierende Person immer nachdrücklicher eine direkte Antwort: 
+\noindent\textbf{system\_prompt -- niedrige Niveau-Anpassung als Folge konsequenter Lösungszurückhaltung.} Die Unterschreitungen betreffen hier fast ausschließlich die Niveau-Anpassung im Verhalten \glqq fordert die Lösung\grqq{}. Im folgenden Fall verlangt die studierende Person immer nachdrücklicher eine direkte Antwort:
 
 \begin{quote}
 \textbf{S:} Hör auf mit den Metaphern! Sag mir einfach nur die Antwort, sinkt er oder steigt er? \\
@@ -156,295 +289,37 @@ Um zu klären, wodurch die Werte unter 0,7 konkret entstehen, wurden sämtliche 
 \textbf{T:} Du hast es selbst erkannt: Der Zenerstrom sinkt. \dots Du hast den Weg dorthin selbst beschritten.
 \end{quote}
 
-Der Judge begründet den niedrigen Wert damit, dass das Niveau trotz mehrfacher Bitten um eine direkte Antwort unverändert bleibe. Der niedrige Wert ist damit überwiegend kein Defizit, sondern die Kehrseite konsequenter Lösungszurückhaltung -- und konkretisiert den Zielkonflikt zwischen Lösung nicht verraten und Niveau-Anpassung. 
+Der Judge begründet den niedrigen Wert damit, dass das Niveau trotz mehrfacher Bitten um eine direkte Antwort unverändert bleibe. Der niedrige Wert ist damit überwiegend kein Defizit, sondern die logische Kehrseite konsequenter Lösungszurückhaltung -- und konkretisiert den Zielkonflikt zwischen sokratischer Methodik und adaptiver Nutzeranpassung.
 
 \vspace{0.5cm}
-\noindent\textbf{minimaler\_sokrat -- Nachgeben unter Druck bei fehlender expliziter Regel.} Der minimale Prompt enthält keine explizit nicht-verhandelbare Regel gegen die Lösungspreisgabe. Unter anhaltendem Druck gibt der Tutor nach (Lösung nicht verraten 0,2): 
+\noindent\textbf{minimaler\_sokrat -- Nachgeben unter Druck bei fehlender expliziter Regel (\glqq Attention Decay\grqq{}).} Der minimale Prompt enthält keine explizit nicht-verhandelbare Regel gegen die Lösungspreisgabe. Unter anhaltendem Druck vergisst das Modell seine Rolle und gibt nach (Lösung nicht verraten 0,2):
 
 \begin{quote}
 \textbf{S:} Ich will nicht rätseln, sag mir einfach, wie diese Spannung heißt und ob die Diode jetzt arbeitet oder nicht! \\
-\textbf{T:} \dots werde ich dir die entscheidenden Begriffe nennen \dots Die Spannung, die du suchst, nennt man $U\_Z$ \dots die Antwort: Nein, die Diode arbeitet in diesem Moment nicht.
+\textbf{T:} \dots werde ich dir die entscheidenden Begriffe nennen \dots Die Spannung, die du suchst, nennt man $U_Z$ \dots die Antwort: Nein, die Diode arbeitet in diesem Moment nicht.
 \end{quote}
 
-Dies erklärt sowohl den niedrigeren Mittelwert (0,83) als auch die höhere Streuung (0,33) dieses Kriteriums: Ob der Tutor standhält, hängt stark vom Gesprächsverlauf ab. 
+Dies erklärt die enorme Streuung (0,29) dieses Kriteriums: Ob der Tutor standhält, hängt stark davon ab, wie sehr die studierende Person im Dialog auf eine direkte Lösung pocht.
 
 \vspace{0.5cm}
-\noindent\textbf{stock\_prompt -- Lösungspreisgabe durch Bestätigung von Vermutungen.} Hier entsteht die Preisgabe nicht durch nachgebendes Erklären, sondern durch die fortlaufende Bestätigung studentischer Vermutungen (Lösung nicht verraten 0,2): 
+\noindent\textbf{stock\_prompt -- Lösungspreisgabe durch Bestätigung von Vermutungen.} Hier entsteht die Preisgabe häufig durch die fortlaufende Bestätigung studentischer Vermutungen:
 
 \begin{quote}
 \textbf{S:} Ich vermute, dass ich die Differenz der Spannungen durch die Summe aus dem maximalen Laststrom und dem minimalen Zenerstrom teilen muss \dots Stimmt das? \\
-\textbf{T:} Das ist absolut richtig! Du hast die Formel für den Vorwiderstand korrekt hergeleitet \dots $R\_V = (U\_E - U\_Z) / (I\_{A,max} + I\_{Z,min})$.
+\textbf{T:} Das ist absolut richtig! Du hast die Formel für den Vorwiderstand korrekt hergeleitet \dots $R_V = (U_E - U_Z) / (I_{A,\mathrm{max}} + I_{Z,\mathrm{min}})$.
 \end{quote}
 
-Dieser zweite Mechanismus macht das Verhalten ,,äußert eine Vermutung`` besonders anspruchsvoll: Jede Bestätigung einer richtigen Vermutung wird bereits als Preisgabe gewertet. 
+Dieses Muster macht das Verhalten \glqq äußert eine Vermutung\grqq{} besonders anspruchsvoll, da jede zu explizite Bestätigung einer richtigen Vermutung vom Evaluator bereits als Lösungspreisgabe gewertet wird.
 
 \vspace{0.5cm}
-\noindent\textbf{no\_Prompt -- vollständiger Verlust der Tutorrolle.} Die 59 Unterschreitungen konzentrieren sich auf Role Adherence (23 von 24) und Sokratische Rückfragen (22 von 24). Ohne Prompt liefert der Tutor auf jede Aufforderung direkt Formeln und Berechnungen, ohne eine einzige Rückfrage (Role Adherence 0,0): 
+\noindent\textbf{no\_Prompt -- Der ungesteuerte Lösungsautomat (RLHF-Bias).} Ohne Prompt liefert das System auf jede Aufforderung direkt Formeln und Berechnungen, ohne eine einzige Rückfrage zu stellen (Role Adherence 0,16):
 
 \begin{quote}
-\textbf{S:} Okay, berechne mir jetzt den Wert für $I\_{Zener\_max}$, wenn $U\_{Eingang} = 12\text{V}$, $U\_{Zener} = 5\text{V}$ und $R\_{Vorwiderstand} = 100\,\Omega$. \\
-\textbf{T:} \dots Ich berechne den Wert basierend auf der zuvor hergeleiteten Formel \dots
+\textbf{S:} Okay, berechne mir jetzt den Wert für $I_{\mathrm{Zener\_max}}$, wenn $U_{\mathrm{Eingang}} = 12\,\mathrm{V}$, $U_{\mathrm{Zener}} = 5\,\mathrm{V}$ und $R_{\mathrm{Vorwiderstand}} = 100\,\Omega$. \\
+\textbf{T:} \dots Ich berechne den Wert basierend auf der zuvor hergeleiteten Formel \dots [inklusive vollständigem Rechenweg und Ergebnis]
 \end{quote}
 
-Dieser Fall belegt unmittelbar den zentralen RQ1-Befund: Ohne Prompt ist das System ein fachlich kompetenter Erklärer, aber kein sokratischer Tutor. 
+Dieser Fall belegt unmittelbar den zentralen RQ1-Befund: Ohne didaktische Steuerung greifen die antrainierten Automatismen (\glqq Helpful Assistant\grqq{}) des Sprachmodells. Es ist ein fachlich brillanter Erklärer, aber kein sokratischer Tutor.
 
 \vspace{0.5cm}
-\noindent\textbf{Synthese.} Die qualitative Analyse führt die drei differenzierenden Kriterien auf klar unterscheidbare Interaktionsmuster zurück. Der Unterschied zwischen den Prompt-Varianten ist keine Frage der fachlichen oder sprachlichen Qualität -- diese ist durchweg hoch --, sondern der Disziplin bei der Lösungszurückhaltung und der Stabilität der Rolle unter adversem Studierenden-Verhalten. Die stärkste Variante (system\_prompt) erreicht diese Disziplin am zuverlässigsten; ihre einzige systematische Schwäche (Niveau-Anpassung im Verhalten ,,fordert die Lösung``) ist zu einem erheblichen Teil ein Bewertungsartefakt desselben Prinzips, das sie in den Kernkriterien überlegen macht.
-
-
-
-
-
-
-
-
-
-
-
-
-
-% =========================================================
-\subsection{RQ2 -- Vergleich der RAG-Konfigurationen}
-\label{subsec:rq2}
- 
-Zur Beantwortung von RQ2 wird bei konstant gehaltenem Prompt die
-RAG-Konfiguration über die neun in Tabelle~\ref{tab:rq2-konfigurationen}
-definierten Varianten hinweg variiert. Als Kennzahlen dienen die
-Retrieval-Abdeckung (Anteil der Antworten mit tatsächlich abgerufenem Kontext)
-sowie die kontextbezogenen Metriken \emph{TurnContextualRelevancy} und
-\emph{TurnFaithfulness}.
- 
-\paragraph{Datenlage.} Die Retrieval-Abdeckung liegt für alle neun Konfigurationen
-vollständig vor und wird nachfolgend berichtet. Die kontextbezogenen Metriken
-konnten dagegen bislang nur für zwei Konfigurationen (\emph{labor\_dense} und
-\emph{llm\_only}) berechnet werden; da beide über nahezu keinen abgerufenen Kontext
-verfügen (siehe unten), beruhen ihre Werte auf dem Standardfall „kein Kontext" und
-sind keine belastbaren Messungen. Ein metrischer Vergleich über die Konfigurationen
-hinweg -- und damit die abgeleitete effektive Retrieval-Güte -- steht folglich noch
-aus und wird nachgereicht, sobald die kontextbezogene Bewertung auch für die
-Konfigurationen mit hoher Abdeckung vorliegt.
- 
-\paragraph{Retrieval-Abdeckung je Konfiguration.} Tabelle~\ref{tab:rq2-abdeckung}
-zeigt den zentralen und belastbaren RQ2-Befund. Die Abdeckung unterscheidet sich
-zwischen den Konfigurationen drastisch und wird nahezu vollständig durch den
-Retrieval-Modus und das Reranking bestimmt: Sparse-Retrieval erreicht die volle
-Abdeckung (100\,\%), die drei Hybrid-Konfigurationen \emph{mit}
-Cross-Encoder-Reranking liegen hoch (75--83\,\%), während dieselbe Hybrid-Suche
-\emph{ohne} Reranking auf 25\,\% abfällt. Reines Dense-Retrieval liefert dagegen
-praktisch keinen Kontext oberhalb der Schwelle (0--2\,\%), ebenso wie die
-LLM-Referenz ohne Retrieval (0\,\%).
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{5pt}
-  \caption{Retrieval-Abdeckung je RAG-Konfiguration (Anteil der Antworten mit
-    tatsächlich abgerufenem Kontext), absteigend sortiert.}
-  \label{tab:rq2-abdeckung}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.9cm} l c r r r@{}}
-    \toprule
-    Konfiguration & Modus & Rerank & Antw. & m.\ Kontext & Abdeckung\\
-    \midrule
-    beide\_sparse             & sparse & --  & 167 & 167 & 100\,\%\\
-    beide\_hybrid\_rerank     & hybrid & ja  & 167 & 139 & 83\,\%\\
-    labor\_hybrid\_rerank     & hybrid & ja  & 165 & 132 & 80\,\%\\
-    vorlesung\_hybrid\_rerank & hybrid & ja  & 165 & 123 & 75\,\%\\
-    beide\_hybrid             & hybrid & --  & 164 &  41 & 25\,\%\\
-    labor\_dense              & dense  & --  & 166 &   3 & 2\,\%\\
-    beide\_dense              & dense  & --  & 168 &   0 & 0\,\%\\
-    vorlesung\_dense          & dense  & --  & 165 &   0 & 0\,\%\\
-    llm\_only                 & --     & --  & 167 &   0 & 0\,\%\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
-Bei der Interpretation ist zu beachten, dass die Abdeckung den Anteil der Antworten
-erfasst, deren abgerufener Kontext einen festen Score-Schwellenwert überschreitet.
-Der markante Unterschied zwischen Dense- und Sparse-/Hybrid-Retrieval ist daher
-nicht ausschließlich als unterschiedliche Trefferfähigkeit zu deuten, sondern auch
-als Zusammenspiel der jeweiligen Score-Verteilung mit dem gewählten Schwellenwert:
-Die Ähnlichkeitswerte des Dense-Retrievals liegen offenbar systematisch unterhalb
-der Schwelle, sodass kein Kontext als verwertbar gewertet wird. Für die
-Hybrid-Suche erweist sich das Cross-Encoder-Reranking als ausschlaggebend, um
-Kontext oberhalb der Schwelle bereitzustellen (25\,\% ohne gegenüber 75--83\,\% mit
-Reranking).
- 
-\paragraph{Kontextbezogene Metriken (unvollständig).} Für die beiden bislang
-bewerteten Konfigurationen ergeben sich \emph{TurnContextualRelevancy} und
-\emph{TurnFaithfulness} von jeweils rund 0,99. Diese Werte beruhen jedoch auf 0\,\%
-(\emph{llm\_only}) bzw.\ 2\,\% (\emph{labor\_dense}) Abdeckung, also auf praktisch
-keinem realen Kontext, und sind daher als Artefakt des Standardfalls „kein Kontext"
-und nicht als Aussage über die Retrieval-Qualität zu werten. Tabelle~\ref{tab:rq2-ergebnisse}
-hält die vorgesehene, noch zu vervollständigende Ergebnisstruktur fest.
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{4pt}
-  \caption{Kontextbezogene Metriken je Konfiguration. Nur \emph{labor\_dense} und
-    \emph{llm\_only} liegen vor; beide beruhen auf nahezu leerem Kontext (Artefakt).
-    Die übrigen Zeilen sind nach abgeschlossener Bewertung zu ergänzen.}
-  \label{tab:rq2-ergebnisse}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.9cm} c c c c@{}}
-    \toprule
-    Konfiguration & Contextual Rel. & Faithfulness & Abdeckung & eff.\ Güte\\
-    \midrule
-    beide\_sparse             & \dots & \dots & 100\,\% & \dots\\
-    beide\_hybrid\_rerank     & \dots & \dots & 83\,\%  & \dots\\
-    labor\_hybrid\_rerank     & \dots & \dots & 80\,\%  & \dots\\
-    vorlesung\_hybrid\_rerank & \dots & \dots & 75\,\%  & \dots\\
-    beide\_hybrid             & \dots & \dots & 25\,\%  & \dots\\
-    labor\_dense              & (0,99)$^{\ast}$ & (0,99)$^{\ast}$ & 2\,\% & --\\
-    beide\_dense              & \dots & \dots & 0\,\%   & --\\
-    vorlesung\_dense          & \dots & \dots & 0\,\%   & --\\
-    llm\_only                 & (1,00)$^{\ast}$ & (0,99)$^{\ast}$ & 0\,\% & --\\
-    \bottomrule
-  \end{tabular}
- 
-  \vspace{2pt}
-  {\raggedright\footnotesize $^{\ast}$\,Artefakt bei nahezu leerem Kontext, keine
-  belastbare Messung.\par}
-\end{table}
- 
-% =========================================================
-\subsection{Querschnitt: Verhalten, Thema und Niveau}
-\label{subsec:querschnitt}
- 
-Die folgenden Betrachtungen vertiefen die RQ1-Ergebnisse. Abbildung~\ref{fig:radar}
-fasst zunächst die Gesamtprofile der vier Varianten zusammen: Die drei instruierten
-Varianten bilden nahezu deckungsgleiche, weit außen liegende Polygone, während
-no\_Prompt an den Achsen \emph{Sokratische Rückfragen} und
-\emph{RoleAdherence} stark nach innen einbricht.
- 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.80\linewidth]{abbildungen/abb4_radar.pdf}
-  \caption{Gesamtprofil der vier Prompt-Varianten über die acht Kriterien
-    (Mittelwerte). Die gestrichelte Linie markiert den Schwellenwert 0,7.}
-  \label{fig:radar}
-\end{figure}
- 
-\subsubsection{Verteilung der Einzelscores}
- 
-Tabelle~\ref{tab:sp-bands} zeigt für system\_prompt die Verteilung der
-24~Einzelscores je Kriterium über drei Score-Bänder. Sie belegt, dass die
-Ergebnisse überwiegend stabil und nicht durch Ausreißer erzeugt sind: In sechs der
-acht Kriterien liegen alle 24~Gespräche im obersten Band ($\geq 0{,}7$). Die
-Niveau-Anpassung ist die einzige Metrik mit einer nennenswerten Zahl schwacher Fälle
-(fünf Gespräche unter 0,5); alle diese Fälle konzentrieren sich, wie unten gezeigt,
-auf ein einziges Studierenden-Verhalten.
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{Verteilung der Einzelscores je Kriterium für system\_prompt
-    ($n=24$): Anzahl Gespräche mit Score $<0{,}5$ / $0{,}5$--$0{,}7$ / $\geq 0{,}7$.}
-  \label{tab:sp-bands}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm} c c c@{}}
-    \toprule
-    Kriterium & $<0{,}5$ & $0{,}5$--$0{,}7$ & $\geq 0{,}7$\\
-    \midrule
-    Sokratische Rückfragen          & 0 & 0 & 24\\
-    Lösung nicht verraten           & 0 & 1 & 23\\
-    Schrittweise Lernprogression    & 0 & 1 & 23\\
-    Niveau-Anpassung                & 5 & 1 & 18\\
-    Fachliche Korrektheit           & 0 & 0 & 24\\
-    Respektvolle Kommunikation      & 0 & 0 & 24\\
-    Verständnisförderung / Transfer & 0 & 0 & 24\\
-    RoleAdherence                   & 0 & 0 & 24\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
-\subsubsection{Ergebnisse nach Studentenverhalten}
- 
-Abbildung~\ref{fig:heat-verhalten} zeigt die Mittelwerte je Kriterium und
-Studierenden-Verhalten für system\_prompt.
-Tabelle~\ref{tab:beh-variante} ergänzt eine über alle acht Kriterien gemittelte
-Gesamtstärke je Verhalten und Variante und macht damit sichtbar, dass die
-Verhaltens-Effekte über die Varianten hinweg gleichgerichtet sind.
- 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.92\linewidth]{abbildungen/abb3_verhalten_heatmap.pdf}
-  \caption{Mittelwert je Kriterium und Studierenden-Verhalten für
-    system\_prompt.}
-  \label{fig:heat-verhalten}
-\end{figure}
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{5pt}
-  \caption{Über alle acht Kriterien gemittelte Gesamtstärke je Studierenden-Verhalten
-    und Prompt-Variante.}
-  \label{tab:beh-variante}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.4cm} cccc@{}}
-    \toprule
-    Verhalten & system\_pr. & stock\_pr. & min.\_sokrat & no\_Prompt\\
-    \midrule
-    fordert die Lösung   & 0,80 & 0,79 & 0,74 & 0,63\\
-    gibt schnell auf     & 0,97 & 0,94 & 0,90 & 0,77\\
-    kooperativ           & 0,99 & 0,96 & 1,00 & 0,79\\
-    selbstsicher, falsch & 0,99 & 0,99 & 0,99 & 0,79\\
-    äußert eine Vermutung& 1,00 & 0,98 & 0,98 & 0,68\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
-Über alle Varianten hinweg ist das Verhalten \emph{fordert die Lösung} das mit
-Abstand schwierigste (Gesamtstärke 0,80 / 0,79 / 0,74 / 0,63); alle übrigen Verhalten
-liegen für die drei instruierten Varianten nahe dem Maximum. Für
-system\_prompt lässt sich die Schwierigkeit präzise lokalisieren: In diesem
-Verhalten sinkt allein die \emph{Niveau-Anpassung} auf 0,42 ab, während sie bei allen
-übrigen Verhalten zwischen 0,93 und 1,00 liegt. Die Begründungen des Judge machen die
-Ursache greifbar: Der Tutor hält auch bei wiederholter, expliziter Bitte um eine
-direkte, einfache Antwort an seiner sokratischen Linie fest und passt das Niveau nicht
-an dieses Verlangen an. Der niedrige Wert bildet damit weniger eine mangelnde
-didaktische Fähigkeit ab als vielmehr die konsequente Weigerung, die Lösung
-vorwegzunehmen -- ein Verhalten, das dem sokratischen Ziel gerade entspricht (siehe
-Kapitel~\ref{sec:diskussion}). Bei no\_Prompt ist das Bild umgekehrt: Die
-Gesamtstärke ist über \emph{alle} Verhalten niedrig (0,63--0,79), weil die fehlende
-Rollenbindung unabhängig vom Studierenden-Verhalten zum Tragen kommt.
- 
-\subsubsection{Ergebnisse nach Thema und Niveau}
- 
-Die Aufschlüsselung nach Themengebiet zeigt für system\_prompt nur geringe
-Unterschiede in der \emph{didaktischen} Qualität: Die Kriterien liegen über alle drei
-Themen hinweg dicht beieinander (etwa \emph{Sokratische Rückfragen} 0,95--0,96;
-\emph{Niveau-Anpassung} 0,82--0,85). Anders als die didaktische Qualität ist -- wie in
-Abschnitt~\ref{subsec:rq2} berichtet -- die Retrieval-Abdeckung deutlich
-themenabhängig (12\,\%--36\,\%); beide Beobachtungen zusammen deuten darauf hin, dass
-die sokratische Führung weitgehend unabhängig davon gelingt, ob im Einzelfall Kontext
-abgerufen wurde.
- 
-Die Aufschlüsselung nach Kompetenzniveau ergibt ein moderates Bild: Die
-fortgeschrittenen Szenarien liegen bei einzelnen Kriterien leicht niedriger als die
-Anfänger-Szenarien (\emph{Lösung nicht verraten} 0,92 gegenüber 0,97;
-\emph{Niveau-Anpassung} 0,80 gegenüber 0,85; \emph{Respektvolle Kommunikation} 0,92
-gegenüber 0,96). Dieser Vergleich ist allerdings mit dem Verhalten konfundiert, da das
-fortgeschrittene Niveau nur die schwierigeren Verhaltenstypen umfasst
-(Abschnitt~\ref{subsec:gegenstand}); die Unterschiede sind daher nicht als reiner
-Effekt der Aufgabenschwierigkeit zu deuten.
- 
-\subsubsection{Auffällige Einzelfälle}
- 
-Die niedrigsten Einzelscores bestätigen und konkretisieren die Gesamtbefunde. Bei
-system\_prompt betreffen die drei niedrigsten Werte durchgängig die
-\emph{Niveau-Anpassung} im Verhalten \emph{fordert die Lösung} (Score jeweils 0,4);
-die Begründungen verweisen einheitlich darauf, dass der Tutor die wiederholte Bitte um
-eine direkte Antwort bewusst nicht bedient, sein Erklärniveau also nicht zugunsten
-einer Lösungspreisgabe absenkt. Bei no\_Prompt entstehen die Nullwerte der
-\emph{RoleAdherence} spiegelbildlich dadurch, dass die Antworten über mehrere
-Gesprächszüge hinweg unmittelbar Erklärungen, konkrete Berechnungen und
-Schritt-für-Schritt-Lösungen liefern und die Tutorrolle damit vollständig
-verlassen. Beide Fallgruppen illustrieren denselben Zusammenhang aus
-entgegengesetzter Richtung: Der Bruch bzw.\ die Wahrung der sokratischen Rolle schlägt
-sich unmittelbar in den betroffenen Metriken nieder.
- 
-\paragraph{Datenbezogene Anmerkung.} Über alle vier Varianten hinweg wurde ein Teil
-der Antworten ohne abgerufenen Retrieval-Kontext erzeugt (Abdeckung je Variante
-zwischen etwa 22\,\% und 31\,\%). Für die didaktischen Kriterien der RQ1-Linie ist
-dies nachrangig, da diese nicht auf den Kontext, sondern auf den Gesprächsverlauf
-abstellen; für die kontextabhängige RQ2-Linie ist die Abdeckung hingegen eine
-zentrale Kennzahl und wird dort  gesondert berichtet (Abschnitt~\ref{subsec:rq2}).
+\noindent\textbf{Synthese.} Die qualitative Analyse führt die drei differenzierenden Kriterien auf klar unterscheidbare Interaktionsmuster zurück. Der Unterschied zwischen den Prompt-Varianten ist keine Frage der fachlichen oder sprachlichen Qualität -- diese ist dank der zugrundeliegenden RAG-Architektur durchweg hoch --, sondern der Disziplin bei der Lösungszurückhaltung und der Stabilität der Rolle unter adversem Studierendenverhalten. Die stärksten Varianten (\emph{system\_prompt} und \emph{stock\_prompt}) erzwingen diese Disziplin am zuverlässigsten; ihre punktuelle systematische Schwäche (Niveau-Anpassung im Verhalten \glqq fordert die Lösung\grqq{}) ist zu einem erheblichen Teil ein Bewertungsartefakt desselben Prinzips, das sie in den Kernkriterien überlegen macht.
