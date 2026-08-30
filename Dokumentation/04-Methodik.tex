@@ -25,7 +25,8 @@ angemessen beurteilen \cite{QUELLE_SOKRATIK}.
 
 Zur klaren Trennung der Forschungsfragen wurden zwei separate Evaluationslinien
 umgesetzt. In der ersten Linie (RQ1) wird bei konstant gehaltener RAG\-Konfiguration
-der System\-Prompt variiert. Bewertet wird die \emph{sokratische Qualität} des
+der System\-Prompt variiert. Bewertet wird die \emph{\texttt{no\_Prompt}
+\texttt{stock\_prompt}tät} des
 Gesprächsverlaufs. In der zweiten Linie (RQ2) wird bei konstant gehaltenem Prompt die
 RAG\-Konfiguration variiert und die \emph{Retrieval\-Qualität} bewertet. Durch die
 Beschränkung auf jeweils einen variierten Faktor je Linie können die beobachteten
@@ -173,38 +174,67 @@ unmittelbare Beantwortung der Fachfrage bewertet und damit dem Prinzip, die Lös
 gerade nicht vorwegzunehmen, entgegensteht, sowie eine generische Turn\-Relevanz\-Metrik,
 die legitimes sokratisches Umlenken als weniger relevant einstufen kann.
 
-Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Grad der didaktischen Steuerung unterscheiden. Der ausführliche sokratische System-Prompt (\texttt{system_prompt}) spezifiziert die Gesprächsregeln explizit nach dem Framework der univer. Der minimalistisch-sokratische Prompt (\texttt{minimaler_sokrat}) enthält nur die Kernanweisung, ohne die Regeln auszuformulieren. eine Variante ohne steuernden Prompt (\texttt{no_Prompt}) dient als Referenz ohne sokratische Vorgabe. die Standard-Variante (\texttt{stock_prompt}) [PLATZHALTER: kurz charakterisieren -- z.,B. generischer Tutor-Prompt ohne sokratische Ausrichtung]. Die Varianten spannen damit ein Kontinuum von detaillierter "uber minimale bis hin zu keiner sokratischen Instruktion auf, wodurch sich der Einfluss des Prompting auf die sokratische Qualit"at isolieren l"asst. Der vollst"andige Wortlaut findet sich in Anhang~\ref{app:prompts}.
+Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Grad der didaktischen Steuerung unterscheiden. Der ausführliche sokratische System-Prompt (\texttt{system\_prompt}) spezifiziert die Gesprächsregeln explizit nach dem Framework der Universität. Der minimalistisch-sokratische Prompt (\texttt{minimaler\_sokrat}) enthält nur die Kernanweisung, ohne die Regeln auszuformulieren. Eine Variante ohne steuernden Prompt (\texttt{no\_Prompt}) dient als Referenz ohne sokratische Vorgabe. Die Standard-Variante (\texttt{stock\_prompt}) verwendet einen generischen Tutor-Prompt ohne sokratische Ausrichtung. Die Varianten spannen damit ein Kontinuum von detaillierter über minimale bis hin zu keiner sokratischen Instruktion auf, wodurch sich der Einfluss des Promptings auf die sokratische Qualität untersuchen lässt. Der vollständige Wortlaut der Prompts ist im Anhang dokumentiert.
+
+
 % =========================================================
-% TABELLE 1 · Uebersicht der RQ1-Bewertungskriterien
+% TABELLE 1 · Uebersicht der RQ1-Bewertungskriterien + Fundierung
 % =========================================================
 \begin{table}[htbp]
-  \centering
-  \caption{Bewertungskriterien der sokratischen Qualit\"at (RQ1). Sechs Kriterien werden
-  als eigene ConversationalGEval-Metriken operationalisiert; die Rollentreue
-  (RoleAdherence) wird als native Metrik erg\"anzend als Gegenpr\"ufung herangezogen.}
-  \label{tab:rq1-kriterien}
-  \small
-  \begin{tabular}{p{4.2cm}p{8.5cm}}
-    \toprule
-    \textbf{Kriterium} & \textbf{Gemessenes Konstrukt} \\
-    \midrule
-    L\"osung nicht verraten          & Gibt weder Endergebnis noch Best\"atigung einer Vermutung preis; l\"asst dem Studierenden eigene Denkarbeit. \\
-    \addlinespace
-    Sokratische R\"uckfragen         & F\"uhrt mit offenen Fragen statt zu dozieren; keine suggestiven oder rein bin\"aren Fragen. \\
-    \addlinespace
-    Schrittweise Lernprogression     & Zerlegt in kleine, aufeinander aufbauende Schritte mit nachvollziehbarer kognitiver Progression. \\
-    \addlinespace
-    Niveau-Anpassung                 & Passt sprachliches und kognitives Niveau an die studierende Person an. \\
-    \addlinespace
-    Fachliche Korrektheit            & Verwendet real korrekte Fachinhalte; keine erfundenen Formeln, Werte oder Bauteile. \\
-    \addlinespace
-    Verst\"andnisf\"orderung / Transfer & F\"ordert Verst\"andnis statt Reproduktion; verlangt Begr\"undung und Anwendung auf neue Situationen. \\
-    \addlinespace
-    Respektvolle Kommunikation       & Respektvoller, geduldiger, ermutigender Umgang; keine Herabw\"urdigung. \\
-    \midrule
-    RoleAdherence (nativ)            & Gegenpr\"ufung der Treue zur sokratischen Rollendefinition. \\
-    \bottomrule
-  \end{tabular}
+    \centering
+    \caption{Bewertungskriterien der sokratischen Qualität (RQ1) mit ihrer
+    literaturgestützten Fundierung. Sechs Kriterien werden als eigene
+    ConversationalGEval-Metriken operationalisiert; die Rollentreue (RoleAdherence)
+    wird als native Metrik ergänzend als Gegenprüfung herangezogen.}
+    \label{tab:rq1-kriterien}
+    \small
+
+    \begin{tabular}{p{3.6cm}p{6.4cm}p{3.4cm}}
+        \toprule
+        \textbf{Kriterium} &
+        \textbf{Gemessenes Konstrukt} \\
+        \midrule
+
+        Lösung nicht verraten &
+        Führt zur eigenen Erkenntnis, statt die Lösung zu nennen; lässt eigene Denkarbeit. \\
+
+        \addlinespace
+
+        Sokratische Rückfragen &
+        Zielgerichtete, offene Fragen -- keine Fragen ,,um der Frage willen``.\\
+
+        \addlinespace
+
+        Schrittweise Lernprogression &
+        Neues Wissen in kleinen Schritten auf Vorwissen aufbauend. \\
+
+        \addlinespace
+
+        Niveau-Anpassung &
+        Diagnostiziert das Niveau und unterrichtet daran angepasst. \\
+
+        \addlinespace
+
+        Fachliche Korrektheit &
+        Real korrekte Fachinhalte; keine erfundenen Formeln/Werte.\\
+
+        \addlinespace
+
+        Verständnisförderung / Transfer &
+        Betont wichtige Lernpunkte; fördert Verständnis statt Reproduktion.\\
+
+        \addlinespace
+
+        Respektvolle Kommunikation &
+        Ziel ist Lehren, nicht Bloßstellen; keine Beschämung. \\
+
+        \midrule
+
+        RoleAdherence (nativ) &
+        Gegenprüfung der Treue zur sokratischen Rollendefinition.\\
+
+        \bottomrule
+    \end{tabular}
 \end{table}
 
 \subsubsection{Retrieval\-Qualität (RQ2)}

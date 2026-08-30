@@ -36,7 +36,7 @@ judge_llm = GWDGModel(
     api_key=JUDGE_API_KEY,
     verify_ssl=JUDGE_VERIFY_SSL,
     reasoning_effort=REASONING_EFFORT,
-    extra_body=None,  # muse nutzt Reasoning-Prefix, kein enable_thinking
+    extra_body=None,
 )
 simulator_llm = GWDGModel(
     SIMULATOR_MODEL, 

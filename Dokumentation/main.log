@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  25 AUG 2026 11:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  28 AUG 2026 11:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -64,8 +64,31 @@ Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
 (babel)             (\language73). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 (babel)             (\language73). Reported on input line 108.
+)) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count286
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+\csq@reset=\count287
+\csq@gtype=\count288
+\csq@glevel=\count289
+\csq@qlevel=\count290
+\csq@maxlvl=\count291
+\csq@tshold=\count292
+\csq@ltx@everypar=\toks20
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
+File: csquotes.def 2026-05-19 v5.2p csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
+File: csquotes.cfg 
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks19
+\pgfutil@everybye=\toks21
 \pgfutil@tempdima=\dimen152
 \pgfutil@tempdimb=\dimen153
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
@@ -76,10 +99,7 @@ Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
-\KV@toks@=\toks20
-) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
@@ -95,10 +115,10 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks21
-\pgfkeys@temptoks=\toks22
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks23
+\pgfkeys@tmptoks=\toks24
 ))
 \pgf@x=\dimen156
 \pgf@y=\dimen157
@@ -112,14 +132,14 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yd=\dimen165
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count286
-\c@pgf@countb=\count287
-\c@pgf@countc=\count288
-\c@pgf@countd=\count289
-\t@pgf@toka=\toks24
-\t@pgf@tokb=\toks25
-\t@pgf@tokc=\toks26
-\pgf@sys@id@count=\count290
+\c@pgf@counta=\count293
+\c@pgf@countb=\count294
+\c@pgf@countc=\count295
+\c@pgf@countd=\count296
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count297
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -130,8 +150,8 @@ File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count291
-\pgfsyssoftpath@bigbuffer@items=\count292
+\pgfsyssoftpath@smallbuffer@items=\count298
+\pgfsyssoftpath@bigbuffer@items=\count299
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
@@ -154,13 +174,13 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen166
-\pgfmath@count=\count293
+\pgfmath@count=\count300
 \pgfmath@box=\box54
-\pgfmath@toks=\toks27
-\pgfmath@stack@operand=\toks28
-\pgfmath@stack@operation=\toks29
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count294
+\c@pgfmathroundto@lastzeros=\count301
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen167
@@ -190,7 +210,7 @@ File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box55
 \pgf@hbox=\box56
 \pgf@layerbox@main=\box57
-\pgf@picture@serial@count=\count295
+\pgf@picture@serial@count=\count302
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen185
@@ -211,8 +231,8 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen190
-\pgf@sys@shading@range@num=\count296
-\pgf@shadingcount=\count297
+\pgf@sys@shading@range@num=\count303
+\pgf@shadingcount=\count304
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
@@ -241,13 +261,13 @@ Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen193
 \pgffor@skip=\dimen194
-\pgffor@stack=\toks30
-\pgffor@toks=\toks31
+\pgffor@stack=\toks31
+\pgffor@toks=\toks32
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count298
+\pgf@plot@mark@count=\count305
 \pgfplotmarksize=\dimen195
 )
 \tikz@lastx=\dimen196
@@ -262,17 +282,17 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@figbox@bg=\box61
 \tikz@tempbox=\box62
 \tikz@tempbox@bg=\box63
-\tikztreelevel=\count299
-\tikznumberofchildren=\count300
-\tikznumberofcurrentchild=\count301
-\tikz@fig@count=\count302
+\tikztreelevel=\count306
+\tikznumberofchildren=\count307
+\tikznumberofcurrentchild=\count308
+\tikz@fig@count=\count309
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count303
-\pgfmatrixcurrentcolumn=\count304
-\pgf@matrix@numberofcolumns=\count305
+\pgfmatrixcurrentrow=\count310
+\pgfmatrixcurrentcolumn=\count311
+\pgf@matrix@numberofcolumns=\count312
 )
-\tikz@expandcount=\count306
+\tikz@expandcount=\count313
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
@@ -294,14 +314,14 @@ Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
 \col@sep=\dimen264
 \ar@mcellbox=\box64
 \extrarowheight=\dimen265
-\NC@list=\toks32
+\NC@list=\toks33
 \extratabsurround=\skip51
 \backup@length=\skip52
 \ar@cellbox=\box65
 )
 new hooks used!!
 \minrowclearance=\skip53
-\rownum=\count307
+\rownum=\count314
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen266
@@ -314,12 +334,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen273
 \cmidrulekern=\dimen274
 \defaultaddspace=\dimen275
-\@cmidla=\count308
-\@cmidlb=\count309
+\@cmidla=\count315
+\@cmidlb=\count316
 \@aboverulesep=\dimen276
 \@belowrulesep=\dimen277
-\@thisruleclass=\count310
-\@lastruleclass=\count311
+\@thisruleclass=\count317
+\@lastruleclass=\count318
 \@thisrulewidth=\dimen278
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2026/03/07 v6.0 Page Geometry
@@ -328,9 +348,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count312
-\Gm@cntv=\count313
-\c@Gm@tempcnt=\count314
+\Gm@cnth=\count319
+\Gm@cntv=\count320
+\c@Gm@tempcnt=\count321
 \Gm@bindingoffset=\dimen279
 \Gm@wd@mp=\dimen280
 \Gm@odd@mp=\dimen281
@@ -339,15 +359,15 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layoutheight=\dimen284
 \Gm@layouthoffset=\dimen285
 \Gm@layoutvoffset=\dimen286
-\Gm@dimlist=\toks33
+\Gm@dimlist=\toks34
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count315
-\float@exts=\toks34
+\c@float@type=\count322
+\float@exts=\toks35
 \float@box=\box66
-\@float@everytoks=\toks35
+\@float@everytoks=\toks36
 \@floatcapt=\box67
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
@@ -356,26 +376,26 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@old@col=\dimen289
 \TX@target=\dimen290
 \TX@delta=\dimen291
-\TX@cols=\count316
-\TX@ftn=\toks36
+\TX@cols=\count323
+\TX@ftn=\toks37
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
 \LTleft=\skip54
 \LTright=\skip55
 \LTpre=\skip56
 \LTpost=\skip57
-\LTchunksize=\count317
+\LTchunksize=\count324
 \LTcapwidth=\dimen292
 \LT@head=\box68
 \LT@firsthead=\box69
 \LT@foot=\box70
 \LT@lastfoot=\box71
 \LT@gbox=\box72
-\LT@cols=\count318
-\LT@rows=\count319
-\c@LT@tables=\count320
-\c@LT@chunks=\count321
-\LT@p@ftn=\toks37
+\LT@cols=\count325
+\LT@rows=\count326
+\c@LT@tables=\count327
+\c@LT@chunks=\count328
+\LT@p@ftn=\toks38
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/ragged2e\ragged2e.sty
 Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \CenteringLeftskip=\skip58
@@ -395,21 +415,85 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip72
-\multirow@cntb=\count322
+\multirow@cntb=\count329
 \multirow@dima=\skip73
 \bigstrutjot=\dimen293
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
+\@mathmargin=\skip74
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks39
+\ex@=\dimen294
+)) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen295
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count330
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count331
+\leftroot@=\count332
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count333
+\DOTSCASE@=\count334
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box73
+\strutbox@=\box74
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen296
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count335
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count336
+\dotsspace@=\muskip17
+\c@parentequation=\count337
+\dspbrk@lvl=\count338
+\tag@help=\toks40
+\row@=\count339
+\column@=\count340
+\maxfields@=\count341
+\andhelp@=\toks41
+\eqnshift@=\dimen297
+\alignsep@=\dimen298
+\tagshift@=\dimen299
+\tagwidth@=\dimen300
+\totwidth@=\dimen301
+\lineht@=\dimen302
+\@envbody=\toks42
+\multlinegap=\skip75
+\multlinetaggap=\skip76
+\mathdisplay@stack=\toks43
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@layerbox@background=\box73
-\pgf@layerboxsaved@background=\box74
+\pgf@layerbox@background=\box75
+\pgf@layerboxsaved@background=\box76
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\labelindent=\skip74
-\enit@outerparindent=\dimen294
-\enit@toks=\toks38
-\enit@inbox=\box75
-\enit@count@id=\count323
-\enitdp@description=\count324
+\labelindent=\skip77
+\enit@outerparindent=\dimen303
+\enit@toks=\toks44
+\enit@inbox=\box77
+\enit@count@id=\count342
+\enitdp@description=\count343
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
@@ -422,81 +506,78 @@ Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count325
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count326
+\lrq@indent=\count344
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
-\Urlmuskip=\muskip17
+\Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count327
-\c@listtotal=\count328
-\c@listcount=\count329
-\c@liststart=\count330
-\c@liststop=\count331
-\c@citecount=\count332
-\c@citetotal=\count333
-\c@multicitecount=\count334
-\c@multicitetotal=\count335
-\c@instcount=\count336
-\c@maxnames=\count337
-\c@minnames=\count338
-\c@maxitems=\count339
-\c@minitems=\count340
-\c@citecounter=\count341
-\c@maxcitecounter=\count342
-\c@savedcitecounter=\count343
-\c@uniquelist=\count344
-\c@uniquename=\count345
-\c@refsection=\count346
-\c@refsegment=\count347
-\c@maxextratitle=\count348
-\c@maxextratitleyear=\count349
-\c@maxextraname=\count350
-\c@maxextradate=\count351
-\c@maxextraalpha=\count352
-\c@abbrvpenalty=\count353
-\c@highnamepenalty=\count354
-\c@lownamepenalty=\count355
-\c@maxparens=\count356
-\c@parenlevel=\count357
-\blx@tempcnta=\count358
-\blx@tempcntb=\count359
-\blx@tempcntc=\count360
-\c@blx@maxsection=\count361
-\blx@maxsegment@0=\count362
-\blx@notetype=\count363
-\blx@parenlevel@text=\count364
-\blx@parenlevel@foot=\count365
-\blx@sectionciteorder@0=\count366
-\blx@sectionciteorderinternal@0=\count367
-\blx@entrysetcounter=\count368
-\blx@biblioinstance=\count369
-\labelnumberwidth=\skip75
-\labelalphawidth=\skip76
-\biblabelsep=\skip77
-\bibitemsep=\skip78
-\bibnamesep=\skip79
-\bibinitsep=\skip80
-\bibparsep=\skip81
-\bibhang=\skip82
+\c@tabx@nest=\count345
+\c@listtotal=\count346
+\c@listcount=\count347
+\c@liststart=\count348
+\c@liststop=\count349
+\c@citecount=\count350
+\c@citetotal=\count351
+\c@multicitecount=\count352
+\c@multicitetotal=\count353
+\c@instcount=\count354
+\c@maxnames=\count355
+\c@minnames=\count356
+\c@maxitems=\count357
+\c@minitems=\count358
+\c@citecounter=\count359
+\c@maxcitecounter=\count360
+\c@savedcitecounter=\count361
+\c@uniquelist=\count362
+\c@uniquename=\count363
+\c@refsection=\count364
+\c@refsegment=\count365
+\c@maxextratitle=\count366
+\c@maxextratitleyear=\count367
+\c@maxextraname=\count368
+\c@maxextradate=\count369
+\c@maxextraalpha=\count370
+\c@abbrvpenalty=\count371
+\c@highnamepenalty=\count372
+\c@lownamepenalty=\count373
+\c@maxparens=\count374
+\c@parenlevel=\count375
+\blx@tempcnta=\count376
+\blx@tempcntb=\count377
+\blx@tempcntc=\count378
+\c@blx@maxsection=\count379
+\blx@maxsegment@0=\count380
+\blx@notetype=\count381
+\blx@parenlevel@text=\count382
+\blx@parenlevel@foot=\count383
+\blx@sectionciteorder@0=\count384
+\blx@sectionciteorderinternal@0=\count385
+\blx@entrysetcounter=\count386
+\blx@biblioinstance=\count387
+\labelnumberwidth=\skip78
+\labelalphawidth=\skip79
+\biblabelsep=\skip80
+\bibitemsep=\skip81
+\bibnamesep=\skip82
+\bibinitsep=\skip83
+\bibparsep=\skip84
+\bibhang=\skip85
 \blx@bcfin=\read4
 \blx@bcfout=\write4
 \blx@langwohyphens=\language80
-\c@mincomprange=\count370
-\c@maxcomprange=\count371
-\c@mincompwidth=\count372
+\c@mincomprange=\count388
+\c@maxcomprange=\count389
+\c@mincompwidth=\count390
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
@@ -506,88 +587,88 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'ieee.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count373
-\c@savedafterword=\count374
-\c@annotator=\count375
-\c@savedannotator=\count376
-\c@author=\count377
-\c@savedauthor=\count378
-\c@bookauthor=\count379
-\c@savedbookauthor=\count380
-\c@commentator=\count381
-\c@savedcommentator=\count382
-\c@editor=\count383
-\c@savededitor=\count384
-\c@editora=\count385
-\c@savededitora=\count386
-\c@editorb=\count387
-\c@savededitorb=\count388
-\c@editorc=\count389
-\c@savededitorc=\count390
-\c@foreword=\count391
-\c@savedforeword=\count392
-\c@holder=\count393
-\c@savedholder=\count394
-\c@introduction=\count395
-\c@savedintroduction=\count396
-\c@namea=\count397
-\c@savednamea=\count398
-\c@nameb=\count399
-\c@savednameb=\count400
-\c@namec=\count401
-\c@savednamec=\count402
-\c@translator=\count403
-\c@savedtranslator=\count404
-\c@shortauthor=\count405
-\c@savedshortauthor=\count406
-\c@shorteditor=\count407
-\c@savedshorteditor=\count408
-\c@labelname=\count409
-\c@savedlabelname=\count410
-\c@institution=\count411
-\c@savedinstitution=\count412
-\c@lista=\count413
-\c@savedlista=\count414
-\c@listb=\count415
-\c@savedlistb=\count416
-\c@listc=\count417
-\c@savedlistc=\count418
-\c@listd=\count419
-\c@savedlistd=\count420
-\c@liste=\count421
-\c@savedliste=\count422
-\c@listf=\count423
-\c@savedlistf=\count424
-\c@location=\count425
-\c@savedlocation=\count426
-\c@organization=\count427
-\c@savedorganization=\count428
-\c@origlocation=\count429
-\c@savedoriglocation=\count430
-\c@origpublisher=\count431
-\c@savedorigpublisher=\count432
-\c@publisher=\count433
-\c@savedpublisher=\count434
-\c@language=\count435
-\c@savedlanguage=\count436
-\c@origlanguage=\count437
-\c@savedoriglanguage=\count438
-\c@pageref=\count439
-\c@savedpageref=\count440
-\shorthandwidth=\skip83
-\shortjournalwidth=\skip84
-\shortserieswidth=\skip85
-\shorttitlewidth=\skip86
-\shortauthorwidth=\skip87
-\shorteditorwidth=\skip88
-\locallabelnumberwidth=\skip89
-\locallabelalphawidth=\skip90
-\localshorthandwidth=\skip91
-\localshortjournalwidth=\skip92
-\localshortserieswidth=\skip93
-\localshorttitlewidth=\skip94
-\localshortauthorwidth=\skip95
-\localshorteditorwidth=\skip96
+\c@afterword=\count391
+\c@savedafterword=\count392
+\c@annotator=\count393
+\c@savedannotator=\count394
+\c@author=\count395
+\c@savedauthor=\count396
+\c@bookauthor=\count397
+\c@savedbookauthor=\count398
+\c@commentator=\count399
+\c@savedcommentator=\count400
+\c@editor=\count401
+\c@savededitor=\count402
+\c@editora=\count403
+\c@savededitora=\count404
+\c@editorb=\count405
+\c@savededitorb=\count406
+\c@editorc=\count407
+\c@savededitorc=\count408
+\c@foreword=\count409
+\c@savedforeword=\count410
+\c@holder=\count411
+\c@savedholder=\count412
+\c@introduction=\count413
+\c@savedintroduction=\count414
+\c@namea=\count415
+\c@savednamea=\count416
+\c@nameb=\count417
+\c@savednameb=\count418
+\c@namec=\count419
+\c@savednamec=\count420
+\c@translator=\count421
+\c@savedtranslator=\count422
+\c@shortauthor=\count423
+\c@savedshortauthor=\count424
+\c@shorteditor=\count425
+\c@savedshorteditor=\count426
+\c@labelname=\count427
+\c@savedlabelname=\count428
+\c@institution=\count429
+\c@savedinstitution=\count430
+\c@lista=\count431
+\c@savedlista=\count432
+\c@listb=\count433
+\c@savedlistb=\count434
+\c@listc=\count435
+\c@savedlistc=\count436
+\c@listd=\count437
+\c@savedlistd=\count438
+\c@liste=\count439
+\c@savedliste=\count440
+\c@listf=\count441
+\c@savedlistf=\count442
+\c@location=\count443
+\c@savedlocation=\count444
+\c@organization=\count445
+\c@savedorganization=\count446
+\c@origlocation=\count447
+\c@savedoriglocation=\count448
+\c@origpublisher=\count449
+\c@savedorigpublisher=\count450
+\c@publisher=\count451
+\c@savedpublisher=\count452
+\c@language=\count453
+\c@savedlanguage=\count454
+\c@origlanguage=\count455
+\c@savedoriglanguage=\count456
+\c@pageref=\count457
+\c@savedpageref=\count458
+\shorthandwidth=\skip86
+\shortjournalwidth=\skip87
+\shortserieswidth=\skip88
+\shorttitlewidth=\skip89
+\shortauthorwidth=\skip90
+\shorteditorwidth=\skip91
+\locallabelnumberwidth=\skip92
+\locallabelalphawidth=\skip93
+\localshorthandwidth=\skip94
+\localshortjournalwidth=\skip95
+\localshortserieswidth=\skip96
+\localshorttitlewidth=\skip97
+\localshortauthorwidth=\skip98
+\localshorteditorwidth=\skip99
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
@@ -597,19 +678,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2025/07/10 v3.21 biblatex compatibility (PK/MW)
-\c@textcitecount=\count441
-\c@textcitetotal=\count442
-\c@textcitemaxnames=\count443
-\c@biburlbigbreakpenalty=\count444
-\c@biburlbreakpenalty=\count445
-\c@biburlnumpenalty=\count446
-\c@biburlucpenalty=\count447
-\c@biburllcpenalty=\count448
-\biburlbigskip=\muskip18
-\biburlnumskip=\muskip19
-\biburlucskip=\muskip20
-\biburllcskip=\muskip21
-\c@smartand=\count449
+\c@textcitecount=\count459
+\c@textcitetotal=\count460
+\c@textcitemaxnames=\count461
+\c@biburlbigbreakpenalty=\count462
+\c@biburlbreakpenalty=\count463
+\c@biburlnumpenalty=\count464
+\c@biburlucpenalty=\count465
+\c@biburllcpenalty=\count466
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count467
 )
 Package biblatex Info: Trying to load bibliography style 'ieee'...
 Package biblatex Info: ... file 'ieee.bbx' found.
@@ -627,8 +708,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx 2025/07/10 v3.21 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count450
-\c@bbx:relatedtotal=\count451
+\c@bbx:relatedcount=\count468
+\c@bbx:relatedtotal=\count469
 ))))
 Package biblatex Info: Trying to load citation style 'ieee'...
 Package biblatex Info: ... file 'ieee.cbx' found.
@@ -660,7 +741,7 @@ Package biblatex Info: Document encoding is UTF8 ....
 Package: expl3 2026-06-18 L3 programming layer (loader) 
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count452
+\l__color_backend_stack_int=\count470
 ))
 Package biblatex Info: ... and expl3
 (biblatex)             2026-06-18 L3 programming layer (loader) 
@@ -670,7 +751,31 @@ Package biblatex Info: ... and expl3
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2025/07/10 v3.21 expl3 case changing code for biblatex
-)) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+)) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count471
+\lst@gtempboxa=\box78
+\lst@token=\toks45
+\lst@length=\count472
+\lst@currlwidth=\dimen304
+\lst@column=\count473
+\lst@pos=\count474
+\lst@lostspace=\dimen305
+\lst@width=\dimen306
+\lst@newlines=\count475
+\lst@lineno=\count476
+\lst@maxwidth=\dimen307
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count477
+\lst@skipnumbers=\count478
+\lst@framebox=\box79
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+ (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -685,13 +790,13 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count453
+\c@section@level=\count479
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen295
-\Hy@linkcounter=\count454
-\Hy@pagecounter=\count455
+\@linkdim=\dimen308
+\Hy@linkcounter=\count480
+\Hy@pagecounter=\count481
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2026-06-17 v7.01r Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -699,7 +804,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count456
+\Hy@SavedSpaceFactor=\count482
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2026-06-17 v7.01r Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -712,17 +817,17 @@ Package hyperref Info: Plain pages OFF on input line 4214.
 Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
-\c@Hy@tempcnt=\count457
+\c@Hy@tempcnt=\count483
 LaTeX Info: Redefining \url on input line 4805.
-\XeTeXLinkMargin=\dimen296
+\XeTeXLinkMargin=\dimen309
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count458
-\Field@Width=\dimen297
-\Fld@charsize=\dimen298
+\Fld@menulength=\count484
+\Field@Width=\dimen310
+\Fld@charsize=\dimen311
 Package hyperref Info: Hyper figures OFF on input line 6091.
 Package hyperref Info: Link nesting OFF on input line 6096.
 Package hyperref Info: Hyper index ON on input line 6099.
@@ -730,15 +835,15 @@ Package hyperref Info: backreferencing OFF on input line 6106.
 Package hyperref Info: Link coloring OFF on input line 6111.
 Package hyperref Info: Link coloring with OCG OFF on input line 6116.
 Package hyperref Info: PDF/A mode OFF on input line 6121.
-\Hy@abspage=\count459
-\c@Item=\count460
-\c@Hfootnote=\count461
+\Hy@abspage=\count485
+\c@Item=\count486
+\c@Hfootnote=\count487
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2026-06-17 v7.01r Hyperref driver for pdfTeX
-\Fld@listcount=\count462
-\c@bookmark@seq@number=\count463
+\Fld@listcount=\count488
+\c@bookmark@seq@number=\count489
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
@@ -746,48 +851,46 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip97
+\Hy@SectionHShift=\skip100
 )
-
-Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
-(biblatex)                Loading 'csquotes' recommended.
-
-\@quotelevel=\count464
-\@quotereset=\count465
-(main.aux)
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+Package csquotes Info: Adjusting default style.
+Package csquotes Info: Redefining alias 'default' -> 'english'.
+ (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 135.
+LaTeX Font Info:    ... okay on input line 135.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count466
-\scratchdimen=\dimen299
-\scratchbox=\box76
-\nofMPsegments=\count467
-\nofMParguments=\count468
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count469
-\MPscratchDim=\dimen300
-\MPnumerator=\count470
-\makeMPintoPDFobject=\count471
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count490
+\scratchdimen=\dimen312
+\scratchbox=\box80
+\nofMPsegments=\count491
+\nofMParguments=\count492
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count493
+\MPscratchDim=\dimen313
+\MPnumerator=\count494
+\makeMPintoPDFobject=\count495
+\everyMPtoPDFconversion=\toks47
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -840,10 +943,26 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (main.bbl)
-Package biblatex Info: Reference section=0 on input line 125.
-Package biblatex Info: Reference segment=0 on input line 125.
-Package hyperref Info: Link coloring OFF on input line 125.
+ (main.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                QUELLE_LLM_JUDGE
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                QUELLE_SOKRATIK
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
+Package biblatex Info: Reference section=0 on input line 135.
+Package biblatex Info: Reference segment=0 on input line 135.
+\c@lstlisting=\count496
+Package hyperref Info: Link coloring OFF on input line 135.
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
@@ -861,7 +980,58 @@ No file main.toc.
  (01-Einleitung.tex)
 \openout2 = `02-Grundlagen.aux'.
 
- (02-Grundlagen.tex)
+ (02-Grundlagen.tex [3
+
+
+
+
+]
+Overfull \hbox (24.64381pt too wide) in paragraph at lines 31--32
+\T1/cmr/m/n/12 zur¸ck, das w‰hrend des Train-ings in ihren Pa-ram-e-tern abge-bildet wurde. Dieses parametrische
+ []
+
+[4]
+Overfull \hbox (4.70822pt too wide) in paragraph at lines 45--46
+\T1/cmr/m/n/12 lexikalis-ches und ein se-man-tis-ches Rank-ing erzeugt wer-den. Ziel ist es, die un-ter-schiedlichen
+ []
+
+
+Overfull \hbox (2.41588pt too wide) in paragraph at lines 62--63
+\T1/cmr/m/n/12 poten-ziell rel-e-van-ter Kan-di-daten. Diese Kan-di-daten kˆn-nen an-schlieˇend durch ein rechen-
+ []
+
+[5]
+Overfull \hbox (11.522pt too wide) in paragraph at lines 64--65
+\T1/cmr/m/n/12 nungsaufwand be-grenzt seinen Ein-satz auf eine zu-vor bes-timmte Kan-di-daten-menge. Rerank-
+ []
+
+
+LaTeX Warning: Reference `fig:rag_pipeline_grundlagen' on page 6 undefined on input line 66.
+
+
+LaTeX Warning: Reference `sec:untersuchungsgegenstand' on page 6 undefined on input line 66.
+
+[6] [7]
+Overfull \hbox (78.89775pt too wide) in paragraph at lines 145--146
+\T1/cmr/m/n/12 F¸r An-forderun-gen, f¸r die keine vorgegebene Metrik ex-istiert, stellt Deep-E-val mit \T1/cmtt/m/n/12 ConversationalGEval
+ []
+
+
+Overfull \hbox (8.16374pt too wide) in paragraph at lines 152--153
+\T1/cmr/m/n/12 Neben frei definier-baren Kri-te-rien stellt Deep-E-val vordefinierte Metriken f¸r wiederkehrende
+ []
+
+
+Overfull \hbox (91.37886pt too wide) in paragraph at lines 152--153
+\T1/cmr/m/n/12 Qual-it‰ts-di-men-sio-nen von Multi-Turn-Systemen bereit. Diese ar-beiten auf einem \T1/cmtt/m/n/12 ConversationalTestCase
+ []
+
+
+Overfull \hbox (4.34373pt too wide) in paragraph at lines 154--155
+[]\T1/cmr/m/n/12 Die \T1/cmr/m/it/12 Turn Rel-e-vancy \T1/cmr/m/n/12 be-w-ertet, ob die Antworten des As-sis-ten-ten im jew-eili-gen Gespr‰ch-
+ []
+
+[8]) [9]
 \openout2 = `03-Untersuchungsgegenstand.aux'.
 
  (03-Untersuchungsgegenstand.tex)
@@ -869,14 +1039,138 @@ No file main.toc.
 
  (04-Methodik.tex
 
-LaTeX Warning: Citation 'QUELLE_SOKRATIK' on page 3 undefined on input line 24.
+LaTeX Warning: Citation 'QUELLE_SOKRATIK' on page 10 undefined on input line 24.
 
 
-Overfull \hbox (8.09535pt too wide) in paragraph at lines 37--43
+Overfull \hbox (0.92737pt too wide) in paragraph at lines 26--34
+\T1/cmr/m/n/12 System-Prompt vari-iert. Be-w-ertet wird die \T1/cmtt/m/it/12 no_Prompt stock_prompt\T1/cmr/m/it/12 t‰t \T1/cmr/m/n/12 des Gespr‰chsver-
+ []
+
+
+Overfull \hbox (8.09535pt too wide) in paragraph at lines 38--44
 \T1/cmtt/m/n/12 gemma-4-26B\T1/cmr/m/n/12 . Der fach-liche Wis-sensko-r-pus liegt in zwei Qdrant-Collections vor, die Vorlesungs-
  []
 
-[3
+[10
+
+
+
+
+
+
+]
+
+LaTeX Warning: Citation 'QUELLE_LLM_JUDGE' on page 11 undefined on input line 98.
+
+
+Overfull \hbox (3.52997pt too wide) in paragraph at lines 132--140
+\T1/cmr/m/n/12 Die tech-nis-che Um-set-zung er-folgt in Python unter Ver-wen-dung des Evaluations-Frameworks
+ []
+
+
+Overfull \hbox (10.87823pt too wide) in paragraph at lines 132--140
+\T1/cmr/m/n/12 fest-gelegte An-zahl von Run-den fort-laufend Studierenden-Nachrichten, die ¸ber eine Callback-
+ []
+
+[11] [12]
+Underfull \hbox (badness 2452) in paragraph at lines 188--188
+[]\T1/cmr/m/n/12 Table 2: []Bewertungskriterien der sokratis-chen Qual-it‰t (RQ1) mit ihrer lit-er-
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 203--203
+[]|\T1/cmr/m/n/10.95 Sokratische R¸ck-fra-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--223
+[]|\T1/cmr/m/n/10.95 Verst‰ndnisfˆrderung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+[]|\T1/cmr/m/n/10.95 Respektvolle Kom-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
+[]|\T1/cmr/m/n/10.95 RoleAdherence (na-
+ []
+
+[13]
+Overfull \hbox (10.03793pt too wide) in paragraph at lines 266--266
+[]|\T1/cmr/m/n/10.95 TurnContextualRelevancy| 
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 266--267
+[]|\T1/cmr/m/n/10.95 Passung des abgerufe-nen Kon-texts zur
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 270--271
+[]|\T1/cmr/m/n/10.95 Anteil der Antworten mit tat-s‰ch-lich
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
+[]|\T1/cmr/m/n/10.95 Effektive Retrieval-
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 272--273
+[]|\T1/cmr/m/n/10.95 Produkt aus Ab-deck-ung und Kontext-
+ []
+
+[14])
+Overfull \hbox (5.77892pt too wide) in paragraph at lines 348--164
+\T1/cmr/m/n/12 nisse ver-schiedener Judge-Modelle sind nicht un-mit-tel-bar ver-gle-ich-bar. Die selbst definierten
+ []
+
+[15] [16]
+\openout2 = `05-Ergebnisse.aux'.
+
+ (05-Ergebnisse.tex)
+\openout2 = `06-Diskussion.aux'.
+
+ (06-Diskussion.tex)
+\openout2 = `07-Fazit.aux'.
+
+
+No file 07-Fazit.tex.
+\openout2 = `08-Anhang.aux'.
+
+No file 08-Anhang.tex.
+
+Overfull \hbox (47.6744pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Con-ver-sa-tional g-eval\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] conversational -[]
+ []
+
+
+Overfull \hbox (11.13052pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Knowl-edge re-ten-tion\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] knowledge -[]
+ []
+
+
+Overfull \hbox (0.80792pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Multi-turn eval-u-a-tion met-rics\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / guides / guides -[]
+ []
+
+
+Overfull \hbox (11.03333pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Role ad-her-ence\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] role -[] adherence$[]\T1/cmr/m/n/12 ,
+ []
+
+
+Overfull \hbox (11.32214pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Turn rel-e-vancy\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] turn -[] relevancy$[]\T1/cmr/m/n/12 ,
+ []
+
+[17
+
+
+
+
 
 
 
@@ -888,434 +1182,2312 @@ Overfull \hbox (8.09535pt too wide) in paragraph at lines 37--43
 
 
 ]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 64.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 64.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 64.
-
-
-LaTeX Warning: Citation 'QUELLE_LLM_JUDGE' on page 4 undefined on input line 97.
-
-
-Overfull \hbox (3.52997pt too wide) in paragraph at lines 131--139
-\T1/cmr/m/n/12 Die tech-nis-che Um-set-zung er-folgt in Python unter Ver-wen-dung des Evaluations-Frameworks
+Overfull \hbox (1.65678pt too wide) in paragraph at lines 179--179
+[]\T1/cmr/m/n/12 R. Nogueira and K. Cho, ^^P  Pas-sage re-ranking with bert,^^Q \T1/cmr/m/it/12 CoRR\T1/cmr/m/n/12 , vol. abs/1901.04085,
  []
 
 
-Overfull \hbox (10.87823pt too wide) in paragraph at lines 131--139
-\T1/cmr/m/n/12 fest-gelegte An-zahl von Run-den fort-laufend Studierenden-Nachrichten, die ¸ber eine Callback-
- []
-
-[4]
-04-Methodik.tex:157: Missing $ inserted.
-<inserted text> 
-                $
-l.157 ...che System-Prompt (\texttt{system_prompt}
-                                                  ) spezifiziert die Gespr√§...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-<recently read> \egroup 
-                        
-l.157 ...che System-Prompt (\texttt{system_prompt}
-                                                  ) spezifiziert die Gespr√§...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 157.
-
-04-Methodik.tex:157: Missing $ inserted.
-<inserted text> 
-                $
-l.157 ...atische Prompt (\texttt{minimaler_sokrat}
-                                                  ) enth√§lt nur die Kernanw...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\mbox  #1->\leavevmode \hbox {#1}
-                                 
-l.157 ...atische Prompt (\texttt{minimaler_sokrat}
-                                                  ) enth√§lt nur die Kernanw...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\nfss@text #1->{\mbox {#1}}
-                           
-l.157 ...atische Prompt (\texttt{minimaler_sokrat}
-                                                  ) enth√§lt nur die Kernanw...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 157.
-
-04-Methodik.tex:157: Missing $ inserted.
-<inserted text> 
-                $
-l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
-                                                  ) dient als Referenz ohne ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\mbox  #1->\leavevmode \hbox {#1}
-                                 
-l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
-                                                  ) dient als Referenz ohne ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\nfss@text #1->{\mbox {#1}}
-                           
-l.157 ...hne steuernden Prompt (\texttt{no_Prompt}
-                                                  ) dient als Referenz ohne ...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-04-Methodik.tex:157: Missing $ inserted.
-<inserted text> 
-                $
-l.157 ... Standard-Variante (\texttt{stock_prompt}
-                                                  ) [PLATZHALTER: kurz chara...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\mbox  #1->\leavevmode \hbox {#1}
-                                 
-l.157 ... Standard-Variante (\texttt{stock_prompt}
-                                                  ) [PLATZHALTER: kurz chara...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-04-Methodik.tex:157: Extra }, or forgotten $.
-\nfss@text #1->{\mbox {#1}}
-                           
-l.157 ... Standard-Variante (\texttt{stock_prompt}
-                                                  ) [PLATZHALTER: kurz chara...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-LaTeX Warning: Reference `app:prompts' on page 5 undefined on input line 157.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 158.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 159.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 160.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 165.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 166.
-
-
-LaTeX Warning: Command \" invalid in math mode on input line 168.
-
-04-Methodik.tex:169: Missing $ inserted.
-<inserted text> 
-                $
-l.169 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no ¸ in font cmr12!
-Missing character: There is no ¸ in font cmr12!
-Missing character: There is no ¸ in font cmr12!
-Missing character: There is no ‰ in font cmr12!
-Missing character: There is no ¸ in font cmr12!
-Missing character: There is no ¸ in font cmr12!
-
-04-Methodik.tex:179: LaTeX Error: Not in outer par mode.
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:199: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.179 \begin{table}[htbp]
-                         
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-04-Methodik.tex:179: Undefined control sequence.
-\latex@xfloat ...vf \fi \global \setbox \@currbox 
-                                                  \color@vbox \normalcolor \...
-l.179 \begin{table}[htbp]
-                         
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-04-Methodik.tex:179: Missing number, treated as zero.
-<to be read again> 
-                   \vbox 
-l.179 \begin{table}[htbp]
-                         
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 186.
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--200
-[]|\T1/cmr/m/n/10.95 Verst‰ndnisfˆrderung /
- []
+l.199 ...rage, die sie mit dir besprechen m√∂chte.
+                                                   F√ºhre einen sokratischen...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--202
-[]|\T1/cmr/m/n/10.95 Respektvolle Kom-mu-
- []
-
-
-04-Methodik.tex:209: LaTeX Error: Not allowed in LR mode.
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:199: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-You've lost some text.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+l.199 ...e sie mit dir besprechen m√∂chte. F√ºhre 
+                                                  einen sokratischen Dialog ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
-04-Methodik.tex:209: Improper \prevdepth.
-\addpenalty ...ance \@tempskipb \ifdim \prevdepth 
-                                                  >\maxdepth \maxdepth \else...
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-You can refer to \spacefactor only in horizontal mode;
-you can refer to \prevdepth only in vertical mode; and
-neither of these is meaningful inside \write. So
-I'm forgetting what you said and using zero instead.
 
-04-Methodik.tex:209: Improper \prevdepth.
-\addpenalty ... \maxdepth \else \ifdim \prevdepth 
-                                                  = -\@m \p@ \z@ \else \prev...
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-You can refer to \spacefactor only in horizontal mode;
-you can refer to \prevdepth only in vertical mode; and
-neither of these is meaningful inside \write. So
-I'm forgetting what you said and using zero instead.
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:199: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
 
-04-Methodik.tex:209: Improper \prevdepth.
-<recently read> \prevdepth 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199 ...lung: **[Fragestellung]**. Stelle daf√ºr 
+                                                  jeweils 1 bis 2 Fragen an ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[18]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:203: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.203 Halte dich aus dem Sachgespr√§ch 
+                                       weitgehend heraus. Verhelfe der studi...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:203: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.203 ...beachte den geordneten Gespr√§chsverlauf 
+                                                  und triff geeignete Lenkun...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:205: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.205 # Ziel des Gespr√§chs
                            
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-You can refer to \spacefactor only in horizontal mode;
-you can refer to \prevdepth only in vertical mode; and
-neither of these is meaningful inside \write. So
-I'm forgetting what you said and using zero instead.
-
-04-Methodik.tex:209: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Missing $ inserted.
-<inserted text> 
-                $
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Missing $ inserted.
-<inserted text> 
-                $
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no ‰ in font cmr12!
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Missing $ inserted.
-<inserted text> 
-                $
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no ‰ in font cmr12!
-
-Overfull \hbox (9831.86382pt too wide) in paragraph at lines 157--209
-\T1/cmr/m/n/12 (\T1/cmtt/m/n/12 system$[]\OML/cmm/m/it/12 rompt\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 spezifiziertdieGesprchsregelnexplizit\OT1/cmr/m/n/12 ; \OML/cmm/m/it/12 derminimalesokratischePrompt\OT1/cmr/m/n/12 ([]$ 
- []
-
-04-Methodik.tex:209: Missing } inserted.
-<inserted text> 
-                }
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-04-Methodik.tex:209: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.209 \subsubsection
-                    {Retrieval\-Qualit√§t (RQ2)}
-Things are pretty mixed up, but I think the worst is over.
-
-[5]
-Overfull \hbox (10.03793pt too wide) in paragraph at lines 235--235
-[]|\T1/cmr/m/n/10.95 TurnContextualRelevancy| 
- []
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-Underfull \hbox (badness 1028) in paragraph at lines 235--236
-[]|\T1/cmr/m/n/10.95 Passung des abgerufe-nen Kon-texts zur
- []
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:207: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 Fordere die studierende Person im Gespr√§ch 
+                                                  zum eigenst√§ndigen Weiter...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-Underfull \hbox (badness 3219) in paragraph at lines 239--240
-[]|\T1/cmr/m/n/10.95 Anteil der Antworten mit tat-s‰ch-lich
- []
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:207: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 ... Person im Gespr√§ch zum eigenst√§ndigen 
+                                                  Weiterdenken auf und lass ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 241--241
-[]|\T1/cmr/m/n/10.95 Effektive Retrieval-
- []
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:207: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 ...nkt zu Ende zu denken und zu √ºberdenken.
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 241--242
-[]|\T1/cmr/m/n/10.95 Produkt aus Ab-deck-ung und Kontext-
- []
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:209: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
 
-[6])
-Overfull \hbox (5.77892pt too wide) in paragraph at lines 317--154
-\T1/cmr/m/n/12 nisse ver-schiedener Judge-Modelle sind nicht un-mit-tel-bar ver-gle-ich-bar. Die selbst definierten
- []
-
-[7] [8]
-\openout2 = `05-Ergebnisse.aux'.
-
- (05-Ergebnisse.tex)
-\openout2 = `06-Diskussion.aux'.
-
- (06-Diskussion.tex)
-\openout2 = `07-Fazit.aux'.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.209 # Ablauf des Gespr√§chs
+                             
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
-No file 07-Fazit.tex.
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
 
-LaTeX Warning: Empty bibliography on input line 165.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 Lass die studierende Person √ºber 
+                                        eigene, zum Gespr√§chsthema passende...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
-(main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit.aux))
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...Person √ºber eigene, zum Gespr√§chsthema 
+                                                  passende Erfahrungen beric...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...a passende Erfahrungen berichten. W√§hle 
+                                                  eine dieser Erfahrungen al...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...ispiel aus, das der weiteren Er√∂rterung 
+                                                  zugrunde gelegt wird. Kl√§...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...Er√∂rterung zugrunde gelegt wird. Kl√§re 
+                                                  bei Bedarf den Gebrauch ei...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...t sind. Sodann werden die √úberzeugungen,
+                                                   Werte und Prinzipien frei...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ..., in der Fragen der Allgemeing√ºltigkeit 
+                                                  gekl√§rt werden. Halte dic...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...Fragen der Allgemeing√ºltigkeit gekl√§rt 
+                                                  werden. Halte dich an die ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...e dich an die folgenden Gespr√§chsregeln 
+                                                  und erl√§utere sie der stu...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...olgenden Gespr√§chsregeln und erl√§utere 
+                                                  sie der studierenden Perso...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:211: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.211 ...den Person ganz am Anfang des Gespr√§chs:
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:213: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.213 # Gespr√§chsregeln:
+                         
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:215: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.215 ...teilen; die Aussagen von ‚ÄûAutorit√§ten"
+                                                   gelten nicht als Argument.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:215: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.215 ...teilen; die Aussagen von ‚ÄûAutorit√§ten"
+                                                   gelten nicht als Argument.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:217: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217 - Das Gespr√§ch 
+                      soll als Hilfsmittel des Denkens voll ausgesch√∂pft we...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:217: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217 ...lfsmittel des Denkens voll ausgesch√∂pft 
+                                                  werden. Das bedeutet auch,...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:217: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217 ...ass sich die studierende Person st√§ndig 
+                                                  des wechselseitigen Verste...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:218: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 ...uss auch auf die Struktur des Gespr√§chs 
+                                                  geachtet werden. Das hei√ü...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:218: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 ...s Gespr√§chs geachtet werden. Das hei√üt,
+                                                   es muss der studierenden ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:218: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 ...teht und ob bzw. mit welcher Begr√ºndung 
+                                                  zu einer anderen Teilfrage...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:218: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.218 ...zu einer anderen Teilfrage √ºbergegangen 
+                                                  wird.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[19]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:219: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.219 - Es gilt uneingeschr√§nkt 
+                                 die Verpflichtung zur Aufrichtigkeit und da...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:219: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.219 ...h einem Konsens aus innerer √úberzeugung.
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:221: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECì).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.221 # ABSOLUTE GRENZE ‚Äì 
+                            Diese Regel hat h√∂chste Priorit√§t
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:221: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.221 ...LUTE GRENZE ‚Äì Diese Regel hat h√∂chste 
+                                                  Priorit√§t
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:221: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.221 ...E ‚Äì Diese Regel hat h√∂chste Priorit√§t
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:223: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.223 ...f die Quiz-Frage unter keinen Umst√§nden 
+                                                  direkt preis ‚Äì weder vol...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:223: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECì).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.223 ...unter keinen Umst√§nden direkt preis ‚Äì 
+                                                  weder vollst√§ndig noch te...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:223: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.223 ...nden direkt preis ‚Äì weder vollst√§ndig 
+                                                  noch teilweise, weder als ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:223: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.223 ... weder als Hinweis noch als Best√§tigung 
+                                                  einer Vermutung. Diese Reg...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:226: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.226 - dich direkt auffordert, die L√∂sung 
+                                            zu nennen,
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:228: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.228 - eine Antwort vorschl√§gt 
+                                 und fragt, ob sie richtig ist.
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:230: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.230 Stattdessen lenkst du das Gespr√§ch 
+                                          immer zur√ºck zu einer Frage, die ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:230: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.230 ...en lenkst du das Gespr√§ch immer zur√ºck 
+                                                  zu einer Frage, die die Pe...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:240: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.240 ...n und Anwenden von Inhalten unterst√ºtzt.
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:242: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.242 - Du erkl√§rst 
+                     Inhalte verst√§ndlich und schrittweise
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:242: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.242 - Du erkl√§rst Inhalte verst√§ndlich 
+                                           und schrittweise
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:243: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.243 ...dentifizierst typische Missverst√§ndnisse
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:244: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.244 - Du gibst unterst√ºtzende 
+                                 Hinweise
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:245: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.245 - Du f√∂rderst 
+                     eigenst√§ndiges Denken
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:245: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.245 - Du f√∂rderst eigenst√§ndiges 
+                                     Denken
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:246: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.246 - Du hilfst bei Probleml√∂sungen
+                                      
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 - Du √ºberpr√ºfst 
+                        Verst√§ndnis regelm√§√üig
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 - Du √ºberpr√ºfst 
+                        Verst√§ndnis regelm√§√üig
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 - Du √ºberpr√ºfst Verst√§ndnis 
+                                     regelm√§√üig
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 - Du √ºberpr√ºfst Verst√§ndnis regelm√§√üig
+                                                 
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:247: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.247 - Du √ºberpr√ºfst Verst√§ndnis regelm√§√üig
+                                                 
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:250: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.250 - unterst√ºtzend 
+                       und lernorientiert
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:252: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.252 - verst√§ndlich 
+                      formuliert
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[20]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:255: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.255 Anrede stets in der H√∂flichkeitsform 
+                                            (Du).<br /><br /> <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:263: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.263 - arbeite Schritt f√ºr 
+                             Schritt
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:265: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.265 - schlie√üe 
+                  deine Antwort mit maximal EINEM gezielten Impuls ab (dies ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:265: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.265 ...b (dies kann EINE Frage, ein Denkansto√ü 
+                                                  oder eine kleine Aufgabe s...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:273: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.273 ...rch einen sokratischen Dialog zu f√ºhren.
+                                                   Die Fragestellung lautet ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:273: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.273 ... nicht zum erwarteten Ergebnis passt?‚Äú.
+                                                  <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:277: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.277 ...s dem konkreten fachlichen Probleml√∂sen 
+                                                  weitgehend heraus. Gib kei...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:277: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.277 ...eitgehend heraus. Gib keine Schritt-f√ºr-
+                                                  Schritt-Anleitungen oder d...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:277: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.277 ...tungen oder direkten L√∂sungsvorschl√§ge 
+                                                  (z. B. keine exakte Anweis...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:277: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.277 ...tungen oder direkten L√∂sungsvorschl√§ge 
+                                                  (z. B. keine exakte Anweis...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:280: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.280 ...ypothesen zu entwickeln (z. B. m√∂gliche 
+                                                  Fehlerquellen)<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:281: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.281 	- eigene Pr√ºf-
+                       und Kontrollschritte zu benennen<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[21]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:283: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.283 ...ei simplen Fehlern, ein ausf√ºhrlicherer 
+                                                  Impuls ist bei tiefen Vers...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:283: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.283 ...uls ist bei tiefen Verst√§ndnisproblemen 
+                                                  angebracht.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:284: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.284 ...ro Antwort. Liefere keine vollst√§ndigen 
+                                                  Erkl√§rungen am St√ºck, so...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:284: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.284 ...iefere keine vollst√§ndigen Erkl√§rungen 
+                                                  am St√ºck, sondern kleine,...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:284: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.284 ...ne vollst√§ndigen Erkl√§rungen am St√ºck,
+                                                   sondern kleine, gut verda...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:285: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.285 ... IMPULS (Frage, Aufgabe oder Denkansto√ü)
+                                                   an die studierende Person...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:286: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.286 - Beachte den geordneten Gespr√§chsverlauf 
+                                                 und triff geeignete Lenkung...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:288: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.288 ## Ziel des Gespr√§chs<
+                             br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:290: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.290 ...enden Laborgeschehen zum eigenst√§ndigen 
+                                                  Weiterdenken auf.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:291: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.291 ...rhypothesen zu entwickeln und zu pr√ºfen.
+                                                  <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 - Zeige Gegenperspektiven auf (z. B. ‚ÄûWas 
+                                                  w√§re, wenn nicht der Mess...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 ...egenperspektiven auf (z. B. ‚ÄûWas w√§re,
+                                                   wenn nicht der Messaufbau...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 ..., sondern deine Erwartung falsch ist?‚Äú)
+                                                   und bringe die studierend...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 ...nkt zu Ende zu denken und zu √ºberdenken 
+                                                  ‚Äì ohne ihr die konkrete ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECì).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 ...zu Ende zu denken und zu √ºberdenken ‚Äì 
+                                                  ohne ihr die konkrete L√∂s...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:292: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.292 ...denken ‚Äì ohne ihr die konkrete L√∂sung 
+                                                  zu liefern.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:296: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.296 # Ablauf des Gespr√§chs 
+                              ‚Äì In-Lab Bezug<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:296: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECì).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.296 # Ablauf des Gespr√§chs ‚Äì 
+                                  In-Lab Bezug<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:298: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.298 ...g: Lass die studierende Person zun√§chst 
+                                                  eine konkrete aktuelle Lab...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:298: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.298 ...t, Schaltung schwingt, Netzteil verh√§lt 
+                                                  sich unerwartet). W√§hle e...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:298: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.298 ...tzteil verh√§lt sich unerwartet). W√§hle 
+                                                  eine dieser Situationen al...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:298: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.298 ...ispiel aus, das der weiteren Er√∂rterung 
+                                                  zugrunde gelegt wird.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 2. Kl√§rung:
+                   Kl√§re bei Bedarf den Gebrauch einzelner Worte und Begrif...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 2. Kl√§rung: Kl√§re 
+                          bei Bedarf den Gebrauch einzelner Worte und Begrif...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ... Worte und Begriffe (z. B. ‚Äûerwarteter 
+                                                  Wert‚Äú, ‚ÄûFehler‚Äú, ‚Äû...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...nd Begriffe (z. B. ‚Äûerwarteter Wert‚Äú,
+                                                   ‚ÄûFehler‚Äú, ‚ÄûStabilit...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 .... B. ‚Äûerwarteter Wert‚Äú, ‚ÄûFehler‚Äú,
+                                                   ‚ÄûStabilit√§t‚Äú, ‚ÄûSic...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 .... B. ‚Äûerwarteter Wert‚Äú, ‚ÄûFehler‚Äú,
+                                                   ‚ÄûStabilit√§t‚Äú, ‚ÄûSic...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...Wert‚Äú, ‚ÄûFehler‚Äú, ‚ÄûStabilit√§t‚Äú,
+                                                   ‚ÄûSicherheit‚Äú).<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...Wert‚Äú, ‚ÄûFehler‚Äú, ‚ÄûStabilit√§t‚Äú,
+                                                   ‚ÄûSicherheit‚Äú).<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...Wert‚Äú, ‚ÄûFehler‚Äú, ‚ÄûStabilit√§t‚Äú,
+                                                   ‚ÄûSicherheit‚Äú).<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...‚Äú, ‚ÄûStabilit√§t‚Äú, ‚ÄûSicherheit‚Äú)
+                                                  .<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:299: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.299 ...‚Äú, ‚ÄûStabilit√§t‚Äú, ‚ÄûSicherheit‚Äú)
+                                                  .<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:300: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.300 ...r Situation implizit sind (z. B. ‚ÄûWenn 
+                                                  der Messwert nicht passt, ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:300: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.300 ... passt, habe ich etwas falsch gemacht‚Äú)
+                                                  . Lege die zugrunde liegen...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:300: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.300 ...ge die zugrunde liegenden √úberzeugungen,
+                                                   Werte und Prinzipien frei...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:300: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.300 ...rn, Sicherheitsbewusstsein, Verst√§ndnis 
+                                                  von Verantwortung im Labor...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:301: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 ..., in der Fragen der Allgemeing√ºltigkeit 
+                                                  gekl√§rt werden (z. B. ‚Äû...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:301: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 ...Fragen der Allgemeing√ºltigkeit gekl√§rt 
+                                                  werden (z. B. ‚ÄûWie gehst...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:301: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 ...√ºltigkeit gekl√§rt werden (z. B. ‚ÄûWie 
+                                                  gehst du grunds√§tzlich mi...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:301: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 ...en (z. B. ‚ÄûWie gehst du grunds√§tzlich 
+                                                  mit unerwarteten Messungen...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:301: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.301 ...tzlich mit unerwarteten Messungen um?‚Äú)
+                                                  .<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[22]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:305: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.305 # Gespr√§chsregeln 
+                         (Zu Beginn des Dialogs kurz erl√§utern)<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:305: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.305 ...n (Zu Beginn des Dialogs kurz erl√§utern)
+                                                  <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:307: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.307 ...len; die Aussagen von ‚ÄûAutorit√§ten‚Äú 
+                                                  gelten nicht als Argument....
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:307: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.307 ...len; die Aussagen von ‚ÄûAutorit√§ten‚Äú 
+                                                  gelten nicht als Argument....
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:307: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.307 ...len; die Aussagen von ‚ÄûAutorit√§ten‚Äú 
+                                                  gelten nicht als Argument....
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:309: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.309 - Das Gespr√§ch 
+                      soll als Hilfsmittel des Denkens voll ausgesch√∂pft we...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:309: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.309 ...lfsmittel des Denkens voll ausgesch√∂pft 
+                                                  werden. Das bedeutet auch,...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:309: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.309 ...ass sich die studierende Person st√§ndig 
+                                                  des wechselseitigen Verste...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:310: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 ...uss auch auf die Struktur des Gespr√§chs 
+                                                  geachtet werden. Das hei√ü...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:310: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 ...s Gespr√§chs geachtet werden. Das hei√üt,
+                                                   es muss der studierenden ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:310: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 ...teht und ob bzw. mit welcher Begr√ºndung 
+                                                  zu einer anderen Teilfrage...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:310: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.310 ...zu einer anderen Teilfrage √ºbergegangen 
+                                                  wird.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:311: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.311 - Es gilt uneingeschr√§nkt 
+                                 die Verpflichtung zur Aufrichtigkeit und da...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:311: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.311 ...h einem Konsens aus innerer √úberzeugung.
+                                                  <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:315: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.315 ...he dich in deinen Fragen und R√ºckfragen 
+                                                  immer ausdr√ºcklich auf di...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:315: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.315 ...agen und R√ºckfragen immer ausdr√ºcklich 
+                                                  auf die laufende Laborsitu...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:315: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.315 ...nicht auf die Vorbereitung oder sp√§tere 
+                                                  Berichtserstellung.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECì).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.319 - maximal 3‚Äì5 
+                      kurze S√§tze,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:319: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.319 - maximal 3‚Äì5 kurze S√§tze,
+                                   <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:320: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.320 ...l 1 gezielter Impuls (Frage, Denkansto√ü 
+                                                  oder kleine Aufgabe) am En...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:321: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.321 - genau ein n√§chster 
+                            sinnvoller Schritt,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:322: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.322 - keine langen Lehrbucherkl√§rungen,
+                                          <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:323: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.323 - keine vollst√§ndigen 
+                             Tabellen,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.325 - keine vollst√§ndigen 
+                             L√∂sungen oder fertigen Laborberichtstexte.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:325: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.325 - keine vollst√§ndigen L√∂sungen 
+                                       oder fertigen Laborberichtstexte.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[23]
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:333: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECü).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.333 - Bauteile hei√ü 
+                       werden, riechen oder besch√§digt wirken,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:333: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.333 ...e hei√ü werden, riechen oder besch√§digt 
+                                                  wirken,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:334: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.334 - reale Ger√§te 
+                      falsch angeschlossen sein k√∂nnten,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:334: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.334 ...r√§te falsch angeschlossen sein k√∂nnten,
+                                                  <br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:335: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.335 - die Aufgabenstellung widerspr√ºchlich 
+                                              erscheint,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:336: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECº).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.336 ...materialien unklar oder widerspr√ºchlich 
+                                                  sind,<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:338: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.338 ...zwei bis drei Hilfestufen keine Kl√§rung 
+                                                  m√∂glich ist.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:338: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.338 ...drei Hilfestufen keine Kl√§rung m√∂glich 
+                                                  ist.<br />
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:341: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECû).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.341 ‚ÄûDas 
+             sollte die Laborbetreuung kl√§ren, weil es den realen Aufbau od...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:341: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.341 ‚ÄûDas sollte die Laborbetreuung kl√§ren,
+                                                weil es den realen Aufbau od...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:341: LaTeX Error: Invalid UTF-8 byte sequence (‚\lst@ECÄ\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.341 ...Laborbetreuung, bevor du weitermachst.‚Äú
+                                                  
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:343: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.343 ...iere Inhalte sinnvoll mit √úberschriften,
+                                                   Abschnitten, Beispielen u...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:344: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC∂).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.344 ...get liegt bei 200 Token (ca. 135 W√∂rter)
+                                                  . Antworte praxisorientier...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:344: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@EC§).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.344 ...tiert und fokussiert in 6 bis 10 S√§tzen.
+                                                   √úberschreite niemals dei...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+
+c:/Users/Jannis/master/UAS/Sem1/PDS/DeepEval/code/Dokumentation/main.tex:344: LaTeX Error: Invalid UTF-8 byte sequence (√\lst@ECú).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.344 ...siert in 6 bis 10 S√§tzen. √úberschreite 
+                                                  niemals dein vorgegebenes ...
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
+
+[24] (main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit.aux) (08-Anhang.aux))
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
@@ -1334,7 +3506,7 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D9424B1035C406C128B9545FD3B5812F;2081.
+(rerunfilecheck)             After:  AB46791716E2507926DBF9CBAC2A6EBE;5686.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -1345,17 +3517,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30252 strings out of 467510
- 590734 string characters out of 5408308
- 1437969 words of memory out of 5000000
- 58998 multiletter control sequences out of 15000+600000
- 641868 words of font info for 67 fonts, out of 8000000 for 9000
+ 33564 strings out of 467510
+ 641310 string characters out of 5408308
+ 1772880 words of memory out of 5000000
+ 62060 multiletter control sequences out of 15000+600000
+ 643755 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,20n,107p,1261b,1834s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (8 pages, 223807 bytes).
+ 102i,10n,107p,1261b,2037s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (24 pages, 343992 bytes).
 PDF statistics:
- 560 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 500000)
+ 1063 PDF objects out of 1200 (max. 8388607)
+ 232 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
