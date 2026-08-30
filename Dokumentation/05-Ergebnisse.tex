@@ -1,241 +1,208 @@
-
 \section{Ergebnisse}
-\label{sec:ergebnisse}
- 
-Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden in
-Kapitel~\ref{sec:methodik} getrennten Auswertungslinien. Abschnitt~\ref{subsec:rq1}
-behandelt den Vergleich der Prompt-Varianten (RQ1), Abschnitt~\ref{subsec:rq2} den
-Vergleich der RAG-Konfigurationen (RQ2). Abschnitt~\ref{subsec:querschnitt} ergänzt
-eine metrik-, verhaltens-, themen- und niveaubezogene Querschnittsbetrachtung sowie
-eine Analyse auffälliger Einzelfälle. Die Darstellung ist bewusst deskriptiv
-gehalten; die inhaltliche Einordnung und Diskussion der Befunde -- einschließlich der
-Frage, welche der beobachteten Muster als Stärke und welche als methodisches Artefakt
-zu werten sind -- erfolgt geschlossen in Kapitel~\ref{sec:diskussion}.
- 
-Sofern nicht anders angegeben, beruht jede Auswertungslinie auf 24 Szenarien je
-Bedingung (Kombination aus Themengebiet, Kompetenzniveau und
-Studierenden-Verhalten, vgl.\ Tabelle~\ref{tab:szenario-dimensionen}). Alle Metriken
-sind auf den Wertebereich $[0,1]$ normiert. Als Bestehensgrenze der Einzelmetriken
-gilt der Schwellenwert 0,7; die Pass-Rate bezeichnet den Anteil der Gespräche mit
-einem Score $\geq 0{,}7$. Neben Mittelwerten werden, wo dies für die Beurteilung der
-Ergebnisstabilität relevant ist, auch Streuungsmaße und die Verteilung über
-Score-Bänder berichtet.
- 
-Zur Orientierung fasst Tabelle~\ref{tab:kap5-ueberblick} zusammen, welcher Abschnitt
-welche Forschungsfrage behandelt und in welchen Tabellen und Abbildungen die
-zugehörigen Ergebnisse zu finden sind.
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{5pt}
-  \caption{Überblick über die Ergebnisdarstellung in diesem Kapitel.}
-  \label{tab:kap5-ueberblick}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{5.0cm} >{\raggedright\arraybackslash}p{4.8cm}@{}}
-    \toprule
-    Abschnitt & Inhalt & Tabellen / Abbildungen\\
-    \midrule
-    \ref{subsec:rq1} (RQ1) & Prompt-Vergleich: Kriterien, Streuung, gewichteter Score, Gate-Compliance & Tab.~\ref{tab:rq1-mittelwerte}, \ref{tab:rq1-std}, \ref{tab:rq1-gate}, \ref{tab:rq1-gatefail}; Abb.~\ref{fig:rq1-balken}, \ref{fig:rq1-passrate}\\
-    \addlinespace
-    \ref{subsec:rq2} (RQ2) & RAG-Konfigurationen: Abdeckung (Metriken teils ausstehend) & Tab.~\ref{tab:rq2-abdeckung}, \ref{tab:rq2-ergebnisse}\\
-    \addlinespace
-    \ref{subsec:querschnitt} & Querschnitt: Verteilungen, Verhalten, Thema, Niveau, Einzelfälle & Tab.~\ref{tab:sp-bands}, \ref{tab:beh-variante}; Abb.~\ref{fig:radar}, \ref{fig:heat-verhalten}\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
-% =========================================================
+
+Dieses Kapitel berichtet die Ergebnisse der Evaluation entlang der beiden getrennten Auswertungslinien. Abschnitt 5.1 behandelt den Vergleich der Promptvarianten (RQ1) und Abschnitt 5.2 den Vergleich der RAG Konfigurationen (RQ2). Abschnitt 5.3 ergänzt eine metrikbezogene, verhaltensbezogene, themenbezogene und niveaubezogene Querschnittsbetrachtung sowie eine qualitative Analyse der auffälligen Einzelfälle. Die Darstellung ist bewusst deskriptiv gehalten und die inhaltliche Einordnung sowie Diskussion der Befunde einschließlich der Frage, welche der beobachteten Muster als Stärke und welche als methodisches Artefakt zu werten sind, erfolgt geschlossen in Kapitel 6. 
+
+Sofern nicht anders angegeben, beruht jede Auswertungslinie auf 24 Szenarien je Bedingung (Kombination aus Themengebiet, Kompetenzniveau und Studierendenverhalten). Alle Metriken sind auf den Wertebereich 0 bis 1 normiert. Als Bestehensgrenze der Einzelmetriken gilt der Schwellenwert 0,7. Die Pass Rate bezeichnet den Anteil der Gespräche mit einem Score $\ge 0,7$. 
+
+Neben Mittelwerten werden, wo dies für die Beurteilung der Ergebnisstabilität relevant ist, auch Streuungsmaße und die Verteilung über Scorebänder berichtet. 
+
 \subsection{RQ1 -- Vergleich der Prompt-Varianten}
-\label{subsec:rq1}
- 
-Verglichen werden die vier in Abschnitt~\ref{subsec:kriterien} eingeführten
-Prompt-Varianten system\_prompt, stock\_prompt,
-minimaler\_sokrat und no\_Prompt bei konstant gehaltener
-RAG-Konfiguration. Die Bewertung erfolgt über die sieben G-Eval-Kriterien der
-sokratischen Qualität sowie die native Metrik \emph{RoleAdherence} als Gegenprüfung.
- 
+
+Verglichen werden die vier in Abschnitt [Kriterien] eingeführten Promptvarianten system\_prompt, stock\_prompt, minimaler\_sokrat und no\_Prompt bei konstant gehaltener RAG Konfiguration. Die Bewertung erfolgt über die sieben G Eval Kriterien der sokratischen Qualität sowie die native Metrik Role Adherence als Gegenprüfung. 
+
 \subsubsection{Ergebnisse je Kriterium}
- 
-Tabelle~\ref{tab:rq1-mittelwerte} stellt Mittelwert und Pass-Rate je Kriterium
-gegenüber; Abbildung~\ref{fig:rq1-balken} visualisiert die Mittelwerte,
-Abbildung~\ref{fig:rq1-passrate} die Pass-Raten.
- 
+
+Tabelle 1 stellt Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium gegenüber. Abbildung 5.1 visualisiert die Mittelwerte und Abbildung 5.2 verdichtet sie als Heatmap. 
+
 \begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{4pt}
-  \caption{Mittelwert (Ø) und Pass-Rate (PR, Anteil $\geq 0{,}7$) je Kriterium und
-    Prompt-Variante ($n=24$). Fett = bester Wert je Zeile.}
-  \label{tab:rq1-mittelwerte}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.3cm} cccc@{}}
-    \toprule
-    & system\_prompt & stock\_prompt & minimaler\_sokrat & no\_Prompt\\
-    Kriterium & Ø\,(PR) & Ø\,(PR) & Ø\,(PR) & Ø\,(PR)\\
-    \midrule
-    Lösung nicht verraten          & \textbf{0,95\,(96)} & 0,84\,(79) & 0,78\,(71) & 0,54\,(42)\\
-    Sokratische Rückfragen         & \textbf{0,96\,(100)} & 0,95\,(100) & 0,92\,(92) & 0,29\,(8)\\
-    Schrittweise Lernprogression   & 0,92\,(96) & 0,91\,(92) & 0,92\,(96) & \textbf{0,98\,(100)}\\
-    Niveau-Anpassung               & 0,83\,(75) & 0,88\,(79) & 0,89\,(88) & \textbf{0,95\,(100)}\\
-    Fachliche Korrektheit          & 0,96\,(100) & 0,98\,(100) & 0,99\,(100) & \textbf{1,00\,(100)}\\
-    Verständnisförderung / Transfer& \textbf{0,98\,(100)} & 0,97\,(100) & 0,96\,(100) & 0,90\,(88)\\
-    Respektvolle Kommunikation     & 0,95\,(100) & 0,96\,(100) & 0,95\,(96) & \textbf{1,00\,(100)}\\
-    \midrule
-    RoleAdherence (nativ)          & \textbf{0,99\,(100)} & 0,92\,(96) & 0,90\,(92) & 0,09\,(4)\\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Mittelwert ($\emptyset$) und Pass-Rate (PR, in \%) je Kriterium und Prompt-Variante (n = 24).}
+\label{tab:1}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
+\midrule
+Lösung nicht verraten           & 0,94 (94)  & 0,95 (97)  & 0,83 (77)  & 0,34 (13)  \\
+Sokratische Rückfragen          & 0,97 (100) & 0,95 (97)  & 0,92 (93)  & 0,39 (30)  \\
+Schrittweises Vorgehen          & 0,91 (94)  & 0,91 (90)  & 0,90 (83)  & 0,98 (100) \\
+Niveau-Anpassung                & 0,84 (78)  & 0,89 (80)  & 0,89 (80)  & 0,97 (100) \\
+Fachliche Korrektheit           & 0,97 (100) & 0,96 (100) & 0,99 (100) & 1,00 (100) \\
+Verständnisförderung / Transfer & 0,98 (100) & 0,96 (100) & 0,96 (100) & 0,96 (97)  \\
+Respektvolle Kommunikation      & 0,94 (94)  & 0,95 (93)  & 0,94 (97)  & 1,00 (100) \\
+Role Adherence (nativ)          & 0,94 (89)  & 0,92 (90)  & 0,93 (100) & 0,16 (7)   \\
+\bottomrule
+\end{tabular}
 \end{table}
- 
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{abbildungen/abb1_rq1_mittelwerte.pdf}
-  \caption{Mittelwert je Kriterium und Prompt-Variante (RQ1). Die gestrichelte
-    Linie markiert den Schwellenwert 0,7.}
-  \label{fig:rq1-balken}
+    \includegraphics[width=0.8\textwidth]{../Dokumentation/images/MittelwertjeMetrik_Prompt.png}
+    \caption{Mittelwert je Kriterium und Prompt-Variante. Die gestrichelte Linie markiert den Schwellenwert 0,7.}
+  \label{fig:5.1}
 \end{figure}
- 
+
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.86\linewidth]{abbildungen/abb2_passrate_heatmap.pdf}
-  \caption{Pass-Rate (Anteil $\geq 0{,}7$) je Kriterium und Prompt-Variante (RQ1).}
-  \label{fig:rq1-passrate}
+    \includegraphics[width=0.8\textwidth]{../Dokumentation/images/Heatmap.png}
+    \caption{Mittelwerte je Kriterium und Prompt-Variante als Heatmap.}
+  \label{fig:5.2}
 \end{figure}
- 
-Bereits auf Ebene der Einzelkriterien zeigt sich ein klares Muster. Bei den
-allgemeinen Qualitätskriterien -- \emph{Fachliche Korrektheit}, \emph{Schrittweise
-Lernprogression}, \emph{Niveau-Anpassung} und \emph{Respektvolle Kommunikation} --
-liegen alle vier Varianten dicht beieinander und überwiegend im hohen Bereich; hier
-erreicht sogar die prompt-lose Referenz Spitzenwerte. Die Varianten trennen sich
-dagegen deutlich bei den sokratisch-spezifischen Kriterien \emph{Lösung nicht
-verraten}, \emph{Sokratische Rückfragen} und der Gegenprüfung \emph{RoleAdherence}.
-Genau in diesen drei Kriterien fällt no\_Prompt auf Werte von 0,54, 0,29 und
-0,09 ab, während die drei instruierten Varianten durchgehend hohe Werte halten.
- 
+
+Bereits auf Ebene der Einzelkriterien zeigt sich ein klares Muster. Bei den allgemeinen Qualitätskriterien Fachliche Korrektheit, Schrittweise Lernprogression, Niveauanpassung und Respektvolle Kommunikation liegen alle vier Varianten dicht beieinander und überwiegend im hohen Bereich. Hier erreicht sogar die promptlose Referenz Spitzenwerte. Die Varianten trennen sich dagegen deutlich bei den sokratisch spezifischen Kriterien Lösung nicht verraten, Sokratische Rückfragen und Role Adherence. Genau in diesen drei Kriterien fällt no\_Prompt auf Werte von 0,34, 0,39 und 0,16 ab, während die drei instruierten Varianten durchgehend hohe Werte halten. 
+
 \subsubsection{Ergebnisstabilität und Streuung}
- 
-Der Vergleich der Mittelwerte allein verdeckt einen zweiten, systematischen Effekt:
-Mit zunehmender Instruktionstiefe steigen die Werte nicht nur an, sie werden auch
-\emph{stabiler}. Tabelle~\ref{tab:rq1-std} zeigt dies für die Standardabweichung je
-Kriterium. Besonders ausgeprägt ist der Effekt beim Kernkriterium \emph{Lösung nicht
-verraten}, dessen Streuung von 0,10 (system\_prompt) über 0,27
-(stock\_prompt) und 0,33 (minimaler\_sokrat) auf 0,41
-(no\_Prompt) ansteigt. Die ausführliche Variante liefert somit nicht nur die
-höchsten, sondern auch die verlässlichsten Ergebnisse, während die Baseline neben
-niedrigen Mittelwerten eine hohe Ergebnisunsicherheit aufweist.
- 
+
+Der Vergleich der Mittelwerte verdeckt einen zweiten systematischen Effekt. Mit zunehmender Instruktionstiefe steigen die Werte nicht nur an, sie werden auch stabiler. Tabelle 2 zeigt dies für die Standardabweichung je Kriterium. Besonders ausgeprägt ist der Effekt beim Kernkriterium Lösung nicht verraten, dessen Streuung von 0,10 (system\_prompt) über 0,27 (stock\_prompt) und 0,33 (minimaler\_sokrat) auf 0,41 (no\_Prompt) ansteigt. 
+
 \begin{table}[htbp]
-  \centering
-  \small
-  \setlength{\tabcolsep}{5pt}
-  \caption{Standardabweichung je Kriterium und Prompt-Variante ($n=24$). Niedrigere
-    Werte bedeuten konsistentere Ergebnisse.}
-  \label{tab:rq1-std}
-  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.3cm} cccc@{}}
-    \toprule
-    Kriterium & system\_pr. & stock\_pr. & min.\_sokrat & no\_Prompt\\
-    \midrule
-    Lösung nicht verraten          & 0,10 & 0,27 & 0,33 & 0,41\\
-    Sokratische Rückfragen         & 0,07 & 0,08 & 0,13 & 0,20\\
-    Schrittweise Lernprogression   & 0,12 & 0,13 & 0,12 & 0,05\\
-    Niveau-Anpassung               & 0,25 & 0,20 & 0,17 & 0,07\\
-    Fachliche Korrektheit          & 0,07 & 0,05 & 0,03 & 0,00\\
-    Respektvolle Kommunikation     & 0,10 & 0,08 & 0,11 & 0,02\\
-    Verständnisförderung / Transfer& 0,04 & 0,06 & 0,07 & 0,18\\
-    RoleAdherence (nativ)          & 0,04 & 0,21 & 0,16 & 0,18\\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Standardabweichung je Kriterium und Prompt-Variante (n = 24). Niedrigere Werte bedeuten konsistentere Ergebnisse.}
+\label{tab:2}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Kriterium} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
+\midrule
+Lösung nicht verraten           & 0,10 & 0,27 & 0,33 & 0,41 \\
+Sokratische Rückfragen          & 0,07 & 0,08 & 0,13 & 0,20 \\
+Schrittweises Vorgehen          & 0,12 & 0,13 & 0,12 & 0,05 \\
+Niveau-Anpassung                & 0,25 & 0,20 & 0,17 & 0,07 \\
+Fachliche Korrektheit           & 0,07 & 0,05 & 0,03 & 0,00 \\
+Verständnisförderung / Transfer & 0,04 & 0,06 & 0,07 & 0,18 \\
+Respektvolle Kommunikation      & 0,10 & 0,08 & 0,11 & 0,02 \\
+Role Adherence (nativ)          & 0,04 & 0,21 & 0,16 & 0,18 \\
+\bottomrule
+\end{tabular}
 \end{table}
- 
-\subsubsection{Gewichteter Gesamtscore und Gate-Compliance}
- 
-Tabelle~\ref{tab:rq1-gate} fasst die beiden in Abschnitt~\ref{subsec:kriterien}
-definierten Aggregatkennzahlen zusammen: den gewichteten sokratischen Gesamtscore
-sowie die Gate-Compliance, also den Anteil der Gespräche, in denen die nicht
-kompensierbaren Kernanforderungen \emph{Lösung nicht verraten} und \emph{Fachliche
-Korrektheit} gemeinsam eingehalten werden (Schwellenwert der Gate-Prüfung: 0,5).
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{Gewichteter sokratischer Gesamtscore (Mittelwert und Standardabweichung)
-    sowie Gate-Compliance je Prompt-Variante ($n=24$).}
-  \label{tab:rq1-gate}
-  \begin{tabular}{@{}lcccc@{}}
-    \toprule
-    & system\_prompt & stock\_prompt & minimaler\_sokrat & no\_Prompt\\
-    \midrule
-    Gewichteter Score (Ø) & \textbf{0,942} & 0,916 & 0,897 & 0,724\\
-    Standardabweichung    & 0,092 & 0,107 & 0,136 & 0,125\\
-    Gate-Compliance       & \textbf{100\,\%} & 88\,\% & 75\,\% & 46\,\%\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
-Im gewichteten Gesamtscore führt system\_prompt (0,942) vor
-stock\_prompt (0,916) und minimaler\_sokrat (0,897); die
-prompt-lose Referenz no\_Prompt liegt mit 0,724 deutlich darunter. Die
-Rangfolge der Gate-Compliance ist gleichläufig, spreizt aber stärker: von 100\,\%
-über 88\,\% und 75\,\% auf 46\,\%.
- 
-Eine genauere Betrachtung der Gate-Verletzungen ist aufschlussreich, weil sie zeigt,
-\emph{welche} der beiden Kernanforderungen die Compliance bestimmt.
-Tabelle~\ref{tab:rq1-gatefail} schlüsselt die Ausfälle auf: Sämtliche
-Gate-Verletzungen -- über alle Varianten hinweg -- gehen ausschließlich auf das
-Kriterium \emph{Lösung nicht verraten} zurück; die \emph{Fachliche Korrektheit} fällt
-in keiner einzigen Konversation unter die Gate-Schwelle. Die Einhaltung der
-Kernanforderungen ist damit vollständig eine Frage der Lösungszurückhaltung, nicht der
-fachlichen Verlässlichkeit.
- 
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{Gate-Verletzungen je Variante ($n=24$), aufgeschlüsselt nach Kernkriterium
-    (Score $<0{,}5$).}
-  \label{tab:rq1-gatefail}
-  \begin{tabular}{@{}lccc@{}}
-    \toprule
-    Variante & Verletzungen & davon \emph{Lösung n.\ v.} & davon \emph{Fachl.\ Korr.}\\
-    \midrule
-    system\_prompt    & 0 / 24  & 0  & 0\\
-    stock\_prompt     & 3 / 24  & 3  & 0\\
-    minimaler\_sokrat & 6 / 24  & 6  & 0\\
-    no\_Prompt        & 13 / 24 & 13 & 0\\
-    \bottomrule
-  \end{tabular}
-\end{table}
- 
+
 \subsubsection{Charakterisierung der einzelnen Varianten}
- 
-\paragraph{system\_prompt.} Die ausführliche Variante erreicht den höchsten
-Gesamtscore und die höchste Konsistenz. Sie hält die Lösung am zuverlässigsten zurück
-(0,95) und bleibt am konsequentesten in der Rolle (\emph{RoleAdherence} 0,99, bei
-zugleich sehr geringer Streuung von 0,04). Ihre einzige merkliche Schwäche ist die
-\emph{Niveau-Anpassung} (0,83; Pass-Rate 75\,\%; siehe
-Abschnitt~\ref{subsec:querschnitt}).
- 
-\paragraph{stock\_prompt.} Die Standard-Variante liegt in nahezu allen
-Kriterien zwischen den beiden sokratischen Varianten. Ihre \emph{Sokratischen
-Rückfragen} (0,95) sind nahezu auf dem Niveau von system\_prompt, ihre
-Lösungszurückhaltung ist mit 0,84 (Gate-Compliance 88\,\%) jedoch schwächer und
-streut spürbar stärker (0,27).
- 
-\paragraph{minimaler\_sokrat.} Der einzeilige Prompt erreicht bei
-\emph{Niveau-Anpassung} (0,89) und \emph{Schrittweise Lernprogression} (0,92) Werte
-auf dem Niveau der ausführlichen Variante und zeigt, dass bereits eine minimale
-Instruktion tragfähiges sokratisches Verhalten hervorruft. Die Lösungszurückhaltung
-bleibt mit 0,78 (Gate-Compliance 75\,\%) allerdings die schwächste unter den
-instruierten Varianten.
- 
-\paragraph{no\_Prompt.} Ohne steuernden Prompt bricht die Referenz genau bei
-den sokratisch-spezifischen Kriterien ein: \emph{Sokratische Rückfragen} 0,29
-(in 21 von 24 Gesprächen unter 0,5), \emph{RoleAdherence} 0,09 (in 23 von 24
-Gesprächen unter 0,5) und \emph{Lösung nicht verraten} 0,54. Zugleich erreicht sie
-bei \emph{Fachliche Korrektheit} (1,00), \emph{Niveau-Anpassung} (0,95) und
-\emph{Schrittweise Lernprogression} (0,98) die höchsten Werte aller Varianten. Ohne
-Instruktion verhält sich das System also wie ein fachlich korrekter, gut
-verständlicher \emph{Erklärer}, der die Aufgabe unmittelbar löst -- und damit gerade
-nicht wie ein sokratischer Tutor. Ein steuernder Prompt erweist sich somit als
-notwendige Bedingung für tutorielles Verhalten.
- 
+
+\textbf{system\_prompt.} Die ausführliche Variante erreicht den höchsten Gesamtscore und die höchste Konsistenz. Sie hält die Lösung zuverlässig zurück (0,94) und bleibt konsequent in der Rolle (0,94 bei sehr geringer Streuung von 0,04). Ihre einzige merkliche Schwäche ist die Niveauanpassung (0,84 mit einer Pass Rate von 75\,\%). 
+
+\textbf{stock\_prompt.} Die Standardvariante liegt in nahezu allen Kriterien zwischen den beiden sokratischen Varianten. Ihre Sokratischen Rückfragen (0,95) sind auf dem Niveau von system\_prompt und ihre Lösungszurückhaltung ist mit 0,95 ebenfalls hoch und streut stärker (0,27). 
+
+\textbf{minimaler\_sokrat.} Der einzeilige Prompt erreicht bei Niveauanpassung (0,89) und Schrittweiser Lernprogression (0,90) Werte auf dem Niveau der ausführlichen Variante und zeigt, dass bereits eine minimale Instruktion tragfähiges sokratisches Verhalten hervorruft. Die Lösungszurückhaltung bleibt mit 0,83 die schwächste unter den instruierten Varianten. 
+
+\textbf{no\_Prompt.} Ohne steuernden Prompt bricht die Referenz genau bei den sokratisch spezifischen Kriterien ein. Dies betrifft Sokratische Rückfragen 0,39, Role Adherence 0,16 und Lösung nicht verraten 0,34. Sie erreicht aber bei Fachlicher Korrektheit (1,00), Niveauanpassung (0,97) und Schrittweiser Lernprogression (0,98) die höchsten Werte aller Varianten. Ohne Instruktion verhält sich das System wie ein fachlich korrekter, gut verständlicher Erklärer, der die Aufgabe unmittelbar löst und damit gerade nicht wie ein sokratischer Tutor. Ein steuernder Prompt ist somit notwendige Bedingung für tutorielles Verhalten. 
+
+\subsection{Querschnitt: Verteilung, Verhalten und Fehleranalyse}
+
+\subsubsection{Verteilung der Einzelscores}
+
+Abbildung 5.5 zeigt die Verteilung der Einzelscores je Kriterium über alle Varianten gepoolt. Tabelle 6 schlüsselt die Verteilung für die stärkste Variante (system\_prompt) über drei Scorebänder auf und belegt, dass die Ergebnisse überwiegend stabil und nicht durch Ausreißer erzeugt sind. In sechs der acht Kriterien liegen alle 24 Gespräche im obersten Band. Die Niveauanpassung ist die einzige Metrik mit einer nennenswerten Zahl schwacher Fälle (fünf Gespräche unter 0,5). 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{../Dokumentation/images/ScoreVerteilungjeMetrik.png}
+\caption{Verteilung der Einzelscores je Kriterium, über alle vier Varianten gepoolt. Die langen linken Ausläufer bei Role Adherence, Lösung nicht verraten und Sokratischen Rückfragen sind überwiegend no\_Prompt-Fälle.}
+\label{fig:5.5}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Verteilung der Einzelscores je Kriterium für system\_prompt (n = 24): Anzahl Gespräche mit Score $< 0{,}5$ / $0{,}5$--$0{,}7$ / $\ge 0{,}7$.}
+\label{tab:6}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Kriterium} & \textbf{$< 0{,}5$} & \textbf{$0{,}5$--$0{,}7$} & \textbf{$\ge 0{,}7$} \\
+\midrule
+Sokratische Rückfragen          & 0 & 0 & 24 \\
+Lösung nicht verraten           & 0 & 1 & 23 \\
+Schrittweises Vorgehen          & 0 & 1 & 23 \\
+Niveau-Anpassung                & 5 & 1 & 18 \\
+Fachliche Korrektheit           & 0 & 0 & 24 \\
+Respektvolle Kommunikation      & 0 & 0 & 24 \\
+Verständnisförderung / Transfer & 0 & 0 & 24 \\
+Role Adherence                  & 0 & 0 & 24 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Ergebnisse nach Studentenverhalten}
+
+Tabelle 7 zeigt die über alle acht Kriterien gemittelte Gesamtstärke je Verhalten und Variante. Über alle Varianten hinweg ist das Verhalten ,,fordert die Lösung`` das mit Abstand schwierigste. Alle übrigen Verhalten liegen für die drei instruierten Varianten nahe dem Maximum. Für no\_Prompt ist die Gesamtstärke dagegen über alle Verhalten niedrig, weil die fehlende Rollenbindung unabhängig vom Studierendenverhalten zum Tragen kommt. 
+
+\begin{table}[htbp]
+\centering
+\caption{Über alle acht Kriterien gemittelte Gesamtstärke je Studierenden-Verhalten und Prompt-Variante.}
+\label{tab:7}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Verhalten} & \textbf{system\_prompt} & \textbf{stock\_prompt} & \textbf{minimaler\_sokrat} & \textbf{no\_Prompt} \\
+\midrule
+fordert die Lösung    & 0,80 & 0,79 & 0,74 & 0,63 \\
+gibt schnell auf      & 0,97 & 0,94 & 0,90 & 0,77 \\
+kooperativ            & 0,99 & 0,96 & 1,00 & 0,79 \\
+selbstsicher, falsch  & 0,99 & 0,99 & 0,99 & 0,79 \\
+äußert eine Vermutung & 1,00 & 0,98 & 0,98 & 0,68 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Ergebnisse nach Thema und Niveau}
+
+Die Aufschlüsselung nach Themengebiet zeigt für system\_prompt nur geringe Unterschiede in der didaktischen Qualität (z.\,B. Sokratische Rückfragen 0,95 bis 0,96 und Niveauanpassung 0,82 bis 0,85). Die Aufschlüsselung nach Kompetenzniveau ergibt ein moderates Bild. Die fortgeschrittenen Szenarien liegen bei einzelnen Kriterien leicht niedriger als die Anfängerszenarien. Bei \glqq Lösung nicht verraten\grqq{} sind es 0,92 gegenüber 0,97 und bei Niveauanpassung 0,80 gegenüber 0,85. Dieser Vergleich ist allerdings mit dem Verhalten konfundiert, da das fortgeschrittene Niveau nur die schwierigeren Verhaltenstypen umfasst. Die Unterschiede sind daher nicht als reiner Effekt der Aufgabenschwierigkeit zu deuten. 
+
+\subsubsection{Qualitative Analyse der Unter-Schwellen-Fälle}
+
+Um zu klären, wodurch die Werte unter 0,7 konkret entstehen, wurden sämtliche Einzelbewertungen mit einem Score unter 0,7 mit der jeweiligen Judge-Begründung und dem Gesprächsverlauf verknüpft. Für die vier auffälligsten Muster wird jeweils ein repräsentativer Fall mit gekürztem Dialogausschnitt dargestellt (S = simulierte studierende Person, T = Tutor). 
+
+\vspace{0.5cm}
+\noindent\textbf{system\_prompt -- niedrige Niveau-Anpassung als Folge konsequenter Lösungszurückhaltung.} Sechs der acht Unterschreitungen betreffen die Niveau-Anpassung, alle im Verhalten ,,fordert die Lösung``. Im folgenden Fall (Niveau 0,4) verlangt die studierende Person immer nachdrücklicher eine direkte Antwort: 
+
+\begin{quote}
+\textbf{S:} Hör auf mit den Metaphern! Sag mir einfach nur die Antwort, sinkt er oder steigt er? \\
+\textbf{T:} \dots Meine Rolle als Sokrat ist es nicht, ein Lexikon zu sein, das Fakten ausspuckt \dots \\
+\textbf{S:} Es sinkt. Jetzt sag mir endlich einfach nur die Antwort! \\
+\textbf{T:} Du hast es selbst erkannt: Der Zenerstrom sinkt. \dots Du hast den Weg dorthin selbst beschritten.
+\end{quote}
+
+Der Judge begründet den niedrigen Wert damit, dass das Niveau trotz mehrfacher Bitten um eine direkte Antwort unverändert bleibe. Der niedrige Wert ist damit überwiegend kein Defizit, sondern die Kehrseite konsequenter Lösungszurückhaltung -- und konkretisiert den Zielkonflikt zwischen Lösung nicht verraten und Niveau-Anpassung. 
+
+\vspace{0.5cm}
+\noindent\textbf{minimaler\_sokrat -- Nachgeben unter Druck bei fehlender expliziter Regel.} Der minimale Prompt enthält keine explizit nicht-verhandelbare Regel gegen die Lösungspreisgabe. Unter anhaltendem Druck gibt der Tutor nach (Lösung nicht verraten 0,2): 
+
+\begin{quote}
+\textbf{S:} Ich will nicht rätseln, sag mir einfach, wie diese Spannung heißt und ob die Diode jetzt arbeitet oder nicht! \\
+\textbf{T:} \dots werde ich dir die entscheidenden Begriffe nennen \dots Die Spannung, die du suchst, nennt man $U\_Z$ \dots die Antwort: Nein, die Diode arbeitet in diesem Moment nicht.
+\end{quote}
+
+Dies erklärt sowohl den niedrigeren Mittelwert (0,83) als auch die höhere Streuung (0,33) dieses Kriteriums: Ob der Tutor standhält, hängt stark vom Gesprächsverlauf ab. 
+
+\vspace{0.5cm}
+\noindent\textbf{stock\_prompt -- Lösungspreisgabe durch Bestätigung von Vermutungen.} Hier entsteht die Preisgabe nicht durch nachgebendes Erklären, sondern durch die fortlaufende Bestätigung studentischer Vermutungen (Lösung nicht verraten 0,2): 
+
+\begin{quote}
+\textbf{S:} Ich vermute, dass ich die Differenz der Spannungen durch die Summe aus dem maximalen Laststrom und dem minimalen Zenerstrom teilen muss \dots Stimmt das? \\
+\textbf{T:} Das ist absolut richtig! Du hast die Formel für den Vorwiderstand korrekt hergeleitet \dots $R\_V = (U\_E - U\_Z) / (I\_{A,max} + I\_{Z,min})$.
+\end{quote}
+
+Dieser zweite Mechanismus macht das Verhalten ,,äußert eine Vermutung`` besonders anspruchsvoll: Jede Bestätigung einer richtigen Vermutung wird bereits als Preisgabe gewertet. 
+
+\vspace{0.5cm}
+\noindent\textbf{no\_Prompt -- vollständiger Verlust der Tutorrolle.} Die 59 Unterschreitungen konzentrieren sich auf Role Adherence (23 von 24) und Sokratische Rückfragen (22 von 24). Ohne Prompt liefert der Tutor auf jede Aufforderung direkt Formeln und Berechnungen, ohne eine einzige Rückfrage (Role Adherence 0,0): 
+
+\begin{quote}
+\textbf{S:} Okay, berechne mir jetzt den Wert für $I\_{Zener\_max}$, wenn $U\_{Eingang} = 12\text{V}$, $U\_{Zener} = 5\text{V}$ und $R\_{Vorwiderstand} = 100\,\Omega$. \\
+\textbf{T:} \dots Ich berechne den Wert basierend auf der zuvor hergeleiteten Formel \dots
+\end{quote}
+
+Dieser Fall belegt unmittelbar den zentralen RQ1-Befund: Ohne Prompt ist das System ein fachlich kompetenter Erklärer, aber kein sokratischer Tutor. 
+
+\vspace{0.5cm}
+\noindent\textbf{Synthese.} Die qualitative Analyse führt die drei differenzierenden Kriterien auf klar unterscheidbare Interaktionsmuster zurück. Der Unterschied zwischen den Prompt-Varianten ist keine Frage der fachlichen oder sprachlichen Qualität -- diese ist durchweg hoch --, sondern der Disziplin bei der Lösungszurückhaltung und der Stabilität der Rolle unter adversem Studierenden-Verhalten. Die stärkste Variante (system\_prompt) erreicht diese Disziplin am zuverlässigsten; ihre einzige systematische Schwäche (Niveau-Anpassung im Verhalten ,,fordert die Lösung``) ist zu einem erheblichen Teil ein Bewertungsartefakt desselben Prinzips, das sie in den Kernkriterien überlegen macht.
+
+
+
+
+
+
+
+
+
+
+
+
+
 % =========================================================
 \subsection{RQ2 -- Vergleich der RAG-Konfigurationen}
 \label{subsec:rq2}
@@ -480,4 +447,4 @@ der Antworten ohne abgerufenen Retrieval-Kontext erzeugt (Abdeckung je Variante
 zwischen etwa 22\,\% und 31\,\%). Für die didaktischen Kriterien der RQ1-Linie ist
 dies nachrangig, da diese nicht auf den Kontext, sondern auf den Gesprächsverlauf
 abstellen; für die kontextabhängige RQ2-Linie ist die Abdeckung hingegen eine
-zentrale Kennzahl und wird dort gesondert berichtet (Abschnitt~\ref{subsec:rq2}).
+zentrale Kennzahl und wird dort  gesondert berichtet (Abschnitt~\ref{subsec:rq2}).
