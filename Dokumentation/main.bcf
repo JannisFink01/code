@@ -2405,8 +2405,6 @@
     <bcf:citekey order="28" intorder="1">DeepEvalGoalAccuracy</bcf:citekey>
     <bcf:citekey order="29" intorder="1">DeepEvalTurnFaithfulness</bcf:citekey>
     <bcf:citekey order="30" intorder="1">DeepEvalTurnContextualRelevancy</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">QUELLE_SOKRATIK</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">QUELLE_LLM_JUDGE</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

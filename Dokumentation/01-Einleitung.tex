@@ -1,0 +1,22 @@
+\section{Einleitung}
+\label{sec:einleitung}
+ 
+Large Language Models ermöglichen die Umsetzung dialogbasierter Tutorsysteme, deren Verhalten über Instruktionen in natürlicher Sprache gesteuert und durch zusätzliche Wissensquellen erweitert werden kann. Für den Einsatz als virtueller Tutor im Elektroniklabor reicht es jedoch nicht aus, fachlich korrekte Antworten zu erzeugen. Der Tutor soll Studierende bei der eigenständigen Auseinandersetzung mit einer Problemstellung unterstützen, anstatt ihnen unmittelbar eine fertige Lösung vorzugeben. Gleichzeitig muss der für die Antwortgenerierung bereitgestellte fachliche Kontext zur jeweiligen Fragestellung passen und von dem Sprachmodell angemessen genutzt werden.
+ 
+Die vorliegende Arbeit untersucht einen LLM-basierten virtuellen Tutor für das Elektroniklabor, der ein sokratisches Tutorverhalten mit einer Retrieval-Augmented-Generation-Pipeline verbindet. Das Tutorverhalten wird dabei durch einen Systemprompt gesteuert, während die RAG-Pipeline fachliche Inhalte aus Vorlesungs- und Labormaterialien abruft und dem Sprachmodell als zusätzlichen Kontext bereitstellt. Die resultierende Qualität des Systems hängt damit sowohl von der Ausgestaltung der Instruktionen als auch von der Konfiguration des Retrievals ab.
+ 
+Ziel der Untersuchung ist es, diese beiden Einflussfaktoren getrennt voneinander zu evaluieren. Daraus ergeben sich zwei Forschungsfragen:
+ 
+\begin{itemize}
+  \item[\textbf{RQ1:}] Welchen Einfluss hat die Ausgestaltung des Systemprompts auf die sokratische Qualität des Tutorverhaltens?
+  
+  \item[\textbf{RQ2:}] Welchen Einfluss hat die Konfiguration der RAG-Pipeline auf die Qualität des bereitgestellten Retrieval-Kontexts und dessen Nutzung bei der Antwortgenerierung?
+\end{itemize}
+ 
+Zur Beantwortung von RQ1 werden vier Prompt-Varianten mit unterschiedlichem Grad der didaktischen Steuerung miteinander verglichen. Diese reichen von einer Baseline ohne sokratische Instruktion über einen minimalen sokratischen Prompt bis zu einem strukturierten sokratischen Prompt und einem domänenspezifischen In-Lab-Tutorprompt. Die RAG-Konfiguration wird innerhalb dieser Auswertungslinie konstant gehalten, sodass die beobachteten Unterschiede auf die Gestaltung des Systemprompts zurückgeführt werden können.
+ 
+RQ2 untersucht dagegen unterschiedliche Konfigurationen der RAG-Pipeline bei konstant gehaltenem Systemprompt. Variiert werden die verwendete Wissensbasis, das Retrieval-Verfahren sowie der Einsatz eines Cross-Encoder-Rerankings. Betrachtet werden Dense, Sparse und Hybrid Retrieval mit Vorlesungsinhalten, Laborinhalten oder deren Kombination. Ergänzend dient eine Variante ohne Retrieval als Referenz.
+ 
+Die Evaluation erfolgt anhand synthetisch erzeugter Multi-Turn-Gespräche zwischen einer simulierten studierenden Person und dem virtuellen Tutor. Die Testszenarien unterscheiden sich hinsichtlich des Themengebiets, des Kompetenzniveaus und des simulierten Studierendenverhaltens. Die resultierenden Gespräche werden anschließend automatisiert mit DeepEval bewertet. Für RQ1 werden anwendungsspezifische Kriterien der sokratischen Qualität sowie die Rollentreue des Tutors betrachtet. RQ2 wird anhand der Relevanz des abgerufenen Kontexts, der Übereinstimmung der Tutorantworten mit diesem Kontext und der Retrieval-Abdeckung untersucht. Die beiden Forschungsfragen werden in getrennten Auswertungslinien betrachtet, sodass jeweils nur der zu untersuchende Faktor variiert wird.
+ 
+Die Arbeit ist wie folgt aufgebaut: Kapitel~\ref{sec:grundlagen} legt die theoretischen Grundlagen des sokratischen Tutorings, der Retrieval-Augmented Generation und der Evaluation LLM-basierter Dialogsysteme dar. Anschließend werden der untersuchte Tutor, die RAG-Pipeline sowie die Prompt- und Retrieval-Varianten beschrieben. Das Methodikkapitel erläutert das Untersuchungsdesign, die Datengrundlage, die Evaluationsarchitektur und die verwendeten Bewertungskriterien. Darauf aufbauend werden die Ergebnisse der beiden Forschungsfragen sowie ergänzende Querschnittsanalysen dargestellt. Abschließend werden die Befunde hinsichtlich der Forschungsfragen eingeordnet und die methodischen Einschränkungen der Evaluation diskutiert.

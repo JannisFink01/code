@@ -124,7 +124,9 @@ Die resultierenden Kandidaten werden zusammengeführt und gegebenenfalls dedupli
 
 Für die Generierung wird der Prompt aus mehreren Bestandteilen zusammengesetzt. Im RAG-Pfad werden zunächst der aktive Systemprompt, anschließend ein optionaler Moodle-Kontext und der aus dem Retrieval erzeugte RAG-Kontext eingefügt. Darauf folgen die bereinigte bisherige Gesprächshistorie und die aktuelle Nutzerfrage. Die Pipeline ermöglicht damit, sowohl retrieved Informationen als auch den bisherigen Gesprächsverlauf bei der Generierung einer Tutorantwort zu berücksichtigen.
 
-Version 1.7.0 stellt zusätzlich einen Verbose-Modus für Non-Streaming-Anfragen bereit. Dieser gibt unter anderem Informationen über die Vektorisierung, die Retrieval- und Fusionsergebnisse, das Reranking, die tatsächlich an das LLM übergebenen Nachrichten sowie die rohe und finale Modellantwort strukturiert aus. Der Verbose-Modus greift dabei auf bereits während der regulären Verarbeitung erzeugte Daten zurück und führt keine zusätzlichen Retrieval-, Embedding-, Reranking- oder LLM-Aufrufe aus. Dadurch können die einzelnen Verarbeitungsschritte für die spätere Evaluation nachvollzogen werden. Die für die Untersuchung variierten Retrieval- und Reranking-Konfigurationen werden in Abschnitt~\ref{subsec:rag_konfigurationen} beschrieben.
+Version 1.7.0 stellt zusätzlich einen Verbose-Modus für Non-Streaming-Anfragen bereit. Dieser gibt unter anderem Informationen über die Vektorisierung, die Retrieval- und Fusionsergebnisse, das Reranking, die tatsächlich an das LLM übergebenen Nachrichten sowie die rohe und finale Modellantwort strukturiert aus. Der Verbose-Modus greift dabei auf bereits während der regulären Verarbeitung erzeugte Daten zurück und führt keine zusätzlichen Retrieval-, Embedding-, Reranking- oder LLM-Aufrufe aus. 
+
+Dadurch können die einzelnen Verarbeitungsschritte für die spätere Evaluation nachvollzogen werden. Die für die Untersuchung variierten Retrieval- und Reranking-Konfigurationen werden in Abschnitt~\ref{subsec:Die RAG-Konfigurationen} beschrieben.
 
 
 \subsection{Die Prompt-Varianten für RQ1}

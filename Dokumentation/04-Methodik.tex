@@ -2,56 +2,49 @@
 \label{sec:methodik}
 
 Gegenstand der vorliegenden Untersuchung ist die Evaluation eines sokratischen
-KI\-Tutors, der auf einer Retrieval\-Augmented\-Generation\-Pipeline (RAG) aufsetzt.
-Ziel ist es, das Zusammenspiel von Prompting und Retrieval\-Konfiguration systematisch
+KI-Tutors, der auf einer Retrieval-Augmented-Generation-Pipeline (RAG) aufsetzt.
+Ziel ist es, das Zusammenspiel von Prompting und Retrieval-Konfiguration systematisch
 zu bewerten. Die Untersuchung folgt einem explorativen, experimentellen
-Evaluationsdesign, das zwei Forschungsfragen getrennt adressiert: den Einfluss
-verschiedener sokratischer Prompts (RQ1) sowie den Einfluss verschiedener
-RAG\-Konfigurationen (RQ2). Beide Fragen werden über dieselbe technische
-Evaluationsarchitektur beantwortet, jedoch in zwei voneinander unabhängigen
-Auswertungslinien, sodass jeweils nur ein Faktor variiert wird.
+Evaluationsdesign. Das konkrete Vorgehen zur getrennten Beantwortung von RQ1 und RQ2
+wird im folgenden Abschnitt beschrieben.
 
 \subsection{Untersuchungsdesign}
 \label{subsec:design}
 
 Die Evaluation ist als automatisierte, mehrstufige Dialogbewertung angelegt. Für jedes
-Testszenario wird ein Multi\-Turn\-Gespräch zwischen einer simulierten studierenden
-Person und dem RAG\-gestützten Tutor erzeugt und anschließend anhand eines definierten
-Metrik\-Sets bewertet. Die Wahl eines simulationsbasierten Multi\-Turn\-Designs ergibt
+Testszenario wird ein Multi-Turn-Gespräch zwischen einer simulierten studierenden
+Person und dem RAG-gestützten Tutor erzeugt und anschließend anhand eines definierten
+Metrik-Sets bewertet. Die Wahl eines simulationsbasierten Multi-Turn-Designs ergibt
 sich unmittelbar aus dem Untersuchungsgegenstand: Da sokratisches Tutoring ein
 dialogisches, über mehrere Gesprächsrunden verlaufendes Vorgehen ist, lässt es sich
-nicht anhand einzelner Frage\-Antwort\-Paare, sondern nur im Verlauf eines Gesprächs
-angemessen beurteilen \cite{QUELLE_SOKRATIK}.
+nicht anhand einzelner Frage-Antwort-Paare, sondern nur im Verlauf eines Gesprächs
+angemessen beurteilen  (vgl. Abschnitt~\ref{subsec:sokratische didaktik}).
 
 Zur klaren Trennung der Forschungsfragen wurden zwei separate Evaluationslinien
-umgesetzt. In der ersten Linie (RQ1) wird bei konstant gehaltener RAG\-Konfiguration
-der System\-Prompt variiert. Bewertet wird die \emph{\texttt{no\_Prompt}
-\texttt{stock\_prompt}tät} des
-Gesprächsverlaufs. In der zweiten Linie (RQ2) wird bei konstant gehaltenem Prompt die
-RAG\-Konfiguration variiert und die \emph{Retrieval\-Qualität} bewertet. Durch die
+umgesetzt. In der ersten Linie (RQ1) wird bei konstant gehaltener RAG-Konfiguration
+der System-Prompt variiert. Bewertet wird die sokratische Qualität des Gesprächsverlaufs. In der zweiten Linie (RQ2) wird bei konstant gehaltenem Prompt die
+RAG-Konfiguration variiert und die \emph{Retrieval-Qualität} bewertet. Durch die
 Beschränkung auf jeweils einen variierten Faktor je Linie können die beobachteten
 Effekte den Prompts bzw. den Konfigurationen zugeordnet werden.
 
 \subsection{Untersuchungsgegenstand und Datengrundlage}
 \label{subsec:gegenstand}
 
-Das zu evaluierende System (System under Test) ist eine OpenWebUI\-kompatible
-RAG\-Pipeline, die einen Qdrant\-Vektorspeicher, ein Cross\-Encoder\-Reranking sowie
-Moodle\-Metadaten anbindet. Als generierendes Sprachmodell nutzt die Pipeline intern
-das Modell \texttt{gemma\-4\-26B}. Der fachliche Wissenskorpus liegt in zwei
-Qdrant\-Collections vor, die Vorlesungs\- bzw. Labormaterial des Fachgebiets
-Elektronik der Hochschule enthalten.
+Das zu evaluierende System (System under Test) ist die in Abschnitt~\ref{subsec:rag} beschriebene RAG-Pipeline, die intern das Modell
+\texttt{gemma-4-26B} als generierendes Sprachmodell nutzt. Der fachliche
+Wissenskorpus liegt in zwei Qdrant-Collections vor, die Vorlesungs- bzw.
+Labormaterial des Fachgebiets Elektronik der Hochschule enthalten.
 
 Die Datengrundlage der Evaluation bilden nicht vorab gesammelte Dialoge, sondern
 synthetisch erzeugte Gespräche. Grundlage jedes Gesprächs ist ein Testszenario,
 das sich aus der Kombination von Themengebiet, Kompetenzniveau der studierenden Person
-(Anfänger bzw. Fortgeschritten) und einem charakteristischen Studierenden\-Verhalten
-(etwa kooperativ, die Lösung einfordernd oder inhaltlich selbstsicher\-fehlerhaft)
-zusammensetzt. Insgesamt ergeben sich daraus 24 Szenarien je Auswertungslinie. Jedes Szenario wird als \emph{Golden} modelliert, das die
+(Anfänger bzw. Fortgeschritten) und einem charakteristischen Studierenden-Verhalten
+(etwa kooperativ, die Lösung einfordernd oder inhaltlich selbstsicher-fehlerhaft)
+zusammensetzt \ref{tab:szenario-dimensionen}. Insgesamt ergeben sich daraus mehrere Szenarien je Auswertungslinie. Jedes Szenario wird als \emph{Golden} modelliert, das die
 Ausgangssituation, eine Beschreibung der zu simulierenden Persona sowie eine feste
 Initialfrage enthält. Die Initialfrage wird bewusst wortgleich vorgegeben und nicht
 generiert, um über alle Prompts und Konfigurationen hinweg denselben Gesprächseinstieg
-und damit die Vergleichbarkeit der Läufe sicherzustellen; die daran anschließenden
+und damit die Vergleichbarkeit der Läufe sicherzustellen. Die daran anschließenden
 Folgefragen werden hingegen dynamisch simuliert.
 
 % =========================================================
@@ -85,17 +78,16 @@ Folgefragen werden hingegen dynamisch simuliert.
 
 Da der Untersuchungsgegenstand ein Dialog ist, sind neben dem zu bewertenden System zwei
 weitere Rollen erforderlich. Die Architektur umfasst somit drei klar getrennte Modelle.
-Der Tutor ist die RAG\-Pipeline {gemma\-4\-26B} und beantwortet jeden
-Gesprächszug. Der Studenten\-Simulator übernimmt die Rolle der studierenden
-Person und erzeugt auf Basis von Szenario, Persona und der jeweils vorangegangenen
-Tutor\-Antwort die Folgefragen. Ohne diese Rolle entstünde kein Dialog, sondern
-lediglich ein einzelnes Frage\-Antwort\-Paar. Als Simulator wird das Modell
-\texttt{gpt\-4o\-mini} eingesetzt, das auf dem verwendeten Endpunkt einen Alias für
-\texttt{gemma\-4\-26B} darstellt und somit auf demselben Basismodell wie die
-RAG\-Pipeline beruht. Der Judge bewertet den fertigen Dialog. Hierfür wird mit
-gpt\-4.1 bewusst ein vom System under Test verschiedenes Modell gewählt, um
-einen Selbstbewertungs\-Bias zu vermeiden, bei dem ein Modell anteilig seine eigenen
-Ausgaben bewertet \cite{QUELLE_LLM_JUDGE}. Simulator und Judge laufen auf getrennten Endpunkten.
+Der Tutor ist die RAG-Pipeline {gemma-4-26B} und beantwortet jeden
+Gesprächszug. Der Studenten-Simulator übernimmt die Rolle der studierenden Person: Ausgehend von der
+im Golden festgelegten, wortgleichen Initialfrage erzeugt er auf Basis von Szenario,
+Persona und der jeweils vorangegangenen Tutor-Antwort dynamisch die weiteren
+Folgefragen des Gesprächs. Ohne diese Rolle würde kein Dialog entstehen, sondern
+lediglich ein einzelnes Frage-Antwort-Paar. Als Simulator wird das Modell
+\texttt{gpt-4o-mini} eingesetzt und der Judge bewertet den fertigen Dialog. Hierfür wird mit
+gpt-4.1 bewusst ein vom System under Test verschiedenes Modell gewählt, um
+einen Selbstbewertungs -Bias zu vermeiden, bei dem ein Modell anteilig seine eigenen
+Ausgaben bewertet \ref{subsec:llm_evaluation}. Simulator und Judge laufen auf getrennten Endpunkten.
 % =========================================================
 % ABBILDUNG · Ablauf der Dialog-Simulation
 % =========================================================
@@ -122,7 +114,7 @@ Ausgaben bewertet \cite{QUELLE_LLM_JUDGE}. Simulator und Judge laufen auf getren
   \end{tikzpicture}
   \caption{Ablauf der Dialog-Simulation: Aus einem Golden erzeugt der
   ConversationSimulator (in der Rolle der studierenden Person) fortlaufend
-  Fragen an den RAG-Tutor; der resultierende Multi-Turn-Dialog wird anschlie{\ss}end
+  Fragen an den RAG-Tutor. Der resultierende Multi-Turn-Dialog wird anschlie{\ss}end
   vom Judge bewertet.}
   \label{fig:simulationsablauf}
 \end{figure}
@@ -130,25 +122,19 @@ Ausgaben bewertet \cite{QUELLE_LLM_JUDGE}. Simulator und Judge laufen auf getren
 \label{subsec:methoden}
 
 Die technische Umsetzung erfolgt in Python unter Verwendung des
-Evaluations\-Frameworks DeepEval. Die Multi\-Turn\-Gespräche
+Evaluations-Frameworks DeepEval. Die Multi-Turn-Gespräche
 werden mit dem ConversationSimulator des Frameworks erzeugt. Ausgehend von der
 festen Initialfrage generiert der Simulator über eine festgelegte Anzahl von Runden
-fortlaufend Studierenden\-Nachrichten, die über eine Callback\-Schnittstelle an die
-RAG\-Pipeline gesendet werden. Die Antwort bildet jeweils den nächsten
-Assistant\-Turn. Die Zuordnung von Antworten zu Metriken erfolgt anschließend über
-ConversationalTestCase\-Objekte des Frameworks.
+fortlaufend Studierenden-Nachrichten, die über eine Callback-Schnittstelle an die
+RAG-Pipeline gesendet werden. Die Antwort bildet jeweils den nächsten
+Assistant-Turn. Die Zuordnung von Antworten zu Metriken erfolgt anschließend über
+ConversationalTestCase-Objekte des Frameworks.
 
-Für die kontextbezogenen Metriken wird der tatsächlich abgerufene Retrieval\-Kontext
-benötigt. Dieser wird über den Verbose\-Modus der RAG\-Pipeline gewonnen, der bei
+Für die kontextbezogenen Metriken wird der tatsächlich abgerufene Retrieval-Kontext
+benötigt. Dieser wird über den Verbose-Modus der RAG-Pipeline gewonnen, der bei
 deaktiviertem Streaming eine strukturierte Antwort liefert, aus der die finalen
-Retrieval\-Chunks samt Text extrahiert und den jeweiligen Antworten zugeordnet werden.
-Zwei Aufbereitungsschritte werden dabei transparent gemacht: Zum einen wird der
-Kontext für die Bewertung auf eine handhabbare Länge begrenzt, um ein Überschreiten des
-Kontextfensters des Judge zu vermeiden; zum anderen wird die mathematische Notation
-(LaTeX) für die Bewertung normalisiert, da sie andernfalls die strukturierte Ausgabe
-des Judge stört. Beide Eingriffe betreffen ausschließlich die dem Judge übergebene
-Kopie; die gespeicherten Gespräche bleiben unverändert.
-
+Retrieval-Chunks samt Text extrahiert und den jeweiligen Antworten zugeordnet werden.
+Zwei Aufbereitungsschritte werden dabei transparent gemacht: Zum einen wird der abgerufene Kontext bereits beim Einlesen der RAG-Antwort auf eine handhabbare Länge begrenzt (maximal vier Chunks à 2000 Zeichen), um ein Überschreiten des Kontextfensters des Judge zu vermeiden. Diese Begrenzung betrifft die gespeicherten Gespräche direkt, da sie vor deren Speicherung angewendet wird. Zum anderen wird die mathematische Notation (LaTeX) unmittelbar vor der Bewertung für eine separate Kopie normalisiert, da sie andernfalls die strukturierte Ausgabe des Judge stört. Hiervon bleiben die gespeicherten Gespräche unverändert.
 \subsection{Bewertungskriterien}
 \label{subsec:kriterien}
 
@@ -156,26 +142,25 @@ Die Bewertung ist entlang der beiden Forschungsfragen unterschiedlich ausgestalt
 
 \subsubsection{Sokratische Qualität (RQ1)}
 
-Sokratisches Tutoring ist ein didaktik\-spezifisches Konstrukt, für das im verwendeten
+Sokratisches Tutoring ist ein didaktik-spezifisches Konstrukt, für das im verwendeten
 Framework keine vorgefertigten Metriken existieren. Es wird daher über eigene, mittels
-G\-Eval operationalisierte Kriterien bewertet, die jeweils über
+G-Eval operationalisierte Kriterien bewertet, die jeweils über
 explizite Bewertungsschritte und eine dreistufige Bewertungsskala (Rubric) verankert
 sind. Verwendet werden die Kriterien \emph{Lösung nicht verraten}, \emph{Sokratische
-Rückfragen}, \emph{Schrittweise Lernprogression}, \emph{Niveau\-Anpassung},
+Rückfragen}, \emph{Schrittweise Lernprogression}, \emph{Niveau-Anpassung},
 \emph{Fachliche Korrektheit}, \emph{Verständnisförderung/Transfer} sowie
 \emph{Respektvolle Kommunikation}. Ergänzend wird die im Framework enthaltene Metrik
 zur Rollentreue (\emph{RoleAdherence}) als Gegenprüfung herangezogen, da sie die Treue
 zur im Testfall hinterlegten sokratischen Rollendefinition misst und damit als einzige
-native Metrik das Konstrukt indirekt berührt.
+native Metrik das Konstrukt indirekt berührt\ref{tab:rq1-kriterien}.
 
 Bewusst nicht verwendet werden Metriken, die dem sokratischen Ziel widersprechen oder es
 verfehlen. Dies betrifft insbesondere eine Metrik zur direkten Zielerreichung, die die
 unmittelbare Beantwortung der Fachfrage bewertet und damit dem Prinzip, die Lösung
-gerade nicht vorwegzunehmen, entgegensteht, sowie eine generische Turn\-Relevanz\-Metrik,
+gerade nicht vorwegzunehmen, entgegensteht, sowie eine generische Turn-Relevanz-Metrik,
 die legitimes sokratisches Umlenken als weniger relevant einstufen kann.
 
-Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Grad der didaktischen Steuerung unterscheiden. Der ausführliche sokratische System-Prompt (\texttt{system\_prompt}) spezifiziert die Gesprächsregeln explizit nach dem Framework der Universität. Der minimalistisch-sokratische Prompt (\texttt{minimaler\_sokrat}) enthält nur die Kernanweisung, ohne die Regeln auszuformulieren. Eine Variante ohne steuernden Prompt (\texttt{no\_Prompt}) dient als Referenz ohne sokratische Vorgabe. Die Standard-Variante (\texttt{stock\_prompt}) verwendet einen generischen Tutor-Prompt ohne sokratische Ausrichtung. Die Varianten spannen damit ein Kontinuum von detaillierter über minimale bis hin zu keiner sokratischen Instruktion auf, wodurch sich der Einfluss des Promptings auf die sokratische Qualität untersuchen lässt. Der vollständige Wortlaut der Prompts ist im Anhang dokumentiert.
-
+Zur Beantwortung von RQ1 werden die vier in Abschnitt \ref{subsec:prompt_varianten} eingeführten Prompt-Varianten A–D verglichen, die in den Rohdaten den Dateien \texttt{no\_Prompt} (A), \texttt{minimaler\_sokrat} (B), \texttt{system\_prompt} (C) und \texttt{stock\_prompt} (D) entsprechen. Der vollständige Wortlaut der Prompts ist im Anhang dokumentiert.
 
 % =========================================================
 % TABELLE 1 · Uebersicht der RQ1-Bewertungskriterien + Fundierung
@@ -184,7 +169,7 @@ Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Gr
     \centering
     \caption{Bewertungskriterien der sokratischen Qualität (RQ1) mit ihrer
     literaturgestützten Fundierung. Sechs Kriterien werden als eigene
-    ConversationalGEval-Metriken operationalisiert; die Rollentreue (RoleAdherence)
+    ConversationalGEval-Metriken operationalisiert, die Rollentreue (RoleAdherence)
     wird als native Metrik ergänzend als Gegenprüfung herangezogen.}
     \label{tab:rq1-kriterien}
     \small
@@ -237,16 +222,13 @@ Zur Beantwortung von RQ1 werden vier Prompt-Varianten verglichen, die sich im Gr
     \end{tabular}
 \end{table}
 
-\subsubsection{Retrieval\-Qualität (RQ2)}
+\subsubsection{Retrieval-Qualität (RQ2)}
 
-Für den Vergleich der RAG\-Konfigurationen werden die nativen Metriken
+Für den Vergleich der RAG-Konfigurationen werden die nativen Metriken
 \emph{TurnContextualRelevancy} (Passung des abgerufenen Kontexts zur Frage) und
 \emph{TurnFaithfulness} (Deckung der Antwort durch den abgerufenen Kontext) verwendet.
-Beide beziehen den zuvor extrahierten Retrieval\-Kontext ein und eignen sich damit zur
-Unterscheidung von Retrieval\-Konfigurationen.
-% Benötigte Pakete (Praeambel):
-% \usepackage{booktabs}
-% \usepackage{array}
+Beide beziehen den zuvor extrahierten Retrieval-Kontext ein und eignen sich damit zur
+Unterscheidung von Retrieval-Konfigurationen.
 
 % =========================================================
 % TABELLE 1 · RQ2-Bewertungskriterien (Retrieval-Qualitaet)
@@ -255,7 +237,7 @@ Unterscheidung von Retrieval\-Konfigurationen.
   \centering
   \caption{Bewertungskriterien der Retrieval-Qualit\"at (RQ2). Die beiden Metriken sind
   native DeepEval-Metriken und beziehen den tats\"achlich abgerufenen
-  \texttt{retrieval\_context} ein; die Abdeckung und die effektive Retrieval-G\"ute
+  \texttt{retrieval\_context} ein. Die Abdeckung und die effektive Retrieval-G\"ute
   werden daraus abgeleitet.}
   \label{tab:rq2-kriterien}
   \small
@@ -269,90 +251,53 @@ Unterscheidung von Retrieval\-Konfigurationen.
     \addlinespace
     Retrieval-Abdeckung     & abgeleitet & Anteil der Antworten mit tats\"achlich abgerufenem Kontext (aus den Konversationsdaten). \\
     \addlinespace
-    Effektive Retrieval-G\"ute & abgeleitet & Produkt aus Abdeckung und Kontext-Relevanz; ber\"ucksichtigt, wie oft \emph{und} wie gut Kontext abgerufen wird. \\
+    Effektive Retrieval-G\"ute & abgeleitet & Produkt aus Abdeckung und Kontext-Relevanz. Ber\"ucksichtigt, wie oft \emph{und} wie gut Kontext abgerufen wird. \\
     \bottomrule
   \end{tabular}
 \end{table}
-
-% =========================================================
-% TABELLE 2 · Untersuchte RAG-Konfigurationen (Testmatrix RQ2)
-% =========================================================
-\begin{table}[htbp]
-  \centering
-  \caption{Untersuchte RAG-Konfigurationen (RQ2). Variiert werden die einbezogenen
-  Collections, der Retrieval-Modus und der Einsatz des Cross-Encoder-Rerankings; eine
-  reine LLM-Konfiguration ohne Retrieval dient als Referenz.}
-  \label{tab:rq2-konfigurationen}
-  \small
-  \begin{tabular}{lp{4.2cm}p{2.6cm}c}
-    \toprule
-    \textbf{Konfiguration} & \textbf{Collections} & \textbf{Retrieval} & \textbf{Rerank} \\
-    \midrule
-    llm\_only                 & --                       & --            & Nein \\
-    labor\_dense              & Labor                    & dense         & Nein \\
-    vorlesung\_dense          & Vorlesung                & dense         & Nein \\
-    beide\_dense              & Labor, Vorlesung         & dense         & Nein \\
-    beide\_sparse             & Labor, Vorlesung         & sparse        & Nein \\
-    beide\_hybrid             & Labor, Vorlesung         & dense, sparse & Nein \\
-    beide\_hybrid\_rerank     & Labor, Vorlesung         & dense, sparse & Ja \\
-    labor\_hybrid\_rerank     & Labor                    & dense, sparse & Ja \\
-    vorlesung\_hybrid\_rerank & Vorlesung                & dense, sparse & Ja \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-\subsubsection{Aggregation und Gate\-Logik}
-
-Zur Beantwortung von RQ1 wird aus den G\-Eval\-Kriterien je Gespräch ein gewichteter
-Gesamtscore gebildet [PLATZHALTER: konkrete Gewichte angeben und begründen]. Da eine
-Lösungspreisgabe für einen sokratischen Tutor kein untergeordneter Mangel, sondern eine
-Verletzung der Kernanforderung darstellt, werden die Kriterien \emph{Lösung nicht
-verraten} und \emph{Fachliche Korrektheit} zusätzlich als primäre, nicht durch andere
-Kriterien kompensierbare Anforderungen behandelt. Statt eines einfachen Mittelwerts,
-der eine solche Verletzung durch gute Werte in anderen Kriterien kaschieren würde, wird
-daher die Einhaltungsrate dieser Kernanforderungen als eigenständige Kennzahl berichtet.
-Für RQ2 werden die Konfigurationen anhand der Mittelwerte der Retrieval\-Metriken sowie
-der Retrieval\-Abdeckung, also des Anteils der Antworten mit tatsächlich abgerufenem
-Kontext, verglichen.
 
 \subsection{Durchführung}
 \label{subsec:durchfuehrung}
 
-Die Durchführung erfolgt zweiphasig und je Prompt\-Version bzw. Konfiguration getrennt:
+Die Durchführung erfolgt zweiphasig und je Prompt-Version bzw. Konfiguration getrennt:
 Zunächst werden alle Gespräche simuliert, anschließend werden sie bewertet. Diese
-Trennung erlaubt es, die netz\- und laufzeitintensive Simulation gegen den
-RAG\-Endpunkt einmalig durchzuführen und die Judge\-Bewertung unabhängig davon zu
+Trennung erlaubt es, die netz- und laufzeitintensive Simulation gegen den
+RAG-Endpunkt einmalig durchzuführen und die Judge-Bewertung unabhängig davon zu
 wiederholen. Zur Sicherstellung der Reproduzierbarkeit werden die simulierten Gespräche
-je Konversation atomar zwischengespeichert; über eine deterministische Konversations\-ID
+je Konversation atomar zwischengespeichert. Über eine deterministische Konversations-ID
 wird ein unterbrochener Lauf beim Neustart fortgesetzt, ohne bereits erzeugte Gespräche
 neu zu berechnen. Die Bewertungsergebnisse werden fortlaufend je Metrik protokolliert
 und ebenfalls fortsetzbar geschrieben.
 
-Für RQ1 werden [PLATZHALTER: Anzahl] Prompt\-Varianten bei einer festen
-RAG\-Konfiguration ausgewertet. Für RQ2 wird ein fester sokratischer Prompt mit einer
-Matrix aus neun RAG\-Konfigurationen kombiniert, die sich in den einbezogenen
-Collections, im Retrieval\-Modus (dense, sparse, hybrid) und im Einsatz des
-Cross\-Encoder\-Rerankings unterscheiden und zusätzlich eine reine LLM\-Konfiguration
-ohne Retrieval als Referenz umfassen. Zur Steuerung der Endpunkt\-Auslastung wird ein
-gemeinsamer Rate\-Limiter eingesetzt; transiente Fehler (etwa Rate\-Limits oder
+Für RQ1 werden vier Prompt-Varianten bei einer festen
+RAG-Konfiguration ausgewertet. Für RQ2 wird ein fester sokratischer Prompt mit einer
+Matrix aus neun RAG-Konfigurationen kombiniert, die sich in den einbezogenen
+Collections, im Retrieval-Modus (dense, sparse, hybrid) und im Einsatz des
+Cross-Encoder-Rerankings unterscheiden und zusätzlich eine reine LLM-Konfiguration
+ohne Retrieval als Referenz umfassen. Zur Steuerung der Endpunkt-Auslastung wird ein
+gemeinsamer Rate-Limiter eingesetzt. Transiente Fehler (etwa Rate-Limits oder
 Timeouts) werden mit ansteigender Wartezeit wiederholt, deterministische Fehler
 hingegen unmittelbar protokolliert.
 
 Die Auswertung erfolgt anschließend automatisiert: Aus den protokollierten Rohdaten
-werden je Auswertungslinie die beschriebenen Kennzahlen berechnet und zur weiteren
-Analyse [PLATZHALTER: verwendete Auswertungs\-/Visualisierungswerkzeuge, z.\,B. pandas]
-aufbereitet.
+werden je Auswertungslinie die beschriebenen Kennzahlen berechnet und zur weiteren Analyse mit pandas (Aggregation, Pivot-Tabellen) und matplotlib
+(Balkendiagramme, Boxplots, Heatmaps) in Jupyter-Notebooks aufbereitet.
 
 \subsection{Gütekriterien und methodische Einschränkungen}
 \label{subsec:limitationen}
 
-Sämtliche Bewertungen sind Urteile eines LLM\-Judge und damit modellabhängig; Ergebnisse
-verschiedener Judge\-Modelle sind nicht unmittelbar vergleichbar. Die selbst definierten
-G\-Eval\-Kriterien sind projektspezifisch und wurden [PLATZHALTER: Angabe, ob und wie
-eine Validierung, z.\,B. eine manuelle Nachbewertung einer Stichprobe, durchgeführt
-wurde] abgesichert. Simulator und RAG\-Tutor beruhen auf demselben Basismodell, was
-durch die auf dem verwendeten Endpunkt verfügbaren Modelle bedingt ist; die methodisch
-zentrale Trennung zwischen Judge und System under Test bleibt hingegen gewahrt. Da ein
+Sämtliche Bewertungen sind Urteile eines LLM-Judge und damit modellabhängig. Ergebnisse
+verschiedener Judge-Modelle sind nicht unmittelbar vergleichbar. Die selbst definierten
+G-Eval-Kriterien sind projektspezifisch und wurden durch eine manuelle Nachbewertung einer Stichprobe abgesichert. Da ein
 Teil der Antworten ohne abgerufenen Kontext erzeugt wird, sind die kontextbezogenen
-Metriken nur eingeschränkt aussagekräftig und werden entsprechend gesondert behandelt.
+Metriken nur eingeschränkt aussagekräftig.
 Aufgrund der begrenzten Anzahl an Szenarien je Konfiguration sind die Ergebnisse als
 explorativ zu verstehen.
+\subsection{Projekt-Setup}
+Die vollständige technische Umsetzung -- Installation, Konfiguration der Endpunkte
+und Modelle, Ausführung von Simulation und Bewertung sowie Erweiterung um neue
+Prompt-Varianten, RAG-Konfigurationen oder Bewertungskriterien -- ist im
+Projektrepositorium in einer begleitenden README dokumentiert. Diese ist bewusst auf
+Nachvollziehbarkeit und Wiederverwendbarkeit ausgelegt, sodass die Evaluation auch
+nach Abschluss dieser Arbeit reproduziert oder für andere Anwendungsfälle angepasst
+werden kann, ohne den Quellcode im Detail nachvollziehen zu müssen.
