@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  31 AUG 2026 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.18)  31 AUG 2026 21:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -494,6 +494,11 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@inbox=\box77
 \enit@count@id=\count342
 \enitdp@description=\count343
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/seqsplit\seqsplit.sty
+Package: seqsplit 2006/08/07 v0.1 Splitting long sequences (DNA, RNA, proteins, etc.) 
+) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex 2025/07/10 v3.21 programmable bibliographies (PK/MW)
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
@@ -517,9 +522,6 @@ Package: logreq 2010/08/04 v1.0 xml request logger
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
-\Urlmuskip=\muskip18
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 \c@tabx@nest=\count345
 \c@listtotal=\count346
@@ -857,27 +859,31 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit&Ausblick.aux) (08-Anhang.aux))
+ (main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux
+
+LaTeX Warning: Label `subsec:limitationen' multiply defined.
+
+) (07-Fazit&Ausblick.aux) (08-Anhang.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 135.
-LaTeX Font Info:    ... okay on input line 135.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
  (C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count490
@@ -944,10 +950,10 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 135.
-Package biblatex Info: Reference segment=0 on input line 135.
+Package biblatex Info: Reference section=0 on input line 149.
+Package biblatex Info: Reference segment=0 on input line 149.
 \c@lstlisting=\count496
-Package hyperref Info: Link coloring OFF on input line 135.
+Package hyperref Info: Link coloring OFF on input line 149.
  (main.out) (main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -955,12 +961,7 @@ Package hyperref Info: Link coloring OFF on input line 135.
 Package babel Info: Main language set to 'english'.
  [1
 
-{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc [2]
-Overfull \hbox (14.09547pt too wide) in paragraph at lines 47--47
- [][] [][]\T1/cmr/m/n/12 Limitationen (Stich-proben-gröÿe, Chunk Gran-u-lar-ität, Judge Bias und Thresh- 
- []
-
-)
+{C:/Users/Jannis/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc [2])
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
@@ -987,43 +988,33 @@ Overfull \hbox (16.44716pt too wide) in paragraph at lines 18--19
 
 
 ]
-Overfull \hbox (24.64381pt too wide) in paragraph at lines 31--32
+Overfull \hbox (24.64381pt too wide) in paragraph at lines 33--34
 \T1/cmr/m/n/12 zurück, das während des Train-ings in ihren Pa-ram-e-tern abge-bildet wurde. Dieses parametrische
  []
 
 [7]
-Overfull \hbox (4.70822pt too wide) in paragraph at lines 45--46
+Overfull \hbox (4.70822pt too wide) in paragraph at lines 47--48
 \T1/cmr/m/n/12 lexikalis-ches und ein se-man-tis-ches Rank-ing erzeugt wer-den. Ziel ist es, die un-ter-schiedlichen
  []
 
 
-Overfull \hbox (2.41588pt too wide) in paragraph at lines 62--63
+Overfull \hbox (2.41588pt too wide) in paragraph at lines 64--65
 \T1/cmr/m/n/12 poten-ziell rel-e-van-ter Kan-di-daten. Diese Kan-di-daten kön-nen an-schlieÿend durch ein rechen-
  []
 
 [8]
-Overfull \hbox (11.522pt too wide) in paragraph at lines 64--65
+Overfull \hbox (11.522pt too wide) in paragraph at lines 66--67
 \T1/cmr/m/n/12 nungsaufwand be-grenzt seinen Ein-satz auf eine zu-vor bes-timmte Kan-di-daten-menge. Rerank-
  []
 
 [9] [10]
-Overfull \hbox (78.89775pt too wide) in paragraph at lines 145--146
-\T1/cmr/m/n/12 Für An-forderun-gen, für die keine vorgegebene Metrik ex-istiert, stellt Deep-E-val mit \T1/cmtt/m/n/12 ConversationalGEval
+Overfull \hbox (14.4093pt too wide) in paragraph at lines 147--148
+\T1/cmr/m/n/12 dessen ein Judge-Modell die im \T1/cmtt/m/n/12 C o n v e r s a t i o n a l T e s t C a s e \T1/cmr/m/n/12 en-thal-tene Kon-ver-sa-tion beurteilt.
  []
 
 
-Overfull \hbox (8.16374pt too wide) in paragraph at lines 152--153
+Overfull \hbox (8.16374pt too wide) in paragraph at lines 154--155
 \T1/cmr/m/n/12 Neben frei definier-baren Kri-te-rien stellt Deep-E-val vordefinierte Metriken für wiederkehrende
- []
-
-
-Overfull \hbox (91.37886pt too wide) in paragraph at lines 152--153
-\T1/cmr/m/n/12 Qual-itäts-di-men-sio-nen von Multi-Turn-Systemen bereit. Diese ar-beiten auf einem \T1/cmtt/m/n/12 ConversationalTestCase
- []
-
-
-Overfull \hbox (4.34373pt too wide) in paragraph at lines 154--155
-[]\T1/cmr/m/n/12 Die \T1/cmr/m/it/12 Turn Rel-e-vancy \T1/cmr/m/n/12 be-w-ertet, ob die Antworten des As-sis-ten-ten im jew-eili-gen Gespräch-
  []
 
 [11]) [12]
@@ -1040,6 +1031,9 @@ Overfull \hbox (21.07977pt too wide) in paragraph at lines 9--10
  []
 
 
+LaTeX Warning: Reference `subsec:rag_konfigurationen' on page 13 undefined on input line 127.
+
+
 Overfull \hbox (2.22462pt too wide) in paragraph at lines 127--128
 []\T1/cmr/m/n/12 Version 1.7.0 stellt zusät-zlich einen Verbose-Modus für Non-Streaming-Anfragen bereit.
  []
@@ -1049,27 +1043,17 @@ Overfull \hbox (2.22462pt too wide) in paragraph at lines 127--128
 
 
 ] [14]
-Overfull \hbox (2.10664pt too wide) in paragraph at lines 129--130
-[]\T1/cmr/m/n/12 Dadurch kön-nen die einzel-nen Ve-r-ar-beitungss-chritte für die spätere Eval-u-a-tion nachvol-
- []
-
-
-Overfull \hbox (17.03035pt too wide) in paragraph at lines 129--130
-\T1/cmr/m/n/12 l-zo-gen wer-den. Die für die Un-ter-suchung vari-ierten Retrieval- und Reranking-Konfigurationen
- []
-
-
-Overfull \hbox (1.06694pt too wide) in paragraph at lines 190--190
+Overfull \hbox (1.06694pt too wide) in paragraph at lines 188--188
 []|\T1/cmr/m/n/12 Domänenspezifischer 
  []
 
 [15]
-Overfull \hbox (3.01605pt too wide) in paragraph at lines 200--201
+Overfull \hbox (3.01605pt too wide) in paragraph at lines 198--199
 \T1/cmr/m/n/12 schlieÿend zusät-zlich das in Ab-schnitt []3.1[] beschriebene Cross-Encoder-Reranking angewen-
  []
 
 
-Overfull \hbox (9.88806pt too wide) in paragraph at lines 272--272
+Overfull \hbox (9.88806pt too wide) in paragraph at lines 270--270
  []|\T1/cmr/bx/n/12 Reranking| 
  []
 
@@ -1154,121 +1138,103 @@ Overfull \hbox (9.69463pt too wide) in paragraph at lines 289--296
 \openout2 = `05-Ergebnisse.aux'.
 
  (05-Ergebnisse.tex
-Overfull \hbox (34.43633pt too wide) in paragraph at lines 6--7
-\T1/cmr/m/it/12 sokratis-cher Prompt\T1/cmr/m/n/12 , \T1/cmr/m/it/12 Base-line ohne Sys-tem-prompt \T1/cmr/m/n/12 und \T1/cmr/m/it/12 Domä-nen-spez-i-fis-cher In-Lab-Tutorprompt
+Overfull \hbox (7.75966pt too wide) in paragraph at lines 10--18
+\T1/cmr/m/it/12 D \T1/cmr/m/n/12 (Domä-nen-spez-i-fis-cher In-Lab-Tutorprompt) bei kon-stant gehal-tener RAG-Konfiguration.
  []
 
-
-Overfull \hbox (7.4694pt too wide) in paragraph at lines 14--15
-\T1/cmr/m/n/12 Prompt) und \T1/cmr/m/it/12 A \T1/cmr/m/n/12 (Base-line ohne Sys-tem-prompt) bei kon-stant gehal-tener RAG-Konfiguration.
- []
-
-<../Dokumentation/images/MittelwertjeMetrik_Prompt.png, id=459, 787.743pt x 354.123pt>
+<../Dokumentation/images/MittelwertjeMetrik_Prompt.png, id=445, 787.743pt x 354.123pt>
 File: ../Dokumentation/images/MittelwertjeMetrik_Prompt.png Graphic file (type png)
 <use ../Dokumentation/images/MittelwertjeMetrik_Prompt.png>
-Package pdftex.def Info: ../Dokumentation/images/MittelwertjeMetrik_Prompt.png  used on input line 43.
+Package pdftex.def Info: ../Dokumentation/images/MittelwertjeMetrik_Prompt.png  used on input line 48.
 (pdftex.def)             Requested size: 409.71692pt x 184.18823pt.
-<../Dokumentation/images/Heatmap.png, id=461, 571.6557pt x 498.663pt>
+<../Dokumentation/images/Heatmap.png, id=447, 571.6557pt x 498.663pt>
 File: ../Dokumentation/images/Heatmap.png Graphic file (type png)
 <use ../Dokumentation/images/Heatmap.png>
-Package pdftex.def Info: ../Dokumentation/images/Heatmap.png  used on input line 50.
+Package pdftex.def Info: ../Dokumentation/images/Heatmap.png  used on input line 55.
 (pdftex.def)             Requested size: 318.66948pt x 277.99388pt.
 [24
 
 
 
-] [25 <../Dokumentation/images/MittelwertjeMetrik_Prompt.png>]
-Overfull \hbox (19.27992pt too wide) in paragraph at lines 63--64
-\T1/cmr/m/n/12 Der Ver-gle-ich der Mit-tel-w-erte verdeckt einen zweiten sys-tem-a-tis-chen Ef-fekt. Mit zunehmender
+] [25 <../Dokumentation/images/MittelwertjeMetrik_Prompt.png> <../Dokumentation/images/Heatmap.png>] [26]
+<../Dokumentation/images/boxplot.png, id=475, 1004.553pt x 711.8595pt>
+File: ../Dokumentation/images/boxplot.png Graphic file (type png)
+<use ../Dokumentation/images/boxplot.png>
+Package pdftex.def Info: ../Dokumentation/images/boxplot.png  used on input line 125.
+(pdftex.def)             Requested size: 455.24411pt x 322.60399pt.
+ [27 <../Dokumentation/images/boxplot.png>]
+Overfull \hbox (37.34378pt too wide) in paragraph at lines 134--137
+[]\T1/cmr/m/n/12 Bei den all-ge-meinen Qual-ität-skri-te-rien: Fach-liche Ko-r-rek-theit, Ver-ständ-nis-förderung/Transfer
  []
 
-[26 <../Dokumentation/images/Heatmap.png>] [27]
-Overfull \hbox (12.8404pt too wide) in paragraph at lines 108--109
-\T1/cmr/m/n/12 text aus der Daten-bank abgerufen wurde), und zum an-deren die kon-textbe-zo-ge-nen DeepEval-
+
+Overfull \hbox (3.75374pt too wide) in paragraph at lines 207--212
+\T1/cmr/m/n/12 gen mit einem Score unter 0,7 mit der jew-eili-gen Judge-Begründung und dem Gesprächsver-
+ []
+
+[28]
+Overfull \hbox (13.25206pt too wide) in paragraph at lines 214--218
+\T1/cmr/bx/n/12 die Lö-sung^^P. \T1/cmr/m/n/12 Die Un-ter-schre-itun-gen be-tr-e-f-fen hier fast auss-chlieÿlich die Niveau-Anpassung
+ []
+
+[29]
+Overfull \hbox (8.50926pt too wide) in paragraph at lines 269--272
+\T1/cmr/m/n/12 die kon-textbe-zo-ge-nen DeepEval-Metriken \T1/cmr/bx/n/12 Turn Con-tex-tual Rel-e-vancy \T1/cmr/m/n/12 und \T1/cmr/bx/n/12 Turn Faith-
  []
 
 
-Overfull \hbox (4.02556pt too wide) in paragraph at lines 119--134
+Overfull \hbox (4.02556pt too wide) in paragraph at lines 286--301
  [][] 
  []
 
-<../Dokumentation/images/AntwortenmitKontext.png, id=488, 643.203pt x 281.853pt>
-File: ../Dokumentation/images/AntwortenmitKontext.png Graphic file (type png)
-<use ../Dokumentation/images/AntwortenmitKontext.png>
-Package pdftex.def Info: ../Dokumentation/images/AntwortenmitKontext.png  used on input line 138.
-(pdftex.def)             Requested size: 409.71692pt x 179.54236pt.
-[28] [29 <../Dokumentation/images/AntwortenmitKontext.png>]
-<../Dokumentation/images/rag_konfigurationen.png, id=501, 787.743pt x 354.123pt>
-File: ../Dokumentation/images/rag_konfigurationen.png Graphic file (type png)
-<use ../Dokumentation/images/rag_konfigurationen.png>
-Package pdftex.def Info: ../Dokumentation/images/rag_konfigurationen.png  used on input line 174.
-(pdftex.def)             Requested size: 364.19667pt x 163.72528pt.
 
-Overfull \hbox (19.00946pt too wide) in paragraph at lines 179--182
-[]\T1/cmr/m/n/12 Zwei As-pekte sind hier her-vorzuheben: Er-stens be-weisen die exzel-len-ten Turn Faithfulness-
+Overfull \hbox (4.02556pt too wide) in paragraph at lines 308--323
+ [][] 
  []
 
-[30 <../Dokumentation/images/rag_konfigurationen.png>]
-Overfull \hbox (22.23366pt too wide) in paragraph at lines 185--186
+<../Dokumentation/images/AntwortenmitKontext.png, id=506, 643.203pt x 281.853pt>
+File: ../Dokumentation/images/AntwortenmitKontext.png Graphic file (type png)
+<use ../Dokumentation/images/AntwortenmitKontext.png>
+Package pdftex.def Info: ../Dokumentation/images/AntwortenmitKontext.png  used on input line 327.
+(pdftex.def)             Requested size: 409.71692pt x 179.54236pt.
+[30] [31 <../Dokumentation/images/AntwortenmitKontext.png>]
+<../Dokumentation/images/rag_konfigurationen.png, id=522, 787.743pt x 354.123pt>
+File: ../Dokumentation/images/rag_konfigurationen.png Graphic file (type png)
+<use ../Dokumentation/images/rag_konfigurationen.png>
+Package pdftex.def Info: ../Dokumentation/images/rag_konfigurationen.png  used on input line 376.
+(pdftex.def)             Requested size: 364.19667pt x 163.72528pt.
+
+Overfull \hbox (22.23366pt too wide) in paragraph at lines 392--398
 \T1/cmr/m/n/12 gemäÿ voll-ständig kon-textfreien Base-line \T1/cmr/m/it/12 llm_only \T1/cmr/m/n/12 keine Kon-ver-sa-tion gän-zlich ohne Retrieval-
  []
 
-<../Dokumentation/images/rq2_AbdeckungvsKontext.png, id=512, 497.2176pt x 354.123pt>
+[32]
+<../Dokumentation/images/rq2_AbdeckungvsKontext.png, id=532, 497.2176pt x 354.123pt>
 File: ../Dokumentation/images/rq2_AbdeckungvsKontext.png Graphic file (type png)
 <use ../Dokumentation/images/rq2_AbdeckungvsKontext.png>
-Package pdftex.def Info: ../Dokumentation/images/rq2_AbdeckungvsKontext.png  used on input line 189.
+Package pdftex.def Info: ../Dokumentation/images/rq2_AbdeckungvsKontext.png  used on input line 401.
 (pdftex.def)             Requested size: 318.66948pt x 226.96754pt.
-<../Dokumentation/images/ScoreVerteilungjeMetrik.png, id=513, 570.933pt x 426.393pt>
-File: ../Dokumentation/images/ScoreVerteilungjeMetrik.png Graphic file (type png)
-<use ../Dokumentation/images/ScoreVerteilungjeMetrik.png>
-Package pdftex.def Info: ../Dokumentation/images/ScoreVerteilungjeMetrik.png  used on input line 202.
-(pdftex.def)             Requested size: 364.19667pt x 272.00574pt.
-[31 <../Dokumentation/images/rq2_AbdeckungvsKontext.png>] [32 <../Dokumentation/images/ScoreVerteilungjeMetrik.png>] [33] [34])
-Overfull \hbox (2.1159pt too wide) in paragraph at lines 305--165
-\T1/cmr/m/n/12 ter-schei-d-bare In-ter-ak-tion-s-muster zurück. Der Un-ter-schied zwis-chen den Prompt-Varianten
+ [33 <../Dokumentation/images/rag_konfigurationen.png> <../Dokumentation/images/rq2_AbdeckungvsKontext.png>]
+Overfull \hbox (1.80757pt too wide) in paragraph at lines 411--412
+\T1/cmr/m/n/12 zusam-men-laufen. Ein gewisser Be-trag an Wasser flieÿt durch eine Hauptleitung
  []
 
-
-Overfull \hbox (13.76074pt too wide) in paragraph at lines 305--165
-\T1/cmr/m/n/12 deliegen-den RAG-Architektur durch-weg hoch --, son-dern der Diszi-plin bei der Lö-sungszurück-
- []
-
-
-Overfull \hbox (19.71771pt too wide) in paragraph at lines 305--165
-\T1/cmr/m/n/12 Vari-anten (\T1/cmr/m/it/12 Struk-turi-erter sokratis-cher Prompt \T1/cmr/m/n/12 und \T1/cmr/m/it/12 Domä-nen-spez-i-fis-cher In-Lab-Tutorprompt\T1/cmr/m/n/12 )
- []
-
-[35]
+) [34]
 \openout2 = `06-Diskussion.aux'.
 
  (06-Diskussion.tex
-Overfull \hbox (13.09242pt too wide) in paragraph at lines 3--4
-\T1/cmr/m/n/12 haltlich ein. Zunächst er-folgt eine de-tail-lierte Beant-wor-tung der bei-den zen-tralen Forschungs-
+Overfull \hbox (0.139pt too wide) in paragraph at lines 20--31
+\T1/cmr/m/n/12 men-hang zwis-chen Lö-sungszurück-hal-tung und Niveau-Anpassung: \T1/cmr/m/it/12 Struk-turi-erter sokratis-
  []
 
+[35
 
-Overfull \hbox (23.70842pt too wide) in paragraph at lines 3--4
-\T1/cmr/m/n/12 beson-dere die Diskrepanz zwis-chen den ver-wen-de-ten Eval-u-a-tion-s-metriken und dem eigentlichen
+
+
+] [36]
+Overfull \hbox (44.9844pt too wide) in paragraph at lines 88--88
+[]\T1/cmr/bx/n/14.4 Metrik-Mismatch bei un-ter-schiedlichen Stu-den-ten Ver-hal-tensweisen 
  []
-
-
-Overfull \hbox (19.08038pt too wide) in paragraph at lines 13--13
-[]\T1/cmr/bx/n/14.4 Metrik Mis-match (Goal Ac-cu-racy und Com-plete-ness vs sokratis-
- []
-
-[36
-
-
-
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 19.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.95827pt
-(hyperref)                removed on input line 19.
 
 [37]) [38]
 \openout2 = `07-Fazit&Ausblick.aux'.
@@ -1279,28 +1245,18 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 No file 08-Anhang.tex.
 
-Overfull \hbox (47.6744pt too wide) in paragraph at lines 179--179
+Overfull \hbox (47.6744pt too wide) in paragraph at lines 193--193
 []\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Con-ver-sa-tional g-eval\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] conversational -[]
  []
 
 
-Overfull \hbox (11.13052pt too wide) in paragraph at lines 179--179
-[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Knowl-edge re-ten-tion\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] knowledge -[]
- []
-
-
-Overfull \hbox (0.80792pt too wide) in paragraph at lines 179--179
-[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Multi-turn eval-u-a-tion met-rics\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / guides / guides -[]
- []
-
-
-Overfull \hbox (11.03333pt too wide) in paragraph at lines 179--179
+Overfull \hbox (11.03333pt too wide) in paragraph at lines 193--193
 []\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Role ad-her-ence\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] role -[] adherence$[]\T1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (11.32214pt too wide) in paragraph at lines 179--179
-[]\T1/cmr/m/n/12 DeepEval, \T1/cmr/m/it/12 Turn rel-e-vancy\T1/cmr/m/n/12 , []$\T1/cmtt/m/n/12 https : / / deepeval . com / docs / metrics -[] turn -[] relevancy$[]\T1/cmr/m/n/12 ,
+Overfull \hbox (1.65678pt too wide) in paragraph at lines 193--193
+[]\T1/cmr/m/n/12 R. Nogueira and K. Cho, ^^P  Pas-sage re-ranking with bert,^^Q \T1/cmr/m/it/12 CoRR\T1/cmr/m/n/12 , vol. abs/1901.04085,
  []
 
 [39
@@ -1313,33 +1269,45 @@ Overfull \hbox (11.32214pt too wide) in paragraph at lines 179--179
 
 
 ]
-Overfull \hbox (1.65678pt too wide) in paragraph at lines 179--179
-[]\T1/cmr/m/n/12 R. Nogueira and K. Cho, ^^P  Pas-sage re-ranking with bert,^^Q \T1/cmr/m/it/12 CoRR\T1/cmr/m/n/12 , vol. abs/1901.04085,
+Overfull \hbox (249.07866pt too wide) in paragraph at lines 251--251
+\T1/cmtt/m/n/12 gpt-[]4o-[]mini-[]advancing-[]cost-[]efficient-[]intelligence/$[]|  
  []
 
-[40] [41] [42] (main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit&Ausblick.aux) (08-Anhang.aux))
+
+Overfull \hbox (5.31245pt too wide) in paragraph at lines 251--251
+\T1/cmtt/m/n/12 developers . 
+ []
+
+[40] [41] [42] [43] [44] [45] [46] [47] (main.aux (01-Einleitung.aux) (02-Grundlagen.aux) (03-Untersuchungsgegenstand.aux) (04-Methodik.aux) (05-Ergebnisse.aux) (06-Diskussion.aux) (07-Fazit&Ausblick.aux) (08-Anhang.aux))
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 15E567621F80D5D72F0AC15407B65C9B;11226.
+(rerunfilecheck)             Checksum: 3C35F63E68C763DD17F3BD734AE03D88;10394.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33444 strings out of 467510
- 644362 string characters out of 5408308
- 1511172 words of memory out of 5000000
- 62008 multiletter control sequences out of 15000+600000
- 645109 words of font info for 75 fonts, out of 8000000 for 9000
+ 33893 strings out of 467510
+ 648513 string characters out of 5408308
+ 1827085 words of memory out of 5000000
+ 62301 multiletter control sequences out of 15000+600000
+ 645423 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,10n,107p,1261b,2307s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (42 pages, 669763 bytes).
+ 102i,12n,107p,1319b,2307s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\Jannis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Jannis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (47 pages, 804001 bytes).
 PDF statistics:
- 1327 PDF objects out of 1440 (max. 8388607)
- 138 named destinations out of 1000 (max. 500000)
+ 1658 PDF objects out of 1728 (max. 8388607)
+ 289 named destinations out of 1000 (max. 500000)
  451 words of extra memory for PDF output out of 10000 (max. 10000000)
 

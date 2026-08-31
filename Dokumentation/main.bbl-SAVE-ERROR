@@ -61,7 +61,7 @@
       \verb 10.1145/1571941.1572114
       \endverb
     \endentry
-    \entry{DeepEvalConversationCompleteness}{misc}{}{}
+    \entry{DeepEvalConversationalGEval}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=513f7b898398c2692c4f944dd5d59b25}{%
            family={{DeepEval}},
@@ -80,101 +80,9 @@
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://deepeval.com/docs/metrics-conversation-completeness}}
-      \field{note}{Accessed: 2026-08-25}
-      \field{title}{Conversation Completeness}
-    \endentry
-    \entry{DeepEvalConversationalGEval}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=513f7b898398c2692c4f944dd5d59b25}{%
-           family={{DeepEval}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{bibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorbibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{2}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://deepeval.com/docs/metrics-conversational-g-eval}}
       \field{note}{Accessed: 2026-08-25}
       \field{title}{Conversational G-Eval}
-    \endentry
-    \entry{DeepEvalGoalAccuracy}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=513f7b898398c2692c4f944dd5d59b25}{%
-           family={{DeepEval}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{bibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorbibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{3}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://deepeval.com/docs/metrics-goal-accuracy}}
-      \field{note}{Accessed: 2026-08-25}
-      \field{title}{Goal Accuracy}
-    \endentry
-    \entry{DeepEvalKnowledgeRetention}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=513f7b898398c2692c4f944dd5d59b25}{%
-           family={{DeepEval}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{bibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorbibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{4}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://deepeval.com/docs/metrics-knowledge-retention}}
-      \field{note}{Accessed: 2026-08-25}
-      \field{title}{Knowledge Retention}
-    \endentry
-    \entry{DeepEvalMultiTurnMetrics}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=513f7b898398c2692c4f944dd5d59b25}{%
-           family={{DeepEval}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{bibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorbibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{5}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://deepeval.com/guides/guides-multi-turn-evaluation-metrics}}
-      \field{note}{Accessed: 2026-08-25}
-      \field{title}{Multi-Turn Evaluation Metrics}
     \endentry
     \entry{DeepEvalConversationalTestCase}{misc}{}{}
       \name{author}{1}{}{%
@@ -190,7 +98,7 @@
       \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{6}
+      \field{extraname}{2}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
@@ -213,7 +121,7 @@
       \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{7}
+      \field{extraname}{3}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
@@ -236,7 +144,7 @@
       \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{8}
+      \field{extraname}{4}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
@@ -259,7 +167,7 @@
       \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
       \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{9}
+      \field{extraname}{5}
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{labelnamesource}{author}
@@ -267,29 +175,6 @@
       \field{howpublished}{\url{https://deepeval.com/docs/metrics-turn-faithfulness}}
       \field{note}{Accessed: 2026-08-25}
       \field{title}{Turn Faithfulness}
-    \endentry
-    \entry{DeepEvalTurnRelevancy}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=513f7b898398c2692c4f944dd5d59b25}{%
-           family={{DeepEval}},
-           familyi={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{fullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{bibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorbibnamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authornamehash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhash}{513f7b898398c2692c4f944dd5d59b25}
-      \strng{authorfullhashraw}{513f7b898398c2692c4f944dd5d59b25}
-      \field{extraname}{10}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://deepeval.com/docs/metrics-turn-relevancy}}
-      \field{note}{Accessed: 2026-08-25}
-      \field{title}{Turn Relevancy}
     \endentry
     \entry{Gentry2015}{article}{}{}
       \name{author}{1}{}{%
@@ -740,8 +625,6 @@
       \field{year}{2023}
     \endentry
   \enddatalist
-  \missing{QUELLE_LLM_JUDGE}
-  \missing{QUELLE_SOKRATIK}
 \endrefsection
 \endinput
 

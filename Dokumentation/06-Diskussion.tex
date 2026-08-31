@@ -1,33 +1,162 @@
+% =========================================================
+% KAPITEL 6 -- DISKUSSION (rein ergebnis- und designbasiert)
+% =========================================================
 \section{Diskussion}
+\label{sec:diskussion}
 
-Dieses Kapitel ordnet die zuvor berichteten quantitativen und qualitativen Befunde inhaltlich ein. Zunächst erfolgt eine detaillierte Beantwortung der beiden zentralen Forschungsfragen. Daran anschließend wird eine methodische Reflexion durchgeführt, welche insbesondere die Diskrepanz zwischen den verwendeten Evaluationsmetriken und dem eigentlichen didaktischen Ziel beleuchtet. Abschließend werden die Auswirkungen der Datenqualität sowie die methodischen Limitationen der vorliegenden Studie kritisch diskutiert.
+\subsection{Beantwortung von RQ1}
+\label{subsec:rq1-beantwortung}
 
-\subsection{Beantwortung von RQ1 und RQ2}
+Der in Tabelle~\ref{tab:rq1-mittelwerte} beobachtete Abfall von A(Baseline ohne Systemprompt) bei genau den drei
+sokratisch-spezifischen Kriterien, Lösung nicht verraten (0,34), Sokratische Rückfragen (0,39),
+Role Adherence (0,16), während dieselbe Variante bei den nicht sokratisch-spezifischen Kriterien
+(Fachliche Korrektheit, Respektvolle Kommunikation) Höchstwerte erreicht, ist damit unmittelbar auf
+das Fehlen jeglicher entsprechender Instruktion zurückzuführen. Es gibt für A schlicht keine
+Vorgabe, die dieses Verhalten einfordert. Für RQ1 ergibt sich daraus eine eindeutige Rangfolge auf
+den sokratisch-spezifischen Kriterien: Alle drei instruierten Varianten (B, C, D) übertreffen die
+Baseline A hier deutlich (0,83--0,97 gegenüber 0,16--0,39). Welche der drei instruierten Varianten
+davon am besten abschneidet, wird in den folgenden Abschnitten differenziert.
 
-Die Auswertung der ersten Forschungsfrage zeigt unmissverständlich auf, dass ein Sprachmodell ohne spezifische Steuerung nicht als sokratischer Tutor agieren kann. Die ungepromptete Referenz liefert auf fachliche Fragen sofort vollständige Erklärungen und direkte Lösungswege. Erst durch die Implementierung eines dedizierten Prompts ändert sich dieses Verhalten grundlegend. Dabei erweist sich die ausführliche Variante in Form des Systemprompts als die robusteste und effektivste Lösung. Diese Variante hält die finale Antwort am zuverlässigsten zurück und zwingt die Lernenden durch beständig weiterführende Fragen zum eigenen Nachdenken.
+Innerhalb der drei instruierten Varianten zeigt sich zugleich ein gegenläufiger Zusammenhang
+zwischen Lösungszurückhaltung und Niveau-Anpassung: \emph{Strukturierter sokratischer Prompt}
+erreicht bei \glqq Lösung nicht verraten\grqq{} den höchsten Wert (0,94), gleichzeitig aber bei der
+Niveau-Anpassung den niedrigsten unter den drei instruierten Varianten (0,84). Das Fallbeispiel in
+Abschnitt~\ref{subsec:querschnitt} liefert hierfür eine unmittelbare Erklärung aus der
+Bewertungsbegründung selbst: Der Judge bewertet das unveränderte Festhalten am sokratischen
+Vorgehen trotz wiederholter, expliziter Bitten um eine direkte Antwort als mangelnde Anpassung an
+das Niveau der studierenden Person. \glqq Lösung nicht verraten\grqq{} und \glqq
+Niveau-Anpassung\grqq{} sind in einer solchen Situation strukturell nicht gleichzeitig maximal erfüllbar. Ein Nachgeben würde die Lösung preisgeben, das Standhalten wird als mangelnde Anpassung gewertet. Deshalb ist der niedrigere Wert bei der Niveau-Anpassung der \emph{Strukturierter sokratischer Prompt}
+Variante als unmittelbare Konsequenz ihrer konsequenteren Lösungszurückhaltung zu lesen, nicht als
+unabhängiges Defizit.
 
-Die Evaluation offenbart hierbei jedoch auch einen immanenten didaktischen Zielkonflikt der sokratischen Methode. Wenn der Tutor einer hartnäckigen Forderung nach der direkten Lösung konsequent widersteht, wird dies von den Auswertungsmetriken fälschlicherweise als mangelnde Anpassung an das Niveau interpretiert. Der scheinbare Leistungsabfall der strengsten Variante in diesem spezifischen Kriterium ist somit kein Beweis für ein schlechtes System, sondern belegt paradoxerweise gerade die exakte Einhaltung der didaktischen Vorgaben.
+Auch die höheren Metrik-Streuungen von \emph{Minimaler sokratischer Prompt} lassen sich erklären \ref{tab:rq1-streuung}. Bei \glqq
+Lösung nicht verraten\grqq{} liegt sie bei 0,29 und bei \glqq Sokratische Rückfragen\grqq{} bei
+0,14 (Tabelle~\ref{tab:rq1-streuung}). Der minimal-sokratische Prompt enthält mit \glqq Stelle Gegenfragen
+statt Antworten zu geben\grqq{} nur eine allgemeine Verhaltensanweisung. Eine explizite, nicht
+verhandelbare Regel gegen die Preisgabe der Lösung unter Druck fehlt. Die ausführlicheren Varianten
+C und D enthalten eine solche Regel. Sie zeigen bei denselben Kriterien eine deutlich geringere
+Streuung von 0,06 bis 0,17. Das passt zu einer expliziteren und umfangreicheren Instruktion.
 
-Bei der zweiten Forschungsfrage zum Vergleich der unterschiedlichen RAG Konfigurationen zeichnet sich ein weitaus weniger klares Bild ab. Zwar deuten die erhobenen Daten auf graduelle Qualitätsunterschiede zwischen den getesteten Retrieval Ansätzen hin, doch lassen sich diese Effekte kaum isoliert betrachten. Die im späteren Verlauf detailliert beschriebene geringe Qualität der zugrunde liegenden Datenbasis überlagert die potenziellen Unterschiede der Konfigurationen nahezu vollständig. Eine abschließende und allgemeingültige Beantwortung dieser zweiten Frage ist daher auf Basis der vorliegenden Ergebnisse nur sehr eingeschränkt möglich.
+\subsection{Beantwortung von RQ2}
+\label{subsec:rq2-beantwortung}
 
-\subsection{Metrik Mismatch (Goal Accuracy und Completeness vs sokratisches Ziel) und methodische Reflexion}
+Für RQ2 ist vorab eine Einschränkung wichtig. Die Auswertung liegt aktuell nur für fünf der neun
+vorgesehenen RAG-Konfigurationen vollständig vor (vgl. Kapitel~\ref{subsec:Die RAG-Konfigurationen}). Die folgende
+Einordnung bezieht sich deshalb nur auf diese fünf Konfigurationen. Sie ist als vorläufig zu
+betrachten.
 
-Die automatisierte Auswertung tutorieller Dialoge durch generische Metriken bringt eine erhebliche methodische Herausforderung mit sich. Der vorliegende Datensatz deckt einen massiven Metrik Mismatch auf. Klassische Kriterien der Textgenerierung wie Goal Accuracy oder Completeness sind primär darauf ausgelegt, eine möglichst schnelle, präzise und vollumfängliche Beantwortung einer Nutzeranfrage positiv zu bewerten. Das sokratische Lehrziel verlangt hingegen exakt das Gegenteil. Ein guter Tutor gibt die Lösung eben nicht direkt vor, sondern leitet die studierende Person durch kleine kognitive Hürden und strukturierte Rückfragen zur selbstständigen Erarbeitung des Wissens.
+Der Vergleich der Retrieval-Abdeckung bei den Schwellenwerten $0{,}5$ und $0{,}7$ zeigt ein
+wichtiges Muster (Tabelle~\ref{tab:rq2-abdeckung-05} und Tabelle~\ref{tab:rq2-abdeckung-07}). Die
+Abdeckung ist kein stabiler Kennwert, sondern hängt stark von der Konfiguration ab. Sparse-Retrieval
+bleibt bei beiden Schwellenwerten bei $100\,\%$. Dense-Retrieval bricht dagegen ein. Bei $0{,}5$
+liegt die Abdeckung noch bei $65$ bis $74\,\%$, bei $0{,}7$ nur noch bei $0$ bis $2\,\%$. Das lässt
+sich aus der Funktionsweise der beiden Verfahren erklären. Sparse-Retrieval liefert für einen
+Treffer entweder eine hohe Übereinstimmung, wenn ein Begriffs-Overlap vorliegt, oder gar keine.
+Dense-Retrieval liefert dagegen über die Embedding-Ähnlichkeit einen kontinuierlichen Score. Dieser
+Score liegt bei den hier verwendeten Konfigurationen offenbar überwiegend zwischen $0{,}5$ und
+$0{,}7$. Bei Anhebung des Schwellenwerts fällt er deshalb fast vollständig heraus.
 
-Diese bewusste Lösungszurückhaltung wird von herkömmlichen Metriken paradoxerweise als unvollständige oder ausweichende Antwort bestraft. Besonders deutlich wird dies in Dialogen, in denen die simulierten Lernenden explizit nach dem Endergebnis verlangen. Bleibt das System hierbei in seiner sokratischen Rolle, sinken die Scores für die allgemeine Hilfsbereitschaft und die Niveauanpassung drastisch ab. Folglich messen die verwendeten Standardmetriken teilweise nicht die tatsächliche didaktische Qualität, sondern bevorzugen vielmehr einen dozierenden Erklärstil. Diese methodische Diskrepanz muss bei zukünftigen Evaluationen durch speziell angepasste sokratische Bewertungsmaßstäbe zwingend behoben werden, um den wahren Wert eines Tutorsystems abbilden zu können.
+Die Gegenüberstellung von Abdeckung und Turn Contextual Relevancy zeigt einen weiteren Punkt
+(Tabelle~\ref{tab:rq2-metriken}, Abbildung~\ref{fig:rq2-scatter}). Abdeckung allein ist kein
+ausreichender Indikator für die Qualität einer RAG-Konfiguration. \emph{beide\_sparse} erreicht bei
+Schwellenwert $0{,}5$ die volle Abdeckung von $100\,\%$. Gleichzeitig hat diese Konfiguration mit
+$0,276$ den niedrigsten Relevancy-Wert aller fünf ausgewerteten Konfigurationen.
+\emph{beide\_dense} und \emph{labor\_dense} zeigen das umgekehrte Bild. Ihre Abdeckung liegt bei
+$0{,}5$ mit $74\,\%$ und $69\,\%$ niedriger. Ihre Relevancy-Werte sind mit $0,504$ und $0,514$
+dagegen am höchsten. Ein Vergleich allein anhand der Abdeckung würde diese beiden Kennzahlen
+deshalb gegenläufig gewichten. Er würde zu einer anderen Rangfolge führen als ein Vergleich anhand
+der inhaltlichen Relevanz des abgerufenen Kontexts.
 
-\subsection{Datenqualität (leere Gespräche und 30\,\% Retrieval Abdeckung) und deren Einfluss}
+Dieses Bild lässt sich durch eine einfache Auszählung der Tutor-Antworten stützen. Die Häufigkeit generischer Analogien nimmt in genau der Rangfolge zu, in der die Turn Contextual Relevancy abnimmt: \emph{labor\_dense} verwendet das Wort \glqq Analogie\grqq{} kein einziges Mal, \emph{beide\_dense} dreimal, \emph{vorlesung\_dense} siebenmal und \emph{beide\_sparse} elfmal (vgl. Abschnitt~\ref{subsec:querschnitt} für ein Beispiel). Das ist ein rein korrelativer Befund auf Basis einer einfachen Wortzählung und kein Beleg für einen ursächlichen Zusammenhang. Er passt aber zu der Beobachtung, dass der Tutor bei geringerer inhaltlicher Relevanz des abgerufenen Kontexts stärker auf allgemeine, dokumentenunabhängige Erklärungsmuster ausweicht.
 
-Ein zentraler Faktor bei der Interpretation der Gesamtergebnisse ist die stark limitierte Datenqualität während der durchgeführten Evaluation. Zwei Aspekte fallen hierbei besonders schwer ins Gewicht. Zum einen weisen die aufgezeichneten Logs eine gewisse Anzahl an fehlerhaften oder vollständig leeren Gesprächen auf. Solche unbrauchbaren Einträge verzerren die statistische Verteilung der Scores und erschweren einen unverfälschten Vergleich der tatsächlichen Mittelwerte.
+Es muss zudem aber auch in betracht gezogen werden, dass bei einer niedrigeren Abdeckung die Bewertungs-Artefakte Größer sind. Turns, die ohne Kontext bewertet werden erhalten automatisch einen Score von $1.0$. Das kann die Relevancy-Werte für Konfigurationen mit niedriger Abdeckung nach oben verzerren.
 
-Zum anderen stellt die extrem niedrige Retrieval Abdeckung von lediglich 30\,\% ein massives Problem für die Beantwortung der zweiten Forschungsfrage dar. In mehr als zwei Dritteln aller simulierten Interaktionen konnte das RAG System keine passenden Kontextinformationen aus der bereitgestellten Dokumentendatenbank extrahieren. Das Sprachmodell musste folglich zwangsläufig auf sein internes parametrisches Wissen zurückgreifen, um die gestellten fachlichen Fragen zu beantworten. Da die RAG Pipeline in diesen Fällen faktisch inaktiv war, lief der Vergleich der verschiedenen Retrieval Konfigurationen weitgehend ins Leere. Die erfreulich hohe fachliche Korrektheit der Antworten ist somit primär der enormen Leistungsfähigkeit und dem immensen Vorwissen des zugrunde liegenden Sprachmodells zuzuschreiben und spiegelt nicht die Qualität des Information Retrievals wider.
+Für die Hybrid-Konfigurationen mit Reranking zeigt Tabelle~\ref{tab:rq2-abdeckung-07} eine deutlich
+höhere Abdeckung bei Schwellenwert $0{,}7$. Sie liegt bei $75$ bis $83\,\%$. Die
+Hybrid-Konfiguration ohne Reranking erreicht dagegen nur $25\,\%$. Ob dieser Unterschied auch mit
+einer höheren inhaltlichen Relevanz des verbleibenden Kontexts einhergeht, lässt sich anhand der
+vorliegenden Daten nicht beurteilen. Für keine der drei Rerank-Konfigurationen wurden
+Turn-Contextual-Relevancy- oder Turn-Faithfulness-Werte erhoben. Tabelle~\ref{tab:rq2-metriken}
+umfasst nur fünf Konfigurationen, und keine davon nutzt Reranking.
 
-\subsection{Limitationen (Stichprobengröße, Chunk Granularität, Judge Bias und Threshold Wahl)}
+Zusammenfassend ist RQ2 auf Basis der aktuell vorliegenden Daten nur eingeschränkt beantwortbar.
+Die Auswertung ist mit fünf von neun Konfigurationen unvollständig. Die Retrieval-Abdeckung hängt
+zudem stark von einem frei wählbaren Schwellenwert ab. Abdeckung und inhaltliche Relevanz zeichnen
+für die bisher ausgewerteten Konfigurationen außerdem kein einheitliches Bild.
 
-Die absolute Aussagekraft sowie die Übertragbarkeit der Studie werden durch mehrere methodische Entscheidungen und strukturelle Rahmenbedingungen limitiert. Zunächst ist die gewählte Stichprobengröße von lediglich 24 Szenarien pro Bedingung als verhältnismäßig gering einzustufen. Kleine Stichproben reduzieren die statistische Reliabilität erheblich und führen dazu, dass einzelne stark abweichende Dialoge die Gesamtergebnisse überproportional beeinflussen können.
 
-Darüber hinaus liegt eine wesentliche technische Einschränkung in der verwendeten Chunk Granularität der Quelldokumente begründet. Die Art und Weise, wie die komplexen Laborunterlagen in durchsuchbare Textbausteine zerlegt wurden, passte offensichtlich nicht optimal zu den sehr spezifischen Anfragen der simulierten Nutzer. Diese unzureichende Segmentierung der zugrunde liegenden Daten ist die wahrscheinlichste Ursache für die zuvor beschriebene mangelhafte Retrieval Abdeckung.
+\subsection{Metrik-Mismatch bei unterschiedlichen Studenten Verhaltensweisen}
+\label{subsec:metrik-mismatch}
 
-Ebenso kritisch ist der sogenannte Judge Bias bei der Nutzung eines Sprachmodells als automatisierte Jury zu betrachten. Große Modelle neigen in ihrer Funktion als Evaluator systematisch dazu, besonders lange und stark formal gegliederte Antworten zu bevorzugen. Dieser Effekt erklärt die irreführend hohen Bewertungen der promptlosen Referenz im Bereich der schrittweisen Lernprogression, da diese Variante ungefragt umfassende Komplettlösungen in Listenform präsentierte.
+Generische Textgenerierungsmetriken wie Goal Accuracy oder Completeness bewerten eine möglichst
+vollständige und direkte Beantwortung einer Nutzeranfrage positiv. Das in dieser Arbeit verfolgte
+sokratische Lehrziel verlangt das Gegenteil. Die Lösung soll gerade nicht direkt gegeben werden.
+Das Fallbeispiel zum \emph{Domänenspezifischer In-Lab-Tutorprompt} in
+Abschnitt~\ref{subsec:querschnitt} zeigt diesen Zielkonflikt konkret. Der Tutor bestätigt dort eine
+korrekt hergeleitete Formel mit \glqq Das ist absolut richtig \dots\grqq{}. Das Kriterium \glqq
+Lösung nicht verraten\grqq{} wertet diese Bestätigung als Preisgabe, obwohl die studierende Person
+die Formel zuvor selbst formuliert hatte. Eine Bewertungsmetrik, die primär auf vollständige,
+direkte Beantwortung ausgelegt ist, kann eine solche bestätigende Rückmeldung nicht von einer
+unerwünschten Lösungspreisgabe unterscheiden. Das zeigt sich auch quantitativ. In
+Tabelle~\ref{tab:beh-variante} erreicht das Verhalten \glqq äußert eine Vermutung\grqq{} bei den
+instruierten Varianten durchgehend Werte zwischen 0,98 und 1,00. Das Verhalten \glqq fordert die
+Lösung\grqq{} bleibt dagegen mit 0,74 bis 0,80 das schwächste. Der Unterschied entsteht also eher
+dort, wo eine direkte Aufforderung zur Lösung vorliegt, und nicht dort, wo eine Bestätigung
+erfolgt. Für zukünftige Evaluationen wäre daher eine Metrik sinnvoll, die explizit zwischen
+bestätigender Rückmeldung und vollständiger Lösungspreisgabe unterscheidet.
 
-Schließlich stellt die Festlegung des Schwellenwerts auf 0,7 eine rein konzeptionelle Threshold Wahl dar. Bereits eine geringfügige Anpassung dieser Bestehensgrenze würde die berechneten Erfolgsquoten signifikant verändern und könnte die daraus resultierende Rangfolge der evaluierten Promptvarianten unter Umständen entscheidend beeinflussen.
+\subsection{Datenqualität und Aussagekraft der RQ2-Ergebnisse}
+\label{subsec:datenqualitaet}
+
+Zwei weitere datenbezogene Einschränkungen relativieren die Aussagekraft der RQ2-Ergebnisse. Sie
+kommen zur Threshold-Sensitivität aus Abschnitt~\ref{subsec:rq2-beantwortung} hinzu. Erstens ist die
+Auswertung mit fünf von neun Konfigurationen unvollständig. Die verbleibenden vier Konfigurationen
+werden gemäß Kapitel~\ref{sec:Ergebnisse} nachträglich ergänzt. Ein vollständiger Vergleich aller
+neun Konfigurationen ist derzeit deshalb nicht möglich. Zweitens persistiert die verwendete
+Implementierung nur den aggregierten Score pro Konversation. Bei Konversationen, in denen nur ein
+Teil der Antworten Retrieval-Kontext erhält, entsteht dadurch ein Problem. Der in
+Abschnitt~\ref{subsec:rq2} beschriebene Effekt bei fehlendem Kontext, der einen perfekten Score bei
+leerem Kontext vergibt, lässt sich auf Ebene der einzelnen Konversation nicht mehr von
+tatsächlicher inhaltlicher Qualität trennen. Die in Tabelle~\ref{tab:rq2-metriken} berichteten
+Mittelwerte können dadurch für Konfigurationen mit unvollständiger Abdeckung geringfügig nach oben
+verzerrt sein. Das betrifft alle Konfigurationen außer \emph{beide\_sparse} bei Schwellenwert
+$0{,}5$. Das Ausmaß dieser Verzerrung lässt sich nicht genauer quantifizieren.
+
+\subsection{Limitationen}
+\label{subsec:limitationen}
+
+Wie in Abschnitt~\ref{subsec:rq2-beantwortung} gezeigt, reagiert die Retrieval-Abdeckung stark auf
+die Wahl des Score-Schwellenwerts. Bei Anhebung von $0{,}5$ auf $0{,}7$ sinkt die Abdeckung der
+Dense-Konfigurationen von $65$ bis $74\,\%$ auf $0$ bis $2\,\%$. Sparse-Retrieval bleibt dabei
+unverändert bei $100\,\%$. Dieser Schwellenwert ist eine konfigurierbare Einstellung der
+RAG-Pipeline und keine im Untersuchungsdesign fest vorgegebene Größe. Eine andere Wahl hätte die
+berichtete Rangfolge der Konfigurationen bezüglich der Abdeckung deshalb erheblich verändern
+können.
+
+Der Bewertungsaufwand unterscheidet sich zwischen den beiden Schwellenwerten erheblich. Bei
+$0{,}5$ enthalten deutlich mehr Antworten einen Retrieval-Kontext als bei $0{,}7$ (vgl.
+Tabelle~\ref{tab:rq2-abdeckung-05} und Tabelle~\ref{tab:rq2-abdeckung-07}). Jede Antwort mit
+Kontext löst einen zusätzlichen Judge-Aufruf für Turn Contextual Relevancy und Turn Faithfulness
+aus. Ein niedrigerer Schwellenwert erhöht damit die Anzahl der Bewertungen und den Zeitaufwand der
+Evaluation. Einzelne Konversationen benötigten in dieser Arbeit teils über 24 Stunden Bewertungs-Laufzeit. Bei
+einem Schwellenwert von $0{,}5$ summiert sich dies zu einer deutlich längeren Gesamtlaufzeit der
+RQ2-Evaluation als bei $0{,}7$. Die Verfügbarkeit leistungsfähiger Modelle ist zudem begrenzt und
+mit Tokenkosten verbunden. Eine hohe Anzahl an Bewertungen ist unter diesen Bedingungen nicht immer
+praktikabel. Eine Anhebung des Schwellenwerts kann die Anzahl der bewerteten Konversationen
+reduzieren und den Bewertungsaufwand senken. Dies geht jedoch, wie in
+Abschnitt~\ref{subsec:rq2-beantwortung} gezeigt, mit einem deutlichen Rückgang der gemessenen
+Abdeckung einher. Die Wahl des Schwellenwerts stellt damit einen Zielkonflikt zwischen
+Bewertungsaufwand und vollständiger Datengrundlage dar. Diese Abwägung ist mit ein Grund dafür,
+dass in dieser Arbeit zunächst nur fünf der neun RAG-Konfigurationen vollständig evaluiert wurden
+(vgl. Kapitel~\ref{sec:Ergebnisse}).
+
+Die vorliegende Studie verwendet ein Sprachmodell als automatisierten Judge. Eine unabhängige,
+manuelle Validierung der Judge-Bewertungen durch menschliche Prüfer war nicht Teil des
+Untersuchungsdesigns. Ob die berichteten Scores mit einer menschlichen Einschätzung der
+sokratischen und fachlichen Qualität übereinstimmen würden, lässt sich anhand der vorliegenden
+Daten nicht beurteilen.
+
+Schließlich ist die RQ2-Auswertung mit fünf von neun Konfigurationen unvollständig, wie in
+Abschnitt~\ref{subsec:datenqualitaet} beschrieben. Die in dieser Arbeit berichteten RQ2-Befunde
+beziehen sich ausschließlich auf diese fünf Konfigurationen. Sie sind entsprechend als vorläufig zu
+verstehen.

@@ -205,6 +205,10 @@ INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlaye
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarybackgrounds.code.tex
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\seqsplit\seqsplit.sty
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\seqsplit\seqsplit.sty
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\url\url.sty
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\url\url.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\generic\pdftexcmds\pdftexcmds.sty
@@ -224,8 +228,6 @@ INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\logreq\logreq.def
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\logreq\logreq.def
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\base\ifthen.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\base\ifthen.sty
-INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\url\url.sty
-INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\url\url.sty
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-dm.def
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-dm.def
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-dm.def
@@ -440,6 +442,14 @@ INPUT ..\Dokumentation\images\Heatmap.png
 INPUT ..\Dokumentation\images\Heatmap.png
 INPUT ..\Dokumentation\images\Heatmap.png
 INPUT ..\Dokumentation\images\Heatmap.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT ..\Dokumentation\images\boxplot.png
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT ..\Dokumentation\images\AntwortenmitKontext.png
 INPUT ..\Dokumentation\images\AntwortenmitKontext.png
 INPUT ..\Dokumentation\images\AntwortenmitKontext.png
@@ -464,14 +474,6 @@ INPUT ..\Dokumentation\images\rq2_AbdeckungvsKontext.png
 INPUT ..\Dokumentation\images\rq2_AbdeckungvsKontext.png
 INPUT ..\Dokumentation\images\rq2_AbdeckungvsKontext.png
 INPUT ..\Dokumentation\images\rq2_AbdeckungvsKontext.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT ..\Dokumentation\images\ScoreVerteilungjeMetrik.png
-INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT .\06-Diskussion.tex
 INPUT .\06-Diskussion.tex
 OUTPUT 06-Diskussion.aux
@@ -486,6 +488,7 @@ INPUT .\07-Fazit&Ausblick.tex
 INPUT 07-Fazit&Ausblick.tex
 OUTPUT 08-Anhang.aux
 INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\eccc1200.tfm
+INPUT C:\Users\Jannis\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1095.tfm
 INPUT main.aux
 INPUT .\01-Einleitung.aux
 INPUT .\01-Einleitung.aux
@@ -515,6 +518,8 @@ INPUT .\main.out
 INPUT .\main.out
 INPUT main.run.xml
 OUTPUT main.run.xml
+INPUT C:\Users\Jannis\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk
+INPUT C:\Users\Jannis\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk
 INPUT C:\Users\Jannis\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk
 INPUT C:\Users\Jannis\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk
 INPUT C:\Users\Jannis\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk
